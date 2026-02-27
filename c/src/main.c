@@ -1,18 +1,15 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main() {
-  struct MyStruct {
-    int number;
-  };
-  struct MyStruct struct1 = {1};
-  printf("%p\n", &struct1);
-  printf("%d\n", struct1.number);
-
-  struct MyStruct *ptr_to_struct = &struct1;
-  printf("%p\n", ptr_to_struct);
-  printf("%d\n", (*ptr_to_struct).number);
-  printf("%d\n", ptr_to_struct->number);
-
+  typedef struct {
+    size_t len;
+    uint8_t data[]; // zero size here
+  } Buffer;
+  Buffer *b = malloc(sizeof(Buffer));
+  printf("%zu\n", sizeof(*b));
+  free(b);
   return 0;
 }

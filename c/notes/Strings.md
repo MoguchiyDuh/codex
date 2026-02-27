@@ -1,105 +1,110 @@
 ---
-tags: [c, strings, arrays, null-terminated]
+tags: [c, computing]
+status: complete
 source: str.c
 ---
 
 # Strings
 
-## Null-terminated `char` arrays
+> C has no string type — just `char` arrays terminated by `'\0'`, with conventions and library functions built around that.
 
-A C string is a `char` array where the last element is `'\0'` (null terminator, value 0). There is no string type — just a convention.
+## Null-terminated char arrays
+
+A C string ends with `'\0'` (value 0). `strlen` counts up to but not including it; `sizeof` on an array literal includes it.
 
 ```c
-char s[] = "hello";     // {'h','e','l','l','o','\0'} — 6 bytes
-char *p = "hello";      // pointer to string literal (read-only memory — don't modify)
+char s[] = "hello";   // {'h','e','l','l','o','\0'} — 6 bytes
+char *p  = "hello";   // pointer to a string literal — stored in read-only memory, do not modify
 ```
 
-`strlen` returns the number of chars **not counting** `'\0'`. `sizeof` on an array literal includes the `'\0'`.
+## `sizeof` decay problem
 
-## `sizeof` breaks inside functions
-
-Arrays decay to `char*` when passed to functions. `sizeof` then returns the pointer size (8), not the array size:
+Arrays decay to `char *` when passed to functions. `sizeof` then returns the pointer size, not the string length:
 
 ```c
-void broken(char *s) {
-    sizeof(s);  // 8 — pointer size, not string length
+void f(char *s) {
+    sizeof(s);   // 8 — pointer size, not length
 }
 
 char buf[64];
-sizeof(buf);    // 64 — works here because buf is still an array
+sizeof(buf);     // 64 — still an array in this scope
 ```
 
-Always pass length explicitly, or use `strlen`.
+Always pass length explicitly or use `strlen`.
 
-## `my_strlen`
+## `strlen`
 
-Walks until `'\0'`, counts steps:
+Walks until `'\0'`, counts steps. O(n) — does not cache the result.
 
 ```c
 int my_strlen(char *s) {
-    if (!s) return 0;
-    int len = 0;
-    while (s[len] != '\0') len++;
-    return len;
+    int n = 0;
+    while (s[n] != '\0') n++;
+    return n;
 }
 ```
 
-## `my_strcpy` (bounds-checked)
+## `strcpy` and bounds safety
 
-Copies `src` into `dst`, truncating to `dst_size - 1` to always leave room for `'\0'`:
+Standard `strcpy` has no bounds check — always prefer a bounds-checked version that guarantees `'\0'`-termination:
 
 ```c
 char *my_strcpy(char *dst, char *src, int dst_size) {
-    if (!dst || !src || dst_size == 0) return dst;
     int i = 0;
-    while (i < dst_size - 1 && src[i] != '\0') {
-        dst[i] = src[i];
-        i++;
-    }
-    dst[i] = '\0';  // always null-terminate
+    while (i < dst_size - 1 && src[i] != '\0')
+        dst[i++] = src[i];
+    dst[i] = '\0';
     return dst;
 }
 ```
 
-Standard `strcpy` has no bounds check — always prefer `strncpy` or a bounds-checked wrapper.
+## `strcmp`
 
-## `my_strcmp`
-
-Compares char-by-char, returns the difference at the first mismatch (0 = equal):
+Returns `0` on equality, negative if `a < b`, positive if `a > b`. Not guaranteed to be ±1 — only the sign matters.
 
 ```c
 int my_strcmp(char *a, char *b) {
     while (*a && *a == *b) { a++; b++; }
-    return *a - *b;     // 0 if both hit '\0' simultaneously
+    return *a - *b;
 }
 ```
 
-Return value: `0` = equal, `< 0` = a < b, `> 0` = a > b. Not guaranteed to be −1/0/1 — just sign matters.
+Never compare strings with `==` — that compares pointer addresses, not contents.
 
-## `my_strchr`
+## `strchr`
 
-Returns a pointer to the first occurrence of `c`, or NULL:
+Returns a pointer to the first occurrence of `c` in the string, or `NULL`. Returns a pointer into the original string, not a copy.
 
 ```c
 char *my_strchr(char *s, char c) {
-    if (!s) return NULL;
-    while (*s != (char)c) {
+    while (*s != c) {
         if (*s == '\0') return NULL;
         s++;
     }
-    return (char *)s;
+    return s;
 }
 ```
 
-Returns a pointer into the original string (not a copy). Can find `'\0'` itself.
+## Buffer overflow
 
-## Buffer overflows
-
-Writing past the end of a `char` array corrupts adjacent memory:
+Writing past a `char` array's end corrupts adjacent memory:
 
 ```c
 char buf[5];
-strcpy(buf, "this is too long");   // writes past buf — corrupts stack
+strcpy(buf, "too long");   // corrupts stack — UB, classic vulnerability
 ```
 
-Classic vulnerability. Use bounds-checked functions and always verify `dst_size > strlen(src)`.
+Always verify `dst_size > strlen(src)` before copying.
+
+## Tasks
+
+1. **Implement the stdlib** — write `my_strlen`, `my_strcpy`, `my_strcmp`, `my_strchr` from scratch. Test against their standard equivalents on the same inputs. `src/str.c`
+2. **Reverse in-place** — write `str_reverse(char *s)` that reverses a string in place without allocating. `src/str.c`
+3. **Trim whitespace** — write `str_trim(char *s)` that removes leading and trailing whitespace in-place. `src/str.c`
+4. **Split** — write `str_split(char *s, char delim, char **out, int max)` that splits on a delimiter and fills `out` with pointers into the original string (modify in-place with null bytes). `src/str.c`
+5. **Safe format** — use `snprintf` to build a string `"Hello, <name>!"` into a fixed-size buffer. Verify truncation is handled correctly. `src/str.c`
+
+## See also
+
+- [[../../theory/computing/Data Representation]]
+- [[Memory & Pointers]]
