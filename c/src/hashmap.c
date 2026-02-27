@@ -34,7 +34,7 @@ HashMap *hm_new(int cap) {
 
   hm->buckets = calloc(cap, sizeof(Entry *));
   if (hm->buckets == NULL) {
-    free(hm);  // fix: hm was malloc'd — must free before returning NULL
+    free(hm); // fix: hm was malloc'd — must free before returning NULL
     return NULL;
   }
   hm->len = 0;
@@ -82,7 +82,7 @@ void hm_set(HashMap *hm, char *key, char *val) {
 
   new_entry->next = hm->buckets[key_hash];
   hm->buckets[key_hash] = new_entry;
-  hm->len++;
+  ++hm->len;
 }
 
 char *hm_get(HashMap *hm, char *key) {
@@ -136,7 +136,7 @@ void hm_free(HashMap *hm) {
   if (hm == NULL)
     return;
 
-  for (int i = 0; i < hm->cap; i++) {
+  for (int i = 0; i < hm->cap; ++i) {
     Entry *entry = hm->buckets[i];
     while (entry != NULL) {
       Entry *next = entry->next;
@@ -157,7 +157,7 @@ void hm_print(HashMap *hm) {
     return;
   printf("len: %d, cap: %d\n", hm->len, hm->cap);
   printf("{\n");
-  for (int i = 0; i < hm->cap; i++) {
+  for (int i = 0; i < hm->cap; ++i) {
     Entry *entry = hm->buckets[i];
     while (entry != NULL) {
       printf("%s: %s (next: %s)\n", entry->key, entry->value,
@@ -223,7 +223,8 @@ void test_hm_set(void) {
 
   // update with longer value (exercises realloc path)
   hm_set(hm, "a", "this is a much longer value than before");
-  assert(strcmp(hm_get(hm, "a"), "this is a much longer value than before") == 0);
+  assert(strcmp(hm_get(hm, "a"), "this is a much longer value than before") ==
+         0);
 
   // null safety — none of these should crash
   hm_set(NULL, "k", "v");

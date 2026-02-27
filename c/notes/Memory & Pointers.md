@@ -1,81 +1,90 @@
 ---
-tags: [c, memory, pointers]
+tags: [c, os]
+status: complete
 source: ptr_ref.c
 ---
 
 # Memory & Pointers
 
-## Variables as named memory regions
+> C's direct access to memory — every variable has an address, and pointers are variables that hold one.
 
-Every variable is a named region of memory with an address. The address is fixed for the variable's lifetime (stack variables move only if the frame moves, which it doesn't mid-execution).
+## Addresses and pointer types
+
+Every variable occupies memory with a fixed address for its lifetime. `&x` produces that address; `*p` dereferences it.
 
 ```c
-int a = 1;
-printf("%d (%p)\n", a, &a);  // value and address
+int a = 42;
+int *p = &a;   // p holds the address of a
+*p = 99;       // writes through the pointer — a is now 99
 ```
 
-## `&` and `*`
+A pointer type encodes both the address and the type stored there. `int *` and `float *` may hold the same numeric address but dereference differently.
 
-- `&x` — address-of: produces a pointer to `x`
-- `*p` — dereference: reads/writes the value at the address `p` holds
+## Pass-by-pointer
+
+C is pass-by-value. To mutate a caller's variable, pass its address:
 
 ```c
-int a = 1, b = 2;
-
 void swap(int *a, int *b) {
-    int temp = *b;
-    *b = *a;
-    *a = temp;
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
 }
 
-swap(&a, &b);   // pass addresses, not values
+swap(&x, &y);
 ```
 
-Without `&`, C passes by value — the function gets a copy and the original is unchanged.
+Without `&`, the function receives a copy — the original is unchanged.
 
 ## Pointer arithmetic
 
-Arithmetic on a pointer steps by the size of the pointed-to type, not by bytes:
+Arithmetic steps by the size of the pointed-to type, not by bytes:
 
 ```c
-int arr[] = {1, 2, 3, 4, 5};
-int *p = arr;       // arr decays to &arr[0]
+int arr[] = {10, 20, 30};
+int *p = arr;    // arr decays to &arr[0]
 
-p + 1               // points to arr[1] (+4 bytes on 32/64-bit int)
-*(p + 2)            // same as arr[2]
+*(p + 1)         // arr[1] — steps sizeof(int) bytes forward
+arr[i]           // identical to *(arr + i)
 ```
 
-`arr[i]` is exactly `*(arr + i)` — indexing is pointer arithmetic + dereference.
+`p[i]` and `*(p + i)` compile to the same instruction.
+
+## Array decay
+
+Arrays are not pointers, but decay to a pointer to their first element when passed to a function:
+
+```c
+void sum(int *arr, int len) { ... }
+
+int nums[] = {1, 2, 3};
+sum(nums, 3);   // nums decays to &nums[0]
+```
+
+Array size is lost at decay — always pass length separately.
 
 ## `sizeof` and `size_t`
 
-`sizeof` returns the size in bytes as a `size_t` (unsigned, pointer-sized). Print with `%zu`.
+`sizeof` returns the size in bytes as `size_t` (unsigned, pointer-sized). Print with `%zu`.
 
 ```c
-printf("%zu\n", sizeof(int));       // 4
-printf("%zu\n", sizeof(arr[0]));    // 4
-
-int length = sizeof(arr) / sizeof(arr[0]);  // element count
+sizeof(int)                          // 4
+sizeof(arr)                          // total bytes — only valid in the same scope
+sizeof(arr) / sizeof(arr[0])         // element count
 ```
 
-### `sizeof` on a pointer always returns 8 (on 64-bit)
+Inside a function receiving `int *arr`, `sizeof(arr)` returns 8 (pointer size), not the array size.
 
-When an array decays to a pointer (passed to a function), `sizeof` gives the pointer size, not the array size:
+## Tasks
 
-```c
-int sum(int *arr, int len) {
-    // sizeof(arr) == 8 here — arr is a pointer, not an array
-    // must pass len explicitly
-}
-```
+1. **swap** — implement `swap(int *a, int *b)` using only pointer parameters, no return value. `src/ptr_ref.c`
+2. **array sum** — write `sum(int *arr, int len)`. Inside the function, print `sizeof(arr)` and explain the result. `src/ptr_ref.c`
+3. **pointer walk** — iterate over an array using only pointer arithmetic — no index variable, no `[]`. `src/ptr_ref.c`
+4. **sizeof table** — print `sizeof` for `int`, `int *`, `int **`, `char`, `double`, and a struct of your choice. `src/ptr_ref.c`
+5. **string length via pointer** — implement `strlen` using only pointer arithmetic, no index. `src/ptr_ref.c`
 
-This is why C functions that take arrays always need a separate length parameter.
+## See also
 
-## Passing arrays to functions
-
-Arrays decay to a pointer to their first element. The function receives `int *`, not `int[]`:
-
-```c
-int arr[] = {1, 2, 3, 4, 5};
-int res = sum(arr, 5);      // arr decays to &arr[0]
-```
+- [[../../theory/os/Stack vs Heap]]
+- [[../../theory/architecture/Memory Hierarchy]]
+- [[Heap Memory]]

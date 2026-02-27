@@ -10,7 +10,7 @@ int my_strlen(char *s) {
     return 0;
   int len = 0;
   while (s[len] != '\0')
-    len++;
+    ++len;
   return len;
 }
 
@@ -24,7 +24,7 @@ char *my_strcpy(char *dst, char *src) {
   int i = 0;
   while (src[i] != '\0') {
     dst[i] = src[i];
-    i++;
+    ++i;
   }
   dst[i] = '\0';
   return dst;
@@ -40,7 +40,7 @@ char *my_strncpy(char *dst, char *src, int dst_size) {
   int i = 0;
   while (i < dst_size - 1 && src[i] != '\0') {
     dst[i] = src[i];
-    i++;
+    ++i;
   }
   dst[i] = '\0';
   return dst;
@@ -53,8 +53,8 @@ int my_strcmp(char *a, char *b) {
   if (!a || !b)
     return (a == b) ? 0 : (!a ? -1 : 1);
   while (*a && *a == *b) {
-    a++;
-    b++;
+    ++a;
+    ++b;
   }
   return *a - *b;
 }
@@ -69,7 +69,7 @@ char *my_strchr(char *s, char c) {
   while (*s != c) {
     if (*s == '\0')
       return NULL;
-    s++;
+    ++s;
   }
   return s;
 }

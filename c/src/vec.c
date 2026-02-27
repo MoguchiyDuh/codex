@@ -54,7 +54,7 @@ void vec_print(Vec *v) {
   if (v == NULL)
     return;
   printf("len=%d cap=%d [", v->len, v->cap);
-  for (int i = 0; i < v->len; i++) {
+  for (int i = 0; i < v->len; ++i) {
     printf("%d%s", v->data[i], i < v->len - 1 ? ", " : "");
   }
   printf("]\n");
@@ -91,7 +91,7 @@ void test_vec_grow(void) {
   assert(v.cap == 4);
 
   // fill to capacity
-  for (int i = 0; i < 4; i++)
+  for (int i = 0; i < 4; ++i)
     vec_push(&v, i);
   assert(v.len == 4 && v.cap == 4);
 
@@ -101,7 +101,7 @@ void test_vec_grow(void) {
   assert(v.cap == 8);
 
   // values intact after grow
-  for (int i = 0; i < 4; i++)
+  for (int i = 0; i < 4; ++i)
     assert(v.data[i] == i);
   assert(v.data[4] == 99);
 

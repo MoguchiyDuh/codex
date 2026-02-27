@@ -1,63 +1,82 @@
 ---
-tags: [c, casting, aliasing, undefined-behavior]
+tags: [c, computing]
+status: complete
 source: ieee.c
 ---
 
 # Casting & Type Aliasing
 
-## C casts — "trust me" to the compiler
+> C casts reinterpret or convert bits with no runtime checks — wrong casts are silently undefined behavior.
 
-C casts are an unconditional instruction to reinterpret bits as a different type. No runtime checks, no conversion logic unless the types warrant it (e.g. int→float). Wrong casts are silently UB (Undefined Behavior).
+## Value conversion vs reinterpretation
 
-```c
-float f = 3.14f;
-int *p = (int *)&f;     // cast: "treat this float's address as int*"
-int bits = *p;          // reads the raw IEEE 754 bits — UB via strict aliasing
-```
+| Cast | What happens |
+|---|---|
+| `(float)i` where `i` is `int` | Value conversion — CPU converts 42 → 42.0f |
+| `*(int *)&f` where `f` is `float` | Reinterpretation — reads the raw bits as `int` |
+
+The second form looks like it works but violates strict aliasing.
 
 ## Strict aliasing rule
 
-The compiler assumes that pointers of different types don't point to the same memory. Accessing the same memory through two incompatible pointer types is UB — the compiler is allowed to reorder or eliminate such accesses.
+The compiler assumes pointers of different types never point to the same memory. Accessing the same memory through two incompatible pointer types is UB — the optimizer may cache the original value in a register and ignore writes through the aliased pointer:
 
 ```c
 float f = 1.0f;
 int *p = (int *)&f;
-*p = 0x3F800000;        // UB — strict aliasing violation
+*p = 0x3F800000;   // UB — compiler may not observe this write
 ```
 
-The optimizer may cache `f` in a register and never see the write through `p`.
+## `char *` exception
 
-## `char*` is the legal exception
-
-`char*` (and `unsigned char*`) can alias any type — this is explicitly carved out by the C standard. The compiler cannot assume they don't overlap with other types.
+`char *` and `unsigned char *` are exempt — they can legally alias any type. Used for byte-level inspection:
 
 ```c
-float f = 1.0f;
-char *bytes = (char *)&f;   // legal — char* can alias anything
+float f = 3.14f;
+unsigned char *b = (unsigned char *)&f;
 for (int i = 0; i < 4; i++)
-    printf("%02x ", (unsigned char)bytes[i]);
+    printf("%02x ", b[i]);   // legal — prints raw bytes
 ```
 
-## `memcpy` — the safe reinterpretation method
+## `memcpy` — safe reinterpretation
 
-`memcpy` bypasses strict aliasing by working at the byte level. It's the standard-compliant way to reinterpret the bits of one type as another:
+The standard-compliant way to inspect a type's raw bits. The compiler recognizes it and emits a register move for small sizes — no actual copy at runtime:
 
 ```c
-#include <string.h>
-
 float f = 3.14f;
 unsigned int bits;
-memcpy(&bits, &f, sizeof(float));   // legal — copies bytes, no aliasing
+memcpy(&bits, &f, sizeof(float));   // well-defined
 printf("0x%X\n", bits);
 ```
 
-The compiler recognizes `memcpy` and typically optimizes it to a register move — no actual memory copy at runtime for small sizes.
+## Union type-punning (C only)
+
+In C99+, reading a union member other than the one last written is defined behavior. This does not apply in C++:
+
+```c
+union { float f; unsigned int u; } pun;
+pun.f = 1.0f;
+printf("0x%X\n", pun.u);   // defined in C, UB in C++
+```
 
 ## Summary
 
-| Method                       | Legal            | Notes                                     |
-| ---------------------------- | ---------------- | ----------------------------------------- |
-| `(int *)&f` then dereference | ✗                | Strict aliasing UB                        |
-| `char *` access              | ✓                | `char*` exemption                         |
-| `memcpy`                     | ✓                | Standard-compliant, optimized away        |
-| `union`                      | ✓ in C, ✗ in C++ | Type-punning via union is defined in C99+ |
+| Method | Legal | Notes |
+|---|---|---|
+| `*(int *)&f` | No | Strict aliasing UB |
+| `char *` access | Yes | Exempted by the standard |
+| `memcpy` | Yes | Optimized away for small sizes |
+| `union` | Yes (C only) | UB in C++ |
+
+## Tasks
+
+1. **Raw float bits** — use `memcpy` to print the raw hex bits of `1.0f`, `0.5f`, `-1.0f`, and `0.0f`. Decode each field (sign, exponent, mantissa) manually. `src/ieee.c`
+2. **Aliasing violation** — write the `*(int *)&f` cast, compile with `-O2`, and observe that the optimizer may discard the write. Fix it with `memcpy`. `src/ieee.c`
+3. **Union punning** — implement the same raw-bits inspection using a `union`. Verify results match `memcpy`. `src/ieee.c`
+4. **Byte-level inspection** — use `unsigned char *` to print all 4 bytes of a `float` in order. Note the endianness. `src/ieee.c`
+
+## See also
+
+- [[../../theory/computing/IEEE 754]]
+- [[../../theory/computing/Data Representation]]
+- [[Memory & Pointers]]
