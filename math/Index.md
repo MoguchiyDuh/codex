@@ -8,9 +8,6 @@ status: complete
 ## [[Algebra/00 - Algebra MOC|Algebra]]
 Identities, progressions, polynomials, complex numbers, calculus basics.
 
-## [[Geometry/00 - Geometry MOC|Geometry]]
-Triangles, vectors.
-
 ## [[Trigonometry/00 - Trigonometry MOC|Trigonometry]]
 Basics, identities, sine/cosine rule.
 
