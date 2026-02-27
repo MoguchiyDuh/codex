@@ -4,11 +4,13 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+src="$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
 filename=$(basename "$1")
-target="bin/${filename%.*}"
+target="$SCRIPT_DIR/bin/${filename%.*}"
 
-mkdir -p src
+mkdir -p "$SCRIPT_DIR/bin"
 
-if gcc -Wall -Wextra -std=c11 -g -fsanitize=address,undefined "$1" -o "$target"; then
-    ./"$target"
+if gcc -Wall -Wextra -std=c11 -g -fsanitize=address,undefined "$src" -o "$target"; then
+    "$target"
 fi
