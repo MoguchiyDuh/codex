@@ -1,0 +1,13 @@
+# Rust
+rust/target/
+
+# Obsidian
+.obsidian/
+
+# C build output
+c/bin/
+
+# Python
+__pycache__/
+*.pyc
+.venv/

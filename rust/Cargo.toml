@@ -1,0 +1,21 @@
+[workspace]
+resolver = "2"
+members = [
+    "basics",
+    "oop_concepts",
+    "collections",
+    "error_handling",
+    "iterators",
+    "concurrency",
+    "smart_pointers",
+    "macros",
+    "unsafe_rust",
+    "shared",
+    "io_filesystem",
+    "testing",
+    "serde_examples",
+]
+
+[workspace.package]
+edition = "2024"
+authors = ["Kirill"]
