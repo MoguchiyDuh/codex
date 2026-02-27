@@ -9,8 +9,6 @@ status: complete
 
 ## Formula
 
-> *[diagram: triangle ABC with sides a, b, c opposite to angles A, B, C — search "sine rule triangle diagram"]*
-
 $$\boxed{\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)} = 2R}$$
 
 Where $R$ is the circumradius (radius of the circumscribed circle).

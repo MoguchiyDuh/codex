@@ -9,8 +9,6 @@ status: complete
 
 ## Formula
 
-> *[diagram: triangle ABC with sides a, b, c and angle C labeled — search "cosine rule triangle diagram"]*
-
 $$\boxed{c^2 = a^2 + b^2 - 2ab\cos(C)}$$
 
 All three variants:
