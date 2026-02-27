@@ -1,76 +1,86 @@
 ---
-tags: [c, ieee754, floats, bits]
-source: ieee.c
+tags: [theory, computing, ieee754, floats]
+status: complete
 ---
 
 # IEEE 754
 
-IEEE 754 (the international floating-point standard) defines how `float` and `double` are stored in memory.
+> The international standard for binary floating-point arithmetic — how `float` and `double` are stored in memory.
 
-## Float memory layout (32-bit)
+## 32-bit layout (single precision)
 
 ```
-bit 31    bits 30-23     bits 22-0
-  sign    exponent(8)   mantissa(23)
+bit 31   bits 30–23   bits 22–0
+ sign    exponent(8)  mantissa(23)
 ```
 
 - **Sign** (1 bit): 0 = positive, 1 = negative
-- **Exponent** (8 bits): stored biased by 127. Actual exponent = stored − 127.
-- **Mantissa** (23 bits): fractional part. Implicit leading 1 (except subnormals).
+- **Exponent** (8 bits): stored with a bias of 127. Actual exponent = stored − 127.
+- **Mantissa** (23 bits): fractional part after the implicit leading 1.
 
-Value = `(-1)^sign × 1.mantissa × 2^(exponent−127)`
+Value = `(-1)^sign × 1.mantissa × 2^(exponent − 127)`
 
-## Extracting raw bits
+## 64-bit layout (double precision)
 
-Access via `char*` (legal — char exemption) or `memcpy` (safest):
+Same structure, larger fields: 1 sign + 11 exponent + 52 mantissa. Bias = 1023.
 
-```c
-void view(float *f) {
-    unsigned int bits;
-    memcpy(&bits, f, sizeof(float));    // legal reinterpretation
-
-    printf("hex:  0x%X\n", bits);
-    printf("bits: ");
-    for (int i = 31; i >= 0; i--) {
-        printf("%d", (bits >> i) & 1);
-        if (i == 31 || i == 23)
-            printf(" ");    // split: sign | exponent | mantissa
-    }
-    printf("\n");
-}
-```
-
-`(bits >> i) & 1` isolates bit `i` by shifting it to position 0, then masking everything else off.
-
-## Example: `1.0f`
+## Example: decoding `1.0`
 
 ```
 0 01111111 00000000000000000000000
 ```
 
-- Sign = 0 (positive)
-- Exponent = 127 → 127 − 127 = 0
+- Sign = 0 → positive
+- Exponent = 127 − 127 = 0
 - Mantissa = 0 → implicit 1.0
-- Value = 1.0 × 2^0 = **1.0** ✓
+- Value = 1.0 × 2⁰ = **1.0**
+
+## Known bit patterns
+
+| Value | Hex | Explanation |
+|---|---|---|
+| `1.0` | `0x3F800000` | exp=127, mantissa=0 |
+| `-1.0` | `0xBF800000` | same, sign bit set |
+| `0.5` | `0x3F000000` | exp=126 (127−1) |
+| `2.0` | `0x40000000` | exp=128 (127+1) |
+| `0.0` | `0x00000000` | all bits zero |
 
 ## Special values
 
-| Value              | Exponent bits | Mantissa bits | Notes         |
-| ------------------ | ------------- | ------------- | ------------- |
-| `0.0`              | all 0         | all 0         | positive zero |
-| `−0.0`             | all 0         | all 0         | sign bit = 1  |
-| `+∞`               | all 1         | all 0         | `1.0f / 0.0f` |
-| `−∞`               | all 1         | all 0         | sign bit = 1  |
-| NaN (Not a Number) | all 1         | non-zero      | `0.0f / 0.0f` |
+| Value | Exponent bits | Mantissa bits |
+|---|---|---|
+| `+0` / `−0` | all 0 | all 0 |
+| `+∞` / `−∞` | all 1 | all 0 |
+| NaN | all 1 | non-zero |
 
-```c
-float inf  = 1.0f / 0.0f;   // +infinity — no trap in C by default
-float nan  = 0.0f / 0.0f;   // NaN
-float ninf = -1.0f / 0.0f;  // -infinity
+NaN is the only value where `x != x` is true — the standard IEEE 754 NaN check.
+
+Subnormals: exponent all 0, mantissa non-zero — represent values smaller than the minimum normalized float. No implicit leading 1.
+
+## Precision limits and gotchas
+
+Not all decimals have exact binary representations:
+
+```
+0.1 + 0.2 = 0.30000000000000004
 ```
 
-NaN is the only value where `x != x` is true — use this to check for NaN since there's no `isnan()` in C89 (C99 adds `<math.h>` `isnan()`).
+Single precision gives ~7 significant decimal digits. Double gives ~15–16.
 
-## `double` layout (64-bit)
+Never compare floats with `==` — use an epsilon: `fabs(a - b) < 1e-9`.
 
-Same structure, larger fields: 1 sign + 11 exponent + 52 mantissa. Bias = 1023.
+## Reinterpreting bits safely
+
+The only legal way to inspect the raw bits of a float is via `memcpy` — direct pointer casting is undefined behavior (strict aliasing):
+
+```c
+float f = 1.0f;
+unsigned int bits;
+memcpy(&bits, &f, sizeof(float));   // well-defined
+```
+
+## See also
+
+- [[Data Representation]]
+- [[Number Systems]]
+- [[Bitwise Operations]]
