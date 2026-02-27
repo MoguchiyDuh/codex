@@ -10,6 +10,9 @@ Language-agnostic CS fundamentals.
 ## [[computing/Index|Computing]]
 Number systems, boolean logic, data representation, IEEE 754, memory model.
 
+## [[architecture/Index|Architecture]]
+Combinational/sequential circuits, ALU, CPU, ISA, pipelining, memory hierarchy.
+
 ## [[algorithms/Index|Algorithms]]
 Complexity, recursion, sorting, searching, graphs, DP, greedy.
 
