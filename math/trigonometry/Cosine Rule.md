@@ -2,26 +2,35 @@
 tags: [math, trigonometry, cosine-rule]
 status: complete
 ---
+
 # Cosine Rule
 
-> Relates the sides of a triangle to the cosine of one of its angles.
+> Relates the sides of a triangle to the cosine of one of its angles. Generalisation of the Pythagorean theorem.
 
 ## Formula
 
+> *[diagram: triangle ABC with sides a, b, c and angle C labeled — search "cosine rule triangle diagram"]*
+
 $$\boxed{c^2 = a^2 + b^2 - 2ab\cos(C)}$$
 
-The same relation holds for each side/angle pair:
+All three variants:
 
-$$a^2 = b^2 + c^2 - 2bc\cos(A)$$
+$$a^2 = b^2 + c^2 - 2bc\cos(A) \qquad b^2 = a^2 + c^2 - 2ac\cos(B) \qquad c^2 = a^2 + b^2 - 2ab\cos(C)$$
 
-$$b^2 = a^2 + c^2 - 2ac\cos(B)$$
+## Finding an angle (rearranged)
 
-## When to Use
+$$\boxed{\cos(C) = \frac{a^2 + b^2 - c^2}{2ab}}$$
+
+## When to use
 
 | Known | Find |
 |---|---|
-| Two sides + included angle | Third side |
-| All three sides | Any angle |
+| Two sides + included angle (SAS) | Third side |
+| All three sides (SSS) | Any angle |
+
+## Connection to Pythagorean theorem
+
+When $C = 90°$: $\cos(90°) = 0$, so $c^2 = a^2 + b^2$ — the cosine rule reduces exactly to Pythagoras.
 
 ## See also
 
