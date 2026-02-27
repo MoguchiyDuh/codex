@@ -5,10 +5,10 @@ status: complete
 
 # Math
 
-## [[Algebra/00 - Algebra MOC|Algebra]]
+## [[algebra/Index|Algebra]]
 Identities, progressions, polynomials, complex numbers, calculus basics.
 
-## [[Trigonometry/00 - Trigonometry MOC|Trigonometry]]
+## [[trigonometry/Index|Trigonometry]]
 Basics, identities, sine/cosine rule.
 
 ## [[linear_algebra/Index|Linear Algebra]]
