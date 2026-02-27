@@ -33,3 +33,7 @@ OSI model, TCP/UDP, HTTP, DNS, TLS, sockets.
 
 ## [[databases/Index|Databases]]
 Relational model, SQL, indexes, transactions, NoSQL.
+
+## See also
+
+- [[../math/Index|Math]]
