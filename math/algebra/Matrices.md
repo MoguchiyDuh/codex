@@ -72,7 +72,9 @@ A scalar value associated with square matrices.
 
 $$\det(A) = ad - bc \quad \text{for } A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$$
 
-### 3×3 (Cofactor Expansion)
+### 3×3 (Sarrus' Rule / Cofactor Expansion)
+
+![[rule_of_sarrus.png]]
 
 $$\det\begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i \end{bmatrix} = a\begin{vmatrix} e & f \\ h & i \end{vmatrix} - b\begin{vmatrix} d & f \\ g & i \end{vmatrix} + c\begin{vmatrix} d & e \\ g & h \end{vmatrix}$$
 
@@ -127,6 +129,8 @@ If $\det(A) \neq 0$: $x = A^{-1}b$
 Transform augmented matrix $[A|b]$ to row echelon form using row operations: swap rows, multiply by scalar, add multiple of one row to another.
 
 ### Cramer's Rule
+
+![[cramers_rule.png]]
 
 For $n \times n$ systems with $\det(A) \neq 0$:
 

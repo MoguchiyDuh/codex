@@ -10,6 +10,8 @@ status: complete
 
 $$\boxed{f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}}$$
 
+![[graph_of_tangent.jpg]]
+
 **Notations:** $f'(x)$ (Lagrange), $\dfrac{df}{dx}$ (Leibniz), $\dot{f}$ (Newton, for time), $D_x f$ (Euler)
 
 ## Basic Rules
@@ -68,6 +70,8 @@ $$\boxed{\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)}$$
 | $\arccos x$ | $-\frac{1}{\sqrt{1-x^2}}$ |
 | $\arctan x$ | $\frac{1}{1+x^2}$ |
 
+![[table_of_derivative.png]]
+
 ## Higher-Order Derivatives
 
 $$\boxed{f''(x) = \frac{d^2f}{dx^2}} \qquad \boxed{f^{(n)}(x) = \frac{d^nf}{dx^n}}$$
@@ -101,6 +105,9 @@ Critical points: $f'(x) = 0$ or $f'$ undefined.
 - $f''(x) < 0$: concave down
 - $f''(x) = 0$ with sign change: inflection point
 
+![[types_of_concavity.png]]
+![[derivatives_and_graph_shares.jpg]]
+
 ### Linear Approximation
 
 $$\boxed{f(x + \Delta x) \approx f(x) + f'(x) \cdot \Delta x}$$
@@ -112,6 +119,8 @@ Expressed as differential: $dy = f'(x)\,dx$
 ### Mean Value Theorem
 If $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$:
 $$\boxed{f'(c) = \frac{f(b) - f(a)}{b - a}} \quad \text{for some } c \in (a, b)$$
+
+![[secant_tangent_lines.png]]
 
 ### L'Hopital's Rule
 For $\frac{0}{0}$ or $\frac{\infty}{\infty}$ indeterminate forms:

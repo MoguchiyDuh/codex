@@ -53,6 +53,8 @@ $$(x + 2)(x + 3) = x^2 + 5x + 6$$
 
 ### Division
 
+![[polynomial_division.jpg]]
+
 **Division Algorithm:** $P(x) = Q(x) \cdot D(x) + R(x)$ where $\deg(R) < \deg(D)$.
 
 **Long division** works for any divisor. **Synthetic division** applies only when the divisor is of the form $x - c$.

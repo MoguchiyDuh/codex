@@ -7,6 +7,8 @@ status: complete
 
 > Standard identities for simplifying and transforming trigonometric expressions.
 
+![[trig_identities.png]]
+
 ## Pythagorean identities
 
 $$\boxed{\sin^2(x) + \cos^2(x) = 1}$$

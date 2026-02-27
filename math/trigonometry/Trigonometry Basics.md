@@ -9,6 +9,8 @@ status: complete
 
 ## Right triangle definitions (SOH-CAH-TOA)
 
+![[trig_basics.png]]
+
 For a right triangle with angle θ, opposite side O, adjacent side A, hypotenuse H:
 
 $$\sin(θ) = \frac{O}{H} \qquad \cos(θ) = \frac{A}{H} \qquad \tan(θ) = \frac{O}{A}$$
@@ -31,13 +33,13 @@ Full circle: 360° = 2π rad. Right angle: 90° = π/2 rad.
 
 ## The unit circle
 
-> *[diagram: unit circle with angles 0°–360° labeled in degrees and radians, coordinates (cos θ, sin θ) at each key angle — search "unit circle labeled"]*
+![[trig_circle.png]]
 
 A circle of radius 1 centred at the origin. For any angle θ, the point on the circle is **(cos θ, sin θ)**.
 
 ## Signs by quadrant (CAST rule)
 
-> *[diagram: CAST quadrant diagram — search "CAST rule trigonometry"]*
+![[cast.png]]
 
 | Quadrant | Angle range | Positive functions |
 |---|---|---|
@@ -71,9 +73,7 @@ A circle of radius 1 centred at the origin. For any angle θ, the point on the c
 
 ## Graphs
 
-> *[diagram: graph of sin(x) and cos(x) over [−2π, 2π] — search "sine cosine graph"]*
-
-> *[diagram: graph of tan(x) with vertical asymptotes — search "tangent graph"]*
+![[sin cos tan graphs.png]]
 
 - **sin** and **cos**: amplitude 1, period 2π, cos is sin shifted left by π/2
 - **tan**: vertical asymptotes at x = π/2 + πk, crosses zero at x = πk

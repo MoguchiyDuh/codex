@@ -16,6 +16,9 @@ $$\boxed{y = ax^2 + bx + c \quad (a \neq 0)}$$
 
 ## Standard Forms
 
+![[parabola_up.png]]
+![[parabola_down.png]]
+
 ### Vertex form (vertical parabola)
 $$\boxed{y = a(x-h)^2 + k}$$
 
@@ -40,6 +43,8 @@ $$\boxed{h = -\frac{b}{2a}, \qquad k = c - \frac{b^2}{4a}}$$
 
 ### Axis of symmetry
 $$\boxed{x = -\frac{b}{2a}}$$
+
+![[axis_of_symmetry.jpg]]
 
 ### Focus and directrix
 For $y = a(x-h)^2 + k$:

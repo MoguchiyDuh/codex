@@ -78,11 +78,15 @@ $$\lim_{x\to 0}\frac{\sin x}{x} = 1 \qquad \lim_{x\to 0}\frac{1-\cos x}{x} = 0 \
 
 $$\lim_{x\to 0}\frac{e^x-1}{x} = 1 \qquad \lim_{x\to\infty}\left(1+\frac{1}{x}\right)^x = e \qquad \lim_{x\to 0}(1+x)^{1/x} = e$$
 
+![[vertical_asymptote.jpg]]
+
 ## Infinite Limits and Asymptotes
 
 $\lim_{x\to a}f(x) = \infty$ indicates a **vertical asymptote** at $x = a$.
 
 $\lim_{x\to\pm\infty}f(x) = L$ indicates a **horizontal asymptote** at $y = L$.
+
+![[discontinuity.png]]
 
 ## Continuity
 

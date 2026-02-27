@@ -50,6 +50,8 @@ $$\log_a 1 = 0 \qquad \log_a a = 1 \qquad \log_a a^n = n \qquad a^{\log_a x} = x
 Example: $\log_3 x + \log_3(x-2) = 1$
 → $\log_3[x(x-2)] = 1$ → $x(x-2) = 3$ → $x^2-2x-3=0$ → $x=3$ (reject $x=-1$, argument must be positive)
 
+![[logarithm_graphs.png]]
+
 ## Graph of $y = \log_a x$
 
 - Domain: $(0, \infty)$, Range: $(-\infty, \infty)$

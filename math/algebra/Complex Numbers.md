@@ -62,12 +62,16 @@ Geometric interpretation: reflection across the real axis.
 
 ## Modulus
 
+![[complex_plain.jpg]]
+
 Distance from the origin in the complex plane:
 $$\boxed{|z| = \sqrt{a^2 + b^2}}$$
 
 **Properties:** $|z_1 z_2| = |z_1||z_2|$, $|z_1 + z_2| \leq |z_1| + |z_2|$ (triangle inequality), $|z^n| = |z|^n$
 
 ## Polar Form
+
+![[polar_representation.png]]
 
 $$\boxed{z = r(\cos\theta + i\sin\theta) = re^{i\theta}}$$
 
