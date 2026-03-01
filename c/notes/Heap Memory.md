@@ -84,12 +84,14 @@ void vec_free(Vec *v) {
 }
 ```
 
-## Tasks
+## Exercises
 
-1. **Vec** — implement a growable `Vec` with `vec_new`, `vec_push`, `vec_get`, `vec_free`. Verify with `-fsanitize=address` that no leaks or overflows occur. `src/vec.c`
-2. **realloc trap** — write code that assigns `realloc` directly to the original pointer. Show that this leaks on failure. Fix it. `src/vec.c`
-3. **calloc vs malloc** — allocate an array with `malloc`, print the uninitialized values. Then repeat with `calloc`. Explain the difference. `src/vec.c`
-4. **free trace** — wrap `malloc` and `free` in macros that print the address. Run the Vec and verify every allocation is freed exactly once. `src/vec.c`
+See `EXERCISES.md` — E1, E13.
+
+1. **Split vec into multi-file** — `vec.h` + `vec.c` + `vec_main.c`, opaque type, Makefile. `src/vec.c`
+2. **realloc trap** — assign `realloc` directly to the original pointer, show it leaks on failure, fix it. `src/vec.c`
+3. **calloc vs malloc** — allocate with `malloc`, print uninitialized values, repeat with `calloc`. `src/vec.c`
+4. **Generic vec** — store `void *` elements with `size_t elem_size`, test with `int` and a struct. `src/vec.c`
 
 ## See also
 

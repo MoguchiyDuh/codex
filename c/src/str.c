@@ -1,14 +1,15 @@
 #include <assert.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <string.h>
 
 // strlen
 //
 // Returns number of chars before '\0'. Returns 0 for NULL.
-int my_strlen(char *s) {
+size_t my_strlen(const char *s) {
   if (!s)
     return 0;
-  int len = 0;
+  size_t len = 0;
   while (s[len] != '\0')
     ++len;
   return len;
@@ -18,7 +19,7 @@ int my_strlen(char *s) {
 //
 // Copies src into dst until '\0'. No bounds check — dst must fit src.
 // Returns dst.
-char *my_strcpy(char *dst, char *src) {
+char *my_strcpy(char *dst, const char *src) {
   if (!dst || !src)
     return dst;
   int i = 0;
@@ -34,7 +35,7 @@ char *my_strcpy(char *dst, char *src) {
 //
 // Bounds-checked copy: writes at most dst_size-1 chars, always null-terminates.
 // Returns dst.
-char *my_strncpy(char *dst, char *src, int dst_size) {
+char *my_strncpy(char *dst, const char *src, int dst_size) {
   if (!dst || !src || dst_size == 0)
     return dst;
   int i = 0;
@@ -49,7 +50,7 @@ char *my_strncpy(char *dst, char *src, int dst_size) {
 // strcmp
 //
 // Returns 0 if equal, <0 if a < b, >0 if a > b.
-int my_strcmp(char *a, char *b) {
+int my_strcmp(const char *a, const char *b) {
   if (!a || !b)
     return (a == b) ? 0 : (!a ? -1 : 1);
   while (*a && *a == *b) {
@@ -63,7 +64,7 @@ int my_strcmp(char *a, char *b) {
 //
 // Returns pointer to first occurrence of c in s, NULL if not found.
 // Can find '\0' itself.
-char *my_strchr(char *s, char c) {
+char *my_strchr(const char *s, char c) {
   if (!s)
     return NULL;
   while (*s != c) {
@@ -71,7 +72,7 @@ char *my_strchr(char *s, char c) {
       return NULL;
     ++s;
   }
-  return s;
+  return (char *)s;
 }
 
 //  tests

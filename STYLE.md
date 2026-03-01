@@ -44,6 +44,18 @@ No `Introduction` or `Overview` as a heading — first `##` is the first real to
 - Tables preferred over bullet lists for comparisons
 - No horizontal rules (`---`) in theory/lang notes
 
+## Exercises section
+
+Lang notes may include an `## Exercises` section before `## See also` — coding tasks tied to the note's topic, each with a reference to the relevant `src/` file.
+
+```
+## Exercises
+
+1. **Task name** — description. `src/file.c`
+```
+
+Theory notes do not have exercises — those belong in the course roadmap.
+
 ## Cross-references
 
 `## See also` at the bottom of every theory/lang note that has related content. Wikilinks only:

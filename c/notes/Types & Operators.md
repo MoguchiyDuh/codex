@@ -202,38 +202,9 @@ Higher rows bind tighter. When in doubt, use parentheses.
 
 Common trap: `&` and `|` bind looser than `==`, so `x & 0xFF == 0` parses as `x & (0xFF == 0)` — always `0`. Write `(x & 0xFF) == 0`.
 
-## Implicit conversions and integer promotion
+## Implicit Conversions and Integer Promotion
 
-### Integer promotion
-
-Any type narrower than `int` — `char`, `short`, `_Bool` — is promoted to `int` (or `unsigned int` if `int` can't hold the value) before arithmetic. This happens silently:
-
-```c
-char a = 200;
-char b = 100;
-int  c = a + b;   // a and b promote to int before adding — no overflow
-```
-
-### Usual arithmetic conversions
-
-When two operands have different types, both are converted to a common type before the operation. Rules in order:
-1. If either is `long double` → both become `long double`
-2. Else if either is `double` → both become `double`
-3. Else if either is `float` → both become `float`
-4. Else both are integer — apply promotion, then convert to the wider/unsigned type
-
-### Signed/unsigned mixing
-
-When a signed and unsigned integer are mixed, the signed value converts to unsigned — which silently wraps for negatives:
-
-```c
-int           a = -1;
-unsigned int  b = 1;
-
-a < b    // false — a converts to UINT_MAX (4294967295), which is > 1
-```
-
-This is one of C's most common silent bugs. Enable `-Wsign-compare` to catch it.
+See [[Integer Promotions]] for full coverage — promotion rules, usual arithmetic conversions, and the signed/unsigned trap.
 
 ## `const` and `volatile`
 
