@@ -19,8 +19,8 @@ typedef struct Entry {
 
 typedef struct {
     Entry **buckets;   // array of chain heads
-    int len;           // number of stored keys
-    int cap;           // number of buckets
+    size_t len;        // number of stored keys
+    size_t cap;        // number of buckets
 } HashMap;
 ```
 
@@ -31,7 +31,7 @@ typedef struct {
 Polynomial rolling hash — multiply accumulator by prime 31 per character, then mod by capacity:
 
 ```c
-unsigned int hash(char *key, int cap) {
+unsigned int hash(const char *key, size_t cap) {
     unsigned int h = 0;
     while (*key) h = h * 31 + *key++;
     return h % cap;
@@ -83,13 +83,15 @@ The map heap-allocates copies of every key and value on insert. `hm_free` must w
 | `free(hm->buckets)` only             | Entire `Entry` chains leaked                                 |
 | Leak on `calloc` failure in `hm_new` | `hm` allocated but not freed before returning `NULL`         |
 
-## Tasks
+## Exercises
 
-1. **Implement the full API** — write `hm_new`, `hm_set`, `hm_get`, `hm_delete`, `hm_free` with separate chaining. Run all tests clean under `-fsanitize=address`. `src/hashmap.c`
-2. **Iteration** — add `hm_each(HashMap *hm, void (*fn)(char *key, char *value))` that walks all entries. `src/hashmap.c`
-3. **Load factor** — add a `hm_load(HashMap *hm)` that returns `(float)len / cap`. Add automatic resizing when it exceeds 0.7 — rehash all entries into a new bucket array. `src/hashmap.c`
-4. **Collision stress test** — set `cap = 1` so every key collides. Insert 1000 entries, time lookups. Then repeat with `cap = 1024`. Compare. `src/hashmap.c`
-5. **Generic values** — change the value from `char *` to `void *` with a `size_t value_size`. Store a heap copy of the raw bytes. `src/hashmap.c`
+See `EXERCISES.md` — E2, E14.
+
+1. **Split into multi-file** — `hashmap.h` + `hashmap.c` + `hashmap_main.c`, opaque types, Makefile. `src/hashmap.c`
+2. **Iteration** — add `hm_each(HashMap *hm, void (*fn)(const char *key, const char *value))` that walks all entries. `src/hashmap.c`
+3. **Load factor + rehash** — `hm_load` returning `(float)len / cap`, auto-rehash at 0.7. `src/hashmap.c`
+4. **Collision stress test** — `cap = 1` forces all keys into one bucket. Insert 1000 entries, compare lookup time vs `cap = 1024`. `src/hashmap.c`
+5. **Generic values** — change value from `char *` to `void *` with `size_t value_size`. `src/hashmap.c`
 
 ## See also
 

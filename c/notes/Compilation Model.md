@@ -1,63 +1,140 @@
 ---
-tags: [c, computing]
-status: stub
-source: compilation.c
+tags: [c, computing, tooling]
+status: complete
+source: src/compilation_model/
 ---
 
 # Compilation Model
 
-> C source goes through four distinct stages before becoming an executable — each stage has a defined input and output.
+> C compilation is four distinct stages — each transforms source into a lower-level representation.
 
-## The four stages
+## Pipeline Overview
 
-### Preprocessing (`gcc -E`)
+```
+source.c  →  [preprocessor]  →  source.i
+source.i  →  [compiler]      →  source.s
+source.s  →  [assembler]     →  source.o
+source.o  →  [linker]        →  executable
+```
 
-### Compilation (`gcc -S`)
+## Stage 1 — Preprocessor
 
-### Assembly (`gcc -c`)
+Pure text substitution. Knows nothing about C syntax.
 
-### Linking
+- `#include` → paste file contents literally at that position
+- `#define` → text replacement throughout the file
+- `#ifdef` / `#endif` → conditionally include or exclude text
+- Strips comments
+- Output: `.i` file (expanded C source)
 
-## Object files and symbols
+```bash
+gcc -E main.c -o main.i   # stop after preprocessing, inspect the output
+```
 
-### `.o` files
+## Stage 2 — Compiler
 
-### Symbol table: `nm`
+Translates C to assembly. Type checking, warnings, and optimization happen here.
 
-### Undefined vs defined symbols
+- Input: `.i`
+- Output: `.s` (assembly)
 
-## Header files and translation units
+```bash
+gcc -S main.c             # produces main.s
+```
 
-### What `#include` actually does
+Syntax errors, type mismatches, and undeclared identifiers are caught here. Each `.c` file is compiled independently — the compiler has no knowledge of other files.
 
-### Why definitions in headers cause multiple-definition errors
+## Stage 3 — Assembler
 
-### Declaration vs definition
+Translates assembly to machine code. No optimization.
 
-## Static vs dynamic linking
+- Input: `.s`
+- Output: `.o` — object file (machine code + unresolved symbol references)
 
-### `.a` archives
+```bash
+gcc -c main.c             # produces main.o
+```
 
-### `.so` / `.dylib` shared libraries
+## Stage 4 — Linker
 
-### When each is appropriate
+Combines object files into a final executable. Resolves symbol references.
 
-## Compiler flags
+- Input: one or more `.o` files + libraries
+- Output: executable binary
 
-| Flag                           | Effect                                            |
-| ------------------------------ | ------------------------------------------------- |
-| `-Wall -Wextra`                | Enable common warnings                            |
-| `-g`                           | Embed debug symbols                               |
-| `-O0` / `-O2`                  | Optimization level                                |
-| `-fsanitize=address,undefined` | Runtime error detection                           |
-| `-E` / `-S` / `-c`             | Stop after preprocessing / compilation / assembly |
+```bash
+gcc main.o util.o -o program
+```
 
-## Tasks
+## Object Files and Symbols
 
-1. **Inspect preprocessed output** — run `gcc -E src/compilation.c` and find where a `#include <stdio.h>` expands to. Count how many lines it produces.
-2. **Multi-file split** — split a program into `main.c`, a `math_utils.c` with helper functions, and a `math_utils.h` header. Compile each to `.o` then link manually.
-3. **Symbol table** — compile `src/compilation.c` to an object file and run `nm` on it. Identify one `T` (defined) and one `U` (undefined) symbol.
-4. **Linking error** — define the same function in two `.c` files and observe the linker error. Fix it with `static`.
+When your `.c` file calls `malloc`, the compiler emits an unresolved reference to the symbol `malloc`. The linker finds where `malloc` lives (in libc) and wires the call to it.
+
+Two distinct errors — different stages:
+
+| Error | Stage | Cause |
+|-------|-------|-------|
+| `undeclared function 'foo'` | Compiler | Called with no declaration in scope |
+| `undefined reference to 'foo'` | Linker | Declared but never implemented or not linked |
+
+Inspect symbols in an object file with `nm`:
+
+```bash
+nm main.o
+# T = defined in this file
+# U = undefined (to be resolved by linker)
+```
+
+## Static vs Dynamic Linking
+
+| | Static (`.a`) | Dynamic (`.so` / `.dylib`) |
+|---|---|---|
+| Library code | copied into your binary | loaded at runtime |
+| Binary size | larger | smaller |
+| Deployment | self-contained | depends on system libraries |
+| Bug fixes | must recompile | library update affects all users |
+
+```bash
+gcc main.c -o program          # dynamic by default
+gcc main.c -static -o program  # static
+otool -L ./program             # show dynamic dependencies (macOS)
+```
+
+## Multi-file Compilation
+
+```bash
+gcc -c hashmap.c -o hashmap.o   # compile each file separately
+gcc -c main.c    -o main.o
+gcc hashmap.o main.o -o program # link together
+```
+
+Or in one step (still goes through all 4 stages internally):
+
+```bash
+gcc hashmap.c main.c -o program
+```
+
+## Compiler Flags
+
+| Flag | Effect |
+|------|--------|
+| `-Wall -Wextra` | Enable common warnings |
+| `-g` | Embed debug symbols |
+| `-O0` / `-O2` | Optimization level |
+| `-fsanitize=address,undefined` | Runtime error detection |
+| `-E` / `-S` / `-c` | Stop after preprocessing / compilation / assembly |
+
+## Source Files
+
+| File | Description |
+|------|-------------|
+| `src/compilation_model/main.c` | entry point, calls math_utils |
+| `src/compilation_model/math_utils.c` | function definitions |
+| `src/compilation_model/math_utils.h` | declarations — what a header looks like |
+| `src/compilation_model/build_stages.sh` | runs each stage explicitly, produces `.i` `.s` `.o` |
+| `src/compilation_model/main.i` | preprocessed output — inspect to see `#include` expansion |
+| `src/compilation_model/main.s` | assembly output |
+| `src/compilation_model/main.o` | object file — run `nm main.o` to inspect symbols |
 
 ## See also
 
