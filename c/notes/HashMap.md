@@ -1,7 +1,7 @@
 ---
 tags: [c, data-structures]
 status: complete
-source: hashmap.c
+source: src/hashmap/
 ---
 
 # HashMap
