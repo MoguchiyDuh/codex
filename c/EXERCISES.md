@@ -4,22 +4,22 @@ Work through these in order. Each references the relevant note.
 
 ## Status
 
-| Exercise | Topic | Status |
-|----------|-------|--------|
-| E1 | Split vec — multi-file, opaque type, Makefile | — |
-| E2 | Split hashmap — multi-file, opaque type, Makefile | — |
-| E3 | str_reverse | done |
-| E4 | str_trim | — |
-| E5 | str_split | — |
-| E6 | Layout inspector — struct padding | — |
-| E7 | Packed network packet | — |
-| E8 | Tagged union | — |
-| E9 | Safe macros (MIN, MAX, CLAMP, SWAP) | — |
-| E10 | static local ID generator | — |
-| E11 | extern global (config) | — |
-| E12 | static linkage collision demo | — |
-| E13 | Generic vec (void *) | — |
-| E14 | HashMap load factor + rehash | — |
+| Exercise | Topic                                             | Status |
+| -------- | ------------------------------------------------- | ------ |
+| E1       | Split vec — multi-file, opaque type, Makefile     | done   |
+| E2       | Split hashmap — multi-file, opaque type, Makefile | done   |
+| E3       | str_reverse                                       | done   |
+| E4       | str_trim                                          | done   |
+| E5       | str_split                                         | done   |
+| E6       | Layout inspector — struct padding                 | —      |
+| E7       | Packed network packet                             | —      |
+| E8       | Tagged union                                      | —      |
+| E9       | Safe macros (MIN, MAX, CLAMP, SWAP)               | —      |
+| E10      | static local ID generator                         | —      |
+| E11      | extern global (config)                            | —      |
+| E12      | static linkage collision demo                     | —      |
+| E13      | Generic vec (void \*)                             | —      |
+| E14      | HashMap load factor + rehash                      | —      |
 
 ---
 
