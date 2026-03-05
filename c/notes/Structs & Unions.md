@@ -141,11 +141,10 @@ Prefer over positional initialization — survives field reordering, intent is e
 
 ## Exercises
 
-See `EXERCISES.md` — E6, E7, E8.
+See `EXERCISES.md` — E6, E7.
 
 1. **Layout inspector** — define structs with mixed field types, print `sizeof` and `offsetof` each field, reorder to minimize size. `src/structs.c`
-2. **Packed network packet** — define a packed struct matching an exact wire format, verify with `offsetof`. `src/structs.c`
-3. **Tagged union** — implement a `Value` type holding `int`, `double`, or `char *` with a `value_print` function. `src/structs.c`
+2. **Tagged union** — implement a `Value` type holding `int`, `double`, or `char *` with a `value_print` function. `src/tagged_union.c`
 
 ## See also
 

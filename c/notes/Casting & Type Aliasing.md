@@ -10,9 +10,9 @@ source: ieee.c
 
 ## Value conversion vs reinterpretation
 
-| Cast | What happens |
-|---|---|
-| `(float)i` where `i` is `int` | Value conversion — CPU converts 42 → 42.0f |
+| Cast                              | What happens                                   |
+| --------------------------------- | ---------------------------------------------- |
+| `(float)i` where `i` is `int`     | Value conversion — CPU converts 42 → 42.0f     |
 | `*(int *)&f` where `f` is `float` | Reinterpretation — reads the raw bits as `int` |
 
 The second form looks like it works but violates strict aliasing.
@@ -61,12 +61,12 @@ printf("0x%X\n", pun.u);   // defined in C, UB in C++
 
 ## Summary
 
-| Method | Legal | Notes |
-|---|---|---|
-| `*(int *)&f` | No | Strict aliasing UB |
-| `char *` access | Yes | Exempted by the standard |
-| `memcpy` | Yes | Optimized away for small sizes |
-| `union` | Yes (C only) | UB in C++ |
+| Method          | Legal        | Notes                          |
+| --------------- | ------------ | ------------------------------ |
+| `*(int *)&f`    | No           | Strict aliasing UB             |
+| `char *` access | Yes          | Exempted by the standard       |
+| `memcpy`        | Yes          | Optimized away for small sizes |
+| `union`         | Yes (C only) | UB in C++                      |
 
 ## Tasks
 
