@@ -189,10 +189,10 @@ clean:
 
 ## Exercises
 
-See `EXERCISES.md` — E1, E2, E9, E10, E11, E12.
+See `EXERCISES.md` — E1, E2, E8, E9, E10, E11.
 
-1. **Split vec** — split `src/vec.c` into `vec.h` + `vec.c` + `vec_main.c` with opaque type and Makefile.
-2. **Split hashmap** — same for `src/hashmap.c`.
+1. **Split vec** — split `src/vec.c` into `vec.h` + `vec.c` + `vec_main.c` with opaque type and Makefile. `src/vec/`
+2. **Split hashmap** — same for `src/hashmap.c`. `src/hashmap/`
 3. **Safe macros** — implement `MIN`, `MAX`, `CLAMP`, `SWAP` macros. Show where naive versions break. `src/macros.c`
 4. **static local ID generator** — `gen_id(const char *prefix)` with auto-incrementing counter. `src/macros.c`
 5. **extern global** — `src/config.c` + `src/config.h` with shared `log_level`. `src/config.c`
