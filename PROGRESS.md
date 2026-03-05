@@ -9,7 +9,7 @@ Exam grades: **A** (90–100), **B** (75–89), **C** (60–74), **F** (<60 — 
 
 | Course | Phases | Status | Last Exam | Grade |
 |--------|--------|--------|-----------|-------|
-| [C](c/ROADMAP.md) | 5 / 10 | in progress | Phase 5 | B |
+| [C](c/ROADMAP.md) | 6 / 10 | in progress | Phase 6 | A |
 | [Rust](rust/ROADMAP.md) | 0 / 10 | not started | — | — |
 
 ## Computer Science Theory
@@ -46,3 +46,4 @@ Exam grades: **A** (90–100), **B** (75–89), **C** (60–74), **F** (<60 — 
 | 2026-02-28 | C | 3 — Strings, Arrays, size_t | 5/5 | A | Clean sweep |
 | 2026-02-28 | C | 4 — Structs, Unions, Padding, Alignment | 4/5 | B | Missed field-by-field offset calculation |
 | 2026-02-28 | C | 5 — Preprocessor, Headers, Multi-file | 4/5 | B | Missed static local persistent state |
+| 2026-03-05 | C | 6 — Standard I/O, File I/O, errno | 5.5/6 | A | Confused size_t sign semantics with %d/%zu |

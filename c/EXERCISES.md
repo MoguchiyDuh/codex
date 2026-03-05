@@ -1,4 +1,4 @@
-# C Exercises — Phases 1–5
+# C Exercises — Phases 1–6
 
 Work through these in order. Each references the relevant note.
 
@@ -13,6 +13,8 @@ Work through these in order. Each references the relevant note.
 | E5       | str_split                                         | done   |
 | E6       | Layout inspector — struct padding                 | done   |
 | E7       | Tagged union                                      | done   |
+| E8       | file_copy — buffered binary copy, errno preserved | done   |
+| E9       | read_file — heap read, realloc, null-terminate    | done   |
 <!-- | E8       | Safe macros (MIN, MAX, CLAMP, SWAP)               | —      | -->
 <!-- | E9       | static local ID generator                         | —      | -->
 <!-- | E10      | extern global (config)                            | —      | -->
