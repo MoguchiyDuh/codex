@@ -11,15 +11,14 @@ Work through these in order. Each references the relevant note.
 | E3       | str_reverse                                       | done   |
 | E4       | str_trim                                          | done   |
 | E5       | str_split                                         | done   |
-| E6       | Layout inspector — struct padding                 | —      |
-| E7       | Packed network packet                             | —      |
-| E8       | Tagged union                                      | —      |
-| E9       | Safe macros (MIN, MAX, CLAMP, SWAP)               | —      |
-| E10      | static local ID generator                         | —      |
-| E11      | extern global (config)                            | —      |
-| E12      | static linkage collision demo                     | —      |
-| E13      | Generic vec (void \*)                             | —      |
-| E14      | HashMap load factor + rehash                      | —      |
+| E6       | Layout inspector — struct padding                 | done   |
+| E7       | Tagged union                                      | done   |
+<!-- | E8       | Safe macros (MIN, MAX, CLAMP, SWAP)               | —      | -->
+<!-- | E9       | static local ID generator                         | —      | -->
+<!-- | E10      | extern global (config)                            | —      | -->
+<!-- | E11      | static linkage collision demo                     | —      | -->
+<!-- | E12      | Generic vec (void \*)                             | —      | -->
+<!-- | E13      | HashMap load factor + rehash                      | —      | -->
 
 ---
 
@@ -91,20 +90,7 @@ struct C { char a; char b; int c; char d; char e; int f; };
 struct D { char a; char b; char c; char d; int e; };
 ```
 
-**E7 — Packed network packet**
-Define a packed struct for this exact wire format and verify with `offsetof`:
-
-```
-1 byte  — version
-1 byte  — message type
-2 bytes — payload length
-4 bytes — sequence number
-4 bytes — checksum
-```
-
-Use `uint8_t`, `uint16_t`, `uint32_t`. Print `sizeof` — must be exactly 12.
-
-**E8 — Tagged union**
+**E7 — Tagged union**
 Implement a `Value` type that can hold an `int`, `double`, or `char *` (string).
 
 ```c
@@ -119,7 +105,7 @@ Write 3 tests — one for each variant.
 
 ## Preprocessor & Macros
 
-**E9 — Safe macros**
+**E8 — Safe macros**
 In a new file `src/macros.c`, implement and test:
 
 ```c
@@ -131,7 +117,7 @@ In a new file `src/macros.c`, implement and test:
 
 For each: show a case where a naive version breaks, verify your version handles it.
 
-**E10 — static local**
+**E9 — static local**
 Write a function `gen_id(const char *prefix)` that returns a heap-allocated string
 like `"req_001"`, `"req_002"`, etc. — auto-incrementing ID per prefix.
 Use a `static` local counter. Caller owns the returned string (must `free` it).
@@ -140,14 +126,14 @@ Use a `static` local counter. Caller owns the returned string (must `free` it).
 
 ## Linkage & Headers
 
-**E11 — extern global**
+**E10 — extern global**
 Create `src/config.c` + `src/config.h`:
 
 - Define `extern int log_level` (values 0–3)
 - Define `extern const char *log_level_name(void)` — returns `"debug"`, `"info"`, etc.
 - Include from two other files and verify only one definition exists
 
-**E12 — static vs non-static collision**
+**E11 — static vs non-static collision**
 Create two files that both define a function called `helper(void)`.
 Compile them together without `static` — observe the linker error.
 Fix it by making both `static`. Verify both can coexist.
@@ -156,13 +142,13 @@ Fix it by making both `static`. Verify both can coexist.
 
 ## Bonus (harder)
 
-**E13 — Generic vec**
+**E12 — Generic vec**
 Modify `vec` to store `void *` elements with a `size_t elem_size`.
 `vec_push` takes a `const void *` and copies `elem_size` bytes.
 `vec_get` writes into a caller-provided `void *out`.
 Test with both `int` and a struct.
 
-**E14 — HashMap load factor + rehash**
+**E13 — HashMap load factor + rehash**
 Add to `hashmap.c`:
 
 ```c
