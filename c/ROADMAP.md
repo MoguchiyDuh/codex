@@ -69,8 +69,8 @@ Topics: `#define`, `#include` mechanics, header guards, `#pragma once`, macros v
 Topics: `printf` / `scanf` format strings, `fopen` / `fread` / `fwrite` / `fclose`,
 buffered vs unbuffered I/O, `errno`, `perror`, `strerror`, error propagation patterns.
 
-**Exam status:** not taken
-**Grade:** —
+**Exam status:** passed
+**Grade:** A
 
 ---
 
