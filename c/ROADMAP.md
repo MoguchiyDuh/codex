@@ -80,8 +80,8 @@ buffered vs unbuffered I/O, `errno`, `perror`, `strerror`, error propagation pat
 Topics: `<stdint.h>` fixed-width types, signed overflow (UB), unsigned wraparound (defined),
 integer promotion and usual arithmetic conversions, `-fsanitize=undefined`.
 
-**Exam status:** not taken
-**Grade:** —
+**Exam status:** passed
+**Grade:** A
 
 ---
 
