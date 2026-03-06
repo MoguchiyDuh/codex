@@ -226,7 +226,7 @@ When a user completes an exercise and shows their code:
 |-------|------------|----------------|-----------------|
 | Pointers, memory, structs, strings, I/O | `c` | `c/notes/` | `c/src/` |
 | Ownership, traits, lifetimes, iterators | `rust` | `rust/notes/` | `rust/src/` |
-| OOP concepts | `theory` | `theory/oop/` | — |
+| OOP concepts | `python` | `python/oop/` | — |
 | Algorithms, data structures | `theory` | `theory/algorithms/` | — |
 | IEEE 754, number systems, boolean algebra | `theory` | `theory/computing/` | — |
 | OS, processes, memory management | `theory` | `theory/os/` | — |
