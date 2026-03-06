@@ -15,6 +15,7 @@ Work through these in order. Each references the relevant note.
 | E7       | Tagged union                                      | done   |
 | E8       | file_copy — buffered binary copy, errno preserved | done   |
 | E9       | read_file — heap read, realloc, null-terminate    | done   |
+| E10      | safe_add_i32 — signed addition, no UB             | done   |
 <!-- | E8       | Safe macros (MIN, MAX, CLAMP, SWAP)               | —      | -->
 <!-- | E9       | static local ID generator                         | —      | -->
 <!-- | E10      | extern global (config)                            | —      | -->
