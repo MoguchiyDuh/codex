@@ -16,7 +16,7 @@ Exam grades: **A** (90–100), **B** (75–89), **C** (60–74), **F** (<60 — 
 
 | Course | Phases | Status | Last Exam | Grade |
 |--------|--------|--------|-----------|-------|
-| [OOP](theory/oop/ROADMAP.md) | 0 / 5 | not started | — | — |
+| [OOP](python/oop/ROADMAP.md) | 0 / 5 | not started | — | — |
 | [Algorithms & DS](theory/algorithms/ROADMAP.md) | 0 / 10 | not started | — | — |
 | [Computer Architecture](theory/architecture/ROADMAP.md) | 0 / 8 | not started | — | — |
 | [Operating Systems](theory/os/ROADMAP.md) | 0 / 7 | not started | — | — |
