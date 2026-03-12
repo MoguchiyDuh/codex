@@ -91,8 +91,8 @@ integer promotion and usual arithmetic conversions, `-fsanitize=undefined`.
 Topics: function pointer syntax and typedef, passing callbacks, dispatch tables,
 comparison with Rust traits / Python callables, `qsort` as canonical example.
 
-**Exam status:** not taken
-**Grade:** —
+**Exam status:** passed
+**Grade:** A
 
 ---
 
