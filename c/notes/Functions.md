@@ -91,24 +91,56 @@ int (*fn)(int, int) = add;   // fn holds the address of add
 fn(3, 4);                    // calls add(3, 4)
 ```
 
+Function names decay to pointers — no `&` needed on assignment. Both `fn = add` and `fn = &add` compile, but `add` is idiomatic.
+
+### Callbacks
+
+Pass behavior into a function as a parameter. The receiver doesn't know or care which function it gets — it just calls it.
+
+```c
+typedef void (*Callback)(int);
+
+void map(int *arr, size_t n, Callback cb) {
+    if (!arr || !n || !cb) return;
+    for (size_t i = 0; i < n; i++)
+        arr[i] = cb(arr[i]);
+}
+```
+
+Stdlib canonical example — `qsort`:
+
+```c
+int cmp_int(const void *a, const void *b) {
+    int x = *(const int *)a;
+    int y = *(const int *)b;
+    return (x > y) - (x < y);   // branchless, overflow-safe
+}
+
+qsort(arr, n, sizeof(int), cmp_int);
+```
+
+The comparator takes `const void *` because `qsort` is type-agnostic. You cast inside. Return negative/zero/positive — not a bool. Never use `return x - y` — signed overflow is UB.
+
 ### Dispatch table
 
-Store function pointers in a struct or array keyed by some selector:
+Store function pointers in a struct keyed by a selector. No `if`/`switch` at the call site.
 
 ```c
 typedef struct { char sym; BinOp fn; } Op;
 
 static const Op ops[] = {{'+', add}, {'-', sub}, {'*', mul}, {'/', div_safe}};
+#define OPS_LEN (sizeof(ops) / sizeof(ops[0]))
 
-int apply(char sym, int a, int b) {
-    int n = (int)(sizeof(ops) / sizeof(ops[0]));
-    for (int i = 0; i < n; ++i)
+double calculate(char sym, double a, double b) {
+    for (size_t i = 0; i < OPS_LEN; i++)
         if (ops[i].sym == sym) return ops[i].fn(a, b);
-    return INT_MIN;   // unknown symbol sentinel
+    return 0.0;   // unknown symbol
 }
 ```
 
-`static const` at file scope — not a local VLA, no runtime allocation, the array lives in read-only data.
+`static const` at file scope — lives in read-only data, no runtime allocation.
+
+**ASCII indexing alternative:** `table[(int)sym]` gives O(1) dispatch but requires a 128-entry array, mostly NULL. Needs a NULL guard before calling. Worth it only for dense tables (e.g. VM opcode dispatch with 100+ ops).
 
 ## `static` locals
 
