@@ -102,8 +102,8 @@ comparison with Rust traits / Python callables, `qsort` as canonical example.
 Topics: `fork`, `exec`, `wait`, `exit`, signal handling (`sigaction`), `SIGINT` / `SIGSEGV`,
 `pipe`, basic IPC.
 
-**Exam status:** not taken
-**Grade:** —
+**Exam status:** passed
+**Grade:** A
 
 ---
 

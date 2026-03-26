@@ -1,7 +1,7 @@
 ---
 tags: [c, os]
-status: stub
-source: processes.c
+status: complete
+source: fork_child.c, fork_child2.c, signals.c
 ---
 
 # Processes & Signals
@@ -10,72 +10,165 @@ source: processes.c
 
 ## Processes
 
-### What a process is — address space, file descriptors, PID
+### What a process is
 
-### `fork` — duplicates the calling process
+A process is a running program with its own isolated address space, file descriptors, PID, and state. Separate processes don't share memory — a write in one is invisible to another (unlike threads).
+
+```c
+getpid()   // current process PID
+getppid()  // parent process PID
+```
+
+### `fork` — duplicate the calling process
+
+`fork` creates an exact copy of the current process. Both processes continue from the same point. The only difference is the return value:
+
+```c
+pid_t pid = fork();
+
+if (pid < 0) {
+    perror("fork");   // failed — out of resources
+} else if (pid == 0) {
+    // CHILD — pid is 0
+} else {
+    // PARENT — pid is the child's PID
+}
+```
+
+The child gets a copy of the parent's memory, file descriptors, and program counter. Copy-on-write means no physical copy happens until one side writes — `fork` is cheap. After `exec`, the copy is thrown away entirely.
+
+### `exec` family — replace process image
+
+`exec` replaces the calling process with a new program. PID stays the same, everything else is wiped.
+
+```c
+execvp("ls", (char *[]){"ls", "-la", NULL});
+perror("execvp");   // only reached on failure
+exit(1);
+```
+
+- First arg: program name (searched in `PATH`)
+- Second arg: `argv` array — `argv[0]` is the program name by convention, `NULL`-terminated
+- If `execvp` returns, it failed
+
+| Function | PATH search | Args | Env |
+|----------|-------------|------|-----|
+| `execvp` | Yes | `char *[]` | inherited |
+| `execv`  | No (full path) | `char *[]` | inherited |
+| `execve` | No | `char *[]` | explicit |
+| `execlp` | Yes | variadic | inherited |
+
+**`fork` + `exec` pattern** — the Unix way to spawn a new program:
 
 ```c
 pid_t pid = fork();
 if (pid == 0) {
-    // child
-} else if (pid > 0) {
-    // parent, pid is child's PID
-} else {
-    // error
+    execvp("ls", (char *[]){"ls", "-la", NULL});
+    perror("execvp");
+    exit(1);
 }
+// parent continues
 ```
 
-### `exec` family — replace process image
+Fork first so the parent survives. Exec in the child to replace it with the target binary. Equivalent to Python's `subprocess.run(["ls", "-la"])`.
 
-### `wait` / `waitpid` — reap a child, avoid zombies
+### `wait` / `waitpid` — reap children, avoid zombies
+
+When a child exits before the parent calls `wait`, it becomes a **zombie** — dead but holding its exit status in the kernel. Always wait for your children.
+
+```c
+int status;
+wait(&status);              // blocks until ANY child exits
+waitpid(pid, &status, 0);  // blocks until specific child exits
+waitpid(pid, &status, WNOHANG);  // non-blocking — returns 0 if not done
+
+if (WIFEXITED(status))
+    printf("exited with %d\n", WEXITSTATUS(status));
+```
+
+To wait for N children:
+```c
+for (int i = 0; i < n; i++)
+    wait(NULL);   // NULL if you don't need the exit status
+```
 
 ### `exit` vs `return` from `main`
 
-## File descriptors
-
-### `0`, `1`, `2` — stdin, stdout, stderr
-
-### `open`, `read`, `write`, `close` — syscall layer beneath `<stdio.h>`
-
-### `dup2` — redirect file descriptors
+Both terminate the process and flush stdio buffers. `exit(0)` from anywhere, `return 0` only from `main`. In the child after `exec` fails, always use `exit` — never `return`, since you don't want to run the parent's cleanup code.
 
 ## Signals
 
-### What a signal is — async interrupt delivered to a process
+### What a signal is
+
+An asynchronous notification delivered to a process by the kernel or another process. The process is interrupted mid-execution, jumps to the handler, then resumes (or terminates).
 
 ### Common signals
 
-| Signal    | Default action | Meaning                     |
-| --------- | -------------- | --------------------------- |
-| `SIGINT`  | Terminate      | Ctrl+C                      |
-| `SIGTERM` | Terminate      | Polite kill request         |
-| `SIGKILL` | Terminate      | Cannot be caught or ignored |
-| `SIGSEGV` | Core dump      | Invalid memory access       |
-| `SIGCHLD` | Ignore         | Child terminated            |
-| `SIGALRM` | Terminate      | Timer expired               |
+| Signal | Default | Meaning |
+|--------|---------|---------|
+| `SIGINT` | terminate | Ctrl+C |
+| `SIGTERM` | terminate | polite kill (`kill <pid>`) |
+| `SIGKILL` | terminate | force kill — cannot be caught or ignored |
+| `SIGSEGV` | core dump | segfault |
+| `SIGCHLD` | ignore | child exited |
+| `SIGPIPE` | terminate | write to broken pipe |
+| `SIGALRM` | terminate | timer expired |
 
-### `signal` — register a handler (simple, limited)
+Sending a signal: `kill(pid, SIGTERM)` — despite the name, not always fatal.
 
-### `sigaction` — register a handler (portable, preferred)
+### `sigaction` — install a signal handler
 
-### Signal safety — only async-signal-safe functions in handlers
+Always use `sigaction` over the old `signal()` — portable, explicit, doesn't reset after delivery.
 
-### `volatile sig_atomic_t` — the correct type for a flag set in a handler
+```c
+struct sigaction sa = {0};
+sa.sa_handler = handle_sigint;  // handler function
+sigemptyset(&sa.sa_mask);       // no extra signals blocked during handler
+sa.sa_flags = 0;
 
-## `argc` and `argv`
+sigaction(SIGINT, &sa, NULL);   // install for SIGINT
+```
 
-### Parsing with `getopt`
+Handler signature must be `void fn(int)` — the OS requires it.
 
-## Tasks
+### `volatile sig_atomic_t` — the correct flag type
 
-1. **Fork and wait** — fork a child that prints its PID and exits. Parent waits and prints the child's exit status.
-2. **Signal handler** — register a `SIGINT` handler that sets a `volatile sig_atomic_t` flag. Main loop checks the flag and shuts down cleanly instead of dying immediately.
-3. **Pipe** — use `pipe` + `fork` to send a string from child to parent through a file descriptor.
-4. **exec** — fork a child, then `execvp` to run `/bin/ls` with arguments. Parent waits and prints exit code.
-5. **Alarm** — use `SIGALRM` to implement a timeout: start a slow operation and abort it after 2 seconds.
+Signal handlers run asynchronously — they can interrupt any instruction. Two rules:
+
+- `sig_atomic_t` — guaranteed to read/write atomically, no half-written state
+- `volatile` — prevents the compiler from caching the value in a register across loop iterations
+
+```c
+static volatile sig_atomic_t running = 1;
+
+void handle_sigint(int sig) {
+    (void)sig;
+    running = 0;   // set flag — that's all
+}
+
+int main(void) {
+    // install handler...
+
+    while (running) {
+        printf("running...\n");
+        fflush(stdout);
+        sleep(1);
+    }
+    printf("shutdown cleanly\n");
+}
+```
+
+### Signal safety
+
+Inside a handler, you can only call **async-signal-safe** functions. Most libc functions are not — `printf` holds an internal lock; calling it from a handler while `main` holds the same lock → deadlock.
+
+Safe in handlers: `write()`, setting a `sig_atomic_t` flag.
+Unsafe: `printf`, `malloc`, `free`, most libc.
+
+Keep handlers minimal — set a flag, let `main` do the work.
 
 ## See also
 
-- [[Standard I/O]]
+- [[Standard I_O]]
 - [[../../theory/os/Processes & Threads]]
 - [[../../theory/os/Syscalls]]
