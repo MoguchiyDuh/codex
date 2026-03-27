@@ -1,5 +1,8 @@
 ---
-tags: [math, discrete, sets, relations, functions]
+tags:
+  - math
+  - discrete
+  - sets
 status: complete
 ---
 
@@ -26,7 +29,7 @@ Two ways to specify:
 | $A \subseteq B$ | subset — every element of A is in B (A can equal B)             |
 | $A \subset B$   | proper subset — $A \subseteq B$ and $A \neq B$                  |
 | $A = B$         | same elements: $\forall x\ (x \in A) \Leftrightarrow (x \in B)$ |
-| $\|A\|$         | cardinality — number of distinct elements                       |
+| \|$A$\|         | cardinality — number of distinct elements                       |
 
 Trap: $\{1,2,3,4\} \neq \{1,2,2,4\}$ — the second set is missing 3.
 
@@ -38,7 +41,7 @@ Trap: $\{1,2,3,4\} \neq \{1,2,2,4\}$ — the second set is missing 3.
 | $\mathbb{Z}$ | integers      | $\{\ldots, -2, -1, 0, 1, 2, \ldots\}$        |
 | $\mathbb{Q}$ | rationals     | $\{p/q \mid p,q \in \mathbb{Z},\ q \neq 0\}$ |
 | $\mathbb{R}$ | reals         | includes irrationals ($\pi$, $\sqrt{2}$, …)  |
-| $\emptyset$  | empty set     | $                                            | \emptyset | = 0$; $\emptyset \subseteq$ every set |
+| $\emptyset$  | empty set     | $\emptyset = 0$; $\emptyset \subseteq$ every set |
 | $U$          | universal set | all objects under consideration              |
 
 ### Operations
@@ -49,8 +52,13 @@ Trap: $\{1,2,3,4\} \neq \{1,2,2,4\}$ — the second set is missing 3.
 | Intersection | $A \cap B$ | in A **and** B                      |
 | Difference   | $A - B$    | in A, **not** B; $A - B \neq B - A$ |
 | Complement   | $\bar{A}$  | in U but not A                      |
+| Sym. diff    | $A \oplus B$ | in A or B, **not both**; $(A - B) \cup (B - A)$ |
 
-**Disjoint**: $A \cap B = \emptyset$.
+**Disjoint**: $A \cap B = \emptyset$ — no elements in common.
+
+**Exhaustive** (cover $U$): $A \cup B = U$ — every element appears in at least one set.
+
+**Partition**: disjoint **and** exhaustive — $A \cap B = \emptyset$ and $A \cup B = U$. Every element lands in exactly one part.
 
 Inclusion-exclusion: $|A \cup B| = |A| + |B| - |A \cap B|$
 

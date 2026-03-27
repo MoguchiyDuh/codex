@@ -47,6 +47,6 @@ status: stub
 
 ## See also
 
-- [[Sets, Relations, Functions]]
+- [[Sets]]
 - [[../../theory/data_structures/Graphs|Graphs]]
 - [[../../theory/algorithms/Graph Basics|Graph Basics]]

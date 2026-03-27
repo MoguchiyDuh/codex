@@ -16,12 +16,12 @@ Work through these in order. Each references the relevant note.
 | E8       | file_copy — buffered binary copy, errno preserved | done   |
 | E9       | read_file — heap read, realloc, null-terminate    | done   |
 | E10      | safe_add_i32 — signed addition, no UB             | done   |
-<!-- | E8       | Safe macros (MIN, MAX, CLAMP, SWAP)               | —      | -->
-<!-- | E9       | static local ID generator                         | —      | -->
-<!-- | E10      | extern global (config)                            | —      | -->
-<!-- | E11      | static linkage collision demo                     | —      | -->
-<!-- | E12      | Generic vec (void \*)                             | —      | -->
-<!-- | E13      | HashMap load factor + rehash                      | —      | -->
+| E11      | fork+wait — basic process lifecycle               | —      |
+| E12      | pipe producer/consumer — IPC via pipe             | —      |
+| E13      | sigaction SIGINT handler — graceful shutdown      | —      |
+| E14      | Atomic counter — thread-safe increment            | —      |
+| E15      | MMIO poller — volatile register simulation        | —      |
+| E16      | restrict vec_add — SIMD-friendly array op         | —      |
 
 ---
 
@@ -143,15 +143,80 @@ Fix it by making both `static`. Verify both can coexist.
 
 ---
 
+## Processes & Signals
+
+**E11 — fork + wait**
+In `src/fork_wait.c`:
+
+- Fork a child that computes the sum of `1..100` and exits with the result mod 256 as the exit code
+- Parent waits, retrieves the exit code with `WEXITSTATUS`, prints it
+- Fork a second child that calls `abort()` — parent detects it was killed by a signal using `WIFSIGNALED` and `WTERMSIG`, prints the signal number
+
+**E12 — pipe producer/consumer**
+In `src/pipe_ipc.c`:
+
+- Create a pipe, fork one child
+- Parent writes 10 integers (binary, `write(fd, &n, sizeof(int))`) into the write end, then closes it
+- Child reads them from the read end, sums them, prints the result
+- Parent waits for child and asserts exit code is 0
+- Close unused ends in each process — verify no fd leak with `strace` or by checking `/proc/self/fd`
+
+**E13 — sigaction SIGINT handler**
+In `src/sigint.c`:
+
+- Install a `sigaction` handler for `SIGINT` that sets a `volatile sig_atomic_t` flag
+- Main loop prints a counter every 200ms until the flag is set
+- On flag set, print "caught SIGINT, shutting down" and exit cleanly
+- Verify: `SIG_DFL` behavior before installing, that `signal()` is NOT used (use `sigaction` only)
+
+---
+
+## Qualifiers & Atomics
+
+**E14 — Atomic counter**
+In `src/atomic_counter.c`, implement a thread-safe counter using `pthreads`:
+
+- Spawn 4 threads, each incrementing a shared counter 100,000 times
+- Use `atomic_int` — no mutex
+- After all threads join, assert the result is exactly 400,000
+- Repeat with a plain `int` counter, observe the wrong result
+
+Compile with `-lpthread`. Run a few times — the plain `int` version should produce different wrong answers each run.
+
+**E15 — MMIO poller**
+In `src/mmio.c`, simulate a memory-mapped register:
+
+```c
+volatile uint32_t fake_reg = 0;
+```
+
+- In one thread, sleep 100ms then set bit 3 of `fake_reg`
+- In the main thread, spin-poll until bit 3 is set, then print elapsed time
+- Remove `volatile` and compile with `-O2` — observe the compiler optimizes the loop away (infinite loop or immediate exit depending on register caching)
+
+**E16 — restrict vec_add**
+In `src/vec_add.c`, implement:
+
+```c
+void vec_add(const float *restrict a, const float *restrict b,
+             float *restrict out, size_t n);
+```
+
+- Compile with `-O2 -march=native` and dump assembly: `gcc -O2 -march=native -S vec_add.c`
+- Check the output for SIMD instructions (`vmovups`, `vaddps`, etc.)
+- Remove `restrict`, recompile, compare the assembly — verify the difference
+
+---
+
 ## Bonus (harder)
 
-**E12 — Generic vec**
+**E17 — Generic vec**
 Modify `vec` to store `void *` elements with a `size_t elem_size`.
 `vec_push` takes a `const void *` and copies `elem_size` bytes.
 `vec_get` writes into a caller-provided `void *out`.
 Test with both `int` and a struct.
 
-**E13 — HashMap load factor + rehash**
+**E18 — HashMap load factor + rehash**
 Add to `hashmap.c`:
 
 ```c

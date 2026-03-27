@@ -10,7 +10,7 @@ The math that underpins CS — countable, finite structures rather than continuo
 ## Topics
 
 - [[Logic & Proofs]] — propositions, quantifiers, proof techniques
-- [[Sets, Relations, Functions]] — set operations, equivalence, bijections
+- [[Sets]] — set operations, equivalence, bijections
 - [[Combinatorics]] — counting, permutations, combinations, pigeonhole
 - [[Graph Theory]] — graphs, trees, paths, coloring (math perspective)
 - [[Probability]] — sample spaces, conditional probability, distributions, Bayes
