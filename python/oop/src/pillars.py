@@ -4,11 +4,12 @@
 # ── Encapsulation ────────────────────────────────────────────────────────────
 # Bundle data + behavior. Control access to internals.
 
+
 class BankAccount:
     def __init__(self, owner: str, balance: float = 0.0) -> None:
         self.owner = owner
-        self._balance = balance          # protected by convention
-        self.__history: list[float] = [] # name-mangled → truly private-ish
+        self._balance = balance  # protected by convention
+        self.__history: list[float] = []  # name-mangled → truly private-ish
 
     def deposit(self, amount: float) -> None:
         if amount <= 0:
@@ -32,6 +33,7 @@ class BankAccount:
 
 from abc import ABC, abstractmethod
 
+
 class Shape(ABC):
     @abstractmethod
     def area(self) -> float: ...
@@ -48,12 +50,13 @@ class Shape(ABC):
 
 import math
 
+
 class Circle(Shape):
     def __init__(self, radius: float) -> None:
         self.radius = radius
 
     def area(self) -> float:
-        return math.pi * self.radius ** 2
+        return math.pi * self.radius**2
 
     def perimeter(self) -> float:
         return 2 * math.pi * self.radius

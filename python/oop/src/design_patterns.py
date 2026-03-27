@@ -1,10 +1,10 @@
 # Design Patterns — Creational, Structural, Behavioral
 
 from __future__ import annotations
-from abc import ABC, abstractmethod
-from typing import Callable
-from dataclasses import dataclass, field
 
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from typing import Callable
 
 # ════════════════════════════════════════════════════════════════════════════
 # CREATIONAL
@@ -12,6 +12,7 @@ from dataclasses import dataclass, field
 
 # ── Singleton ────────────────────────────────────────────────────────────────
 # One instance, global access. Use sparingly — hides dependencies.
+
 
 class Config:
     _instance: Config | None = None
@@ -22,43 +23,55 @@ class Config:
             cls._instance.debug = False
         return cls._instance
 
+
 # Config() is Config()  → True
 
 
 # ── Factory Method ───────────────────────────────────────────────────────────
 # Delegate instantiation to subclasses / factory functions.
 
+
 class Serializer(ABC):
     @abstractmethod
     def serialize(self, data: dict) -> str: ...
 
+
 class JsonSerializer(Serializer):
     def serialize(self, data: dict) -> str:
         import json
+
         return json.dumps(data)
+
 
 class XmlSerializer(Serializer):
     def serialize(self, data: dict) -> str:
         pairs = "".join(f"<{k}>{v}</{k}>" for k, v in data.items())
         return f"<root>{pairs}</root>"
 
+
 def get_serializer(fmt: str) -> Serializer:
     match fmt:
-        case "json": return JsonSerializer()
-        case "xml":  return XmlSerializer()
-        case _: raise ValueError(f"unknown format: {fmt}")
+        case "json":
+            return JsonSerializer()
+        case "xml":
+            return XmlSerializer()
+        case _:
+            raise ValueError(f"unknown format: {fmt}")
 
 
 # ── Abstract Factory ─────────────────────────────────────────────────────────
 # Factory for families of related objects. Swap the factory, get a consistent set.
 
+
 class Button(ABC):
     @abstractmethod
     def render(self) -> str: ...
 
+
 class Checkbox(ABC):
     @abstractmethod
     def render(self) -> str: ...
+
 
 class GUIFactory(ABC):
     @abstractmethod
@@ -66,30 +79,48 @@ class GUIFactory(ABC):
     @abstractmethod
     def create_checkbox(self) -> Checkbox: ...
 
+
 class WindowsButton(Button):
-    def render(self) -> str: return "[Windows Button]"
+    def render(self) -> str:
+        return "[Windows Button]"
+
 
 class WindowsCheckbox(Checkbox):
-    def render(self) -> str: return "[Windows Checkbox]"
+    def render(self) -> str:
+        return "[Windows Checkbox]"
+
 
 class MacButton(Button):
-    def render(self) -> str: return "(Mac Button)"
+    def render(self) -> str:
+        return "(Mac Button)"
+
 
 class MacCheckbox(Checkbox):
-    def render(self) -> str: return "(Mac Checkbox)"
+    def render(self) -> str:
+        return "(Mac Checkbox)"
+
 
 class WindowsFactory(GUIFactory):
-    def create_button(self) -> Button: return WindowsButton()
-    def create_checkbox(self) -> Checkbox: return WindowsCheckbox()
+    def create_button(self) -> Button:
+        return WindowsButton()
+
+    def create_checkbox(self) -> Checkbox:
+        return WindowsCheckbox()
+
 
 class MacFactory(GUIFactory):
-    def create_button(self) -> Button: return MacButton()
-    def create_checkbox(self) -> Checkbox: return MacCheckbox()
+    def create_button(self) -> Button:
+        return MacButton()
+
+    def create_checkbox(self) -> Checkbox:
+        return MacCheckbox()
+
 
 def render_ui(factory: GUIFactory) -> None:
     btn = factory.create_button()
     chk = factory.create_checkbox()
     print(btn.render(), chk.render())
+
 
 # render_ui(WindowsFactory())  →  [Windows Button] [Windows Checkbox]
 # render_ui(MacFactory())      →  (Mac Button) (Mac Checkbox)
@@ -101,6 +132,7 @@ def render_ui(factory: GUIFactory) -> None:
 
 import copy
 
+
 @dataclass
 class EnemyConfig:
     hp: int
@@ -110,6 +142,7 @@ class EnemyConfig:
 
     def clone(self) -> "EnemyConfig":
         return copy.deepcopy(self)
+
 
 # Define once, clone and tweak
 base_goblin = EnemyConfig(hp=30, damage=5, speed=1.2, abilities=["bite"])
@@ -121,6 +154,7 @@ elite_goblin.abilities.append("poison")  # doesn't affect base_goblin
 # ── Builder ──────────────────────────────────────────────────────────────────
 # Construct complex objects step by step. Avoids telescoping constructors.
 
+
 @dataclass
 class HttpRequest:
     url: str
@@ -128,6 +162,7 @@ class HttpRequest:
     headers: dict[str, str] = field(default_factory=dict)
     body: str | None = None
     timeout: int = 30
+
 
 class HttpRequestBuilder:
     def __init__(self, url: str) -> None:
@@ -160,13 +195,16 @@ class HttpRequestBuilder:
 # ── Adapter ──────────────────────────────────────────────────────────────────
 # Make incompatible interfaces work together.
 
+
 class LegacyPrinter:
     def print_document(self, text: str) -> None:
         print(f"[legacy] {text}")
 
+
 class Printer(ABC):
     @abstractmethod
     def print(self, text: str) -> None: ...
+
 
 class PrinterAdapter(Printer):
     def __init__(self, legacy: LegacyPrinter) -> None:
@@ -179,25 +217,32 @@ class PrinterAdapter(Printer):
 # ── Decorator ────────────────────────────────────────────────────────────────
 # Add behavior without subclassing. Wraps the original object.
 
+
 class TextProcessor(ABC):
     @abstractmethod
     def process(self, text: str) -> str: ...
+
 
 class PlainText(TextProcessor):
     def process(self, text: str) -> str:
         return text
 
+
 class UpperCaseDecorator(TextProcessor):
     def __init__(self, wrapped: TextProcessor) -> None:
         self._wrapped = wrapped
+
     def process(self, text: str) -> str:
         return self._wrapped.process(text).upper()
+
 
 class TrimDecorator(TextProcessor):
     def __init__(self, wrapped: TextProcessor) -> None:
         self._wrapped = wrapped
+
     def process(self, text: str) -> str:
         return self._wrapped.process(text).strip()
+
 
 # Stack decorators: trim → upper → plain
 # processor = UpperCaseDecorator(TrimDecorator(PlainText()))
@@ -206,17 +251,21 @@ class TrimDecorator(TextProcessor):
 # ── Facade ───────────────────────────────────────────────────────────────────
 # Simplified interface to a complex subsystem.
 
+
 class AuthService:
     def authenticate(self, token: str) -> bool:
         return token == "valid"
+
 
 class OrderService:
     def create_order(self, item: str) -> int:
         return 42  # order id
 
+
 class PaymentService:
     def charge(self, order_id: int, amount: float) -> bool:
         return True
+
 
 class ShopFacade:
     def __init__(self) -> None:
@@ -240,6 +289,7 @@ class ShopFacade:
 # ── Observer ─────────────────────────────────────────────────────────────────
 # Pub/sub — notify subscribers when state changes.
 
+
 class EventEmitter:
     def __init__(self) -> None:
         self._listeners: dict[str, list[Callable]] = {}
@@ -257,6 +307,7 @@ class EventEmitter:
 
 SortStrategy = Callable[[list], list]
 
+
 def bubble_sort(data: list) -> list:
     d = data[:]
     for i in range(len(d)):
@@ -265,8 +316,10 @@ def bubble_sort(data: list) -> list:
                 d[j], d[j + 1] = d[j + 1], d[j]
     return d
 
+
 def builtin_sort(data: list) -> list:
     return sorted(data)
+
 
 class Sorter:
     def __init__(self, strategy: SortStrategy) -> None:
@@ -279,11 +332,13 @@ class Sorter:
 # ── Command ──────────────────────────────────────────────────────────────────
 # Encapsulate a request as an object. Enables undo, queuing, logging.
 
+
 class Command(ABC):
     @abstractmethod
     def execute(self) -> None: ...
     @abstractmethod
     def undo(self) -> None: ...
+
 
 class TextEditor:
     def __init__(self) -> None:
@@ -297,6 +352,7 @@ class TextEditor:
     def undo(self) -> None:
         if self._history:
             self._history.pop().undo()
+
 
 class InsertCommand(Command):
     def __init__(self, editor: TextEditor, text: str) -> None:
@@ -327,11 +383,13 @@ if __name__ == "__main__":
     print(base, elite)
 
     # Builder
-    req = HttpRequestBuilder("https://api.example.com/data") \
-        .method("POST") \
-        .header("Content-Type", "application/json") \
-        .body('{"x": 1}') \
+    req = (
+        HttpRequestBuilder("https://api.example.com/data")
+        .method("POST")
+        .header("Content-Type", "application/json")
+        .body('{"x": 1}')
         .build()
+    )
     print(req)
 
     # Facade
@@ -347,6 +405,6 @@ if __name__ == "__main__":
     editor = TextEditor()
     editor.execute(InsertCommand(editor, "hello"))
     editor.execute(InsertCommand(editor, " world"))
-    print(editor.text)   # hello world
+    print(editor.text)  # hello world
     editor.undo()
-    print(editor.text)   # hello
+    print(editor.text)  # hello

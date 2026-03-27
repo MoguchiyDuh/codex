@@ -4,17 +4,21 @@
 
 # ── Problem: deep inheritance is fragile ─────────────────────────────────────
 
+
 class Animal:
     def breathe(self) -> str:
         return "breathing"
+
 
 class FlyingAnimal(Animal):
     def fly(self) -> str:
         return "flying"
 
+
 class SwimmingAnimal(Animal):
     def swim(self) -> str:
         return "swimming"
+
 
 # What about a duck? Flies AND swims.
 # Multiple inheritance creates the diamond problem in complex hierarchies.
@@ -28,8 +32,10 @@ class Duck(FlyingAnimal, SwimmingAnimal):  # works here, gets messy at scale
 from dataclasses import dataclass, field
 from typing import Protocol
 
+
 class Flyer(Protocol):
     def fly(self) -> str: ...
+
 
 class Swimmer(Protocol):
     def swim(self) -> str: ...
@@ -38,14 +44,18 @@ class Swimmer(Protocol):
 @dataclass
 class WingFlight:
     speed: float = 30.0
+
     def fly(self) -> str:
         return f"flying at {self.speed} km/h"
+
 
 @dataclass
 class JetFlight:
     speed: float = 900.0
+
     def fly(self) -> str:
         return f"flying at {self.speed} km/h"
+
 
 @dataclass
 class PaddleSwim:
@@ -77,15 +87,19 @@ mallard = Bird("mallard", WingFlight(speed=50), PaddleSwim())
 # Mixin = small, focused class that adds behavior via multiple inheritance.
 # No state of its own (ideally), never instantiated alone.
 
+
 class JsonMixin:
     def to_json(self) -> str:
         import json
+
         return json.dumps(self.__dict__)
+
 
 class ReprMixin:
     def __repr__(self) -> str:
         attrs = ", ".join(f"{k}={v!r}" for k, v in self.__dict__.items())
         return f"{type(self).__name__}({attrs})"
+
 
 @dataclass
 class Config(JsonMixin, ReprMixin):
