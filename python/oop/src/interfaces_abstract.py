@@ -5,9 +5,9 @@
 from abc import ABC, abstractmethod
 from typing import Protocol, runtime_checkable
 
-
 # ── Abstract class ───────────────────────────────────────────────────────────
 # Can have state, partial implementation, single inheritance.
+
 
 class Logger(ABC):
     def __init__(self, prefix: str) -> None:
@@ -16,7 +16,7 @@ class Logger(ABC):
     @abstractmethod
     def write(self, msg: str) -> None: ...
 
-    def log(self, msg: str) -> None:    # concrete method shared by all subclasses
+    def log(self, msg: str) -> None:  # concrete method shared by all subclasses
         self.write(f"[{self.prefix}] {msg}")
 
 
@@ -38,6 +38,7 @@ class FileLogger(Logger):
 # ── Protocol (structural / duck typing) ─────────────────────────────────────
 # No inheritance required — just implement the right methods.
 # Equivalent to Go interfaces or C++ concepts.
+
 
 @runtime_checkable
 class Drawable(Protocol):
@@ -68,9 +69,11 @@ def render_all(items: list[Drawable]) -> None:
 # Use Protocol when:  you want structural typing, no shared state/logic
 # Use ABC when:       you want to enforce a contract AND share partial impl
 
+
 # Multiple "interfaces" via multiple Protocol inheritance
 class Serializable(Protocol):
     def serialize(self) -> bytes: ...
+
 
 class Versioned(Protocol):
     @property
