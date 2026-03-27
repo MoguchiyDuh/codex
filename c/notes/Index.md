@@ -48,6 +48,7 @@ status: complete
 ## Module 8 — Systems
 
 - [[Processes & Signals]] — `fork`/`exec`/`wait`, file descriptors, signal handlers
+- [[Qualifiers & Atomics]] — `volatile`, `restrict`, `_Atomic`, memory orders
 
 ## Module 9 — Tooling
 

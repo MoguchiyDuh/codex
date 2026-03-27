@@ -113,8 +113,8 @@ Topics: `fork`, `exec`, `wait`, `exit`, signal handling (`sigaction`), `SIGINT` 
 Topics: `volatile`, `restrict`, `_Atomic`, memory order basics, `<stdatomic.h>`,
 when each qualifier actually matters and when it's cargo-culted.
 
-**Exam status:** not taken
-**Grade:** —
+**Exam status:** passed
+**Grade:** A
 
 ---
 

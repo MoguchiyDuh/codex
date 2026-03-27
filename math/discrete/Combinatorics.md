@@ -41,6 +41,6 @@ status: stub
 
 ## See also
 
-- [[Sets, Relations, Functions]]
+- [[Sets]]
 - [[Probability]]
 - [[../../theory/algorithms/Complexity|Complexity]]

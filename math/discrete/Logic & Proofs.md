@@ -131,5 +131,5 @@ Flip each quantifier, negate the predicate.
 
 ## See also
 
-- [[Sets, Relations, Functions]]
+- [[Sets]]
 - [[Combinatorics]]
