@@ -36,11 +36,6 @@ status: complete
 ### Counting Principles
 - [[permutations & combinations]] - Arrangements and selections, factorial notation
 
-## Linear Algebra
-
-### Matrix Theory
-- [[matrices]] - Matrix operations, determinants, eigenvalues, linear systems
-
 ## Calculus Foundations
 
 - [[limits]] - Foundation of calculus, limit laws, L'Hopital's rule

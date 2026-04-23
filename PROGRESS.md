@@ -40,7 +40,7 @@ Exam grades: **A** (90–100), **B** (75–89), **C** (60–74), **F** (<60 — 
 | [Algebra](math/algebra/ROADMAP.md) | 0 / 6 | not started | — | — |
 | [Trigonometry](math/trigonometry/ROADMAP.md) | 0 / 5 | not started | — | — |
 | [Calculus](math/calculus/ROADMAP.md) | 0 / 7 | not started | — | — |
-| [Linear Algebra](math/linear_algebra/ROADMAP.md) | 0 / 7 | not started | — | — |
+| [Linear Algebra](math/linear_algebra/ROADMAP.md) | 0 / 9 | not started | — | — |
 | [Discrete Math](math/discrete/ROADMAP.md) | 0 / 6 | not started | — | — |
 
 ---

@@ -1,52 +1,143 @@
 ---
 tags: [math, linear-algebra, eigenvalues]
-status: stub
+status: complete
 ---
 
 # Eigenvalues & Eigenvectors
 
-> Special vectors that only get scaled by a transformation — not rotated.
+> Special vectors that a linear transformation only stretches or shrinks — never rotates off their own line.
 
 ## Definition
 
-### Av = λv — matrix times vector = scalar times same vector
+For a square matrix $A \in \mathbb{R}^{n \times n}$, a non-zero vector $\mathbf{v}$ and scalar $\lambda$ satisfying
 
-### λ is the eigenvalue, v is the eigenvector
+$$A\mathbf{v} = \lambda \mathbf{v}$$
 
-## Finding eigenvalues
+make $\lambda$ an **eigenvalue** and $\mathbf{v}$ a corresponding **eigenvector**. The pair $(\lambda, \mathbf{v})$ is an **eigenpair**.
 
-### Characteristic equation: det(A − λI) = 0
+Geometrically: $\mathbf{v}$ points along an axis that $A$ leaves invariant (up to scaling). If $\lambda > 0$, direction preserved; $\lambda < 0$, direction flipped; $|\lambda| > 1$, stretched; $|\lambda| < 1$, shrunk; $\lambda = 0$, collapsed to origin.
 
-### Characteristic polynomial
+![[eigenvector_action.png]]
+
+## Finding eigenvalues — characteristic equation
+
+Rewrite $A\mathbf{v} = \lambda \mathbf{v}$ as $(A - \lambda I)\mathbf{v} = \mathbf{0}$. A non-zero $\mathbf{v}$ exists iff $A - \lambda I$ is singular:
+
+$$\boxed{\det(A - \lambda I) = 0}$$
+
+This expands to a polynomial of degree $n$ in $\lambda$ — the **characteristic polynomial** $p_A(\lambda)$. Its $n$ roots (counting multiplicity, possibly complex) are the eigenvalues.
+
+### Example — 2×2
+
+$$A = \begin{bmatrix} 4 & 1 \\ 2 & 3 \end{bmatrix} \;\Rightarrow\; \det \begin{bmatrix} 4-\lambda & 1 \\ 2 & 3-\lambda \end{bmatrix} = (4-\lambda)(3-\lambda) - 2 = \lambda^2 - 7\lambda + 10$$
+
+Roots: $\lambda_1 = 5$, $\lambda_2 = 2$.
 
 ## Finding eigenvectors
 
-### Solve (A − λI)v = 0 for each λ
+For each eigenvalue $\lambda_i$, solve $(A - \lambda_i I)\mathbf{v} = \mathbf{0}$. The solution space is the **eigenspace** $E_{\lambda_i}$ — a subspace (the null space of $A - \lambda_i I$).
 
-## Geometric meaning
+**Algebraic multiplicity** of $\lambda$: its multiplicity as a root of $p_A$.
+**Geometric multiplicity** of $\lambda$: $\dim E_\lambda$.
 
-### Eigenvectors are the axes the transformation stretches/shrinks along
+Always $1 \leq \text{geometric} \leq \text{algebraic}$. When they match for every eigenvalue, $A$ is diagonalizable.
 
-### Eigenvalue = the stretch factor
+## Key properties
+
+| Property | Statement |
+|----------|-----------|
+| Trace | $\text{tr}(A) = \sum_i \lambda_i$ |
+| Determinant | $\det(A) = \prod_i \lambda_i$ |
+| Triangular matrix | Eigenvalues = diagonal entries |
+| $A$ and $A^T$ | Same eigenvalues |
+| $A^k$ | Eigenvalues $\lambda_i^k$ (same eigenvectors) |
+| $A^{-1}$ (if invertible) | Eigenvalues $1/\lambda_i$ |
+| $A + cI$ | Eigenvalues $\lambda_i + c$ |
+| Singular $A$ | Has eigenvalue $\lambda = 0$ |
+
+Eigenvalues of $AB$ vs $A$ and $B$: **no simple relation** in general.
 
 ## Diagonalization
 
-### A = PDP⁻¹ where D is diagonal
+If $A$ has $n$ linearly independent eigenvectors, assemble them as columns of $P$ and eigenvalues on the diagonal of $D$:
 
-### When it's possible (n linearly independent eigenvectors)
+$$A = PDP^{-1}, \quad P = [\mathbf{v}_1 \cdots \mathbf{v}_n], \quad D = \text{diag}(\lambda_1, \dots, \lambda_n)$$
 
-## Why it matters in CS
+This is a **change of basis** to the eigenbasis, where $A$ acts as pure coordinate-wise scaling.
 
-### PCA (dimensionality reduction)
+### When diagonalization fails
 
-### Google PageRank
+- Distinct eigenvalues ⟹ always diagonalizable.
+- Repeated eigenvalue with geometric multiplicity < algebraic multiplicity ⟹ **defective** matrix, cannot be diagonalized. Example: $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$ (Jordan block).
 
-### Stability analysis
+### Fast powers
 
-### Quantum computing
+Diagonalization makes $A^k$ trivial:
+
+$$A^k = PD^kP^{-1}, \quad D^k = \text{diag}(\lambda_1^k, \dots, \lambda_n^k)$$
+
+This is how difference equations $\mathbf{x}_{k+1} = A\mathbf{x}_k$ get closed-form solutions.
+
+## Symmetric matrices — spectral theorem
+
+If $A$ is real and symmetric ($A^T = A$):
+
+1. All eigenvalues are **real**.
+2. Eigenvectors from different eigenvalues are **orthogonal**.
+3. $A$ can be orthogonally diagonalized: $A = Q \Lambda Q^T$ where $Q$ is orthogonal ($Q^T Q = I$).
+
+This is the **spectral theorem** — one of the cleanest results in linear algebra, the backbone of PCA and many numerical methods.
+
+### Positive definite matrices
+
+Symmetric $A$ is **positive definite** if $\mathbf{x}^T A \mathbf{x} > 0$ for all $\mathbf{x} \neq \mathbf{0}$. Equivalent:
+
+- All eigenvalues $> 0$.
+- All leading principal minors $> 0$ (Sylvester's criterion).
+- $A = R^T R$ for some $R$ with independent columns.
+
+Positive semidefinite replaces $>$ with $\geq$.
+
+## Markov matrices
+
+A **Markov matrix** has non-negative entries and columns summing to $1$. Such matrices always have $\lambda_1 = 1$ as an eigenvalue, with all other $|\lambda_i| \leq 1$.
+
+Repeatedly applying $A$ converges: $A^k \mathbf{x}_0 \to \mathbf{x}_\infty$ where $\mathbf{x}_\infty$ is the eigenvector for $\lambda = 1$ (the **stationary distribution**).
+
+Powers PageRank, random walks, equilibrium models.
+
+## Complex eigenvalues
+
+Real matrices can have complex eigenvalues — they come in conjugate pairs $\lambda, \bar{\lambda}$. Geometrically they encode **rotation** combined with scaling.
+
+Example — 2D rotation by $\theta$:
+
+$$R = \begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix}, \quad \lambda = e^{\pm i\theta}$$
+
+No real eigenvectors (nothing stays on its own line in 2D rotation), but complex ones exist.
+
+## Applications
+
+| Area | Role of eigenvalues |
+|------|--------------------|
+| **PCA** | Principal components = eigenvectors of covariance matrix; variance = eigenvalues |
+| **Google PageRank** | Stationary eigenvector of link matrix |
+| **Vibrations** | Eigenvalues = resonant frequencies; eigenvectors = mode shapes |
+| **Stability of ODEs** $\dot{\mathbf{x}} = A\mathbf{x}$ | Stable iff all $\text{Re}(\lambda_i) < 0$ |
+| **Markov chains** | Long-run behavior |
+| **Quantum mechanics** | Observables = Hermitian operators; measured values = eigenvalues |
+| **Image compression / SVD** | Singular values are eigenvalues of $A^T A$ |
+
+## Video references
+
+- ![3Blue1Brown - Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g)
+- ![3Blue1Brown - A quick trick for computing eigenvalues | Chapter 15, Essence of linear algebra](https://www.youtube.com/watch?v=e50Bj7jn9IQ)
 
 ## See also
 
 - [[Matrices]]
 - [[Linear Transformations]]
+- [[Determinants]]
 - [[Vector Spaces]]
+- [[Orthogonality & Projections]]
+- [[Index]]
