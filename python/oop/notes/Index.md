@@ -1,19 +1,33 @@
 ---
-tags: [theory, oop]
+tags: [python, oop]
 status: complete
 ---
 
-# OOP
+# Python OOP
 
-## Topics
+> Python OOP notes — object design, contracts, and design patterns grounded in showcase files under `src/`.
 
-- [[OOP Pillars]] — encapsulation, inheritance, polymorphism, abstraction
-- [[Composition vs Inheritance]] — when to prefer each, the classic pitfalls
-- [[Interfaces & Abstract Classes]] — contracts, default behavior, differences
-- [[SOLID]] — five principles with minimal examples
-- [[Design Patterns]] — creational, structural, behavioral; the essential ones
+## Core OOP
+
+- [[Python OOP Basics]] — classes, inheritance, composition, properties, state transitions, useful dunder methods
+- [[Abstract Classes vs Protocols]] — `abc.ABC` vs `typing.Protocol`, nominal vs structural typing, when to use each
+
+## Creational Patterns
+
+- [[Factory Method & Abstract Factory]] — one product vs family of related products, consistency boundaries
+- [[Builder]] — stepwise construction for complex objects with many optional parts
+- [[Singleton]] — shared instance control, why Python modules often cover the same use case
+
+## Structural Patterns
+
+- [[Adapter & Proxy]] — interface translation, access control, lazy initialization
+- [[Decorator Pattern]] — runtime behavior stacking via object wrappers, not `@decorator` syntax
+
+## Behavioral Patterns
+
+- [[Strategy, Command & Observer]] — pluggable behavior, undoable actions, event subscribers
+- [[Memento Pattern]] — originator snapshots and caretaker-managed undo history
 
 ## See also
 
-- [[../algorithms/Index|Algorithms]]
-- [[../os/Index|Operating Systems]]
+- [[../ROADMAP|ROADMAP]]
