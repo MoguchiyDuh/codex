@@ -24,8 +24,8 @@ Exam grades: **A** (90–100), **B** (75–89), **C** (60–74), **F** (<60 — 
 
 | Course | Phases | Status | Last Exam | Grade |
 |--------|--------|--------|-----------|-------|
+| [Discrete Math](theory/math/discrete/ROADMAP.md) | 10 / 10 | complete | 2026-04-29 | B |
 | [OOP](python/oop/ROADMAP.md) | 0 / 5 | not started | — | — |
-| [Algorithms & DS](theory/algorithms/ROADMAP.md) | 0 / 10 | not started | — | — |
 | [Computer Architecture](theory/architecture/ROADMAP.md) | 0 / 8 | not started | — | — |
 | [Operating Systems](theory/os/ROADMAP.md) | 0 / 7 | not started | — | — |
 | [Concurrency](theory/concurrency/ROADMAP.md) | 0 / 6 | not started | — | — |
@@ -33,15 +33,23 @@ Exam grades: **A** (90–100), **B** (75–89), **C** (60–74), **F** (<60 — 
 | [Databases](theory/databases/ROADMAP.md) | 0 / 6 | not started | — | — |
 | [Networking](theory/networking/ROADMAP.md) | 0 / 6 | not started | — | — |
 
+Algorithms is tracked by implementation completeness rather than exams:
+
+| Course | Tiers | Status |
+|--------|-------|--------|
+| [Algorithms](theory/algorithms/ROADMAP.md) | 0 / 6 | active |
+| [Data Structures](theory/data_structures/ROADMAP.md) | 0 / 6 | not started |
+
 ## Mathematics
 
-| Course | Phases | Status | Last Exam | Grade |
-|--------|--------|--------|-----------|-------|
-| [Algebra](math/algebra/ROADMAP.md) | 0 / 6 | not started | — | — |
-| [Trigonometry](math/trigonometry/ROADMAP.md) | 0 / 5 | not started | — | — |
-| [Calculus](math/calculus/ROADMAP.md) | 0 / 7 | not started | — | — |
-| [Linear Algebra](math/linear_algebra/ROADMAP.md) | 0 / 9 | not started | — | — |
-| [Discrete Math](math/discrete/ROADMAP.md) | 0 / 6 | not started | — | — |
+Math is currently organized as theory note maps rather than phased course roadmaps.
+
+| Subject | Map | Status |
+|---------|-----|--------|
+| [Algebra](theory/math/algebra/ROADMAP.md) | `theory/math/algebra/` | phases 1–4 complete (B), phases 5–7 not started |
+| [Trigonometry](theory/math/trigonometry/Index.md) | `theory/math/trigonometry/` | active |
+| [Linear Algebra](theory/math/linear_algebra/ROADMAP.md) | `theory/math/linear_algebra/` | complete (B) |
+| [Discrete Math](theory/math/discrete/Index.md) | `theory/math/discrete/` | moved to CS Theory |
 
 ---
 
@@ -59,3 +67,6 @@ Exam grades: **A** (90–100), **B** (75–89), **C** (60–74), **F** (<60 — 
 | 2026-03-10 | C | 8 — Function Pointers & Callbacks | 5/5 | A | Clean sweep |
 | 2026-03-21 | C | 9 — Processes & Signals | 5/5 | A | Clean sweep |
 | 2026-03-26 | C | 10 — Advanced Qualifiers & Atomics | 4.5/5 | A | Missed two-issue breakdown on volatile/ordering Q3 |
+| 2026-04-29 | Discrete Math | all phases — university exam | — | B | — |
+| 2026-04-29 | Linear Algebra | all phases — university exam | — | B | — |
+| 2026-04-29 | Algebra | phases 1–4 — university school exam | — | B | Phases 5–7 (calculus) not covered |

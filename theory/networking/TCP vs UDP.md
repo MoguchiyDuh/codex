@@ -1,5 +1,8 @@
 ---
-tags: [theory, networking, tcp, udp]
+tags:
+  - networking
+  - tcp
+  - udp
 status: stub
 ---
 

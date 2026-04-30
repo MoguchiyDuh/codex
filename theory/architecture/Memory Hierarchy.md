@@ -1,5 +1,8 @@
 ---
-tags: [theory, architecture, memory, cache]
+tags:
+  - architecture
+  - memory
+  - cache
 status: stub
 ---
 

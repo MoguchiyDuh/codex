@@ -1,5 +1,9 @@
 ---
-tags: [theory, computing, signals, analog, digital]
+tags:
+  - computing
+  - signals
+  - analog
+  - digital
 status: stub
 ---
 

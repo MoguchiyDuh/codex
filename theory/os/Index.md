@@ -1,5 +1,6 @@
 ---
-tags: [theory, os]
+tags:
+  - os
 status: complete
 ---
 

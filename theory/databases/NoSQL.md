@@ -1,5 +1,7 @@
 ---
-tags: [theory, databases, nosql]
+tags:
+  - databases
+  - nosql
 status: stub
 ---
 

@@ -1,5 +1,9 @@
 ---
-tags: [theory, architecture, sequential, flip-flops, registers]
+tags:
+  - architecture
+  - sequential
+  - flip-flops
+  - registers
 status: stub
 ---
 

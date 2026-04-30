@@ -1,5 +1,8 @@
 ---
-tags: [theory, computing, data-representation, twos-complement]
+tags:
+  - computing
+  - data-representation
+  - twos-complement
 status: stub
 ---
 

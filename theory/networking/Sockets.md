@@ -1,5 +1,7 @@
 ---
-tags: [theory, networking, sockets]
+tags:
+  - networking
+  - sockets
 status: stub
 ---
 

@@ -1,5 +1,8 @@
 ---
-tags: [theory, concurrency, memory-model, cache-coherence]
+tags:
+  - concurrency
+  - memory-model
+  - cache-coherence
 status: stub
 ---
 

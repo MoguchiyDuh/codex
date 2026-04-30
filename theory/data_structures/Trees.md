@@ -1,55 +1,74 @@
 ---
-tags: [theory, data-structures, trees, bst]
-status: stub
+tags:
+  - data-structures
+  - trees
+status: complete
 ---
 
 # Trees
 
-> Hierarchical data structure — nodes connected by edges, no cycles.
+> A connected acyclic graph with a designated root; each non-root node has exactly one parent.
 
 ## Terminology
 
-### Node, root, leaf, parent, child, sibling
+| Term | Meaning |
+|---|---|
+| Root | Node with no parent |
+| Leaf | Node with no children |
+| Parent / child | Adjacent node above / below |
+| Sibling | Shares a parent |
+| Ancestor / descendant | On the path to / from the root |
+| Subtree | A node and all its descendants |
+| Depth | Edges from root to node |
+| Height | Edges on longest path from node to a leaf |
+| Level | Set of nodes at equal depth |
 
-### Height, depth, level
+A tree with `n` nodes has exactly `n - 1` edges.
 
-### Subtree
+![[tree_terminology.png]]
 
 ## Binary tree
 
-### Properties: at most 2 children
+A binary tree restricts each node to at most two children, conventionally `left` and `right`.
 
-### Full, complete, perfect binary tree
+| Shape | Definition |
+|---|---|
+| Full | Every node has 0 or 2 children |
+| Complete | All levels full except possibly the last, filled left to right |
+| Perfect | Full and all leaves at the same depth |
+| Balanced | Height is O(log n) |
+| Degenerate | Effectively a linked list, height O(n) |
 
-## Binary Search Tree (BST)
+A complete binary tree with `n` nodes has height `⌊log₂ n⌋` and admits a tight array layout (used by [[Heap]]).
 
-### Invariant: left < node < right
+## Traversals
 
-### Search, insert, delete — O(log n) average, O(n) worst
+Order in which nodes are visited.
 
-### Inorder traversal gives sorted output
+| Traversal | Order | Use |
+|---|---|---|
+| Inorder | left → node → right | Yields sorted output for a BST |
+| Preorder | node → left → right | Serialise tree shape |
+| Postorder | left → right → node | Free children before parent |
+| Level-order (BFS) | by increasing depth | Shortest-path on unweighted tree |
 
-## Balanced trees (concept)
+The first three are naturally recursive; level-order uses a queue.
 
-### Why balance matters (degenerate case → O(n))
+![[tree_traversals.png]]
 
-### AVL tree — height difference ≤ 1
+## Why balance matters
 
-### Red-black tree — used in most standard libraries
+Most tree operations cost O(height). For a balanced tree height is O(log n) and operations are fast; for a degenerate tree height is O(n) and the structure offers no advantage over a linked list. Self-balancing variants (AVL, red-black, B-tree) enforce a height bound on every mutation.
 
-## Tree traversal
+## Specialisations
 
-### Inorder (left → node → right)
-
-### Preorder (node → left → right)
-
-### Postorder (left → right → node)
-
-### Level-order (BFS)
+- [[Binary Search Tree]] — ordered keys, supports lookup/insert/delete by key.
+- [[AVL Tree]] — strictly balanced BST.
+- [[Red-Black Tree]] — loosely balanced BST, used in standard libraries.
+- [[B-Tree]] — high-fanout tree for disk and database indexes.
+- [[Heap]] — partial-order tree backing a priority queue.
 
 ## See also
 
-- [[Heap]]
 - [[Graphs]]
-- [[../algorithms/Graph Basics|Graph Basics]]
 - [[../algorithms/Searching|Searching]]

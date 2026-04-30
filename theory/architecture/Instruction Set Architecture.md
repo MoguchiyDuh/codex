@@ -1,5 +1,9 @@
 ---
-tags: [theory, architecture, isa, risc, cisc]
+tags:
+  - architecture
+  - isa
+  - risc
+  - cisc
 status: stub
 ---
 

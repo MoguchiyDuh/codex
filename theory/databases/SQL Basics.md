@@ -1,5 +1,7 @@
 ---
-tags: [theory, databases, sql]
+tags:
+  - databases
+  - sql
 status: stub
 ---
 

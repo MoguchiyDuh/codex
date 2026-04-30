@@ -1,5 +1,7 @@
 ---
-tags: [theory, architecture, cpu]
+tags:
+  - architecture
+  - cpu
 status: stub
 ---
 

@@ -1,5 +1,8 @@
 ---
-tags: [theory, computing, bitwise, low-level]
+tags:
+  - computing
+  - bitwise
+  - low-level
 status: stub
 ---
 

@@ -1,5 +1,8 @@
 ---
-tags: [theory, os, processes, threads]
+tags:
+  - os
+  - processes
+  - threads
 status: stub
 ---
 

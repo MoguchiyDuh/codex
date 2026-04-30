@@ -1,5 +1,8 @@
 ---
-tags: [theory, computing, boolean-algebra, logic]
+tags:
+  - computing
+  - boolean-algebra
+  - logic
 status: stub
 ---
 

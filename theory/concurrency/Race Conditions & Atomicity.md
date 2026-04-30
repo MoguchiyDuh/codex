@@ -1,5 +1,8 @@
 ---
-tags: [theory, concurrency, race-conditions, atomicity]
+tags:
+  - concurrency
+  - race-conditions
+  - atomicity
 status: stub
 ---
 

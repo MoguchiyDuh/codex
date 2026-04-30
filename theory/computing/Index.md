@@ -1,5 +1,6 @@
 ---
-tags: [theory, computing]
+tags:
+  - computing
 status: complete
 ---
 

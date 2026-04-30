@@ -1,0 +1,42 @@
+{
+  "_comment": "Shared config for all matplotlib diagram scripts in resources/mpl/. All scripts read this at runtime.",
+
+  "output": {
+    "dpi": 150,
+    "format": "png",
+    "bbox_inches": "tight"
+  },
+
+  "figure": {
+    "facecolor": "white"
+  },
+
+  "font": {
+    "family": "sans-serif",
+    "sans_serif": ["Helvetica", "Arial", "DejaVu Sans"],
+    "sizes": {
+      "suptitle": 22,
+      "title": 13,
+      "formula": 17,
+      "label": 14,
+      "body": 10,
+      "small": 8.5
+    }
+  },
+
+  "lines": {
+    "linewidth": 2.0
+  },
+
+  "colors": {
+    "red": "#F25C5C",
+    "orange": "#F2903D",
+    "yellow": "#F2D93D",
+    "green": "#3DF27A",
+    "blue": "#3DA6F2",
+    "purple": "#9B5EF2",
+    "white": "#F5F5F0",
+    "gray": "#999995",
+    "black": "#4A4A52"
+  }
+}

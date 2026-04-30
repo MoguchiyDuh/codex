@@ -1,5 +1,6 @@
 ---
-tags: [theory, architecture]
+tags:
+  - architecture
 status: complete
 ---
 

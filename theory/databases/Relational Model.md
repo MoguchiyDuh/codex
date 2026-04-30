@@ -1,5 +1,8 @@
 ---
-tags: [theory, databases, relational, normalization]
+tags:
+  - databases
+  - relational
+  - normalization
 status: stub
 ---
 

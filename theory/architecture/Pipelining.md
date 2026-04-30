@@ -1,5 +1,8 @@
 ---
-tags: [theory, architecture, pipelining, hazards]
+tags:
+  - architecture
+  - pipelining
+  - hazards
 status: stub
 ---
 

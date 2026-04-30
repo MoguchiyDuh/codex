@@ -1,5 +1,7 @@
 ---
-tags: [theory, networking, http]
+tags:
+  - networking
+  - http
 status: stub
 ---
 

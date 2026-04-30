@@ -1,5 +1,6 @@
 ---
-tags: [theory, concurrency]
+tags:
+  - concurrency
 status: complete
 ---
 

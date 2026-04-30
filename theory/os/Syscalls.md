@@ -1,5 +1,8 @@
 ---
-tags: [theory, os, syscalls, kernel]
+tags:
+  - os
+  - syscalls
+  - kernel
 status: stub
 ---
 

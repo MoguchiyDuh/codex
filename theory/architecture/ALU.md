@@ -1,5 +1,7 @@
 ---
-tags: [theory, architecture, alu]
+tags:
+  - architecture
+  - alu
 status: stub
 ---
 

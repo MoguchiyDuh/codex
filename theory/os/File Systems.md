@@ -1,5 +1,8 @@
 ---
-tags: [theory, os, file-systems, inodes]
+tags:
+  - os
+  - file-systems
+  - inodes
 status: stub
 ---
 

@@ -1,5 +1,8 @@
 ---
-tags: [theory, architecture, combinational, logic-circuits]
+tags:
+  - architecture
+  - combinational
+  - logic-circuits
 status: stub
 ---
 

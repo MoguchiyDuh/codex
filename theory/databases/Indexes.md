@@ -1,5 +1,8 @@
 ---
-tags: [theory, databases, indexes, b-tree]
+tags:
+  - databases
+  - indexes
+  - b-tree
 status: stub
 ---
 

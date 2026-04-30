@@ -1,5 +1,7 @@
 ---
-tags: [theory, os, scheduling]
+tags:
+  - os
+  - scheduling
 status: stub
 ---
 

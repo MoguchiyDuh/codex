@@ -1,5 +1,5 @@
 ---
-tags: [theory]
+tags:
 status: complete
 ---
 
@@ -18,9 +18,6 @@ Complexity, recursion, sorting, searching, graphs, DP, greedy.
 
 ## [[data_structures/Index|Data Structures]]
 Linked list, stack, queue, tree, heap, graph, hash table.
-
-## [[oop/Index|OOP]]
-Pillars, composition vs inheritance, SOLID, design patterns.
 
 ## [[os/Index|Operating Systems]]
 Processes, threads, scheduling, virtual memory, file systems, syscalls.

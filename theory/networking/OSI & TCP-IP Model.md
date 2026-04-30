@@ -1,5 +1,8 @@
 ---
-tags: [theory, networking, osi, tcp-ip]
+tags:
+  - networking
+  - osi
+  - tcp-ip
 status: stub
 ---
 

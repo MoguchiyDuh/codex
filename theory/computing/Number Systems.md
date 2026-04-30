@@ -1,5 +1,7 @@
 ---
-tags: [theory, computing, number-systems]
+tags:
+  - computing
+  - number-systems
 status: stub
 ---
 

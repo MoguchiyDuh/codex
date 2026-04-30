@@ -1,5 +1,8 @@
 ---
-tags: [theory, databases, transactions, acid]
+tags:
+  - databases
+  - transactions
+  - acid
 status: stub
 ---
 

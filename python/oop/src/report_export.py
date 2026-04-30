@@ -87,7 +87,9 @@ def create_renderer(format: str) -> Renderer:
         case "txt":
             return PlainTextRenderer()
         case _:
-            raise ValueError(f"Unknown format: {format!r}. Expected one of: html, md, txt")
+            raise ValueError(
+                f"Unknown format: {format!r}. Expected one of: html, md, txt"
+            )
 
 
 class ExportFactory(ABC):

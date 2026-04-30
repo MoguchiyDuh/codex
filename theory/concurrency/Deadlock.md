@@ -1,5 +1,7 @@
 ---
-tags: [theory, concurrency, deadlock]
+tags:
+  - concurrency
+  - deadlock
 status: stub
 ---
 

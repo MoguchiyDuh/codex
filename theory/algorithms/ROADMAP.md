@@ -1,102 +1,99 @@
-# Algorithms & Data Structures — Course Roadmap
+# Algorithms — Course Roadmap
 
-Implementation focus. Every algorithm implemented from scratch in C or Rust.
+Structured after two MIT courses that form the standard two-semester algorithms sequence:
 
----
+- **Tiers 1–3** map to **MIT 6.006 — Introduction to Algorithms** (Fall 2011, Demaine / Devadas): foundations, sorting, searching, divide-and-conquer.
+- **Tiers 4–6** map to **MIT 6.046J — Design and Analysis of Algorithms** (Spring 2015, Demaine / Devadas / Lynch): design paradigms, advanced graph algorithms, hardness.
 
-## Phases
+Reference textbook for both: CLRS 4e (Cormen, Leiserson, Rivest, Stein).
 
-### Phase 1 — Complexity Analysis
-Topics: Big-O, Big-Θ, Big-Ω, amortized analysis, worst vs average case,
-space complexity, common complexity classes and what they mean practically.
+Each algorithm pairs a theory note with a runnable Python implementation and matplotlib visualization in `showcase/`.
 
-**Exam status:** not taken
-**Grade:** —
+Progress is tracked by **implementation completeness**, not exams: a tier is done when every algorithm in it has both a `complete` note and a working `showcase/` script with visualization.
 
----
+## Tiers
 
-### Phase 2 — Sorting
-Topics: insertion, merge, quick (with partition variants), heap sort,
-counting/radix sort, stability, in-place vs not, practical sort selection.
+### Tier 1 — Foundations of analysis
 
-**Exam status:** not taken
-**Grade:** —
+Asymptotic notation, recurrences, amortized analysis, recursion model.
 
----
+- [[Complexity]]
+- [[Recurrence Relations]]
+- [[Amortized Analysis]]
+- [[Recursion]]
 
-### Phase 3 — Searching & Trees
-Topics: binary search (iterative and recursive, off-by-one discipline),
-BST operations, AVL rotations, red-black trees (concept), B-trees (concept).
+**Showcase:** `growth_rates.py`, `recursion_tree.py`, `amortized_costs.py`
 
-**Exam status:** not taken
-**Grade:** —
+### Tier 2 — Sorting and selection
 
----
+Comparison-sort lower bound, classical sorts, linear-time sorts, order statistics.
 
-### Phase 4 — Hash Tables
-Topics: hash functions, collision resolution (chaining vs open addressing),
-load factor, rehashing, consistent hashing concept.
-(You've implemented chaining — focus will be on open addressing and rehashing.)
+- [[Sorting]]
+- [[Merge Sort]]
+- [[Quick Sort]]
+- [[Heap Sort]]
+- [[Linear-Time Sorting]]
+- [[Selection]]
 
-**Exam status:** not taken
-**Grade:** —
+**Showcase:** `sort/{bubble,insertion,merge,quick,heap,radix}_sort.py` + `_viz.py` pairs, `quickselect.py`
 
----
+### Tier 3 — Searching and divide-and-conquer
 
-### Phase 5 — Heaps & Priority Queues
-Topics: binary heap, heapify, heap sort, priority queue applications,
-min-heap vs max-heap, `d`-ary heaps.
+Linear / binary search, master theorem, Karatsuba, Strassen, closest pair.
 
-**Exam status:** not taken
-**Grade:** —
+- [[Searching]]
+- [[Divide and Conquer]]
 
----
+**Showcase:** `binary_search.py`
 
-### Phase 6 — Graphs
-Topics: adjacency list vs matrix, BFS, DFS, topological sort,
-connected components, cycle detection.
+### Tier 4 — Algorithm design paradigms
 
-**Exam status:** not taken
-**Grade:** —
+Memoisation vs tabulation, greedy correctness, backtracking with pruning.
 
----
+- [[Dynamic Programming]]
+- [[Greedy Algorithms]]
+- [[Backtracking]]
 
-### Phase 7 — Shortest Path & MST
-Topics: Dijkstra, Bellman-Ford (negative edges), Floyd-Warshall,
-Prim's, Kruskal's, union-find.
+**Showcase:** `dp_memo_vs_tab.py`, `lcs_dp.py`, `activity_selection.py`, `n_queens.py`
 
-**Exam status:** not taken
-**Grade:** —
+### Tier 5 — Graph algorithms
 
----
+Traversal, shortest paths, MST, network flow, heuristic search.
 
-### Phase 8 — Dynamic Programming
-Topics: memoization vs tabulation, optimal substructure, overlapping subproblems,
-classic problems (knapsack, LCS, edit distance, coin change).
+- [[Graph Basics]]
+- [[Shortest Path]]
+- [[A Star]]
+- [[All-Pairs Shortest Path]]
+- [[Minimum Spanning Tree]]
+- [[Network Flow]]
 
-**Exam status:** not taken
-**Grade:** —
+**Showcase:** `bfs_dfs/{bfs,dfs}.py`, `topological_sort.py`, `dijkstra.py`, `bellman_ford.py`, `a_star.py`, `floyd_warshall.py`, `mst_compare/{kruskal,prism}.py`, `max_flow.py`
 
----
+### Tier 6 — Theory of computation
 
-### Phase 9 — Greedy Algorithms
-Topics: greedy choice property, activity selection, Huffman coding,
-when greedy fails (and DP is needed instead).
+Hardness, reductions, when exact solutions are infeasible.
 
-**Exam status:** not taken
-**Grade:** —
+- [[NP-Completeness]]
+- [[Approximation Algorithms]]
 
----
+**Showcase:** `tsp_approx.py`
 
-### Phase 10 — Recursion & Divide and Conquer
-Topics: recurrence relations, Master theorem, merge sort / quicksort analysis,
-tail recursion, stack depth limits.
+## Completion criteria
 
-**Exam status:** not taken
-**Grade:** —
+A tier is **complete** when:
 
----
+1. Every note in the tier has `status: complete`.
+2. Every algorithm cited in the notes has a working `.py` in `showcase/` with both implementation and matplotlib visualization (`if __name__ == "__main__":`).
+3. The visualization writes its image into `resources/pictures/` matching the wiki-embed in the note.
 
-## Completion
+## Reference materials
 
-All 10 phases passed (grade ≥ C).
+- [MIT OCW 6.006 Introduction to Algorithms, Fall 2011](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/) — Tiers 1–3
+- [MIT OCW 6.046J Design and Analysis of Algorithms, Spring 2015](https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/) — Tiers 4–6
+- Textbook: CLRS — *Introduction to Algorithms*, 4e — commercial, widely available
+
+## See also
+
+- [[Index]]
+- [[../data_structures/ROADMAP|Data Structures — Course Roadmap]]
+- [[../math/discrete/Index|Discrete Math]]

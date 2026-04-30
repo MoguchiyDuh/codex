@@ -1,5 +1,6 @@
 ---
-tags: [theory, databases]
+tags:
+  - databases
 status: complete
 ---
 

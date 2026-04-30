@@ -1,5 +1,9 @@
 ---
-tags: [theory, concurrency, mutex, semaphore, monitor]
+tags:
+  - concurrency
+  - mutex
+  - semaphore
+  - monitor
 status: stub
 ---
 

@@ -1,5 +1,9 @@
 ---
-tags: [theory, os, memory, stack, heap]
+tags:
+  - os
+  - memory
+  - stack
+  - heap
 status: stub
 ---
 

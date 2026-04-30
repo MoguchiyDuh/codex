@@ -1,5 +1,8 @@
 ---
-tags: [theory, computing, boolean-algebra, k-maps]
+tags:
+  - computing
+  - boolean-algebra
+  - k-maps
 status: stub
 ---
 

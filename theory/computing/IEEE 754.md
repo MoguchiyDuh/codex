@@ -1,5 +1,8 @@
 ---
-tags: [theory, computing, ieee754, floats]
+tags:
+  - computing
+  - ieee754
+  - floats
 status: complete
 ---
 

@@ -1,5 +1,8 @@
 ---
-tags: [theory, os, virtual-memory, paging]
+tags:
+  - os
+  - virtual-memory
+  - paging
 status: stub
 ---
 

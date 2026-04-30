@@ -12,7 +12,7 @@ status: complete
 - [[Compilation Model]] — preprocessor → compiler → assembler → linker, symbols, static vs dynamic linking
 - [[Integer Promotions]] — integer promotion, usual arithmetic conversions, signed/unsigned trap, `sizeof`
 - [[Types & Operators]] — primitive types, `<stdint.h>`, operators, promotions
--[[Functions]] — call stack, pass-by-pointer, recursion, function pointers
+- [[Functions]] — call stack, pass-by-pointer, recursion, function pointers
 
 ## Module 2 — Memory
 

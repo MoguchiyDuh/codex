@@ -1,5 +1,9 @@
 ---
-tags: [theory, networking, dns, tls, security]
+tags:
+  - networking
+  - dns
+  - tls
+  - security
 status: stub
 ---
 

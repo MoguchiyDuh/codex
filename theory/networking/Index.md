@@ -1,5 +1,6 @@
 ---
-tags: [theory, networking]
+tags:
+  - networking
 status: complete
 ---
 
