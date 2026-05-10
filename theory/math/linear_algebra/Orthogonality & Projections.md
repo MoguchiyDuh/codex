@@ -72,12 +72,12 @@ $$\mathbf{p} = A(A^T A)^{-1} A^T \mathbf{b} = P\mathbf{b}, \quad P = A(A^T A)^{-
 
 Properties of every projection matrix:
 
-| Property | Statement |
-|----------|-----------|
-| Idempotent | $P^2 = P$ |
-| Symmetric | $P^T = P$ |
-| Eigenvalues | only $0$ and $1$ |
-| $I - P$ | Projection onto the orthogonal complement |
+| Property    | Statement                                 |
+| ----------- | ----------------------------------------- |
+| Idempotent  | $P^2 = P$                                 |
+| Symmetric   | $P^T = P$                                 |
+| Eigenvalues | only $0$ and $1$                          |
+| $I - P$     | Projection onto the orthogonal complement |
 
 ![[projection_onto_subspace.png]]
 
@@ -130,17 +130,22 @@ Least squares via QR is numerically stabler than forming $A^T A$ directly. Most 
 
 ## Why it matters
 
-| Area | Why orthogonality |
-|------|-------------------|
-| Least squares / regression | Projection onto column space |
-| PCA / SVD | Orthonormal eigenbases of symmetric matrices |
-| Fourier analysis | Orthogonal basis of sines/cosines |
-| Numerical stability | Orthogonal matrices don't amplify rounding error |
-| Quantum mechanics | Eigenstates of Hermitian operators are orthogonal |
+| Area                       | Why orthogonality                                 |
+| -------------------------- | ------------------------------------------------- |
+| Least squares / regression | Projection onto column space                      |
+| PCA / SVD                  | Orthonormal eigenbases of symmetric matrices      |
+| Fourier analysis           | Orthogonal basis of sines/cosines                 |
+| Numerical stability        | Orthogonal matrices don't amplify rounding error  |
+| Quantum mechanics          | Eigenstates of Hermitian operators are orthogonal |
 
 ## Video references
 
 - ![3Blue1Brown - Dot products and duality | Chapter 9, Essence of linear algebra](https://www.youtube.com/watch?v=LyGKycYT2v0)
+
+- ![14. Orthogonal Vectors and Subspaces](https://www.youtube.com/watch?v=YzZUIYRCE38)
+- ![15. Projections onto Subspaces](https://www.youtube.com/watch?v=Y_Ac6KiQ1t0)
+- ![16. Projection Matrices and Least Squares](https://www.youtube.com/watch?v=osh80YCg_GM)
+- ![17. Orthogonal Matrices and Gram-Schmidt](https://www.youtube.com/watch?v=0MtwqhIwdrI)
 
 ## See also
 

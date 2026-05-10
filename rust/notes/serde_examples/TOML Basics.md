@@ -98,12 +98,12 @@ println!("{}", toml::to_string_pretty(&val).unwrap());
 
 ## TOML vs JSON
 
-| Aspect | TOML | JSON |
-|--------|------|------|
-| Primary use | Config files | Data interchange / APIs |
-| Comments | Supported (`#`) | Not supported |
-| Multiline strings | Yes | No (requires `\n`) |
-| Tooling support | Cargo, many CLIs | Universal |
+| Aspect              | TOML                      | JSON                      |
+| ------------------- | ------------------------- | ------------------------- |
+| Primary use         | Config files              | Data interchange / APIs   |
+| Comments            | Supported (`#`)           | Not supported             |
+| Multiline strings   | Yes                       | No (requires `\n`)        |
+| Tooling support     | Cargo, many CLIs          | Universal                 |
 | Serde compatibility | Same derived structs work | Same derived structs work |
 
 Because both formats go through serde's data model, the same struct can round-trip through either:

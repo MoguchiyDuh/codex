@@ -69,11 +69,11 @@ $$\Pr[X \geq (1+\delta)\mu] \leq \left(\frac{e^\delta}{(1+\delta)^{1+\delta}}\ri
 
 $$\Pr[X \leq (1-\delta)\mu] \leq e^{-\mu\delta^2/2} \quad \text{for } 0 < \delta < 1.$$
 
-| Bound | Decay in deviation | Requires |
-|---|---|---|
-| Markov | $1/t$ (linear) | non-negativity, mean |
-| Chebyshev | $1/k^2$ (quadratic) | mean, variance |
-| Chernoff | $e^{-\Theta(\delta^2 \mu)}$ (exponential) | independence, boundedness |
+| Bound     | Decay in deviation                        | Requires                  |
+| --------- | ----------------------------------------- | ------------------------- |
+| Markov    | $1/t$ (linear)                            | non-negativity, mean      |
+| Chebyshev | $1/k^2$ (quadratic)                       | mean, variance            |
+| Chernoff  | $e^{-\Theta(\delta^2 \mu)}$ (exponential) | independence, boundedness |
 
 **CS application.** Chernoff bounds prove that a balanced load balancer with $n$ servers and $n$ jobs achieves maximum load $O(\log n / \log \log n)$ with high probability. They also underpin the analysis of randomised data structures (skip lists, bloom filters) and randomised algorithms (randomised quicksort, hashing).
 

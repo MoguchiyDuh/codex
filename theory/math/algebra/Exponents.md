@@ -14,6 +14,7 @@ An **exponent** (or **power**) indicates how many times a base is multiplied by 
 $$\boxed{a^n = \underbrace{a \cdot a \cdot a \cdot \ldots \cdot a}_{n \text{ times}}}$$
 
 Where:
+
 - $a$ is the **base**
 - $n$ is the **exponent**
 - $a^n$ is read as "$a$ to the power of $n$"
@@ -21,28 +22,32 @@ Where:
 ## Special Cases
 
 ### Zero exponent
+
 $$\boxed{a^0 = 1 \quad \text{for any } a \neq 0}$$
 
 ### First power
+
 $$\boxed{a^1 = a}$$
 
 ### Negative exponents
+
 $$\boxed{a^{-n} = \frac{1}{a^n} \quad \text{for } a \neq 0}$$
 
 ### Fractional exponents
+
 $$\boxed{a^{\frac{m}{n}} = \sqrt[n]{a^m} = (\sqrt[n]{a})^m}$$
 
 Examples: $8^{1/3} = 2$, $16^{1/2} = 4$, $27^{2/3} = 9$
 
 ## Laws of Exponents
 
-| Rule | Formula | Example |
-|------|---------|---------|
-| Product | $a^m \cdot a^n = a^{m+n}$ | $2^3 \cdot 2^2 = 2^5$ |
-| Quotient | $\dfrac{a^m}{a^n} = a^{m-n}$ | $\dfrac{3^5}{3^2} = 3^3$ |
-| Power | $(a^m)^n = a^{mn}$ | $(4^2)^3 = 4^6$ |
-| Product power | $(ab)^n = a^n b^n$ | $(2x)^3 = 8x^3$ |
-| Quotient power | $\left(\dfrac{a}{b}\right)^n = \dfrac{a^n}{b^n}$ | $\left(\dfrac{x}{2}\right)^2 = \dfrac{x^2}{4}$ |
+| Rule              | Formula                                                        | Example                                         |
+| ----------------- | -------------------------------------------------------------- | ----------------------------------------------- |
+| Product           | $a^m \cdot a^n = a^{m+n}$                                      | $2^3 \cdot 2^2 = 2^5$                           |
+| Quotient          | $\dfrac{a^m}{a^n} = a^{m-n}$                                   | $\dfrac{3^5}{3^2} = 3^3$                        |
+| Power             | $(a^m)^n = a^{mn}$                                             | $(4^2)^3 = 4^6$                                 |
+| Product power     | $(ab)^n = a^n b^n$                                             | $(2x)^3 = 8x^3$                                 |
+| Quotient power    | $\left(\dfrac{a}{b}\right)^n = \dfrac{a^n}{b^n}$               | $\left(\dfrac{x}{2}\right)^2 = \dfrac{x^2}{4}$  |
 | Negative quotient | $\left(\dfrac{a}{b}\right)^{-n} = \left(\dfrac{b}{a}\right)^n$ | $\left(\dfrac{2}{3}\right)^{-2} = \dfrac{9}{4}$ |
 
 ## Common Patterns

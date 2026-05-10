@@ -11,13 +11,13 @@ status: complete
 
 Every type has an alignment requirement — its address must be a multiple of its size.
 
-| Type | Size | Alignment |
-|------|------|-----------|
-| `char` | 1 | 1 |
-| `short` | 2 | 2 |
-| `int` | 4 | 4 |
-| `double` | 8 | 8 |
-| pointer | 8 | 8 |
+| Type     | Size | Alignment |
+| -------- | ---- | --------- |
+| `char`   | 1    | 1         |
+| `short`  | 2    | 2         |
+| `int`    | 4    | 4         |
+| `double` | 8    | 8         |
+| pointer  | 8    | 8         |
 
 ## Struct Layout — Field by Field
 
@@ -60,7 +60,7 @@ offsetof(struct S, d)  // 8
 
 Use for debugging layout, serialization, and binary protocol implementation.
 
-## __attribute__((packed))
+## **attribute**((packed))
 
 Removes all padding. GCC/Clang extension.
 

@@ -108,12 +108,12 @@ Use `watch` for state broadcasting: config changes, health status, feature flags
 
 ## Channel Comparison
 
-| Channel | Producers | Consumers | Buffering | Use case |
-|---------|-----------|-----------|-----------|----------|
-| `oneshot` | 1 | 1 | 1 message | Request/response, task result |
-| `mpsc` | Many | 1 | N (bounded) or ∞ | Work queues, event streams |
-| `broadcast` | 1 | Many | N (ring buffer) | Pub/sub, fan-out |
-| `watch` | 1 | Many | Latest value only | State/config broadcast |
+| Channel     | Producers | Consumers | Buffering         | Use case                      |
+| ----------- | --------- | --------- | ----------------- | ----------------------------- |
+| `oneshot`   | 1         | 1         | 1 message         | Request/response, task result |
+| `mpsc`      | Many      | 1         | N (bounded) or ∞  | Work queues, event streams    |
+| `broadcast` | 1         | Many      | N (ring buffer)   | Pub/sub, fan-out              |
+| `watch`     | 1         | Many      | Latest value only | State/config broadcast        |
 
 ## Related
 

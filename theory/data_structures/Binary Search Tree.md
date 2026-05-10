@@ -21,13 +21,13 @@ This invariant must be preserved by every mutation. Duplicate keys are usually d
 
 ## Operations
 
-| Op | Average | Worst |
-|---|---|---|
-| Search | O(log n) | O(n) |
-| Insert | O(log n) | O(n) |
-| Delete | O(log n) | O(n) |
-| Min / Max | O(log n) | O(n) |
-| In-order traversal | O(n) | O(n) |
+| Op                 | Average  | Worst |
+| ------------------ | -------- | ----- |
+| Search             | O(log n) | O(n)  |
+| Insert             | O(log n) | O(n)  |
+| Delete             | O(log n) | O(n)  |
+| Min / Max          | O(log n) | O(n)  |
+| In-order traversal | O(n)     | O(n)  |
 
 The worst case occurs when the tree degenerates into a chain (e.g. inserting already-sorted keys into an unbalanced BST). Self-balancing variants ([[AVL Tree]], [[Red-Black Tree]]) guarantee O(log n).
 

@@ -61,21 +61,21 @@ All three methods produce the same amortized bound when the analysis is tight; t
 
 ## Comparison
 
-| Method | Reasoning style | When to prefer |
-|---|---|---|
-| Aggregate | Direct sum over a sequence | Simple regular workloads |
-| Accounting | Credit per operation, locally verified | Mixed-operation data structures |
-| Potential | Algebraic, telescoping | Most general; preferred in formal proofs |
+| Method     | Reasoning style                        | When to prefer                           |
+| ---------- | -------------------------------------- | ---------------------------------------- |
+| Aggregate  | Direct sum over a sequence             | Simple regular workloads                 |
+| Accounting | Credit per operation, locally verified | Mixed-operation data structures          |
+| Potential  | Algebraic, telescoping                 | Most general; preferred in formal proofs |
 
 ## Other classic results
 
-| Structure | Operation | Worst-case | Amortized |
-|---|---|---|---|
-| Dynamic array | push | $O(n)$ | $O(1)$ |
-| Binary counter | increment (count flipped bits) | $O(\log n)$ | $O(1)$ |
-| Splay tree | search / insert / delete | $O(n)$ | $O(\log n)$ |
-| Disjoint set with path compression + union by rank | find / union | $O(\log n)$ | $O(\alpha(n))$ |
-| Fibonacci heap | decrease-key | $O(\log n)$ | $O(1)$ |
+| Structure                                          | Operation                      | Worst-case  | Amortized      |
+| -------------------------------------------------- | ------------------------------ | ----------- | -------------- |
+| Dynamic array                                      | push                           | $O(n)$      | $O(1)$         |
+| Binary counter                                     | increment (count flipped bits) | $O(\log n)$ | $O(1)$         |
+| Splay tree                                         | search / insert / delete       | $O(n)$      | $O(\log n)$    |
+| Disjoint set with path compression + union by rank | find / union                   | $O(\log n)$ | $O(\alpha(n))$ |
+| Fibonacci heap                                     | decrease-key                   | $O(\log n)$ | $O(1)$         |
 
 The **binary counter** is the canonical small example: incrementing a $k$-bit counter flips many bits when carries propagate, but over $n$ increments the total bit flips is $< 2n$ — amortized $O(1)$ per increment.
 

@@ -34,7 +34,7 @@ The reason both standard MST algorithms work is a single structural fact.
 
 This is an exchange argument — the MST setting where greedy is provably correct. See [[Greedy Algorithms]].
 
-A symmetric **cycle property** says: for any cycle in $G$, the heaviest edge on it is *not* in any MST.
+A symmetric **cycle property** says: for any cycle in $G$, the heaviest edge on it is _not_ in any MST.
 
 ## Kruskal's algorithm
 
@@ -54,13 +54,13 @@ kruskal(G):
 
 **Code:** `theory/algorithms/showcase/mst/kruskal.py`
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(m \log m)$ for sort, dominated by it |
-| Space | $\Theta(n + m)$ |
-| Implementation | sort + union-find |
+| Property       | Value                                        |
+| -------------- | -------------------------------------------- |
+| Time           | $\Theta(m \log m)$ for sort, dominated by it |
+| Space          | $\Theta(n + m)$                              |
+| Implementation | sort + union-find                            |
 
-The cut at each step: when considering edge $(u, v)$, the cut separates $\{u\}\text{'s component}$ from the rest. The current edge is the lightest *unconsidered* edge crossing that cut; the cut property says it's safe to add (if it isn't already internal to one side, in which case it would close a cycle).
+The cut at each step: when considering edge $(u, v)$, the cut separates $\{u\}\text{'s component}$ from the rest. The current edge is the lightest _unconsidered_ edge crossing that cut; the cut property says it's safe to add (if it isn't already internal to one side, in which case it would close a cycle).
 
 ## Prim's algorithm
 
@@ -87,25 +87,25 @@ prim(G, s):
 
 The cut at each step is between $S$ and $V \setminus S$. Extracting min finds the lightest crossing edge — safe to add by the cut property.
 
-| Priority queue | Total time |
-|---|---|
-| Array | $\Theta(n^2)$ |
-| Binary heap | $\Theta((n + m) \log n)$ |
-| Fibonacci heap | $\Theta(m + n \log n)$ |
+| Priority queue | Total time               |
+| -------------- | ------------------------ |
+| Array          | $\Theta(n^2)$            |
+| Binary heap    | $\Theta((n + m) \log n)$ |
+| Fibonacci heap | $\Theta(m + n \log n)$   |
 
 Prim's is structurally identical to [[Shortest Path|Dijkstra]] but with `key[v] = w(u, v)` instead of `key[v] = dist[u] + w(u, v)`.
 
 ## Comparing the two
 
-| | Kruskal | Prim |
-|---|---|---|
-| Strategy | edge-centric: pick smallest edge that doesn't form a cycle | vertex-centric: grow connected tree from a root |
-| Data structure | union-find | priority queue |
-| Time (sparse) | $\Theta(m \log m)$ | $\Theta((n+m) \log n)$ |
-| Time (dense) | $\Theta(m \log m) = \Theta(n^2 \log n)$ | $\Theta(n^2)$ with array |
-| Best for | sparse graphs, distributed processing | dense graphs |
-| Pre-sorted edges? | $\Theta(m \alpha(n))$ — almost linear | not applicable |
-| Edges given as stream | natural fit | needs the full graph upfront |
+|                       | Kruskal                                                    | Prim                                            |
+| --------------------- | ---------------------------------------------------------- | ----------------------------------------------- |
+| Strategy              | edge-centric: pick smallest edge that doesn't form a cycle | vertex-centric: grow connected tree from a root |
+| Data structure        | union-find                                                 | priority queue                                  |
+| Time (sparse)         | $\Theta(m \log m)$                                         | $\Theta((n+m) \log n)$                          |
+| Time (dense)          | $\Theta(m \log m) = \Theta(n^2 \log n)$                    | $\Theta(n^2)$ with array                        |
+| Best for              | sparse graphs, distributed processing                      | dense graphs                                    |
+| Pre-sorted edges?     | $\Theta(m \alpha(n))$ — almost linear                      | not applicable                                  |
+| Edges given as stream | natural fit                                                | needs the full graph upfront                    |
 
 For sparse graphs Kruskal is simpler and competitive. For dense graphs Prim with an array beats Kruskal because the sort dominates Kruskal's running time.
 
@@ -113,10 +113,10 @@ For sparse graphs Kruskal is simpler and competitive. For dense graphs Prim with
 
 The oldest MST algorithm (1926). In each phase, every component finds its lightest outgoing edge in parallel; merge along those edges. Number of components halves each phase.
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(m \log n)$ |
-| Phases | $O(\log n)$ |
+| Property    | Value                           |
+| ----------- | ------------------------------- |
+| Time        | $\Theta(m \log n)$              |
+| Phases      | $O(\log n)$                     |
 | Suitability | parallelism, distributed graphs |
 
 Modern hybrid algorithms (e.g. Borůvka + Prim) achieve $\Theta(m \alpha(n))$ but are intricate.
@@ -131,13 +131,13 @@ Modern hybrid algorithms (e.g. Borůvka + Prim) achieve $\Theta(m \alpha(n))$ bu
 
 ## Applications
 
-| Domain | Use of MST |
-|---|---|
-| Network design | minimum cost wiring / piping connecting all sites |
-| Clustering | single-linkage clustering = MST followed by removing $k - 1$ heaviest edges |
-| Approximation | TSP 2-approximation = DFS of MST + shortcut |
-| Computer vision | image segmentation via Felzenszwalb-Huttenlocher |
-| Phylogenetics | building evolutionary trees from genetic distance |
+| Domain          | Use of MST                                                                  |
+| --------------- | --------------------------------------------------------------------------- |
+| Network design  | minimum cost wiring / piping connecting all sites                           |
+| Clustering      | single-linkage clustering = MST followed by removing $k - 1$ heaviest edges |
+| Approximation   | TSP 2-approximation = DFS of MST + shortcut                                 |
+| Computer vision | image segmentation via Felzenszwalb-Huttenlocher                            |
+| Phylogenetics   | building evolutionary trees from genetic distance                           |
 
 ## Video references
 

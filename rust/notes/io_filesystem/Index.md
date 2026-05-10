@@ -9,14 +9,14 @@ source: io_filesystem/src/
 
 # io_filesystem — Module Index
 
-| Module | Source File | Note |
-|---|---|---|
-| File I/O | `src/file_io.rs` | [[File IO]] |
-| Paths | `src/paths.rs` | [[Paths]] |
-| Directories | `src/directories.rs` | [[Directories]] |
-| Standard I/O | `src/stdio.rs` | [[Stdio]] |
-| Process & Command | `src/process.rs` | [[Process]] |
-| Advanced Operations | `src/advanced.rs` | [[Advanced]] |
+| Module              | Source File          | Note            |
+| ------------------- | -------------------- | --------------- |
+| File I/O            | `src/file_io.rs`     | [[File IO]]     |
+| Paths               | `src/paths.rs`       | [[Paths]]       |
+| Directories         | `src/directories.rs` | [[Directories]] |
+| Standard I/O        | `src/stdio.rs`       | [[Stdio]]       |
+| Process & Command   | `src/process.rs`     | [[Process]]     |
+| Advanced Operations | `src/advanced.rs`    | [[Advanced]]    |
 
 ## Topic Map
 

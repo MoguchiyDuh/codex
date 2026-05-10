@@ -30,11 +30,11 @@ ptrdiff_t diff = &arr[3] - &arr[1];  // 2 — correct type
 
 Pointer subtraction is only valid within the same array (or one past end). Otherwise UB.
 
-| Type | Signed | Use for |
-|------|--------|---------|
-| `size_t` | no | sizes, lengths, indices |
-| `ptrdiff_t` | yes | pointer differences, signed offsets |
-| `int` | yes | neither of the above |
+| Type        | Signed | Use for                             |
+| ----------- | ------ | ----------------------------------- |
+| `size_t`    | no     | sizes, lengths, indices             |
+| `ptrdiff_t` | yes    | pointer differences, signed offsets |
+| `int`       | yes    | neither of the above                |
 
 **Reverse iteration with `size_t`** — can't use `i >= 0` since unsigned never goes negative:
 

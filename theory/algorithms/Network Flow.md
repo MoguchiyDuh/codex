@@ -21,9 +21,9 @@ A **flow network** is a directed graph $G = (V, E)$ with:
 
 A **flow** is an assignment $f: E \to \mathbb{R}_{\geq 0}$ satisfying two constraints:
 
-| Constraint | Statement |
-|---|---|
-| Capacity | $0 \leq f(u, v) \leq c(u, v)$ for every edge |
+| Constraint   | Statement                                                    |
+| ------------ | ------------------------------------------------------------ |
+| Capacity     | $0 \leq f(u, v) \leq c(u, v)$ for every edge                 |
 | Conservation | for every $v \neq s, t$: total flow in equals total flow out |
 
 The **value** of a flow is the net flow leaving the source: $|f| = \sum_v f(s, v) - \sum_v f(v, s)$.
@@ -44,11 +44,11 @@ $$\max_{f}\, |f| \;=\; \min_{(S, T)} c(S, T)$$
 
 The maximum value of a flow equals the minimum capacity of an $s$–$t$ cut. Three equivalent statements:
 
-| Statement | Direction |
-|---|---|
-| $f$ is a max flow | iff |
-| there exists no augmenting path in the residual graph | iff |
-| $|f|$ equals the capacity of some cut |
+| Statement                                             | Direction |
+| ----------------------------------------------------- | --------- | --------------------------------- |
+| $f$ is a max flow                                     | iff       |
+| there exists no augmenting path in the residual graph | iff       |
+| $                                                     | f         | $ equals the capacity of some cut |
 
 This is what makes flow algorithms work: we increase $|f|$ until no augmenting path remains, at which point the flow is provably optimal.
 
@@ -82,15 +82,14 @@ ford_fulkerson(G, s, t):
 
 The method's complexity depends on **how** augmenting paths are found.
 
-
 ### Naive Ford-Fulkerson (DFS to find paths)
 
 If capacities are integers, each augmentation increases $|f|$ by at least $1$. Total iterations $\leq |f^*|$, each costing $\Theta(m)$.
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(m \cdot |f^*|)$ |
-| Issue | for irrational capacities may not terminate; for large $|f^*|$ very slow |
+| Property | Value                                                    |
+| -------- | -------------------------------------------------------- | ---- | ----------- |
+| Time     | $\Theta(m \cdot                                          | f^\* | )$          |
+| Issue    | for irrational capacities may not terminate; for large $ | f^\* | $ very slow |
 
 The pathological example: a four-vertex graph where bad path choices ping-pong $|f^*|$ times even when $|f^*|$ is huge.
 
@@ -98,9 +97,9 @@ The pathological example: a four-vertex graph where bad path choices ping-pong $
 
 Always pick the **shortest** augmenting path (BFS in the residual graph).
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(n m^2)$ |
+| Property    | Value                            |
+| ----------- | -------------------------------- |
+| Time        | $\Theta(n m^2)$                  |
 | Termination | always, regardless of capacities |
 
 The bound holds even for irrational capacities. Proof uses the fact that the shortest path length monotonically increases, so each edge can be "saturated" at most $\Theta(n)$ times.
@@ -109,46 +108,46 @@ The bound holds even for irrational capacities. Proof uses the fact that the sho
 
 Use BFS to build a layered graph, then push **blocking flows** through it. More efficient in practice and theoretically.
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(n^2 m)$ |
+| Property               | Value                                              |
+| ---------------------- | -------------------------------------------------- |
+| Time                   | $\Theta(n^2 m)$                                    |
 | Time (unit capacities) | $\Theta(m \sqrt{n})$ — used for bipartite matching |
 
 Dinic's is the standard choice in competitive programming and most production max-flow code.
 
 ### Push-relabel
 
-A different paradigm that doesn't use augmenting paths. Maintains a *preflow* (allows excess at vertices) and pushes flow downhill via vertex labels (heights).
+A different paradigm that doesn't use augmenting paths. Maintains a _preflow_ (allows excess at vertices) and pushes flow downhill via vertex labels (heights).
 
-| Property | Value |
-|---|---|
-| Time (generic) | $\Theta(n^2 m)$ |
+| Property             | Value                  |
+| -------------------- | ---------------------- |
+| Time (generic)       | $\Theta(n^2 m)$        |
 | Time (highest-label) | $\Theta(n^2 \sqrt{m})$ |
 
 Asymptotically the fastest in dense graphs.
 
 ## Algorithm summary
 
-| Algorithm | Time | Notes |
-|---|---|---|
-| Ford-Fulkerson (DFS) | $\Theta(m |f^*|)$ | only safe for integer capacities |
-| **Edmonds-Karp** | $\Theta(nm^2)$ | shortest augmenting path via BFS |
-| **Dinic's** | $\Theta(n^2 m)$ | layered + blocking flow; standard in practice |
-| Push-relabel | $\Theta(n^2 \sqrt{m})$ | preflow paradigm |
-| Orlin's | $\Theta(nm)$ | strongly polynomial — theoretical |
+| Algorithm            | Time                   | Notes                                         |
+| -------------------- | ---------------------- | --------------------------------------------- | --- | -------------------------------- |
+| Ford-Fulkerson (DFS) | $\Theta(m              | f^\*                                          | )$  | only safe for integer capacities |
+| **Edmonds-Karp**     | $\Theta(nm^2)$         | shortest augmenting path via BFS              |
+| **Dinic's**          | $\Theta(n^2 m)$        | layered + blocking flow; standard in practice |
+| Push-relabel         | $\Theta(n^2 \sqrt{m})$ | preflow paradigm                              |
+| Orlin's              | $\Theta(nm)$           | strongly polynomial — theoretical             |
 
 ## Applications
 
 Max-flow is the underlying solver for many seemingly unrelated problems via reductions.
 
-| Problem | Reduction |
-|---|---|
-| **Bipartite matching** | source → left side → right side → sink, all unit capacity. Max matching = max flow |
-| **Edge-disjoint paths** | unit capacities; max flow = max disjoint $s$–$t$ paths (Menger's theorem) |
-| **Vertex-disjoint paths** | split each vertex into two; edge between them has unit capacity |
-| **Image segmentation** | foreground/background separation as min-cut |
-| **Project selection** | max-weight closure problem reduces to min-cut |
-| **Baseball elimination** | construct a flow network where saturation = team eliminated |
+| Problem                   | Reduction                                                                          |
+| ------------------------- | ---------------------------------------------------------------------------------- |
+| **Bipartite matching**    | source → left side → right side → sink, all unit capacity. Max matching = max flow |
+| **Edge-disjoint paths**   | unit capacities; max flow = max disjoint $s$–$t$ paths (Menger's theorem)          |
+| **Vertex-disjoint paths** | split each vertex into two; edge between them has unit capacity                    |
+| **Image segmentation**    | foreground/background separation as min-cut                                        |
+| **Project selection**     | max-weight closure problem reduces to min-cut                                      |
+| **Baseball elimination**  | construct a flow network where saturation = team eliminated                        |
 
 ## Min-cost flow
 

@@ -25,13 +25,13 @@ This note owns the storage question. The mathematical structure is developed in 
 
 Before choosing a representation, pin down the graph's semantics.
 
-| Axis | Variants | Why it matters |
-|---|---|---|
-| Direction | undirected / directed | affects edge storage and degree bookkeeping |
-| Weights | unweighted / weighted | edges may need payloads instead of plain vertex IDs |
-| Multiplicity | simple / multigraph | parallel edges may require edge IDs instead of bare neighbours |
-| Mutability | static / dynamic | frequent updates favour different layouts than read-mostly workloads |
-| Density | sparse / dense | determines whether `O(n + m)` or `O(n^2)` space is acceptable |
+| Axis         | Variants              | Why it matters                                                       |
+| ------------ | --------------------- | -------------------------------------------------------------------- |
+| Direction    | undirected / directed | affects edge storage and degree bookkeeping                          |
+| Weights      | unweighted / weighted | edges may need payloads instead of plain vertex IDs                  |
+| Multiplicity | simple / multigraph   | parallel edges may require edge IDs instead of bare neighbours       |
+| Mutability   | static / dynamic      | frequent updates favour different layouts than read-mostly workloads |
+| Density      | sparse / dense        | determines whether `O(n + m)` or `O(n^2)` space is acceptable        |
 
 Write these decisions down first. A representation that is perfect for one workload can be terrible for another.
 
@@ -45,11 +45,11 @@ This is the standard representation for sparse graphs, which is the common case 
 
 ### Typical layouts
 
-| Layout | Shape | Strength |
-|---|---|---|
-| Array of vectors/lists | `adj[v]` is a dynamic sequence | simple, common, fast neighbour iteration |
-| Hash-set per vertex | `adj[v]` is a set | faster expected `hasEdge(u, v)` |
-| Compressed sparse row (CSR) | flat edge array + offsets | compact, cache-friendly, great for static graphs |
+| Layout                      | Shape                          | Strength                                         |
+| --------------------------- | ------------------------------ | ------------------------------------------------ |
+| Array of vectors/lists      | `adj[v]` is a dynamic sequence | simple, common, fast neighbour iteration         |
+| Hash-set per vertex         | `adj[v]` is a set              | faster expected `hasEdge(u, v)`                  |
+| Compressed sparse row (CSR) | flat edge array + offsets      | compact, cache-friendly, great for static graphs |
 
 Array-of-vectors is the default teaching representation because it matches BFS, DFS, Dijkstra, and topological sort directly.
 
@@ -79,26 +79,26 @@ It is usually not the best implementation choice for graph algorithms, but it is
 
 ## Representation tradeoffs
 
-| | Adjacency list | Adjacency matrix |
-|---|---|---|
-| Space | O(n + m) | O(n^2) |
-| `hasEdge(u, v)` | O(deg(u)) | O(1) |
-| Neighbours of `u` | O(deg(u)) | O(n) |
-| Add edge | O(1) | O(1) |
-| Delete edge | O(deg(u)) unless augmented | O(1) |
-| Sparse graphs | Preferred | Wasteful |
-| Dense graphs | Acceptable | Preferred |
+|                   | Adjacency list             | Adjacency matrix |
+| ----------------- | -------------------------- | ---------------- |
+| Space             | O(n + m)                   | O(n^2)           |
+| `hasEdge(u, v)`   | O(deg(u))                  | O(1)             |
+| Neighbours of `u` | O(deg(u))                  | O(n)             |
+| Add edge          | O(1)                       | O(1)             |
+| Delete edge       | O(deg(u)) unless augmented | O(1)             |
+| Sparse graphs     | Preferred                  | Wasteful         |
+| Dense graphs      | Acceptable                 | Preferred        |
 
 ## Representation of edge payloads
 
 Real graphs often need more than connectivity.
 
-| Use case | Edge payload |
-|---|---|
-| Shortest path | weight / cost |
-| Road network | distance, speed limit, road type |
-| Dependency graph | label, version constraint |
-| Flow network | capacity, current flow |
+| Use case         | Edge payload                     |
+| ---------------- | -------------------------------- |
+| Shortest path    | weight / cost                    |
+| Road network     | distance, speed limit, road type |
+| Dependency graph | label, version constraint        |
+| Flow network     | capacity, current flow           |
 
 That means an adjacency-list entry is often a small record rather than just an integer.
 
@@ -112,12 +112,12 @@ For a directed graph, store only the outgoing edge in `adj[u]`. If algorithms fr
 
 The right representation depends heavily on whether the graph changes.
 
-| Workload | Preferred representation | Why |
-|---|---|---|
-| Static sparse graph | adjacency list or CSR | compact, fast scans |
-| Dynamic sparse graph | adjacency list with dynamic containers | cheap inserts |
-| Dense graph | adjacency matrix | constant-time edge tests |
-| Edge-scan algorithm | edge list | simplest global iteration |
+| Workload             | Preferred representation               | Why                       |
+| -------------------- | -------------------------------------- | ------------------------- |
+| Static sparse graph  | adjacency list or CSR                  | compact, fast scans       |
+| Dynamic sparse graph | adjacency list with dynamic containers | cheap inserts             |
+| Dense graph          | adjacency matrix                       | constant-time edge tests  |
+| Edge-scan algorithm  | edge list                              | simplest global iteration |
 
 CSR is especially strong when the graph is built once and then queried or traversed many times. Insertions are expensive because the edge arrays must be rebuilt.
 
@@ -125,14 +125,14 @@ CSR is especially strong when the graph is built once and then queried or traver
 
 ## Common operations
 
-| Op | Algorithm | Cost (adj list) |
-|---|---|---|
-| Reachability | BFS or DFS | O(n + m) |
-| Shortest path (unweighted) | BFS | O(n + m) |
-| Shortest path (non-negative weights) | Dijkstra + heap | O((n + m) log n) |
-| Topological sort (DAG) | DFS or Kahn | O(n + m) |
-| Connected components | DFS / union-find | O(n + m) |
-| Cycle detection | DFS | O(n + m) |
+| Op                                   | Algorithm        | Cost (adj list)  |
+| ------------------------------------ | ---------------- | ---------------- |
+| Reachability                         | BFS or DFS       | O(n + m)         |
+| Shortest path (unweighted)           | BFS              | O(n + m)         |
+| Shortest path (non-negative weights) | Dijkstra + heap  | O((n + m) log n) |
+| Topological sort (DAG)               | DFS or Kahn      | O(n + m)         |
+| Connected components                 | DFS / union-find | O(n + m)         |
+| Cycle detection                      | DFS              | O(n + m)         |
 
 See [[../algorithms/Graph Basics|Graph Basics]] and [[../algorithms/Shortest Path|Shortest Path]] for the algorithms.
 
@@ -156,13 +156,13 @@ This is still a graph algorithm problem, but the representation is **implicit**:
 
 ## Decision guide
 
-| Situation | Representation |
-|---|---|
-| Social network, road map, dependency graph | adjacency list |
-| Small dense relation matrix | adjacency matrix |
-| MST by sorting edges | edge list |
-| Static analytics pipeline on huge sparse graph | CSR |
-| Puzzle/search state space | implicit graph |
+| Situation                                      | Representation   |
+| ---------------------------------------------- | ---------------- |
+| Social network, road map, dependency graph     | adjacency list   |
+| Small dense relation matrix                    | adjacency matrix |
+| MST by sorting edges                           | edge list        |
+| Static analytics pipeline on huge sparse graph | CSR              |
+| Puzzle/search state space                      | implicit graph   |
 
 ## See also
 

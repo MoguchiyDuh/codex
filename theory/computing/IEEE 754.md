@@ -40,21 +40,21 @@ Same structure, larger fields: 1 sign + 11 exponent + 52 mantissa. Bias = 1023.
 
 ## Known bit patterns
 
-| Value | Hex | Explanation |
-|---|---|---|
-| `1.0` | `0x3F800000` | exp=127, mantissa=0 |
-| `-1.0` | `0xBF800000` | same, sign bit set |
-| `0.5` | `0x3F000000` | exp=126 (127−1) |
-| `2.0` | `0x40000000` | exp=128 (127+1) |
-| `0.0` | `0x00000000` | all bits zero |
+| Value  | Hex          | Explanation         |
+| ------ | ------------ | ------------------- |
+| `1.0`  | `0x3F800000` | exp=127, mantissa=0 |
+| `-1.0` | `0xBF800000` | same, sign bit set  |
+| `0.5`  | `0x3F000000` | exp=126 (127−1)     |
+| `2.0`  | `0x40000000` | exp=128 (127+1)     |
+| `0.0`  | `0x00000000` | all bits zero       |
 
 ## Special values
 
-| Value | Exponent bits | Mantissa bits |
-|---|---|---|
-| `+0` / `−0` | all 0 | all 0 |
-| `+∞` / `−∞` | all 1 | all 0 |
-| NaN | all 1 | non-zero |
+| Value       | Exponent bits | Mantissa bits |
+| ----------- | ------------- | ------------- |
+| `+0` / `−0` | all 0         | all 0         |
+| `+∞` / `−∞` | all 1         | all 0         |
+| NaN         | all 1         | non-zero      |
 
 NaN is the only value where `x != x` is true — the standard IEEE 754 NaN check.
 

@@ -46,6 +46,7 @@ match val {
 ## Destructuring in match
 
 ### Tuples
+
 ```rust
 match point {
     (0, 0) => println!("origin"),
@@ -56,6 +57,7 @@ match point {
 ```
 
 ### Structs
+
 ```rust
 match p {
     Point { x: 0, y: 0 } => println!("origin"),
@@ -65,6 +67,7 @@ match p {
 ```
 
 ### Enums
+
 ```rust
 match msg {
     Message::Quit               => println!("quit"),

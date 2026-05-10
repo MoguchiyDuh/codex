@@ -22,7 +22,7 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
 }
 ```
 
-`T: PartialOrd` is a *bound* — the function only works for types that can be compared with `>`. Works for `i32`, `char`, `&str`, or any other `PartialOrd` type without writing separate functions.
+`T: PartialOrd` is a _bound_ — the function only works for types that can be compared with `>`. Works for `i32`, `char`, `&str`, or any other `PartialOrd` type without writing separate functions.
 
 ## Multiple bounds with `+`
 

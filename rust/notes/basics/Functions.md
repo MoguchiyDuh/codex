@@ -116,11 +116,11 @@ let add_five = |x: i32| -> i32 { return x + 5; };
 
 ### Capture modes
 
-| Trait | Captures | Call count |
-|-------|----------|------------|
-| `Fn` | `&T` (immutable borrow) | any number |
-| `FnMut` | `&mut T` (mutable borrow) | any number |
-| `FnOnce` | `T` (moves value in) | once |
+| Trait    | Captures                  | Call count |
+| -------- | ------------------------- | ---------- |
+| `Fn`     | `&T` (immutable borrow)   | any number |
+| `FnMut`  | `&mut T` (mutable borrow) | any number |
+| `FnOnce` | `T` (moves value in)      | once       |
 
 Every `Fn` is also `FnMut` and `FnOnce` (subtrait hierarchy).
 

@@ -23,8 +23,8 @@ Properties: $p_X(k) \geq 0$ for all $k$, and $\sum_k p_X(k) = 1$.
 
 **PMF of the dice sum:**
 
-| $k$ | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
+| $k$      | 2              | 3              | 4              | 5              | 6              | 7              | 8              | 9              | 10             | 11             | 12             |
+| -------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
 | $p_X(k)$ | $\frac{1}{36}$ | $\frac{2}{36}$ | $\frac{3}{36}$ | $\frac{4}{36}$ | $\frac{5}{36}$ | $\frac{6}{36}$ | $\frac{5}{36}$ | $\frac{4}{36}$ | $\frac{3}{36}$ | $\frac{2}{36}$ | $\frac{1}{36}$ |
 
 ![[discrete_pmf.png]]
@@ -143,6 +143,12 @@ $$\mathbb{E}[X \mid A] = \sum_k k\, \Pr[X = k \mid A].$$
 $$\mathbb{E}[X] = \sum_{i=1}^r \mathbb{E}[X \mid B_i]\,\Pr[B_i].$$
 
 This is used in analysing algorithms with branching behaviour, e.g. quicksort expected runtime: condition on the rank of the pivot, sum over all possible pivots.
+
+## Video references
+
+- ![Lecture 21: Random Variables](https://www.youtube.com/watch?v=MOfhhFaQdjw)
+- ![Lecture 22: Expectation I](https://www.youtube.com/watch?v=gGlMSe7uEkA)
+- ![Lecture 23: Expectation II](https://www.youtube.com/watch?v=oI9fMUqgfxY)
 
 ## See also
 

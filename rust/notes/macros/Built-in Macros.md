@@ -12,12 +12,12 @@ Standard library and compiler-provided macros. These are always in scope — no 
 
 ## Formatting
 
-| Macro | Target | Newline |
-|---|---|---|
-| `print!` | stdout | No |
-| `println!` | stdout | Yes |
-| `eprint!` / `eprintln!` | stderr | No / Yes |
-| `format!` | Returns `String` | — |
+| Macro                   | Target           | Newline  |
+| ----------------------- | ---------------- | -------- |
+| `print!`                | stdout           | No       |
+| `println!`              | stdout           | Yes      |
+| `eprint!` / `eprintln!` | stderr           | No / Yes |
+| `format!`               | Returns `String` | —        |
 
 ```rust
 let s: String = format!("value: {}", 42);
@@ -175,11 +175,11 @@ let v2: Vec<i32> = vec![0; 10]; // ten zeros
 
 Embed external files at compile time, relative to the current source file:
 
-| Macro | Result type | Use |
-|---|---|---|
-| `include!("file.rs")` | (source code) | Embed `.rs` as source |
-| `include_str!("file.txt")` | `&'static str` | Embed text content |
-| `include_bytes!("file.bin")` | `&'static [u8]` | Embed binary content |
+| Macro                        | Result type     | Use                   |
+| ---------------------------- | --------------- | --------------------- |
+| `include!("file.rs")`        | (source code)   | Embed `.rs` as source |
+| `include_str!("file.txt")`   | `&'static str`  | Embed text content    |
+| `include_bytes!("file.bin")` | `&'static [u8]` | Embed binary content  |
 
 All paths are resolved at compile time. Missing files are build errors.
 

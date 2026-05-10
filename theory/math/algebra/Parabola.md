@@ -19,6 +19,7 @@ $$\boxed{y = ax^2 + bx + c \quad (a \neq 0)}$$
 ![[parabola_orientations.png]]
 
 ### Vertex form (vertical parabola)
+
 $$\boxed{y = a(x-h)^2 + k}$$
 
 - Vertex: $(h, k)$
@@ -26,6 +27,7 @@ $$\boxed{y = a(x-h)^2 + k}$$
 - Opens up if $a > 0$, down if $a < 0$
 
 ### Horizontal parabola
+
 $$\boxed{x = a(y-k)^2 + h}$$
 
 - Vertex: $(h, k)$
@@ -37,37 +39,42 @@ $$\boxed{x = a(y-k)^2 + h}$$
 ![[parabola_components.png]]
 
 ### Vertex
+
 The turning point (minimum or maximum).
 
 For $y = ax^2 + bx + c$:
 $$\boxed{h = -\frac{b}{2a}, \qquad k = c - \frac{b^2}{4a}}$$
 
 ### Axis of symmetry
+
 $$\boxed{x = -\frac{b}{2a}}$$
 
 ### Focus and directrix
+
 For $y = a(x-h)^2 + k$:
 $$\text{Focus: } \left(h,\ k + \frac{1}{4a}\right) \qquad \text{Directrix: } y = k - \frac{1}{4a}$$
 
 Every point on the parabola is equidistant from the focus and directrix.
 
 ### Focal length
+
 $$p = \frac{1}{4a}$$
 
 ## Effect of Parameters
 
-| Parameter | Effect |
-|-----------|--------|
-| $a > 0$ | Opens up; vertex is minimum |
-| $a < 0$ | Opens down; vertex is maximum |
-| $\|a\| > 1$ | Narrow (steep) |
-| $\|a\| < 1$ | Wide (flat) |
-| $b$ | Shifts vertex horizontally: $h = -b/(2a)$ |
-| $c$ | Sets y-intercept at $(0, c)$ |
+| Parameter   | Effect                                    |
+| ----------- | ----------------------------------------- |
+| $a > 0$     | Opens up; vertex is minimum               |
+| $a < 0$     | Opens down; vertex is maximum             |
+| $\|a\| > 1$ | Narrow (steep)                            |
+| $\|a\| < 1$ | Wide (flat)                               |
+| $b$         | Shifts vertex horizontally: $h = -b/(2a)$ |
+| $c$         | Sets y-intercept at $(0, c)$              |
 
 ## Key Features
 
 **Domain / Range** for $y = a(x-h)^2 + k$:
+
 - Domain: $(-\infty, \infty)$
 - Range: $[k, \infty)$ if $a>0$; $(-\infty, k]$ if $a<0$
 
@@ -80,12 +87,12 @@ Discriminant $D = b^2 - 4ac$: $D>0$ → two roots; $D=0$ → one root; $D<0$ →
 
 ## Standard Equations Table
 
-| Orientation | Equation | Focus | Directrix |
-|-------------|----------|-------|-----------|
-| Up | $y = ax^2$ | $(0,\ \frac{1}{4a})$ | $y = -\frac{1}{4a}$ |
-| Down | $y = -ax^2$ | $(0,\ -\frac{1}{4a})$ | $y = \frac{1}{4a}$ |
-| Right | $x = ay^2$ | $(\frac{1}{4a},\ 0)$ | $x = -\frac{1}{4a}$ |
-| Left | $x = -ay^2$ | $(-\frac{1}{4a},\ 0)$ | $x = \frac{1}{4a}$ |
+| Orientation | Equation    | Focus                 | Directrix           |
+| ----------- | ----------- | --------------------- | ------------------- |
+| Up          | $y = ax^2$  | $(0,\ \frac{1}{4a})$  | $y = -\frac{1}{4a}$ |
+| Down        | $y = -ax^2$ | $(0,\ -\frac{1}{4a})$ | $y = \frac{1}{4a}$  |
+| Right       | $x = ay^2$  | $(\frac{1}{4a},\ 0)$  | $x = -\frac{1}{4a}$ |
+| Left        | $x = -ay^2$ | $(-\frac{1}{4a},\ 0)$ | $x = \frac{1}{4a}$  |
 
 ## Transformations of $y = x^2$
 
@@ -98,6 +105,7 @@ Discriminant $D = b^2 - 4ac$: $D>0$ → two roots; $D=0$ → one root; $D<0$ →
 ## Worked Examples
 
 **Find all features of $f(x) = 2x^2 - 8x + 6$:**
+
 - Vertex: $h = 2$, $k = -2$ → $(2, -2)$
 - Axis of symmetry: $x = 2$
 - Opens upward ($a=2>0$)
@@ -105,6 +113,7 @@ Discriminant $D = b^2 - 4ac$: $D>0$ → two roots; $D=0$ → one root; $D<0$ →
 - X-intercepts: $x=1, x=3$
 
 **Equation from vertex $(3,-4)$ through $(1,0)$:**
+
 - Vertex form: $y = a(x-3)^2 - 4$
 - Sub $(1,0)$: $0 = 4a - 4 \Rightarrow a = 1$
 - Result: $y = (x-3)^2 - 4$

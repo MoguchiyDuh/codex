@@ -9,7 +9,7 @@ status: complete
 
 ## Integer Promotion (unary)
 
-Before any operation, types *smaller* than `int` are promoted to `int`. Always. This applies to `char`, `short`, `unsigned char`, `unsigned short`.
+Before any operation, types _smaller_ than `int` are promoted to `int`. Always. This applies to `char`, `short`, `unsigned char`, `unsigned short`.
 
 ```c
 char a = 200;
@@ -21,7 +21,7 @@ char c = a + b;  // a and b promoted to int, addition done in int, result trunca
 
 ## Usual Arithmetic Conversions (binary)
 
-When two operands of *different* types meet in an expression, the lower-ranked one converts to match the higher. This happens *after* integer promotion.
+When two operands of _different_ types meet in an expression, the lower-ranked one converts to match the higher. This happens _after_ integer promotion.
 
 Rank hierarchy (highest wins):
 

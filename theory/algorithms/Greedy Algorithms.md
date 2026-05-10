@@ -13,12 +13,12 @@ status: complete
 
 A greedy algorithm is correct when the problem exhibits two properties:
 
-| Property | Meaning |
-|---|---|
-| **Greedy-choice property** | A globally optimal solution can be assembled by making locally optimal choices |
-| **Optimal substructure** | After committing to the greedy choice, the remaining problem has the same form, and its optimal solution combined with the greedy choice gives an optimal whole |
+| Property                   | Meaning                                                                                                                                                         |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Greedy-choice property** | A globally optimal solution can be assembled by making locally optimal choices                                                                                  |
+| **Optimal substructure**   | After committing to the greedy choice, the remaining problem has the same form, and its optimal solution combined with the greedy choice gives an optimal whole |
 
-Optimal substructure alone is shared with [[Dynamic Programming]] — what distinguishes greedy is the *greedy-choice property*: you don't need to enumerate all options; one is provably right.
+Optimal substructure alone is shared with [[Dynamic Programming]] — what distinguishes greedy is the _greedy-choice property_: you don't need to enumerate all options; one is provably right.
 
 When greedy applies, you skip the DP table entirely and run in $\Theta(n)$ or $\Theta(n \log n)$ instead of $\Theta(n^2)$ or worse.
 
@@ -28,7 +28,7 @@ Two standard techniques.
 
 ### Exchange argument
 
-Assume an optimal solution that does *not* make the greedy choice. Show that swapping in the greedy choice produces a solution at least as good. Conclude: there exists an optimal solution making the greedy choice. Recurse on the remaining problem.
+Assume an optimal solution that does _not_ make the greedy choice. Show that swapping in the greedy choice produces a solution at least as good. Conclude: there exists an optimal solution making the greedy choice. Recurse on the remaining problem.
 
 ### Greedy stays ahead
 
@@ -56,10 +56,10 @@ activity_select(activities):
 
 **Code:** `theory/algorithms/showcase/activity_selection.py`
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(n \log n)$ for sort, $\Theta(n)$ scan |
-| Optimal | yes |
+| Property | Value                                         |
+| -------- | --------------------------------------------- |
+| Time     | $\Theta(n \log n)$ for sort, $\Theta(n)$ scan |
+| Optimal  | yes                                           |
 
 **Why it works.** Among compatible activities, the one finishing earliest leaves the most room for future activities. Exchange argument: any optimal solution either contains this activity or can be modified to contain it (replacing its first activity with the earliest-finishing one yields a solution with the same count).
 
@@ -82,10 +82,10 @@ huffman(C):
     return extract_min(Q)
 ```
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(n \log n)$ |
-| Optimal | yes (proven via exchange argument) |
+| Property    | Value                                                |
+| ----------- | ---------------------------------------------------- |
+| Time        | $\Theta(n \log n)$                                   |
+| Optimal     | yes (proven via exchange argument)                   |
 | Application | data compression (DEFLATE, JPEG, MP3 entropy coding) |
 
 The proof: in an optimal tree, the two characters with smallest frequencies are siblings at the deepest level. Merging them and recursing on the smaller alphabet preserves optimality.
@@ -96,49 +96,49 @@ $n$ items, weight $w_i$, value $v_i$, capacity $W$. Each item is divisible — t
 
 **Greedy choice.** Sort by value-per-weight $v_i / w_i$ descending. Take whole items until you can't fit one; take a fraction of the next to fill the remainder.
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(n \log n)$ |
-| Optimal | yes |
+| Property | Value              |
+| -------- | ------------------ |
+| Time     | $\Theta(n \log n)$ |
+| Optimal  | yes                |
 
-The 0/1 knapsack (items are indivisible) does *not* admit greedy — that's where DP earns its keep.
+The 0/1 knapsack (items are indivisible) does _not_ admit greedy — that's where DP earns its keep.
 
 ## Where greedy is provably correct
 
-| Problem | Greedy choice | Where proven |
-|---|---|---|
-| Activity selection | earliest finish | exchange argument |
-| Fractional knapsack | best value/weight | exchange argument |
-| Huffman codes | merge two smallest frequencies | exchange argument |
-| [[Minimum Spanning Tree\|MST]] (Kruskal, Prim) | lightest edge crossing the cut | cut property |
-| [[Shortest Path\|Dijkstra]] (non-negative weights) | unvisited vertex with smallest tentative distance | invariant proof |
-| Job scheduling on a single machine to minimize lateness | earliest-deadline-first | exchange argument |
+| Problem                                                 | Greedy choice                                     | Where proven      |
+| ------------------------------------------------------- | ------------------------------------------------- | ----------------- |
+| Activity selection                                      | earliest finish                                   | exchange argument |
+| Fractional knapsack                                     | best value/weight                                 | exchange argument |
+| Huffman codes                                           | merge two smallest frequencies                    | exchange argument |
+| [[Minimum Spanning Tree\|MST]] (Kruskal, Prim)          | lightest edge crossing the cut                    | cut property      |
+| [[Shortest Path\|Dijkstra]] (non-negative weights)      | unvisited vertex with smallest tentative distance | invariant proof   |
+| Job scheduling on a single machine to minimize lateness | earliest-deadline-first                           | exchange argument |
 
 ## Where greedy fails
 
-| Problem | Greedy that doesn't work | Reason |
-|---|---|---|
-| 0/1 knapsack | best value/weight first | granularity of choice |
-| Coin change (arbitrary denominations) | largest coin first | optimal may need a smaller coin earlier |
-| Graph coloring (minimum colors) | smallest unused color | depends on vertex order |
-| Travelling salesman (optimal) | nearest unvisited city | local choices compound poorly |
-| Longest path in a DAG | longest first edge | future paths constrained |
+| Problem                               | Greedy that doesn't work | Reason                                  |
+| ------------------------------------- | ------------------------ | --------------------------------------- |
+| 0/1 knapsack                          | best value/weight first  | granularity of choice                   |
+| Coin change (arbitrary denominations) | largest coin first       | optimal may need a smaller coin earlier |
+| Graph coloring (minimum colors)       | smallest unused color    | depends on vertex order                 |
+| Travelling salesman (optimal)         | nearest unvisited city   | local choices compound poorly           |
+| Longest path in a DAG                 | longest first edge       | future paths constrained                |
 
 In all of these, DP, branch-and-bound, or approximation is the right tool.
 
-The cautionary classic: coin change with denominations $\{1, 3, 4\}$ for amount $6$. Greedy picks $4 + 1 + 1 = 3$ coins; optimal is $3 + 3 = 2$ coins. With $\{1, 5, 10, 25\}$ (US system) greedy *is* optimal — but you have to prove it for the specific denominations.
+The cautionary classic: coin change with denominations $\{1, 3, 4\}$ for amount $6$. Greedy picks $4 + 1 + 1 = 3$ coins; optimal is $3 + 3 = 2$ coins. With $\{1, 5, 10, 25\}$ (US system) greedy _is_ optimal — but you have to prove it for the specific denominations.
 
 ## Greedy vs DP
 
-| | Greedy | DP |
-|---|---|---|
-| Choices per step | one (locally best) | all, pick best |
-| Subproblem reuse | no | yes |
-| Time | typically $\Theta(n)$ or $\Theta(n \log n)$ | typically $\Theta(n^2)$+ |
-| Correctness | requires greedy-choice property — proof is non-trivial | requires only optimal substructure |
-| When unsure | use DP | use greedy *only after* proving correctness |
+|                  | Greedy                                                 | DP                                          |
+| ---------------- | ------------------------------------------------------ | ------------------------------------------- |
+| Choices per step | one (locally best)                                     | all, pick best                              |
+| Subproblem reuse | no                                                     | yes                                         |
+| Time             | typically $\Theta(n)$ or $\Theta(n \log n)$            | typically $\Theta(n^2)$+                    |
+| Correctness      | requires greedy-choice property — proof is non-trivial | requires only optimal substructure          |
+| When unsure      | use DP                                                 | use greedy _only after_ proving correctness |
 
-The danger of greedy: it always *runs*, but might silently produce a suboptimal answer. Always verify the greedy-choice property before deploying one.
+The danger of greedy: it always _runs_, but might silently produce a suboptimal answer. Always verify the greedy-choice property before deploying one.
 
 ## See also
 

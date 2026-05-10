@@ -16,12 +16,12 @@ status: complete
 
 Running [[Shortest Path|Dijkstra]] from every source gives $\Theta(n (n + m) \log n) = \Theta(n m \log n)$ on sparse graphs, $\Theta(n^3 \log n)$ on dense. The two specialised algorithms below trade flexibility for speed:
 
-| Algorithm | Time | Space | Negative weights | Best for |
-|---|---|---|---|---|
-| **Floyd-Warshall** | $\Theta(n^3)$ | $\Theta(n^2)$ | yes (no negative cycle) | dense graphs, all-pairs needed |
-| **Johnson's** | $\Theta(nm \log n + n^2)$ | $\Theta(n^2)$ | yes (no negative cycle) | sparse graphs |
-| Dijkstra from every source | $\Theta(n(n+m)\log n)$ | $\Theta(n^2)$ | no | non-negative weights, sparse |
-| Bellman-Ford from every source | $\Theta(n^2 m)$ | $\Theta(n^2)$ | yes | rarely competitive |
+| Algorithm                      | Time                      | Space         | Negative weights        | Best for                       |
+| ------------------------------ | ------------------------- | ------------- | ----------------------- | ------------------------------ |
+| **Floyd-Warshall**             | $\Theta(n^3)$             | $\Theta(n^2)$ | yes (no negative cycle) | dense graphs, all-pairs needed |
+| **Johnson's**                  | $\Theta(nm \log n + n^2)$ | $\Theta(n^2)$ | yes (no negative cycle) | sparse graphs                  |
+| Dijkstra from every source     | $\Theta(n(n+m)\log n)$    | $\Theta(n^2)$ | no                      | non-negative weights, sparse   |
+| Bellman-Ford from every source | $\Theta(n^2 m)$           | $\Theta(n^2)$ | yes                     | rarely competitive             |
 
 ## Floyd-Warshall
 
@@ -49,14 +49,13 @@ floyd_warshall(W):           # W is the n×n weight matrix
 
 The two-dimensional table is updated in place — each iteration of $k$ uses values from the previous $k$, but the algorithm is correct over a single matrix because the entries that matter are not overwritten before they're read (proof in CLRS Ch. 23).
 
-
-| Property | Value |
-|---|---|
-| Time | $\Theta(n^3)$ |
-| Space | $\Theta(n^2)$ |
-| Negative weights | allowed |
+| Property                 | Value                            |
+| ------------------------ | -------------------------------- |
+| Time                     | $\Theta(n^3)$                    |
+| Space                    | $\Theta(n^2)$                    |
+| Negative weights         | allowed                          |
 | Negative cycle detection | yes — `D[i][i] < 0` for some $i$ |
-| Implementation | three nested loops, very tight |
+| Implementation           | three nested loops, very tight   |
 
 ### Why the loop order matters
 
@@ -102,24 +101,24 @@ johnson(G):
     return δ
 ```
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(nm \log n + n^2)$ — Bellman-Ford once, Dijkstra $n$ times |
-| Space | $\Theta(n^2)$ |
-| Negative weights | allowed |
-| Negative cycle detection | yes (during Bellman-Ford) |
+| Property                 | Value                                                             |
+| ------------------------ | ----------------------------------------------------------------- |
+| Time                     | $\Theta(nm \log n + n^2)$ — Bellman-Ford once, Dijkstra $n$ times |
+| Space                    | $\Theta(n^2)$                                                     |
+| Negative weights         | allowed                                                           |
+| Negative cycle detection | yes (during Bellman-Ford)                                         |
 
 For dense graphs ($m \to n^2$), Johnson's becomes $\Theta(n^3 \log n)$ — slower than Floyd-Warshall by a log factor. The crossover is roughly when $m / \log n < n^2 / \log n$, which means Johnson's wins on truly sparse graphs.
 
 ## When to choose what
 
-| Graph | Edge weights | Choice |
-|---|---|---|
-| Dense (large $m$) | any | Floyd-Warshall |
-| Sparse, non-negative | non-negative | $n$ × Dijkstra |
-| Sparse, negative possible | negative ok | Johnson's |
-| Very small $n$ (say $n < 50$) | any | Floyd-Warshall regardless of density — tight inner loop wins on constant factors |
-| Single source only | non-negative or negative | Dijkstra or Bellman-Ford alone — see [[Shortest Path]] |
+| Graph                         | Edge weights             | Choice                                                                           |
+| ----------------------------- | ------------------------ | -------------------------------------------------------------------------------- |
+| Dense (large $m$)             | any                      | Floyd-Warshall                                                                   |
+| Sparse, non-negative          | non-negative             | $n$ × Dijkstra                                                                   |
+| Sparse, negative possible     | negative ok              | Johnson's                                                                        |
+| Very small $n$ (say $n < 50$) | any                      | Floyd-Warshall regardless of density — tight inner loop wins on constant factors |
+| Single source only            | non-negative or negative | Dijkstra or Bellman-Ford alone — see [[Shortest Path]]                           |
 
 ## Practical notes
 

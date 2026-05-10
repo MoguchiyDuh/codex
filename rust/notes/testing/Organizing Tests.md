@@ -7,12 +7,12 @@ source: testing/src/organizing.rs
 
 ## Where tests live
 
-| Location | Purpose |
-|----------|---------|
-| `src/*.rs` inside `#[cfg(test)]` | Unit tests — same file as the code |
-| `tests/` | Integration tests — separate binary, only public interface |
-| `benches/` | Benchmarks (typically with the `criterion` crate) |
-| `examples/` | Runnable examples via `cargo run --example` |
+| Location                         | Purpose                                                    |
+| -------------------------------- | ---------------------------------------------------------- |
+| `src/*.rs` inside `#[cfg(test)]` | Unit tests — same file as the code                         |
+| `tests/`                         | Integration tests — separate binary, only public interface |
+| `benches/`                       | Benchmarks (typically with the `criterion` crate)          |
+| `examples/`                      | Runnable examples via `cargo run --example`                |
 
 Unit tests in `#[cfg(test)]` can access private items via `use super::*`. Integration tests in `tests/` cannot — they test the crate from the outside.
 

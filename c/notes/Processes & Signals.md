@@ -51,12 +51,12 @@ exit(1);
 - Second arg: `argv` array — `argv[0]` is the program name by convention, `NULL`-terminated
 - If `execvp` returns, it failed
 
-| Function | PATH search | Args | Env |
-|----------|-------------|------|-----|
-| `execvp` | Yes | `char *[]` | inherited |
+| Function | PATH search    | Args       | Env       |
+| -------- | -------------- | ---------- | --------- |
+| `execvp` | Yes            | `char *[]` | inherited |
 | `execv`  | No (full path) | `char *[]` | inherited |
-| `execve` | No | `char *[]` | explicit |
-| `execlp` | Yes | variadic | inherited |
+| `execve` | No             | `char *[]` | explicit  |
+| `execlp` | Yes            | variadic   | inherited |
 
 **`fork` + `exec` pattern** — the Unix way to spawn a new program:
 
@@ -87,6 +87,7 @@ if (WIFEXITED(status))
 ```
 
 To wait for N children:
+
 ```c
 for (int i = 0; i < n; i++)
     wait(NULL);   // NULL if you don't need the exit status
@@ -104,15 +105,15 @@ An asynchronous notification delivered to a process by the kernel or another pro
 
 ### Common signals
 
-| Signal | Default | Meaning |
-|--------|---------|---------|
-| `SIGINT` | terminate | Ctrl+C |
-| `SIGTERM` | terminate | polite kill (`kill <pid>`) |
+| Signal    | Default   | Meaning                                  |
+| --------- | --------- | ---------------------------------------- |
+| `SIGINT`  | terminate | Ctrl+C                                   |
+| `SIGTERM` | terminate | polite kill (`kill <pid>`)               |
 | `SIGKILL` | terminate | force kill — cannot be caught or ignored |
-| `SIGSEGV` | core dump | segfault |
-| `SIGCHLD` | ignore | child exited |
-| `SIGPIPE` | terminate | write to broken pipe |
-| `SIGALRM` | terminate | timer expired |
+| `SIGSEGV` | core dump | segfault                                 |
+| `SIGCHLD` | ignore    | child exited                             |
+| `SIGPIPE` | terminate | write to broken pipe                     |
+| `SIGALRM` | terminate | timer expired                            |
 
 Sending a signal: `kill(pid, SIGTERM)` — despite the name, not always fatal.
 

@@ -38,12 +38,12 @@ counting_sort(A, k):
 
 **Idea.** Count how many of each key, convert to prefix sums (giving each key's final ending index), then place each input element at its position.
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(n + k)$ |
-| Space | $\Theta(n + k)$ |
-| Stable | yes (when iterating right-to-left as above) |
-| In-place | no |
+| Property | Value                                       |
+| -------- | ------------------------------------------- |
+| Time     | $\Theta(n + k)$                             |
+| Space    | $\Theta(n + k)$                             |
+| Stable   | yes (when iterating right-to-left as above) |
+| In-place | no                                          |
 
 **When applicable.** Keys are integers (or mappable to integers) in a known small range. Useful as a subroutine in radix sort. Becomes wasteful when $k \gg n$.
 
@@ -63,12 +63,12 @@ radix_sort_lsd(A, d):
 
 After all $d$ passes, the array is fully sorted. Stability of the inner sort is essential — earlier digits' order must survive later passes.
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(d (n + b))$ |
-| Space | $\Theta(n + b)$ |
-| Stable | yes |
-| In-place | no |
+| Property | Value               |
+| -------- | ------------------- |
+| Time     | $\Theta(d (n + b))$ |
+| Space    | $\Theta(n + b)$     |
+| Stable   | yes                 |
+| In-place | no                  |
 
 For 32-bit integers with $b = 256$, $d = 4$ — runs in roughly $4(n + 256) = \Theta(n)$ for any reasonably large $n$.
 
@@ -102,24 +102,24 @@ bucket_sort(A, k):
 
 **Code:** `theory/algorithms/showcase/sorting/bucket_sort.py`
 
-| Property | Value |
-|---|---|
-| Time (uniform input) | $\Theta(n)$ expected |
-| Time (adversarial) | $\Theta(n^2)$ |
-| Space | $\Theta(n + k)$ |
-| Stable | yes (with stable per-bucket sort) |
+| Property             | Value                             |
+| -------------------- | --------------------------------- |
+| Time (uniform input) | $\Theta(n)$ expected              |
+| Time (adversarial)   | $\Theta(n^2)$                     |
+| Space                | $\Theta(n + k)$                   |
+| Stable               | yes (with stable per-bucket sort) |
 
 The expected linear time depends on inputs being approximately uniformly distributed across buckets. Real-valued inputs in $[0, 1)$ with a uniform distribution are the textbook case.
 
 ## Comparison
 
-| Sort | Assumption | Time | Space | Stable |
-|---|---|---|---|---|
-| **Counting** | integer keys in $[0, k]$ | $\Theta(n + k)$ | $\Theta(n + k)$ | yes |
-| **Radix (LSD)** | $d$-digit keys, base $b$ | $\Theta(d(n + b))$ | $\Theta(n + b)$ | yes |
-| **Bucket** | uniform distribution over a known range | $\Theta(n)$ expected | $\Theta(n + k)$ | yes |
+| Sort            | Assumption                              | Time                 | Space           | Stable |
+| --------------- | --------------------------------------- | -------------------- | --------------- | ------ |
+| **Counting**    | integer keys in $[0, k]$                | $\Theta(n + k)$      | $\Theta(n + k)$ | yes    |
+| **Radix (LSD)** | $d$-digit keys, base $b$                | $\Theta(d(n + b))$   | $\Theta(n + b)$ | yes    |
+| **Bucket**      | uniform distribution over a known range | $\Theta(n)$ expected | $\Theta(n + k)$ | yes    |
 
-## When *not* to use linear-time sorts
+## When _not_ to use linear-time sorts
 
 - Keys have no exploitable structure (general comparable objects).
 - Range $k$ or digit count $d$ is comparable to or larger than $n$ — the asymptotic advantage disappears.

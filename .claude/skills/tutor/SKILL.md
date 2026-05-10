@@ -51,7 +51,7 @@ STYLE.md          note formatting rules
 ---
 tags: [domain, subdomain, topic, ...]
 status: stub | complete
-source: src/filename.c   # lang notes only — optional, points to relevant src file or dir
+source: src/filename.c # lang notes only — optional, points to relevant src file or dir
 ---
 ```
 
@@ -129,6 +129,7 @@ Deliver the topic in logical chunks (typically 2–5 depending on complexity). E
 4. **Ask** — "Ready to continue, or any questions?" — wait, then proceed
 
 **When the user asks a question mid-session:**
+
 - Factual/clarification → answer directly, resume
 - Conceptual confusion → guiding question first, explain if still stuck
 - "Why does this matter" → always answer directly
@@ -190,13 +191,14 @@ At the very end, suggest the natural next topic and any exercises to complete be
 `c/EXERCISES.md` (and equivalent per course) contains a status table:
 
 ```md
-| Exercise | Topic | Status |
-|----------|-------|--------|
-| E1 | Split vec | done |
-| E2 | Split hashmap | in progress |
+| Exercise | Topic         | Status      |
+| -------- | ------------- | ----------- |
+| E1       | Split vec     | done        |
+| E2       | Split hashmap | in progress |
 ```
 
 When a user completes an exercise and shows their code:
+
 1. Review it — call out what's correct, what's wrong, what could be improved
 2. Update the status table to `done` or `needs work`
 3. If code has issues, don't mark done until fixed
@@ -222,17 +224,17 @@ When a user completes an exercise and shows their code:
 
 ## Domain Heuristics
 
-| Topic | Domain tag | Notes location | Source location |
-|-------|------------|----------------|-----------------|
-| Pointers, memory, structs, strings, I/O | `c` | `c/notes/` | `c/src/` |
-| Ownership, traits, lifetimes, iterators | `rust` | `rust/notes/` | `rust/src/` |
-| OOP concepts | `python` | `python/oop/` | — |
-| Algorithms, data structures | `theory` | `theory/algorithms/` | — |
-| IEEE 754, number systems, boolean algebra | `theory` | `theory/computing/` | — |
-| OS, processes, memory management | `theory` | `theory/os/` | — |
-| Concurrency, atomics | `theory` | `theory/concurrency/` | — |
-| Trig, calculus, linear algebra, discrete math | `math` | `math/<subdomain>/` | — |
-| Git, docker, build tools | guide | `guides/` | — |
+| Topic                                         | Domain tag | Notes location        | Source location |
+| --------------------------------------------- | ---------- | --------------------- | --------------- |
+| Pointers, memory, structs, strings, I/O       | `c`        | `c/notes/`            | `c/src/`        |
+| Ownership, traits, lifetimes, iterators       | `rust`     | `rust/notes/`         | `rust/src/`     |
+| OOP concepts                                  | `python`   | `python/oop/`         | —               |
+| Algorithms, data structures                   | `theory`   | `theory/algorithms/`  | —               |
+| IEEE 754, number systems, boolean algebra     | `theory`   | `theory/computing/`   | —               |
+| OS, processes, memory management              | `theory`   | `theory/os/`          | —               |
+| Concurrency, atomics                          | `theory`   | `theory/concurrency/` | —               |
+| Trig, calculus, linear algebra, discrete math | `math`     | `math/<subdomain>/`   | —               |
+| Git, docker, build tools                      | guide      | `guides/`             | —               |
 
 ---
 

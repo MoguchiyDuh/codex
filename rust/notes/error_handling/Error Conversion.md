@@ -64,7 +64,7 @@ fn combined_operation() -> Result<String, UnifiedError> {
 
 The caller only deals with `UnifiedError`, and each variant preserves the original error inside it.
 
-## Manual Conversion with map\_err
+## Manual Conversion with map_err
 
 When you don't want to define a `From` impl (e.g., converting to `String` for a quick prototype), use `.map_err()` with a closure:
 

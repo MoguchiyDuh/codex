@@ -22,12 +22,12 @@ linear_search(A, target):
     return NOT_FOUND
 ```
 
-| Property | Value |
-|---|---|
-| Worst | $\Theta(n)$ |
-| Average | $\Theta(n)$ |
-| Best | $\Theta(1)$ |
-| Space | $\Theta(1)$ |
+| Property | Value                           |
+| -------- | ------------------------------- |
+| Worst    | $\Theta(n)$                     |
+| Average  | $\Theta(n)$                     |
+| Best     | $\Theta(1)$                     |
+| Space    | $\Theta(1)$                     |
 | Requires | nothing — works on any iterable |
 
 The only general-purpose search when the data is unsorted. Asymptotically optimal on unstructured input — any algorithm must in the worst case examine every element to decide absence.
@@ -53,30 +53,29 @@ binary_search(A, target):
 
 **Code:** `theory/algorithms/showcase/path_finding/binary_search.py`
 
-| Property | Value |
-|---|---|
-| Worst | $\Theta(\log n)$ |
-| Average | $\Theta(\log n)$ |
-| Best | $\Theta(1)$ |
-| Space | $\Theta(1)$ iterative, $\Theta(\log n)$ recursive |
-| Requires | sorted array, $\Theta(1)$ random access |
+| Property | Value                                             |
+| -------- | ------------------------------------------------- |
+| Worst    | $\Theta(\log n)$                                  |
+| Average  | $\Theta(\log n)$                                  |
+| Best     | $\Theta(1)$                                       |
+| Space    | $\Theta(1)$ iterative, $\Theta(\log n)$ recursive |
+| Requires | sorted array, $\Theta(1)$ random access           |
 
 ### Loop invariant
 
 The interval `A[lo..hi]` always contains the target if it is present in `A`. Each iteration shrinks `hi - lo + 1` by at least half. The loop terminates when the interval is empty (`lo > hi`).
 
-
 ### Off-by-one discipline
 
 Three common bugs and their fixes:
 
-| Bug | Cause | Fix |
-|---|---|---|
-| Infinite loop on $n = 1$ | `mid` rounds down, `lo = mid` doesn't shrink interval | use `lo = mid + 1` and `hi = mid - 1`; never reassign to `mid` |
-| Misses target at boundary | uses `<` instead of `≤` in `while` | the closed interval `[lo, hi]` requires `≤` |
-| Integer overflow | `(lo + hi) / 2` on huge arrays | `lo + (hi - lo) / 2` |
+| Bug                       | Cause                                                 | Fix                                                            |
+| ------------------------- | ----------------------------------------------------- | -------------------------------------------------------------- |
+| Infinite loop on $n = 1$  | `mid` rounds down, `lo = mid` doesn't shrink interval | use `lo = mid + 1` and `hi = mid - 1`; never reassign to `mid` |
+| Misses target at boundary | uses `<` instead of `≤` in `while`                    | the closed interval `[lo, hi]` requires `≤`                    |
+| Integer overflow          | `(lo + hi) / 2` on huge arrays                        | `lo + (hi - lo) / 2`                                           |
 
-These are the canonical traps. Knuth's *TAOCP* notes that binary search wasn't published correctly until 1962, more than a decade after first being described.
+These are the canonical traps. Knuth's _TAOCP_ notes that binary search wasn't published correctly until 1962, more than a decade after first being described.
 
 ### Lower bound
 
@@ -116,26 +115,26 @@ For uniformly distributed sorted numeric data, estimate the target's position by
 
 When you do many searches, build a structure once and amortize.
 
-| Structure | Build | Search | Notes |
-|---|---|---|---|
-| Sorted array | $\Theta(n \log n)$ | $\Theta(\log n)$ | static; no inserts |
-| [[../data_structures/Hash Tables\|Hash table]] | $\Theta(n)$ | $\Theta(1)$ avg | unordered, fastest typical |
-| [[../data_structures/Binary Search Tree\|Self-balancing BST]] | $\Theta(n \log n)$ | $\Theta(\log n)$ | ordered, supports range queries |
-| [[../data_structures/B-Tree\|B-tree]] | $\Theta(n \log_t n)$ | $\Theta(\log_t n)$ | block-friendly; databases / disk |
-| [[../data_structures/Bloom Filter\|Bloom filter]] | $\Theta(n)$ | $\Theta(1)$ | probabilistic, no negatives |
+| Structure                                                     | Build                | Search             | Notes                            |
+| ------------------------------------------------------------- | -------------------- | ------------------ | -------------------------------- |
+| Sorted array                                                  | $\Theta(n \log n)$   | $\Theta(\log n)$   | static; no inserts               |
+| [[../data_structures/Hash Tables\|Hash table]]                | $\Theta(n)$          | $\Theta(1)$ avg    | unordered, fastest typical       |
+| [[../data_structures/Binary Search Tree\|Self-balancing BST]] | $\Theta(n \log n)$   | $\Theta(\log n)$   | ordered, supports range queries  |
+| [[../data_structures/B-Tree\|B-tree]]                         | $\Theta(n \log_t n)$ | $\Theta(\log_t n)$ | block-friendly; databases / disk |
+| [[../data_structures/Bloom Filter\|Bloom filter]]             | $\Theta(n)$          | $\Theta(1)$        | probabilistic, no negatives      |
 
 The right answer depends on workload: dynamic vs static, ordered vs unordered, in-memory vs disk.
 
 ## Decision summary
 
-| Situation | Algorithm |
-|---|---|
-| Unsorted array, single search | linear search |
-| Unsorted array, repeated searches | build a hash table |
-| Sorted array, occasional search | binary search |
-| Sorted array, ordered queries (range, predecessor) | balanced BST |
-| Disk-resident dataset | B-tree |
-| Membership test, large set, false positives ok | Bloom filter |
+| Situation                                          | Algorithm          |
+| -------------------------------------------------- | ------------------ |
+| Unsorted array, single search                      | linear search      |
+| Unsorted array, repeated searches                  | build a hash table |
+| Sorted array, occasional search                    | binary search      |
+| Sorted array, ordered queries (range, predecessor) | balanced BST       |
+| Disk-resident dataset                              | B-tree             |
+| Membership test, large set, false positives ok     | Bloom filter       |
 
 ## Video references
 

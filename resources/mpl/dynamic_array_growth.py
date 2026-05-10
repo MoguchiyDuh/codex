@@ -16,7 +16,7 @@ import numpy as np
 
 _HERE = Path(__file__).resolve().parent
 _CFG = json.loads((_HERE / "config.json").read_text())
-_OUTPUT = _HERE.parent / "pictures" / "dynamic_array_growth.png"
+OUTPUT = _HERE.parent / "pictures" / "dynamic_array_growth.png"
 
 # ── config aliases ────────────────────────────────────────────────────────────
 _DPI = _CFG["output"]["dpi"]
@@ -305,7 +305,7 @@ def main() -> None:
     _build_array_rows(ax_left)
     _draw_amortized_chart(ax_right)
 
-    fig.savefig(_OUTPUT, dpi=_DPI, bbox_inches=_BBOX)
+    fig.savefig(OUTPUT, dpi=_DPI, bbox_inches=_BBOX)
     plt.close(fig)
 
 

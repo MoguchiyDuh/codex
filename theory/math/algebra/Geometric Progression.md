@@ -16,12 +16,12 @@ $$\boxed{a_n = a_1 \cdot r^{n-1}}$$
 The common ratio is found by:
 $$\boxed{r = \frac{a_{n+1}}{a_n}}$$
 
-| Symbol | Meaning |
-|--------|---------|
-| $a_1$ | First term |
-| $r$ | Common ratio |
-| $n$ | Position |
-| $S_n$ | Sum of first $n$ terms |
+| Symbol     | Meaning                           |
+| ---------- | --------------------------------- |
+| $a_1$      | First term                        |
+| $r$        | Common ratio                      |
+| $n$        | Position                          |
+| $S_n$      | Sum of first $n$ terms            |
 | $S_\infty$ | Sum to infinity (convergent only) |
 
 Examples of common ratios: $2, 6, 18, 54\ (r=3)$; $100, 50, 25\ (r=0.5)$; $3, -6, 12\ (r=-2)$
@@ -48,10 +48,10 @@ Converges **only if** $|r| < 1$:
 
 $$\boxed{S_\infty = \frac{a_1}{1 - r}}$$
 
-| Condition | Behavior |
-|-----------|----------|
-| $\|r\| < 1$ | Converges |
-| $\|r\| \geq 1$ | Diverges |
+| Condition      | Behavior  |
+| -------------- | --------- |
+| $\|r\| < 1$    | Converges |
+| $\|r\| \geq 1$ | Diverges  |
 
 ![[geometric_convergence.png]]
 
@@ -69,14 +69,14 @@ Repeating decimals: $0.\overline{3} = \frac{0.3}{1 - 0.1} = \frac{1}{3}$
 
 ## Comparison with Arithmetic Progression
 
-| Feature | Arithmetic | Geometric |
-|---------|-----------|-----------|
-| Pattern | Add $d$ | Multiply by $r$ |
-| General term | $a_1 + (n-1)d$ | $a_1 \cdot r^{n-1}$ |
-| Middle term | $\frac{a+c}{2}$ | $\sqrt{ac}$ |
-| Growth | Linear | Exponential |
-| Sum | $\frac{n(a_1+a_n)}{2}$ | $a_1 \cdot \frac{1-r^n}{1-r}$ |
-| Infinite sum | Always diverges | Converges if $\|r\| < 1$ |
+| Feature      | Arithmetic             | Geometric                     |
+| ------------ | ---------------------- | ----------------------------- |
+| Pattern      | Add $d$                | Multiply by $r$               |
+| General term | $a_1 + (n-1)d$         | $a_1 \cdot r^{n-1}$           |
+| Middle term  | $\frac{a+c}{2}$        | $\sqrt{ac}$                   |
+| Growth       | Linear                 | Exponential                   |
+| Sum          | $\frac{n(a_1+a_n)}{2}$ | $a_1 \cdot \frac{1-r^n}{1-r}$ |
+| Infinite sum | Always diverges        | Converges if $\|r\| < 1$      |
 
 ## Applications
 

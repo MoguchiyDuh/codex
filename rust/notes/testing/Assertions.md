@@ -9,11 +9,11 @@ Assertion macros panic on failure. Outside of tests they work the same way — t
 
 ## Core macros
 
-| Macro | Fails when |
-|-------|-----------|
-| `assert!(expr)` | `expr` is `false` |
-| `assert_eq!(a, b)` | `a != b` |
-| `assert_ne!(a, b)` | `a == b` |
+| Macro              | Fails when        |
+| ------------------ | ----------------- |
+| `assert!(expr)`    | `expr` is `false` |
+| `assert_eq!(a, b)` | `a != b`          |
+| `assert_ne!(a, b)` | `a == b`          |
 
 `assert_eq!` and `assert_ne!` print both values on failure — significantly easier to debug than a bare `assert!`.
 

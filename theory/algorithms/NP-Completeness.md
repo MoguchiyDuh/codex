@@ -18,14 +18,14 @@ A problem is encoded as a language $L \subseteq \{0, 1\}^*$: the set of input st
 
 ## The classes P and NP
 
-| Class | Definition |
-|---|---|
-| **P** | Decision problems solvable in polynomial time |
-| **NP** | Decision problems whose "yes" answers are *verifiable* in polynomial time given a certificate (witness) |
-| **co-NP** | Decision problems whose "no" answers are verifiable in polynomial time |
-| **EXP** | Solvable in exponential time |
+| Class     | Definition                                                                                              |
+| --------- | ------------------------------------------------------------------------------------------------------- |
+| **P**     | Decision problems solvable in polynomial time                                                           |
+| **NP**    | Decision problems whose "yes" answers are _verifiable_ in polynomial time given a certificate (witness) |
+| **co-NP** | Decision problems whose "no" answers are verifiable in polynomial time                                  |
+| **EXP**   | Solvable in exponential time                                                                            |
 
-NP stands for *non-deterministic polynomial* — equivalent definition: solvable in polynomial time on a non-deterministic Turing machine that can branch arbitrarily on each step.
+NP stands for _non-deterministic polynomial_ — equivalent definition: solvable in polynomial time on a non-deterministic Turing machine that can branch arbitrarily on each step.
 
 **Key facts (proven):**
 
@@ -55,10 +55,10 @@ Reductions transfer hardness: if you can reduce a known-hard problem to a new pr
 
 ## NP-hard and NP-complete
 
-| Class | Definition |
-|---|---|
-| **NP-hard** | Problems $H$ such that every $L \in \text{NP}$ has $L \leq_p H$. (Need not be in NP.) |
-| **NP-complete** | NP-hard problems that are also in NP |
+| Class           | Definition                                                                            |
+| --------------- | ------------------------------------------------------------------------------------- |
+| **NP-hard**     | Problems $H$ such that every $L \in \text{NP}$ has $L \leq_p H$. (Need not be in NP.) |
+| **NP-complete** | NP-hard problems that are also in NP                                                  |
 
 NP-complete problems are the "hardest in NP" — every NP problem reduces to them. Consequence: if any NP-complete problem is in P, then $\text{P} = \text{NP}$.
 
@@ -73,20 +73,20 @@ The "first" NP-complete problem was **SAT** — the **Cook-Levin theorem** (1971
 
 These are the problems most often used as the source of new reductions.
 
-| Problem | Question |
-|---|---|
-| **SAT** | Is a given Boolean formula satisfiable? |
-| **3-SAT** | SAT restricted to clauses of $\leq 3$ literals |
-| **CLIQUE** | Does graph $G$ contain a clique of size $k$? |
-| **VERTEX-COVER** | Does graph $G$ have a vertex cover of size $\leq k$? |
-| **INDEPENDENT-SET** | Does graph $G$ have an independent set of size $\geq k$? |
-| **HAMILTONIAN-CYCLE** | Does graph $G$ have a cycle visiting every vertex exactly once? |
-| **TSP (decision)** | Is there a tour of cost $\leq k$? |
-| **SUBSET-SUM** | Does a subset of $\{a_1, \dots, a_n\}$ sum to $T$? |
-| **PARTITION** | Can $\{a_1, \dots, a_n\}$ be split into two equal-sum subsets? |
-| **0/1 KNAPSACK (decision)** | Is there a packing of value $\geq k$? |
-| **GRAPH-COLORING** | Can $G$ be coloured with $k$ colours? (NP-complete for $k \geq 3$) |
-| **SET-COVER** | Cover a universe with $\leq k$ sets from a collection? |
+| Problem                     | Question                                                           |
+| --------------------------- | ------------------------------------------------------------------ |
+| **SAT**                     | Is a given Boolean formula satisfiable?                            |
+| **3-SAT**                   | SAT restricted to clauses of $\leq 3$ literals                     |
+| **CLIQUE**                  | Does graph $G$ contain a clique of size $k$?                       |
+| **VERTEX-COVER**            | Does graph $G$ have a vertex cover of size $\leq k$?               |
+| **INDEPENDENT-SET**         | Does graph $G$ have an independent set of size $\geq k$?           |
+| **HAMILTONIAN-CYCLE**       | Does graph $G$ have a cycle visiting every vertex exactly once?    |
+| **TSP (decision)**          | Is there a tour of cost $\leq k$?                                  |
+| **SUBSET-SUM**              | Does a subset of $\{a_1, \dots, a_n\}$ sum to $T$?                 |
+| **PARTITION**               | Can $\{a_1, \dots, a_n\}$ be split into two equal-sum subsets?     |
+| **0/1 KNAPSACK (decision)** | Is there a packing of value $\geq k$?                              |
+| **GRAPH-COLORING**          | Can $G$ be coloured with $k$ colours? (NP-complete for $k \geq 3$) |
+| **SET-COVER**               | Cover a universe with $\leq k$ sets from a collection?             |
 
 These cluster into families: logic (SAT variants), graph (clique, vertex-cover, etc.), arithmetic (subset-sum, knapsack), and they all reduce to each other.
 
@@ -112,33 +112,33 @@ These show how mechanical the reductions can be — once a few are in hand, new 
 
 ## Practical implications
 
-A problem being NP-complete does not mean "no algorithm exists" — only that no *efficient* (polynomial-time) algorithm is known.
+A problem being NP-complete does not mean "no algorithm exists" — only that no _efficient_ (polynomial-time) algorithm is known.
 
-| Strategy | Approach |
-|---|---|
-| **Approximation algorithms** | settle for provably-near-optimal solutions in polynomial time — see [[Approximation Algorithms]] |
-| **Heuristics** | local search, simulated annealing, genetic algorithms — no guarantee but often work |
-| **Restrict the input** | many NP-complete problems become polynomial on planar graphs, trees, bounded-treewidth graphs |
-| **Parameterised algorithms** | exponential in some parameter $k$, polynomial in $n$ — useful when $k$ is small (FPT theory) |
-| **Pseudo-polynomial algorithms** | polynomial in numeric value (knapsack: $\Theta(nW)$) — fine for small numbers |
-| **SAT solvers and ILP solvers** | exponential worst case but extremely effective on real-world instances |
-| **Branch and bound** | exhaustive search with smart pruning — see [[Backtracking]] |
+| Strategy                         | Approach                                                                                         |
+| -------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Approximation algorithms**     | settle for provably-near-optimal solutions in polynomial time — see [[Approximation Algorithms]] |
+| **Heuristics**                   | local search, simulated annealing, genetic algorithms — no guarantee but often work              |
+| **Restrict the input**           | many NP-complete problems become polynomial on planar graphs, trees, bounded-treewidth graphs    |
+| **Parameterised algorithms**     | exponential in some parameter $k$, polynomial in $n$ — useful when $k$ is small (FPT theory)     |
+| **Pseudo-polynomial algorithms** | polynomial in numeric value (knapsack: $\Theta(nW)$) — fine for small numbers                    |
+| **SAT solvers and ILP solvers**  | exponential worst case but extremely effective on real-world instances                           |
+| **Branch and bound**             | exhaustive search with smart pruning — see [[Backtracking]]                                      |
 
 ## Beyond NP
 
-| Class | Loosely |
-|---|---|
-| **PSPACE** | Polynomial *space* (any time). Contains NP and co-NP. |
-| **EXPTIME** | Exponential time. Properly contains P. |
-| **NEXP** | Non-deterministic exponential time |
-| **#P** | Counting versions of NP problems (e.g. count satisfying assignments) |
-| **PH** | Polynomial hierarchy — generalises NP, co-NP, etc., levelled by quantifier alternations |
+| Class       | Loosely                                                                                 |
+| ----------- | --------------------------------------------------------------------------------------- |
+| **PSPACE**  | Polynomial _space_ (any time). Contains NP and co-NP.                                   |
+| **EXPTIME** | Exponential time. Properly contains P.                                                  |
+| **NEXP**    | Non-deterministic exponential time                                                      |
+| **#P**      | Counting versions of NP problems (e.g. count satisfying assignments)                    |
+| **PH**      | Polynomial hierarchy — generalises NP, co-NP, etc., levelled by quantifier alternations |
 
 These richer hierarchies classify problems beyond NP, used in cryptography, formal verification, and game theory.
 
 ## Related concepts
 
-- **Decidability** — does an algorithm exist at all? Halting problem is undecidable; NP-completeness is *within* the decidable.
+- **Decidability** — does an algorithm exist at all? Halting problem is undecidable; NP-completeness is _within_ the decidable.
 - **Reducibility** — many-one reductions, Turing reductions, log-space reductions. Each gives a different NP-complete world.
 - **Average-case complexity** — some NP-complete problems are easy on average; cryptography needs the harder ones.
 

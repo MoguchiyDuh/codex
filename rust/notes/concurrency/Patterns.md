@@ -152,12 +152,12 @@ For production rate limiting, prefer a crate like `governor`.
 
 ## Pattern Summary
 
-| Pattern | State ownership | Communication | Best for |
-|---------|----------------|---------------|----------|
-| Actor | Exclusive (one task) | Messages + oneshot replies | Stateful objects, avoiding Mutex |
-| Worker Pool | Shared via Arc<Mutex<Rx>> | Job queue channel | Bounded concurrency over a queue |
-| Pipeline | Per-stage (none shared) | Chained channels | Stream processing, ETL |
-| Semaphore | N/A | Permit acquire/release | Limiting concurrent access to a resource |
+| Pattern     | State ownership           | Communication              | Best for                                 |
+| ----------- | ------------------------- | -------------------------- | ---------------------------------------- |
+| Actor       | Exclusive (one task)      | Messages + oneshot replies | Stateful objects, avoiding Mutex         |
+| Worker Pool | Shared via Arc<Mutex<Rx>> | Job queue channel          | Bounded concurrency over a queue         |
+| Pipeline    | Per-stage (none shared)   | Chained channels           | Stream processing, ETL                   |
+| Semaphore   | N/A                       | Permit acquire/release     | Limiting concurrent access to a resource |
 
 ## Related
 

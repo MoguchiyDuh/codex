@@ -32,14 +32,14 @@ The `unsafe extern "C"` syntax (Rust 2024) makes the unsafety explicit at the bl
 
 Use `std::ffi::c_*` types rather than Rust primitives when crossing the boundary. C's `int` is not guaranteed to be 32 bits on all platforms.
 
-| Rust type | C equivalent | Typical size |
-|---|---|---|
-| `c_char` | `char` | 1 byte |
-| `c_int` | `int` | 4 bytes |
-| `c_double` | `double` | 8 bytes |
-| `c_longlong` | `long long` | 8 bytes |
-| `usize` | `size_t` | pointer-width |
-| `isize` | `ptrdiff_t` | pointer-width |
+| Rust type    | C equivalent | Typical size  |
+| ------------ | ------------ | ------------- |
+| `c_char`     | `char`       | 1 byte        |
+| `c_int`      | `int`        | 4 bytes       |
+| `c_double`   | `double`     | 8 bytes       |
+| `c_longlong` | `long long`  | 8 bytes       |
+| `usize`      | `size_t`     | pointer-width |
+| `isize`      | `ptrdiff_t`  | pointer-width |
 
 ## repr(C) Structs
 

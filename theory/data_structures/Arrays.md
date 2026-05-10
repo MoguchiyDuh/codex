@@ -14,11 +14,11 @@ status: complete
 
 A static array reserves a fixed number of slots at allocation time. Address of element `i` is `base + i * sizeof(elem)`, so random access is O(1). Size cannot change.
 
-| Operation | Cost |
-|---|---|
-| `get(i)` / `set(i, x)` | O(1) |
-| `insert(i, x)` / `delete(i)` | O(n) (shift) |
-| `append` | O(1) only if room remains |
+| Operation                    | Cost                      |
+| ---------------------------- | ------------------------- |
+| `get(i)` / `set(i, x)`       | O(1)                      |
+| `insert(i, x)` / `delete(i)` | O(n) (shift)              |
+| `append`                     | O(1) only if room remains |
 
 Cache locality is excellent: sequential traversal is the fastest access pattern on modern hardware.
 
@@ -38,7 +38,7 @@ A single resize costs O(n), but it happens only every n appends. Total cost of n
 
 ### Shrink policy
 
-Implementations often *do not* shrink on delete, or shrink only when load drops below 1/4 to avoid oscillation when size hovers near a capacity threshold.
+Implementations often _do not_ shrink on delete, or shrink only when load drops below 1/4 to avoid oscillation when size hovers near a capacity threshold.
 
 ## Multi-dimensional arrays
 
@@ -46,13 +46,13 @@ A 2D array can be stored in **row-major** (C, C++, Python NumPy default) or **co
 
 ## Tradeoffs vs linked list
 
-| | Array | Linked list |
-|---|---|---|
-| Random access | O(1) | O(n) |
-| Insert/delete at end | O(1) amortized | O(1) |
-| Insert/delete at front | O(n) | O(1) |
-| Memory overhead | Low (just data) | Per-node pointer overhead |
-| Cache behaviour | Excellent | Poor (scattered nodes) |
+|                        | Array           | Linked list               |
+| ---------------------- | --------------- | ------------------------- |
+| Random access          | O(1)            | O(n)                      |
+| Insert/delete at end   | O(1) amortized  | O(1)                      |
+| Insert/delete at front | O(n)            | O(1)                      |
+| Memory overhead        | Low (just data) | Per-node pointer overhead |
+| Cache behaviour        | Excellent       | Poor (scattered nodes)    |
 
 ## See also
 

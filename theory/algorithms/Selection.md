@@ -9,25 +9,25 @@ status: complete
 
 # Selection
 
-> Find the $k$-th smallest element of an unordered array — the *order statistic* of rank $k$. Sorting solves it in $\Theta(n \log n)$; specialised algorithms run in $\Theta(n)$.
+> Find the $k$-th smallest element of an unordered array — the _order statistic_ of rank $k$. Sorting solves it in $\Theta(n \log n)$; specialised algorithms run in $\Theta(n)$.
 
 ## The problem
 
 Given $A[1..n]$ and $1 \leq k \leq n$, return the element that would sit at position $k$ in the sorted order. Special cases:
 
-| $k$ | Name |
-|---|---|
-| $1$ | minimum |
-| $n$ | maximum |
-| $\lfloor (n+1)/2 \rfloor$ | median |
+| $k$                                         | Name      |
+| ------------------------------------------- | --------- |
+| $1$                                         | minimum   |
+| $n$                                         | maximum   |
+| $\lfloor (n+1)/2 \rfloor$                   | median    |
 | $\lfloor n/4 \rfloor, \lfloor 3n/4 \rfloor$ | quartiles |
 
 ## Trivial bounds
 
-| Approach | Time |
-|---|---|
-| Sort, then index | $\Theta(n \log n)$ |
-| Min/max scan | $\Theta(n)$ for $k = 1$ or $n$ |
+| Approach         | Time                                       |
+| ---------------- | ------------------------------------------ |
+| Sort, then index | $\Theta(n \log n)$                         |
+| Min/max scan     | $\Theta(n)$ for $k = 1$ or $n$             |
 | Heap of size $k$ | $\Theta(n \log k)$ — useful when $k \ll n$ |
 
 For arbitrary $k$, the heap method is fine in practice but still super-linear. The interesting algorithms hit $\Theta(n)$ for any $k$.
@@ -62,10 +62,10 @@ $$T(n) = n + n/2 + n/4 + \cdots = \Theta(n)$$
 
 Geometric sum, half the cost of quicksort's $\Theta(n \log n)$ which has both halves contributing.
 
-| Case | Time |
-|---|---|
-| Best | $\Theta(n)$ |
-| Average (random pivot) | $\Theta(n)$ |
+| Case                                  | Time          |
+| ------------------------------------- | ------------- |
+| Best                                  | $\Theta(n)$   |
+| Average (random pivot)                | $\Theta(n)$   |
 | Worst (always smallest/largest pivot) | $\Theta(n^2)$ |
 
 The worst case mirrors quicksort's. Randomised pivot selection makes it vanishingly unlikely on real input.
@@ -109,18 +109,18 @@ Group sizes 3 or 4 give $9/10 \geq 1$ — recurrence does not collapse to linear
 
 ### Practical note
 
-Median-of-medians has large constants — measured constants ~10× quickselect on typical input. Used as a *theoretical* guarantee and inside introselect (the deterministic fallback in production selection routines).
+Median-of-medians has large constants — measured constants ~10× quickselect on typical input. Used as a _theoretical_ guarantee and inside introselect (the deterministic fallback in production selection routines).
 
 ## Comparison
 
-| Algorithm | Worst | Average | Notes |
-|---|---|---|---|
-| Sort + index | $\Theta(n \log n)$ | $\Theta(n \log n)$ | simple, slow |
-| Heap of size $k$ | $\Theta(n \log k)$ | $\Theta(n \log k)$ | ideal for top-$k$ |
-| Quickselect | $\Theta(n^2)$ | $\Theta(n)$ | fast in practice |
-| Randomised quickselect | $\Theta(n^2)$ | $\Theta(n)$ expected | the practical default |
-| Median-of-medians | $\Theta(n)$ | $\Theta(n)$ | theoretical guarantee, large constants |
-| Introselect | $\Theta(n)$ | $\Theta(n)$ | quickselect with median-of-medians fallback |
+| Algorithm              | Worst              | Average              | Notes                                       |
+| ---------------------- | ------------------ | -------------------- | ------------------------------------------- |
+| Sort + index           | $\Theta(n \log n)$ | $\Theta(n \log n)$   | simple, slow                                |
+| Heap of size $k$       | $\Theta(n \log k)$ | $\Theta(n \log k)$   | ideal for top-$k$                           |
+| Quickselect            | $\Theta(n^2)$      | $\Theta(n)$          | fast in practice                            |
+| Randomised quickselect | $\Theta(n^2)$      | $\Theta(n)$ expected | the practical default                       |
+| Median-of-medians      | $\Theta(n)$        | $\Theta(n)$          | theoretical guarantee, large constants      |
+| Introselect            | $\Theta(n)$        | $\Theta(n)$          | quickselect with median-of-medians fallback |
 
 ## Where this matters
 

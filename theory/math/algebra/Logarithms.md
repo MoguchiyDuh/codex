@@ -19,11 +19,11 @@ Examples: $\log_2 8 = 3$ (since $2^3=8$), $\log_{10} 100 = 2$, $\log_3 \frac{1}{
 
 ## Common Types
 
-| Name | Notation | Base | Primary use |
-|------|----------|------|-------------|
-| Common log | $\log x$ | $10$ | Engineering, pH, decibels |
-| Natural log | $\ln x$ | $e \approx 2.718$ | Calculus, continuous growth |
-| Binary log | $\lg x$ or $\log_2 x$ | $2$ | CS, algorithm complexity |
+| Name        | Notation              | Base              | Primary use                 |
+| ----------- | --------------------- | ----------------- | --------------------------- |
+| Common log  | $\log x$              | $10$              | Engineering, pH, decibels   |
+| Natural log | $\ln x$               | $e \approx 2.718$ | Calculus, continuous growth |
+| Binary log  | $\lg x$ or $\log_2 x$ | $2$               | CS, algorithm complexity    |
 
 ## Fundamental Identities
 
@@ -31,15 +31,15 @@ $$\log_a 1 = 0 \qquad \log_a a = 1 \qquad \log_a a^n = n \qquad a^{\log_a x} = x
 
 ## Laws of Logarithms
 
-| Law | Formula |
-|-----|---------|
-| Product | $\log_a(mn) = \log_a m + \log_a n$ |
-| Quotient | $\log_a\!\left(\frac{m}{n}\right) = \log_a m - \log_a n$ |
-| Power | $\log_a m^n = n\log_a m$ |
-| Root | $\log_a \sqrt[n]{x} = \frac{1}{n}\log_a x$ |
-| Reciprocal | $\log_a \frac{1}{x} = -\log_a x$ |
+| Law            | Formula                                                    |
+| -------------- | ---------------------------------------------------------- |
+| Product        | $\log_a(mn) = \log_a m + \log_a n$                         |
+| Quotient       | $\log_a\!\left(\frac{m}{n}\right) = \log_a m - \log_a n$   |
+| Power          | $\log_a m^n = n\log_a m$                                   |
+| Root           | $\log_a \sqrt[n]{x} = \frac{1}{n}\log_a x$                 |
+| Reciprocal     | $\log_a \frac{1}{x} = -\log_a x$                           |
 | Change of base | $\log_a b = \dfrac{\ln b}{\ln a} = \dfrac{\log b}{\log a}$ |
-| Power of base | $\log_{a^n} m = \frac{1}{n}\log_a m$ |
+| Power of base  | $\log_{a^n} m = \frac{1}{n}\log_a m$                       |
 
 ## Solving Logarithmic Equations
 
@@ -63,15 +63,15 @@ Example: $\log_3 x + \log_3(x-2) = 1$
 
 ## Special Values
 
-| Expression | Value |
-|------------|-------|
-| $\log 1$ | $0$ |
-| $\log 10$ | $1$ |
-| $\log 100$ | $2$ |
-| $\ln 1$ | $0$ |
-| $\ln e$ | $1$ |
-| $\log_2 8$ | $3$ |
-| $\log_2 1024$ | $10$ |
+| Expression    | Value |
+| ------------- | ----- |
+| $\log 1$      | $0$   |
+| $\log 10$     | $1$   |
+| $\log 100$    | $2$   |
+| $\ln 1$       | $0$   |
+| $\ln e$       | $1$   |
+| $\log_2 8$    | $3$   |
+| $\log_2 1024$ | $10$  |
 
 ## Applications
 

@@ -18,11 +18,11 @@ while (!(*uart_status & 0x1)) { }  // hardware sets bit 0; compiler cannot hoist
 
 **Legitimate use cases:**
 
-| Use case | Reason |
-|----------|--------|
+| Use case                         | Reason                                               |
+| -------------------------------- | ---------------------------------------------------- |
 | Memory-mapped hardware registers | hardware writes the value outside of program control |
-| Signal handler shared variable | handler runs outside normal control flow |
-| `setjmp`/`longjmp` locals | value must survive the non-local jump |
+| Signal handler shared variable   | handler runs outside normal control flow             |
+| `setjmp`/`longjmp` locals        | value must survive the non-local jump                |
 
 **What `volatile` does NOT do:**
 
@@ -64,7 +64,7 @@ void *memmove(void *dst, const void *src, size_t n);                   // overla
 
 Use `restrict` only on numeric kernels or bulk array ops where non-aliasing is structurally guaranteed.
 
-## _Atomic
+## \_Atomic
 
 C11 atomic types for lock-free inter-thread communication. Operations on `_Atomic` types are indivisible — no thread observes a partial state.
 
@@ -82,12 +82,12 @@ atomic_fetch_add(&counter, 1);    // returns old value, adds 1
 
 `_Atomic int` vs `volatile int` for threading:
 
-| | `volatile int` | `_Atomic int` |
-|--|---------------|--------------|
-| Prevents register caching | yes | yes |
-| Indivisible read-modify-write | no | yes |
-| Memory ordering guarantees | no | yes |
-| Safe for inter-thread use | no | yes |
+|                               | `volatile int` | `_Atomic int` |
+| ----------------------------- | -------------- | ------------- |
+| Prevents register caching     | yes            | yes           |
+| Indivisible read-modify-write | no             | yes           |
+| Memory ordering guarantees    | no             | yes           |
+| Safe for inter-thread use     | no             | yes           |
 
 ## Memory Orders
 
@@ -98,12 +98,12 @@ atomic_store_explicit(&flag, 1, memory_order_release);
 int val = atomic_load_explicit(&flag, memory_order_acquire);
 ```
 
-| Order | Guarantee |
-|-------|-----------|
-| `memory_order_relaxed` | atomic, no ordering relative to other ops |
+| Order                  | Guarantee                                            |
+| ---------------------- | ---------------------------------------------------- |
+| `memory_order_relaxed` | atomic, no ordering relative to other ops            |
 | `memory_order_acquire` | no subsequent reads/writes can move before this load |
-| `memory_order_release` | no prior reads/writes can move after this store |
-| `memory_order_seq_cst` | full sequential consistency — default |
+| `memory_order_release` | no prior reads/writes can move after this store      |
+| `memory_order_seq_cst` | full sequential consistency — default                |
 
 **Acquire/release pair — producer/consumer:**
 

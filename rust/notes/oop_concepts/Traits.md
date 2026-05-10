@@ -54,7 +54,7 @@ fn make_greeter() -> impl Greet {
 
 ## Dynamic dispatch — `dyn Trait`
 
-`&dyn Trait` is a *fat pointer*: two words — a data pointer and a vtable pointer. The vtable holds function pointers to the concrete type's method implementations. Dispatch happens at runtime.
+`&dyn Trait` is a _fat pointer_: two words — a data pointer and a vtable pointer. The vtable holds function pointers to the concrete type's method implementations. Dispatch happens at runtime.
 
 ```rust
 fn greet_dynamic(item: &dyn Greet) {
@@ -67,17 +67,18 @@ fn make_greeter_dynamic(use_english: bool) -> Box<dyn Greet> {
 ```
 
 Size comparison:
+
 - `&dyn Greet` — 16 bytes (fat pointer, 64-bit)
 - `&English` — 8 bytes (thin pointer)
 
 `impl Trait` vs `dyn Trait`:
 
-| | `impl Trait` | `dyn Trait` |
-|---|---|---|
-| Dispatch | compile-time | runtime (vtable) |
-| Cost | zero | vtable indirection |
-| Heterogeneous collection | no | yes (`Vec<Box<dyn Trait>>`) |
-| Return type hides concrete type | yes (RPIT) | yes |
+|                                 | `impl Trait` | `dyn Trait`                 |
+| ------------------------------- | ------------ | --------------------------- |
+| Dispatch                        | compile-time | runtime (vtable)            |
+| Cost                            | zero         | vtable indirection          |
+| Heterogeneous collection        | no           | yes (`Vec<Box<dyn Trait>>`) |
+| Return type hides concrete type | yes (RPIT)   | yes                         |
 
 ## Trait objects in heterogeneous collections
 
@@ -126,6 +127,7 @@ impl<T: std::fmt::Display> Printable for T {}
 ```
 
 Now every type with `Display` gets `Printable` for free. The standard library uses this pattern extensively:
+
 - `impl<T: Iterator> IntoIterator for T`
 - `impl<T: Error> From<T> for Box<dyn Error>`
 
@@ -148,7 +150,8 @@ trait Describable {
 
 ## Object safety
 
-A trait is *object-safe* if it can be used as `dyn Trait`. Requirements:
+A trait is _object-safe_ if it can be used as `dyn Trait`. Requirements:
+
 - No generic methods.
 - No methods that return `Self` (unless guarded with `where Self: Sized`).
 - No associated constants (generally).

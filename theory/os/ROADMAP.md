@@ -7,6 +7,7 @@ Heavy C focus. Concepts reinforced with actual syscall usage.
 ## Phases
 
 ### Phase 1 — Processes & Threads
+
 Topics: process vs thread, PCB, context switch, `fork`/`exec`/`wait`,
 thread creation (`pthreads`), kernel vs user threads, green threads.
 
@@ -16,6 +17,7 @@ thread creation (`pthreads`), kernel vs user threads, green threads.
 ---
 
 ### Phase 2 — Scheduling
+
 Topics: preemptive vs cooperative, scheduling algorithms (FCFS, SJF, Round Robin,
 MLFQ, CFS), starvation, priority inversion.
 
@@ -25,6 +27,7 @@ MLFQ, CFS), starvation, priority inversion.
 ---
 
 ### Phase 3 — Synchronization
+
 Topics: race conditions, critical section, mutex, semaphore, monitor,
 condition variables, spinlock, read-write lock, deadlock conditions.
 
@@ -34,6 +37,7 @@ condition variables, spinlock, read-write lock, deadlock conditions.
 ---
 
 ### Phase 4 — Deadlock
+
 Topics: necessary conditions (Coffman), prevention, avoidance (Banker's algorithm),
 detection and recovery, livelock vs starvation vs deadlock.
 
@@ -43,6 +47,7 @@ detection and recovery, livelock vs starvation vs deadlock.
 ---
 
 ### Phase 5 — Memory Management
+
 Topics: virtual memory, page tables, page faults, demand paging,
 TLB shootdown, `mmap`, `brk`/`sbrk`, allocator internals.
 
@@ -52,6 +57,7 @@ TLB shootdown, `mmap`, `brk`/`sbrk`, allocator internals.
 ---
 
 ### Phase 6 — File Systems
+
 Topics: inodes, directory structure, VFS abstraction, journaling,
 ext4 vs FAT basics, hard links vs symlinks, `open`/`read`/`write`/`close` syscalls.
 
@@ -61,6 +67,7 @@ ext4 vs FAT basics, hard links vs symlinks, `open`/`read`/`write`/`close` syscal
 ---
 
 ### Phase 7 — I/O & Syscalls
+
 Topics: syscall mechanism (trap), blocking vs non-blocking I/O,
 `select`/`poll`/`epoll`, DMA, interrupt handling, device drivers concept.
 

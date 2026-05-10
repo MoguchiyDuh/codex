@@ -77,10 +77,10 @@ $$\tan(a) \pm \tan(b) = \frac{\sin(a \pm b)}{\cos(a)\cos(b)} \qquad \cot(a) \pm 
 
 ## Domain restrictions
 
-| Function | Undefined at |
-|---|---|
+| Function             | Undefined at                                   |
+| -------------------- | ---------------------------------------------- |
 | $\tan(x)$, $\sec(x)$ | $x = \frac{\pi}{2} + \pi k,\ k \in \mathbb{Z}$ |
-| $\cot(x)$, $\csc(x)$ | $x = \pi k,\ k \in \mathbb{Z}$ |
+| $\cot(x)$, $\csc(x)$ | $x = \pi k,\ k \in \mathbb{Z}$                 |
 
 ## See also
 

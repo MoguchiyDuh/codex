@@ -25,12 +25,12 @@ A **execution** is a (possibly infinite) sequence of states $q_0, q_1, q_2, \ldo
 
 State machines are not just a CS formalism — they are a mathematical proof tool. Any process with a well-defined notion of "current state" and "legal step" can be modelled this way, and then **invariant-based reasoning** applies uniformly. Examples:
 
-| Process | States | Transitions |
-|---|---|---|
-| Program execution | variable valuations + program counter | assignment, branch |
-| Network protocol | (sender state, receiver state, channel) | send, receive, timeout |
-| Puzzle (15-puzzle, Rubik's cube) | board configuration | legal moves |
-| Dining philosophers | allocation of forks | acquire, release |
+| Process                          | States                                  | Transitions            |
+| -------------------------------- | --------------------------------------- | ---------------------- |
+| Program execution                | variable valuations + program counter   | assignment, branch     |
+| Network protocol                 | (sender state, receiver state, channel) | send, receive, timeout |
+| Puzzle (15-puzzle, Rubik's cube) | board configuration                     | legal moves            |
+| Dining philosophers              | allocation of forks                     | acquire, release       |
 
 ## Preserved invariants
 
@@ -55,9 +55,9 @@ A robot starts at $(0, 0)$ on an integer grid. Each move changes the position by
 
 Each move changes $x + y$ by $\pm 1$, flipping parity. But $1 + 1 = 2$ is even — contradiction? Wait: $P$ says the sum is always even, and $(1,1)$ has even sum, so this invariant does not work. We need a stronger one.
 
-Better invariant: let $Q(x, y) \equiv (x + y \text{ is even})$. This is preserved (each move flips sign of $x+y$... but the sum changes by $\pm 1$, so parity *does* flip). Start: $0+0=0$ even. After one move: $x+y = \pm 1$, odd. So after every odd step the sum is odd, after every even step the sum is even. $(1,1)$ has even sum so it's reachable only after an even number of steps — not a full block.
+Better invariant: let $Q(x, y) \equiv (x + y \text{ is even})$. This is preserved (each move flips sign of $x+y$... but the sum changes by $\pm 1$, so parity _does_ flip). Start: $0+0=0$ even. After one move: $x+y = \pm 1$, odd. So after every odd step the sum is odd, after every even step the sum is even. $(1,1)$ has even sum so it's reachable only after an even number of steps — not a full block.
 
-Correct invariant: $P(x,y) \equiv (x + y \equiv 0 \pmod{2})$. Start holds. Each step flips parity, so after an even number of steps parity is even, after an odd number odd. $(1,1)$ has $x+y=2$ which is even, reachable after $2$ steps: $(0,0) \to (1,0) \to (1,1)$. The claim is false — the robot *can* reach $(1,1)$.
+Correct invariant: $P(x,y) \equiv (x + y \equiv 0 \pmod{2})$. Start holds. Each step flips parity, so after an even number of steps parity is even, after an odd number odd. $(1,1)$ has $x+y=2$ which is even, reachable after $2$ steps: $(0,0) \to (1,0) \to (1,1)$. The claim is false — the robot _can_ reach $(1,1)$.
 
 This illustrates that choosing the right invariant requires care. The attempt is not wasted — it reveals structure.
 
@@ -96,19 +96,19 @@ Therefore the algorithm terminates.
 
 For a program modelled as a state machine with designated terminal states:
 
-| Property | Meaning |
-|---|---|
+| Property                | Meaning                                                     |
+| ----------------------- | ----------------------------------------------------------- |
 | **Partial correctness** | if the machine terminates, it terminates in a correct state |
-| **Termination** | the machine always reaches a terminal state |
-| **Total correctness** | partial correctness + termination |
+| **Termination**         | the machine always reaches a terminal state                 |
+| **Total correctness**   | partial correctness + termination                           |
 
 Partial correctness is proved by invariant. Termination is proved by strictly decreasing derived variable. Total correctness requires both.
 
 **Example — division algorithm.** State: $(q, r)$ where $a = qd + r$, $r \geq 0$. Start: $(0, a)$. Transition: if $r \geq d$, move to $(q+1, r-d)$; otherwise halt.
 
-*Invariant (partial correctness):* $a = qd + r$ and $r \geq 0$. Preserved by each transition: $(q+1)d + (r-d) = qd + r = a$, and $r - d \geq 0$ since the transition only fires when $r \geq d$.
+_Invariant (partial correctness):_ $a = qd + r$ and $r \geq 0$. Preserved by each transition: $(q+1)d + (r-d) = qd + r = a$, and $r - d \geq 0$ since the transition only fires when $r \geq d$.
 
-*Termination:* derived variable $f(q,r) = r$, strictly decreasing by $d$ per step, bounded below by $0$.
+_Termination:_ derived variable $f(q,r) = r$, strictly decreasing by $d$ per step, bounded below by $0$.
 
 At the terminal state $r < d$ and $a = qd + r$ with $r \geq 0$ — exactly the output of the division algorithm.
 

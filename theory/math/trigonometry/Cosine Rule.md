@@ -21,10 +21,10 @@ $$\boxed{\cos(C) = \frac{a^2 + b^2 - c^2}{2ab}}$$
 
 ## When to use
 
-| Known | Find |
-|---|---|
+| Known                            | Find       |
+| -------------------------------- | ---------- |
 | Two sides + included angle (SAS) | Third side |
-| All three sides (SSS) | Any angle |
+| All three sides (SSS)            | Any angle  |
 
 ## Connection to Pythagorean theorem
 

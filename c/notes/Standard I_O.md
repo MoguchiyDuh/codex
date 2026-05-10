@@ -12,19 +12,19 @@ source: src/file_copy.c, src/file_read.c, src/wc.c
 
 Three pre-opened streams available at program start:
 
-| Stream | Buffering | Use |
-|--------|-----------|-----|
-| `stdin` | line-buffered (terminal) | input |
-| `stdout` | line-buffered (terminal), fully-buffered (pipe/file) | output |
-| `stderr` | unbuffered | errors — always gets out |
+| Stream   | Buffering                                            | Use                      |
+| -------- | ---------------------------------------------------- | ------------------------ |
+| `stdin`  | line-buffered (terminal)                             | input                    |
+| `stdout` | line-buffered (terminal), fully-buffered (pipe/file) | output                   |
+| `stderr` | unbuffered                                           | errors — always gets out |
 
 ### Buffering modes
 
-| Mode | Constant | Flush trigger |
-|------|----------|---------------|
-| Fully buffered | `_IOFBF` | buffer full |
-| Line buffered | `_IOLBF` | `\n` written |
-| Unbuffered | `_IONBF` | every write |
+| Mode           | Constant | Flush trigger |
+| -------------- | -------- | ------------- |
+| Fully buffered | `_IOFBF` | buffer full   |
+| Line buffered  | `_IOLBF` | `\n` written  |
+| Unbuffered     | `_IONBF` | every write   |
 
 `stdout` switches from line-buffered to fully-buffered when redirected to a file or pipe. Classic trap: `printf` debug output appears out of order or disappears when piped.
 
@@ -38,18 +38,18 @@ Always `fflush` after critical writes to files — a crash leaves buffered data 
 
 ## `printf` and format specifiers
 
-| Specifier | Type | Notes |
-|-----------|------|-------|
-| `%d` / `%i` | `int` | |
-| `%u` | `unsigned int` | |
-| `%ld` / `%lu` | `long` / `unsigned long` | |
-| `%lld` / `%llu` | `long long` / `unsigned long long` | C99+ |
-| `%zu` | `size_t` | use this, never `%d` for sizes |
-| `%td` | `ptrdiff_t` | |
-| `%f` | `double` | `float` promoted to `double` |
-| `%s` | `char *` | null-terminated |
-| `%p` | pointer | |
-| `%x` / `%X` | hex | |
+| Specifier       | Type                               | Notes                          |
+| --------------- | ---------------------------------- | ------------------------------ |
+| `%d` / `%i`     | `int`                              |                                |
+| `%u`            | `unsigned int`                     |                                |
+| `%ld` / `%lu`   | `long` / `unsigned long`           |                                |
+| `%lld` / `%llu` | `long long` / `unsigned long long` | C99+                           |
+| `%zu`           | `size_t`                           | use this, never `%d` for sizes |
+| `%td`           | `ptrdiff_t`                        |                                |
+| `%f`            | `double`                           | `float` promoted to `double`   |
+| `%s`            | `char *`                           | null-terminated                |
+| `%p`            | pointer                            |                                |
+| `%x` / `%X`     | hex                                |                                |
 
 Wrong specifier → **undefined behavior**, not just garbage output.
 
@@ -99,12 +99,12 @@ fclose(f);  // always — check return value for writable files
 
 **Mode strings:**
 
-| Mode | Meaning |
-|------|---------|
-| `"r"` | read, file must exist |
-| `"w"` | write, truncates or creates |
-| `"a"` | append |
-| `"r+"` | read+write, must exist |
+| Mode            | Meaning                                    |
+| --------------- | ------------------------------------------ |
+| `"r"`           | read, file must exist                      |
+| `"w"`           | write, truncates or creates                |
+| `"a"`           | append                                     |
+| `"r+"`          | read+write, must exist                     |
 | `"rb"` / `"wb"` | binary mode — disables newline translation |
 
 Use binary mode for non-text files. On Unix there's no difference; on Windows `\r\n` translation happens in text mode.
@@ -166,6 +166,7 @@ if (!f) {
 ```
 
 **Rules:**
+
 1. Check `errno` immediately — the next syscall overwrites it
 2. `errno` is only meaningful after a function returned an error indicator
 3. Save it before calling anything else (including `fclose`) if you need it later

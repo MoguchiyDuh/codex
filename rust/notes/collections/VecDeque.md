@@ -131,12 +131,12 @@ dq.is_empty();
 
 ## Vec vs VecDeque
 
-| Operation | [[Vec]] | VecDeque |
-|-----------|---------|----------|
-| push/pop back | O(1) amortized | O(1) amortized |
-| push/pop front | O(n) | O(1) amortized |
-| Index access | O(1) | O(1) |
-| Contiguous memory | always | only after `make_contiguous` |
+| Operation         | [[Vec]]        | VecDeque                     |
+| ----------------- | -------------- | ---------------------------- |
+| push/pop back     | O(1) amortized | O(1) amortized               |
+| push/pop front    | O(n)           | O(1) amortized               |
+| Index access      | O(1)           | O(1)                         |
+| Contiguous memory | always         | only after `make_contiguous` |
 
 ## See Also
 

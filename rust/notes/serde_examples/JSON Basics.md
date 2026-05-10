@@ -24,13 +24,13 @@ let v: serde_json::Value = serde_json::from_str(json_str).unwrap();
 
 Variant mapping:
 
-| JSON type | Rust variant           |
-|-----------|------------------------|
-| null      | `Value::Null`          |
-| boolean   | `Value::Bool(bool)`    |
-| number    | `Value::Number(...)`   |
-| string    | `Value::String(String)`|
-| array     | `Value::Array(Vec<Value>)` |
+| JSON type | Rust variant                        |
+| --------- | ----------------------------------- |
+| null      | `Value::Null`                       |
+| boolean   | `Value::Bool(bool)`                 |
+| number    | `Value::Number(...)`                |
+| string    | `Value::String(String)`             |
+| array     | `Value::Array(Vec<Value>)`          |
 | object    | `Value::Object(Map<String, Value>)` |
 
 ### Indexing
@@ -101,10 +101,10 @@ if let (Value::Object(bmap), Value::Object(emap)) =
 
 ## When to use `Value` vs. typed structs
 
-| Scenario | Recommendation |
-|----------|----------------|
-| Known schema | Typed struct + `#[derive(Serialize, Deserialize)]` |
-| Dynamic / unknown keys | `serde_json::Value` |
-| Config / protocol work | Typed structs; avoids runtime type checks |
+| Scenario               | Recommendation                                     |
+| ---------------------- | -------------------------------------------------- |
+| Known schema           | Typed struct + `#[derive(Serialize, Deserialize)]` |
+| Dynamic / unknown keys | `serde_json::Value`                                |
+| Config / protocol work | Typed structs; avoids runtime type checks          |
 
 `Value` is convenient for exploration but shifts type errors from compile time to runtime.

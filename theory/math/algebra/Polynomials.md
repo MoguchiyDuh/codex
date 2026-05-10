@@ -2,6 +2,7 @@
 tags: [math, algebra, polynomials]
 status: complete
 ---
+
 # Polynomials
 
 > An algebraic expression of variables and coefficients combined using addition, subtraction, and multiplication, where variables have non-negative integer exponents.
@@ -20,22 +21,22 @@ The highest exponent of the variable. Examples: $3x^5 + 2x^3 - 7$ has degree 5; 
 
 ### Classification by Degree
 
-| Degree | Name | Standard Form |
-|--------|------|---------------|
-| 0 | Constant | $a$ |
-| 1 | Linear | $ax + b$ |
-| 2 | Quadratic | $ax^2 + bx + c$ |
-| 3 | Cubic | $ax^3 + bx^2 + cx + d$ |
-| 4 | Quartic | $ax^4 + \cdots$ |
-| 5 | Quintic | $ax^5 + \cdots$ |
+| Degree | Name      | Standard Form          |
+| ------ | --------- | ---------------------- |
+| 0      | Constant  | $a$                    |
+| 1      | Linear    | $ax + b$               |
+| 2      | Quadratic | $ax^2 + bx + c$        |
+| 3      | Cubic     | $ax^3 + bx^2 + cx + d$ |
+| 4      | Quartic   | $ax^4 + \cdots$        |
+| 5      | Quintic   | $ax^5 + \cdots$        |
 
 ### Classification by Number of Terms
 
-| Type | Terms | Example |
-|------|-------|---------|
-| Monomial | 1 | $5x^3$ |
-| Binomial | 2 | $3x^2 + 7$ |
-| Trinomial | 3 | $x^2 - 4x + 4$ |
+| Type      | Terms | Example        |
+| --------- | ----- | -------------- |
+| Monomial  | 1     | $5x^3$         |
+| Binomial  | 2     | $3x^2 + 7$     |
+| Trinomial | 3     | $x^2 - 4x + 4$ |
 
 ## Operations
 
@@ -91,19 +92,20 @@ If $\frac{p}{q}$ is a rational root of $P(x) = a_nx^n + \cdots + a_0$, then $p$ 
 
 ## Factoring
 
-| Technique | Formula |
-|-----------|---------|
-| GCF | $6x^3 + 9x^2 = 3x^2(2x + 3)$ |
-| Difference of squares | $a^2 - b^2 = (a + b)(a - b)$ |
-| Sum of cubes | $a^3 + b^3 = (a + b)(a^2 - ab + b^2)$ |
-| Difference of cubes | $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$ |
-| Quadratic trinomial | $x^2 + bx + c = (x + p)(x + q)$ where $p + q = b$, $pq = c$ |
+| Technique             | Formula                                                     |
+| --------------------- | ----------------------------------------------------------- |
+| GCF                   | $6x^3 + 9x^2 = 3x^2(2x + 3)$                                |
+| Difference of squares | $a^2 - b^2 = (a + b)(a - b)$                                |
+| Sum of cubes          | $a^3 + b^3 = (a + b)(a^2 - ab + b^2)$                       |
+| Difference of cubes   | $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$                       |
+| Quadratic trinomial   | $x^2 + bx + c = (x + p)(x + q)$ where $p + q = b$, $pq = c$ |
 
 ## Roots and Zeros
 
 A **root** of $P(x)$ is a value $c$ where $P(c) = 0$.
 
 **Multiplicity** determines graph behavior at that root:
+
 - Simple (multiplicity 1): graph crosses x-axis
 - Double (multiplicity 2): graph touches and bounces
 - Triple (multiplicity 3): graph flattens at crossing
@@ -121,12 +123,12 @@ $$(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3$$
 
 Determined by the leading term $a_nx^n$:
 
-| Leading Term | $x \to -\infty$ | $x \to +\infty$ |
-|--------------|-----------------|-----------------|
-| $+x^{\text{even}}$ | $+\infty$ | $+\infty$ |
-| $-x^{\text{even}}$ | $-\infty$ | $-\infty$ |
-| $+x^{\text{odd}}$ | $-\infty$ | $+\infty$ |
-| $-x^{\text{odd}}$ | $+\infty$ | $-\infty$ |
+| Leading Term       | $x \to -\infty$ | $x \to +\infty$ |
+| ------------------ | --------------- | --------------- |
+| $+x^{\text{even}}$ | $+\infty$       | $+\infty$       |
+| $-x^{\text{even}}$ | $-\infty$       | $-\infty$       |
+| $+x^{\text{odd}}$  | $-\infty$       | $+\infty$       |
+| $-x^{\text{odd}}$  | $+\infty$       | $-\infty$       |
 
 A polynomial of degree $n$ has at most $n - 1$ turning points.
 

@@ -21,11 +21,11 @@ The codomain and image are distinct: $B$ is what $f$ is allowed to output; $\tex
 
 ## Injectivity, surjectivity, bijectivity
 
-| Property | Definition | Informal |
-|---|---|---|
-| **Injective** (one-to-one) | $f(a) = f(b) \implies a = b$ | no two inputs share an output |
-| **Surjective** (onto) | $\forall b \in B,\; \exists a \in A,\; f(a) = b$ | every codomain element is hit |
-| **Bijective** | injective and surjective | perfect pairing |
+| Property                   | Definition                                       | Informal                      |
+| -------------------------- | ------------------------------------------------ | ----------------------------- |
+| **Injective** (one-to-one) | $f(a) = f(b) \implies a = b$                     | no two inputs share an output |
+| **Surjective** (onto)      | $\forall b \in B,\; \exists a \in A,\; f(a) = b$ | every codomain element is hit |
+| **Bijective**              | injective and surjective                         | perfect pairing               |
 
 ![[function_types.png]]
 
@@ -35,12 +35,12 @@ The codomain and image are distinct: $B$ is what $f$ is allowed to output; $\tex
 
 **Examples on $f : \mathbb{R} \to \mathbb{R}$:**
 
-| Function | Injective? | Surjective? |
-|---|---|---|
-| $f(x) = 2x$ | Yes | Yes (bijective) |
+| Function     | Injective?          | Surjective?                 |
+| ------------ | ------------------- | --------------------------- |
+| $f(x) = 2x$  | Yes                 | Yes (bijective)             |
 | $f(x) = x^2$ | No ($f(1) = f(-1)$) | No (no $x$ with $x^2 = -1$) |
-| $f(x) = e^x$ | Yes | No (image $= \mathbb{R}^+$) |
-| $f(x) = x^3$ | Yes | Yes (bijective) |
+| $f(x) = e^x$ | Yes                 | No (image $= \mathbb{R}^+$) |
+| $f(x) = x^3$ | Yes                 | Yes (bijective)             |
 
 ## Composition and inverse
 
@@ -86,11 +86,11 @@ This is the function-theoretic form of the pigeonhole principle, proved fully in
 
 ## Floor, ceiling, and standard functions
 
-| Notation | Definition |
-|---|---|
-| $\lfloor x \rfloor$ | largest integer $\leq x$ |
-| $\lceil x \rceil$ | smallest integer $\geq x$ |
-| $\log_b x$ | exponent to which $b$ must be raised to get $x$ |
+| Notation            | Definition                                      |
+| ------------------- | ----------------------------------------------- |
+| $\lfloor x \rfloor$ | largest integer $\leq x$                        |
+| $\lceil x \rceil$   | smallest integer $\geq x$                       |
+| $\log_b x$          | exponent to which $b$ must be raised to get $x$ |
 
 These appear throughout algorithm analysis and counting arguments. Note $\lfloor x \rfloor$ and $\lceil x \rceil$ are functions $\mathbb{R} \to \mathbb{Z}$; neither is injective (many reals share the same floor).
 

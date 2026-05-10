@@ -45,12 +45,12 @@ status: stub
 
 ## RISC vs CISC
 
-| | RISC | CISC |
-|---|---|---|
-| Instructions | Few, simple, fixed-width | Many, complex, variable-width |
-| Cycles per instr | 1 (usually) | Variable |
-| Examples | ARM, RISC-V, MIPS | x86, x86-64 |
-| Load/store | Only way to access memory | Instructions can address memory directly |
+|                  | RISC                      | CISC                                     |
+| ---------------- | ------------------------- | ---------------------------------------- |
+| Instructions     | Few, simple, fixed-width  | Many, complex, variable-width            |
+| Cycles per instr | 1 (usually)               | Variable                                 |
+| Examples         | ARM, RISC-V, MIPS         | x86, x86-64                              |
+| Load/store       | Only way to access memory | Instructions can address memory directly |
 
 ## x86-64 registers
 

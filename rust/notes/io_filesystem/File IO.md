@@ -47,12 +47,12 @@ let bytes: Vec<u8> = std::fs::read("file.txt")?;           // raw bytes, never f
 
 Any type that implements `Read` exposes:
 
-| Method | Behaviour |
-|---|---|
-| `read(&mut buf)` | Fills up to `buf.len()` bytes; returns count actually read |
-| `read_exact(&mut buf)` | Errors unless exactly `buf.len()` bytes are read |
-| `read_to_end(&mut vec)` | Appends until EOF |
-| `read_to_string(&mut s)` | Like `read_to_end` but validates UTF-8 |
+| Method                   | Behaviour                                                  |
+| ------------------------ | ---------------------------------------------------------- |
+| `read(&mut buf)`         | Fills up to `buf.len()` bytes; returns count actually read |
+| `read_exact(&mut buf)`   | Errors unless exactly `buf.len()` bytes are read           |
+| `read_to_end(&mut vec)`  | Appends until EOF                                          |
+| `read_to_string(&mut s)` | Like `read_to_end` but validates UTF-8                     |
 
 ```rust
 let mut file = File::open("file.txt")?;

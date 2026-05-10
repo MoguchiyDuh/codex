@@ -109,13 +109,13 @@ map.retain(|k, _v| k % 2 == 0);  // keep only even keys
 
 ## HashMap vs BTreeMap
 
-| | [[HashMap]] | BTreeMap |
-|---|---|---|
-| Lookup / insert | O(1) avg | O(log n) |
-| Iteration order | arbitrary | ascending |
-| Range queries | no | yes |
-| Min / max | no | yes |
-| Key bound | `Eq + Hash` | `Ord` |
+|                 | [[HashMap]] | BTreeMap  |
+| --------------- | ----------- | --------- |
+| Lookup / insert | O(1) avg    | O(log n)  |
+| Iteration order | arbitrary   | ascending |
+| Range queries   | no          | yes       |
+| Min / max       | no          | yes       |
+| Key bound       | `Eq + Hash` | `Ord`     |
 
 Use `BTreeMap` when iteration order matters, you need `range()`, or you need `first`/`last`/`pop_first`/`pop_last`.
 

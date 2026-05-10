@@ -92,19 +92,20 @@ static COUNTER: LazyLock<Mutex<u64>> = LazyLock::new(|| Mutex::new(0));
 
 ## OnceLock vs LazyLock — which to pick
 
-| | `OnceLock<T>` | `LazyLock<T>` |
-|---|---|---|
-| Stable since | 1.70 | 1.80 |
-| Initializer location | Passed to `get_or_init()` at call site | Stored in the type at declaration |
-| Init depends on runtime args | Yes — pass different closures | No — closure is fixed |
-| Use in structs (non-static) | Yes | No (`'static` only) |
-| Syntax for globals | More verbose | Cleaner |
+|                              | `OnceLock<T>`                          | `LazyLock<T>`                     |
+| ---------------------------- | -------------------------------------- | --------------------------------- |
+| Stable since                 | 1.70                                   | 1.80                              |
+| Initializer location         | Passed to `get_or_init()` at call site | Stored in the type at declaration |
+| Init depends on runtime args | Yes — pass different closures          | No — closure is fixed             |
+| Use in structs (non-static)  | Yes                                    | No (`'static` only)               |
+| Syntax for globals           | More verbose                           | Cleaner                           |
 
 **Rule of thumb**: prefer `LazyLock` for new global constants; use `OnceLock` when initialization depends on runtime data (CLI args, environment variables) or when you need a lazy struct field.
 
 ## Historical context
 
 Before 1.70/1.80, the ecosystem used:
+
 - `lazy_static!` macro — external crate, still widely seen in older code
 - `once_cell::sync::Lazy` / `once_cell::sync::OnceCell` — external crate that inspired the std types
 

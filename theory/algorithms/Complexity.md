@@ -20,11 +20,11 @@ Two algorithms running at $100n$ and $n^2$ comparisons are identical for $n = 10
 
 Let $f(n)$ be the running time as a function of input size, and $g(n)$ a reference function (typically $n$, $n \log n$, $n^2$ etc.).
 
-| Notation | Meaning | Bound |
-|---|---|---|
-| $O(g)$ | $f$ grows **at most** like $g$ | upper |
+| Notation    | Meaning                         | Bound |
+| ----------- | ------------------------------- | ----- |
+| $O(g)$      | $f$ grows **at most** like $g$  | upper |
 | $\Omega(g)$ | $f$ grows **at least** like $g$ | lower |
-| $\Theta(g)$ | $f$ grows **exactly** like $g$ | tight |
+| $\Theta(g)$ | $f$ grows **exactly** like $g$  | tight |
 
 Formal definitions:
 
@@ -40,27 +40,26 @@ In practice "$f$ is $O(n^2)$" is conventionally read as "the worst case is $n^2$
 
 ## Common growth classes
 
-| Class | Name | Example |
-|---|---|---|
-| $O(1)$ | constant | hash lookup, stack push |
-| $O(\log n)$ | logarithmic | binary search, balanced BST op |
-| $O(n)$ | linear | array scan, linked-list traversal |
-| $O(n \log n)$ | linearithmic | merge sort, heap sort, FFT |
-| $O(n^2)$ | quadratic | insertion sort, naive matrix-vector |
-| $O(n^3)$ | cubic | naive matrix multiply, Floyd-Warshall |
-| $O(2^n)$ | exponential | brute-force subsets, naive TSP |
-| $O(n!)$ | factorial | brute-force permutations |
+| Class         | Name         | Example                               |
+| ------------- | ------------ | ------------------------------------- |
+| $O(1)$        | constant     | hash lookup, stack push               |
+| $O(\log n)$   | logarithmic  | binary search, balanced BST op        |
+| $O(n)$        | linear       | array scan, linked-list traversal     |
+| $O(n \log n)$ | linearithmic | merge sort, heap sort, FFT            |
+| $O(n^2)$      | quadratic    | insertion sort, naive matrix-vector   |
+| $O(n^3)$      | cubic        | naive matrix multiply, Floyd-Warshall |
+| $O(2^n)$      | exponential  | brute-force subsets, naive TSP        |
+| $O(n!)$       | factorial    | brute-force permutations              |
 
 The gap between $O(n \log n)$ and $O(n^2)$ is the most consequential boundary in practical algorithms — it determines whether $10^6$ inputs are tractable in seconds or in days.
 
-
 ## Best, average, worst case
 
-| Case | Meaning | Use |
-|---|---|---|
-| Worst | maximum cost over all inputs of size $n$ | safety guarantee |
-| Average | expected cost over a distribution of inputs | typical behaviour |
-| Best | minimum cost over all inputs | rarely informative |
+| Case    | Meaning                                     | Use                |
+| ------- | ------------------------------------------- | ------------------ |
+| Worst   | maximum cost over all inputs of size $n$    | safety guarantee   |
+| Average | expected cost over a distribution of inputs | typical behaviour  |
+| Best    | minimum cost over all inputs                | rarely informative |
 
 Quicksort is $\Theta(n^2)$ worst-case but $\Theta(n \log n)$ average-case under uniform random input or randomised pivots. The worst case matters when an adversary picks inputs; the average matters for benign workloads. Best case is usually a curiosity — a sorted array runs insertion sort in $\Theta(n)$, but you can't rely on that.
 
@@ -82,13 +81,13 @@ This is also why $\log_2 n$, $\log_{10} n$, and $\ln n$ all belong to $\Theta(\l
 
 ## Operations on growth classes
 
-| Rule | Statement |
-|---|---|
-| Sum | $O(f) + O(g) = O(\max(f, g))$ |
-| Product | $O(f) \cdot O(g) = O(f \cdot g)$ |
-| Constant | $O(c \cdot f) = O(f)$ |
-| Polynomial $\prec$ exponential | $n^k = o(c^n)$ for $c > 1$, any $k$ |
-| Logarithm $\prec$ polynomial | $\log^k n = o(n^\varepsilon)$ for $\varepsilon > 0$ |
+| Rule                           | Statement                                           |
+| ------------------------------ | --------------------------------------------------- |
+| Sum                            | $O(f) + O(g) = O(\max(f, g))$                       |
+| Product                        | $O(f) \cdot O(g) = O(f \cdot g)$                    |
+| Constant                       | $O(c \cdot f) = O(f)$                               |
+| Polynomial $\prec$ exponential | $n^k = o(c^n)$ for $c > 1$, any $k$                 |
+| Logarithm $\prec$ polynomial   | $\log^k n = o(n^\varepsilon)$ for $\varepsilon > 0$ |
 
 These let you simplify complex bounds without re-deriving from scratch.
 

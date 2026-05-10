@@ -2,6 +2,7 @@
 tags: [math, algebra, inequalities]
 status: complete
 ---
+
 # Quadratic Inequalities
 
 > Inequalities involving a quadratic expression, solved by finding roots and testing sign intervals.
@@ -46,12 +47,12 @@ Create a table of factor signs across intervals.
 
 **Example:** $(x - 2)(x + 1)(x - 5) < 0$
 
-| Interval | $(-\infty, -1)$ | $(-1, 2)$ | $(2, 5)$ | $(5, \infty)$ |
-|----------|:---:|:---:|:---:|:---:|
-| $x - 2$ | $-$ | $-$ | $+$ | $+$ |
-| $x + 1$ | $-$ | $+$ | $+$ | $+$ |
-| $x - 5$ | $-$ | $-$ | $-$ | $+$ |
-| **Product** | $-$ | $+$ | $-$ | $+$ |
+| Interval    | $(-\infty, -1)$ | $(-1, 2)$ | $(2, 5)$ | $(5, \infty)$ |
+| ----------- | :-------------: | :-------: | :------: | :-----------: |
+| $x - 2$     |       $-$       |    $-$    |   $+$    |      $+$      |
+| $x + 1$     |       $-$       |    $+$    |   $+$    |      $+$      |
+| $x - 5$     |       $-$       |    $-$    |   $-$    |      $+$      |
+| **Product** |       $-$       |    $+$    |   $-$    |      $+$      |
 
 Solution: $x \in (-\infty, -1) \cup (2, 5)$
 
@@ -63,29 +64,29 @@ Graph $y = ax^2 + bx + c$ and read off where the parabola is above or below the 
 
 ### Two Real Roots ($D > 0$), $x_1 < x_2$
 
-| $a > 0$ | $a < 0$ | Inequality |
-|---------|---------|------------|
-| $(-\infty, x_1) \cup (x_2, \infty)$ | $(x_1, x_2)$ | $> 0$ |
-| $(-\infty, x_1] \cup [x_2, \infty)$ | $[x_1, x_2]$ | $\geq 0$ |
-| $(x_1, x_2)$ | $(-\infty, x_1) \cup (x_2, \infty)$ | $< 0$ |
-| $[x_1, x_2]$ | $(-\infty, x_1] \cup [x_2, \infty)$ | $\leq 0$ |
+| $a > 0$                             | $a < 0$                             | Inequality |
+| ----------------------------------- | ----------------------------------- | ---------- |
+| $(-\infty, x_1) \cup (x_2, \infty)$ | $(x_1, x_2)$                        | $> 0$      |
+| $(-\infty, x_1] \cup [x_2, \infty)$ | $[x_1, x_2]$                        | $\geq 0$   |
+| $(x_1, x_2)$                        | $(-\infty, x_1) \cup (x_2, \infty)$ | $< 0$      |
+| $[x_1, x_2]$                        | $(-\infty, x_1] \cup [x_2, \infty)$ | $\leq 0$   |
 
 ### No Real Roots ($D < 0$)
 
-| Condition | Solution |
-|-----------|----------|
+| Condition                    | Solution                      |
+| ---------------------------- | ----------------------------- |
 | $a > 0$, any $>0$ inequality | All real numbers $\mathbb{R}$ |
 | $a < 0$, any $<0$ inequality | All real numbers $\mathbb{R}$ |
-| Otherwise | No solution |
+| Otherwise                    | No solution                   |
 
 ### One Root ($D = 0$), root at $x_0$
 
-| Expression | Solution |
-|------------|----------|
-| $(x - x_0)^2 \geq 0$ | All real numbers |
-| $(x - x_0)^2 > 0$ | $\mathbb{R} \setminus \{x_0\}$ |
-| $(x - x_0)^2 \leq 0$ | $x = x_0$ only |
-| $(x - x_0)^2 < 0$ | No solution |
+| Expression           | Solution                       |
+| -------------------- | ------------------------------ |
+| $(x - x_0)^2 \geq 0$ | All real numbers               |
+| $(x - x_0)^2 > 0$    | $\mathbb{R} \setminus \{x_0\}$ |
+| $(x - x_0)^2 \leq 0$ | $x = x_0$ only                 |
+| $(x - x_0)^2 < 0$    | No solution                    |
 
 ## Rational Inequalities
 
@@ -95,12 +96,12 @@ For inequalities like $\frac{f(x)}{g(x)} > 0$: find critical points from both nu
 
 Critical points: $x = -2, 2$ (zeros), $x = 1$ (undefined)
 
-| Interval | Sign |
-|----------|------|
-| $(-\infty, -2)$ | $+$ |
-| $(-2, 1)$ | $-$ |
-| $(1, 2)$ | $-$ |
-| $(2, \infty)$ | $+$ |
+| Interval        | Sign |
+| --------------- | ---- |
+| $(-\infty, -2)$ | $+$  |
+| $(-2, 1)$       | $-$  |
+| $(1, 2)$        | $-$  |
+| $(2, \infty)$   | $+$  |
 
 Solution: $[-2, 1) \cup (1, 2]$
 

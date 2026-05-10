@@ -32,12 +32,12 @@ status: stub
 
 ## Comparison
 
-| | TCP | UDP |
-|---|---|---|
-| Connection | Yes | No |
-| Ordered | Yes | No |
-| Reliable | Yes | No |
-| Speed | Slower | Faster |
+|             | TCP      | UDP     |
+| ----------- | -------- | ------- |
+| Connection  | Yes      | No      |
+| Ordered     | Yes      | No      |
+| Reliable    | Yes      | No      |
+| Speed       | Slower   | Faster  |
 | Header size | 20 bytes | 8 bytes |
 
 ## TCP connection teardown (4-way FIN)

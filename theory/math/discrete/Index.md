@@ -5,7 +5,7 @@ status: complete
 
 # Discrete Math
 
-The math that underpins CS — countable, finite structures rather than continuous ones. Structured after MIT 6.042J (Lehman, Leighton, Meyer). See [[ROADMAP]] for the phased course plan.
+The math that underpins CS — countable, finite structures rather than continuous ones. Structured after MIT 6.042J (Leighton, van Dijk).
 
 ## Foundations
 
@@ -35,9 +35,12 @@ The math that underpins CS — countable, finite structures rather than continuo
 - [[Random Variables]] — PMF, expectation, variance, common distributions
 - [[Concentration & Random Walks]] — Markov, Chebyshev, LLN, walks on graphs
 
+## Course roadmap
+
+- [[ROADMAP]] — phased course plan (MIT 6.042J)
+
 ## See also
 
-- [[ROADMAP]]
 - [[../linear_algebra/Index|Linear Algebra]]
 - [[../algebra/Index|Algebra]]
 - [[../../algorithms/Graph Basics|Graph Basics]]

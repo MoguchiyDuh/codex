@@ -17,10 +17,10 @@ Where $A \in \mathbb{R}^{m \times n}$ is the **coefficient matrix**, $\mathbf{x}
 
 Two geometric readings of the matrix equation $A\mathbf{x} = \mathbf{b}$ (Strang's "row picture" and "column picture"):
 
-| Picture | Meaning |
-|---------|---------|
-| **Row picture** | Each equation is a hyperplane in $\mathbb{R}^n$; solution = their intersection |
-| **Column picture** | Find weights $x_i$ so columns of $A$ combine to give $\mathbf{b}$ |
+| Picture            | Meaning                                                                        |
+| ------------------ | ------------------------------------------------------------------------------ |
+| **Row picture**    | Each equation is a hyperplane in $\mathbb{R}^n$; solution = their intersection |
+| **Column picture** | Find weights $x_i$ so columns of $A$ combine to give $\mathbf{b}$              |
 
 The column picture uses the matrix-vector product from [[Matrices]]: $A\mathbf{x}$ is a linear combination of the columns of $A$. Here the question is whether those columns can combine to produce $\mathbf{b}$.
 
@@ -38,10 +38,10 @@ All row operations act on this extended matrix.
 
 Reduce $[A \mid \mathbf{b}]$ to **row echelon form** using three elementary row operations:
 
-| Operation | Effect |
-|-----------|--------|
-| Swap two rows | Reorder equations |
-| Scale a row by $\alpha \neq 0$ | Multiply equation |
+| Operation                          | Effect             |
+| ---------------------------------- | ------------------ |
+| Swap two rows                      | Reorder equations  |
+| Scale a row by $\alpha \neq 0$     | Multiply equation  |
 | Add multiple of one row to another | Subtract equations |
 
 Each operation preserves the solution set.
@@ -95,11 +95,11 @@ Rank bounds: $r \leq \min(m, n)$. Full rank means $r = \min(m, n)$.
 
 Let $r = \text{rank}(A)$ and $r' = \text{rank}([A \mid \mathbf{b}])$.
 
-| Condition | Solution |
-|-----------|----------|
-| $r < r'$ | **Inconsistent** — no solution (a row $[0 \cdots 0 \mid c]$ with $c \neq 0$ appears) |
-| $r = r' = n$ | **Unique** solution |
-| $r = r' < n$ | **Infinite** solutions, parameterized by $n - r$ free variables |
+| Condition    | Solution                                                                             |
+| ------------ | ------------------------------------------------------------------------------------ |
+| $r < r'$     | **Inconsistent** — no solution (a row $[0 \cdots 0 \mid c]$ with $c \neq 0$ appears) |
+| $r = r' = n$ | **Unique** solution                                                                  |
+| $r = r' < n$ | **Infinite** solutions, parameterized by $n - r$ free variables                      |
 
 For square $A$: unique solution iff $\det(A) \neq 0$ iff $A$ is invertible. See [[Determinants]].
 
@@ -146,6 +146,11 @@ Elegant formula, $O(n! \cdot n)$ via direct determinant — exponentially slower
 
 - ![3Blue1Brown - Inverse matrices, column space and null space | Chapter 7, Essence of linear algebra](https://www.youtube.com/watch?v=uQhTuRlWMxw)
 - ![3Blue1Brown - Cramer's rule, explained geometrically | Chapter 12, Essence of linear algebra](https://www.youtube.com/watch?v=jBsC34PxzoM)
+
+- ![4. Factorization into A = LU](https://www.youtube.com/watch?v=MsIvs_6vC38)
+- ![5. Transposes, Permutations, Spaces R^n](https://www.youtube.com/watch?v=JibVXBElKL0)
+- ![7. Solving Ax = 0: Pivot Variables, Special Solutions](https://www.youtube.com/watch?v=VqP2tREMvt0)
+- ![8. Solving Ax = b: Row Reduced Form R](https://www.youtube.com/watch?v=9Q1q7s1jTzU)
 
 ## See also
 

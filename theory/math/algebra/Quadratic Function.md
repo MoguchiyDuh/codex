@@ -2,17 +2,18 @@
 tags: [math, algebra, quadratic]
 status: complete
 ---
+
 # Quadratic Function
 
 > A second-degree polynomial function forming a parabola when graphed, defined as $f(x) = ax^2 + bx + c$ with $a \neq 0$.
 
 ## Forms
 
-| Form | Expression | Advantage |
-|------|------------|-----------|
-| **Standard** | $f(x) = ax^2 + bx + c$ | Easy to identify coefficients, y-intercept |
-| **Vertex** | $f(x) = a(x - h)^2 + k$ | Vertex $(h, k)$ immediately visible |
-| **Factored** | $f(x) = a(x - x_1)(x - x_2)$ | Roots $x_1$, $x_2$ immediately visible |
+| Form         | Expression                   | Advantage                                  |
+| ------------ | ---------------------------- | ------------------------------------------ |
+| **Standard** | $f(x) = ax^2 + bx + c$       | Easy to identify coefficients, y-intercept |
+| **Vertex**   | $f(x) = a(x - h)^2 + k$      | Vertex $(h, k)$ immediately visible        |
+| **Factored** | $f(x) = a(x - x_1)(x - x_2)$ | Roots $x_1$, $x_2$ immediately visible     |
 
 Convert standard → vertex form by completing the square.
 
@@ -20,10 +21,10 @@ Convert standard → vertex form by completing the square.
 
 $$D = b^2 - 4ac$$
 
-| $D$ | Roots | Graph |
-|-----|-------|-------|
-| $D > 0$ | Two distinct real roots | Crosses x-axis twice |
-| $D = 0$ | One repeated root | Touches x-axis at vertex |
+| $D$     | Roots                              | Graph                     |
+| ------- | ---------------------------------- | ------------------------- |
+| $D > 0$ | Two distinct real roots            | Crosses x-axis twice      |
+| $D = 0$ | One repeated root                  | Touches x-axis at vertex  |
 | $D < 0$ | No real roots (complex conjugates) | Does not intersect x-axis |
 
 ![[quadratic_discriminant.png]]
@@ -63,23 +64,23 @@ $$f(x) = 2(x^2 - 4x) + 6 = 2(x^2 - 4x + 4 - 4) + 6 = 2(x-2)^2 - 2$$
 
 ## Graph Characteristics
 
-| Feature | Formula |
-|---------|---------|
-| Vertex | $\left(-\frac{b}{2a},\, -\frac{D}{4a}\right)$ |
-| Axis of symmetry | $x = -\frac{b}{2a}$ |
-| Y-intercept | $(0, c)$ |
-| X-intercepts | $\left(\frac{-b \pm \sqrt{D}}{2a},\, 0\right)$ |
-| Opens upward | $a > 0$ |
-| Narrower | Larger $|a|$ |
+| Feature          | Formula                                        |
+| ---------------- | ---------------------------------------------- | --- | --- |
+| Vertex           | $\left(-\frac{b}{2a},\, -\frac{D}{4a}\right)$  |
+| Axis of symmetry | $x = -\frac{b}{2a}$                            |
+| Y-intercept      | $(0, c)$                                       |
+| X-intercepts     | $\left(\frac{-b \pm \sqrt{D}}{2a},\, 0\right)$ |
+| Opens upward     | $a > 0$                                        |
+| Narrower         | Larger $                                       | a   | $   |
 
 ## Solving Methods
 
-| Method | When to Use |
-|--------|-------------|
-| Factoring | Easily factorable trinomials |
-| Square root | Form $ax^2 + c = 0$ |
-| Completing the square | Deriving vertex form |
-| Quadratic formula | Universal |
+| Method                | When to Use                  |
+| --------------------- | ---------------------------- |
+| Factoring             | Easily factorable trinomials |
+| Square root           | Form $ax^2 + c = 0$          |
+| Completing the square | Deriving vertex form         |
+| Quadratic formula     | Universal                    |
 
 ## See also
 

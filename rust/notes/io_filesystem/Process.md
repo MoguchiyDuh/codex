@@ -12,11 +12,11 @@ source: io_filesystem/src/process.rs
 
 ## Three Execution Modes
 
-| Method | Behaviour | Returns |
-|---|---|---|
-| `.status()` | Runs to completion, inherits stdio | `ExitStatus` |
-| `.output()` | Runs to completion, captures stdout+stderr | `Output` |
-| `.spawn()` | Starts the process, returns immediately | `Child` |
+| Method      | Behaviour                                  | Returns      |
+| ----------- | ------------------------------------------ | ------------ |
+| `.status()` | Runs to completion, inherits stdio         | `ExitStatus` |
+| `.output()` | Runs to completion, captures stdout+stderr | `Output`     |
+| `.spawn()`  | Starts the process, returns immediately    | `Child`      |
 
 ## Basic Execution
 

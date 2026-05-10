@@ -133,9 +133,9 @@ This pattern is used by editors, package managers, and databases to prevent corr
 
 Normally, writes go to the kernel page cache and are flushed asynchronously. Two methods force synchronous flushing:
 
-| Method | Syncs |
-|---|---|
-| `file.sync_all()` | file data + metadata (size, timestamps, etc.) |
+| Method             | Syncs                                                        |
+| ------------------ | ------------------------------------------------------------ |
+| `file.sync_all()`  | file data + metadata (size, timestamps, etc.)                |
 | `file.sync_data()` | file data only — faster when metadata changes are irrelevant |
 
 ```rust

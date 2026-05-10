@@ -13,35 +13,35 @@ A **binary relation** $R$ on a set $A$ is a subset of the Cartesian product $A \
 
 **Examples on $\mathbb{Z}$:**
 
-| Relation | $a \mathrel{R} b$ means | Subset of $\mathbb{Z} \times \mathbb{Z}$? |
-|---|---|---|
-| $\leq$ | $a$ is at most $b$ | Yes |
-| $\mid$ (divides) | $a$ divides $b$ | Yes |
-| $\equiv_m$ (mod $m$) | $m \mid (a - b)$ | Yes |
-| $=$ | $a$ equals $b$ | Yes (diagonal) |
+| Relation             | $a \mathrel{R} b$ means | Subset of $\mathbb{Z} \times \mathbb{Z}$? |
+| -------------------- | ----------------------- | ----------------------------------------- |
+| $\leq$               | $a$ is at most $b$      | Yes                                       |
+| $\mid$ (divides)     | $a$ divides $b$         | Yes                                       |
+| $\equiv_m$ (mod $m$) | $m \mid (a - b)$        | Yes                                       |
+| $=$                  | $a$ equals $b$          | Yes (diagonal)                            |
 
 A relation can also be **heterogeneous** — a subset of $A \times B$ for two different sets — but for equivalences and orders we restrict to $A \times A$.
 
 ## Properties of relations
 
-| Property | Definition | Intuition |
-|---|---|---|
-| **Reflexive** | $\forall a,\; a \mathrel{R} a$ | every element relates to itself |
-| **Irreflexive** | $\forall a,\; a \not\mathrel{R} a$ | no element relates to itself |
-| **Symmetric** | $a \mathrel{R} b \implies b \mathrel{R} a$ | the relation is undirected |
-| **Antisymmetric** | $a \mathrel{R} b \wedge b \mathrel{R} a \implies a = b$ | direction is consistent |
-| **Transitive** | $a \mathrel{R} b \wedge b \mathrel{R} c \implies a \mathrel{R} c$ | chains collapse |
+| Property          | Definition                                                        | Intuition                       |
+| ----------------- | ----------------------------------------------------------------- | ------------------------------- |
+| **Reflexive**     | $\forall a,\; a \mathrel{R} a$                                    | every element relates to itself |
+| **Irreflexive**   | $\forall a,\; a \not\mathrel{R} a$                                | no element relates to itself    |
+| **Symmetric**     | $a \mathrel{R} b \implies b \mathrel{R} a$                        | the relation is undirected      |
+| **Antisymmetric** | $a \mathrel{R} b \wedge b \mathrel{R} a \implies a = b$           | direction is consistent         |
+| **Transitive**    | $a \mathrel{R} b \wedge b \mathrel{R} c \implies a \mathrel{R} c$ | chains collapse                 |
 
 **Which properties does each standard relation satisfy?**
 
-| Relation | Refl. | Sym. | Antisym. | Trans. |
-|---|---|---|---|---|
-| $=$ | ✓ | ✓ | ✓ | ✓ |
-| $\leq$ on $\mathbb{Z}$ | ✓ | — | ✓ | ✓ |
-| $<$ on $\mathbb{Z}$ | — | — | ✓ | ✓ |
-| $\mid$ on $\mathbb{N}$ | ✓ | — | ✓ | ✓ |
-| $\equiv_m$ | ✓ | ✓ | — | ✓ |
-| "is a sibling of" | — | ✓ | — | — |
+| Relation               | Refl. | Sym. | Antisym. | Trans. |
+| ---------------------- | ----- | ---- | -------- | ------ |
+| $=$                    | ✓     | ✓    | ✓        | ✓      |
+| $\leq$ on $\mathbb{Z}$ | ✓     | —    | ✓        | ✓      |
+| $<$ on $\mathbb{Z}$    | —     | —    | ✓        | ✓      |
+| $\mid$ on $\mathbb{N}$ | ✓     | —    | ✓        | ✓      |
+| $\equiv_m$             | ✓     | ✓    | —        | ✓      |
+| "is a sibling of"      | —     | ✓    | —        | —      |
 
 ## Equivalence relations
 
@@ -59,7 +59,7 @@ Two equivalence classes are either identical or disjoint — they never partiall
 
 **Theorem.** An equivalence relation $R$ on $A$ partitions $A$ into disjoint equivalence classes whose union is all of $A$. Conversely, every partition of $A$ defines an equivalence relation.
 
-**Proof.** (*Classes are disjoint or identical.*) Suppose $[a] \cap [b] \neq \emptyset$; let $c \in [a] \cap [b]$, so $c \mathrel{R} a$ and $c \mathrel{R} b$. By symmetry $a \mathrel{R} c$, and by transitivity $a \mathrel{R} b$. Then for any $x \in [a]$: $x \mathrel{R} a$ and $a \mathrel{R} b$ gives $x \mathrel{R} b$, so $x \in [b]$. Hence $[a] \subseteq [b]$; symmetrically $[b] \subseteq [a]$, so $[a] = [b]$.
+**Proof.** (_Classes are disjoint or identical._) Suppose $[a] \cap [b] \neq \emptyset$; let $c \in [a] \cap [b]$, so $c \mathrel{R} a$ and $c \mathrel{R} b$. By symmetry $a \mathrel{R} c$, and by transitivity $a \mathrel{R} b$. Then for any $x \in [a]$: $x \mathrel{R} a$ and $a \mathrel{R} b$ gives $x \mathrel{R} b$, so $x \in [b]$. Hence $[a] \subseteq [b]$; symmetrically $[b] \subseteq [a]$, so $[a] = [b]$.
 
 ![[equivalence_partition.png]]
 
@@ -73,11 +73,11 @@ The word "partial" means not every pair of elements need be comparable — some 
 
 **Examples:**
 
-| Poset | Relation | Incomparable elements? |
-|---|---|---|
-| $(\mathbb{Z}, \leq)$ | $\leq$ | None — this is a total order |
-| $(\mathcal{P}(S), \subseteq)$ | subset | $\{1\}$ and $\{2\}$ are incomparable |
-| $(\mathbb{N}^+, \mid)$ | divisibility | $2$ and $3$ are incomparable |
+| Poset                         | Relation     | Incomparable elements?               |
+| ----------------------------- | ------------ | ------------------------------------ |
+| $(\mathbb{Z}, \leq)$          | $\leq$       | None — this is a total order         |
+| $(\mathcal{P}(S), \subseteq)$ | subset       | $\{1\}$ and $\{2\}$ are incomparable |
+| $(\mathbb{N}^+, \mid)$        | divisibility | $2$ and $3$ are incomparable         |
 
 ### Hasse diagrams
 
@@ -93,12 +93,12 @@ Sorting algorithms produce total orders. Database indexes exploit total orders f
 
 ### Minimum, maximum, minimal, maximal
 
-| Term | Definition |
-|---|---|
+| Term        | Definition                                                         |
+| ----------- | ------------------------------------------------------------------ |
 | **Minimum** | $m \in A$ with $m \mathrel{R} a$ for all $a$ (unique if it exists) |
 | **Maximum** | $m \in A$ with $a \mathrel{R} m$ for all $a$ (unique if it exists) |
-| **Minimal** | $m$ with no $a \neq m$ satisfying $a \mathrel{R} m$ |
-| **Maximal** | $m$ with no $a \neq m$ satisfying $m \mathrel{R} a$ |
+| **Minimal** | $m$ with no $a \neq m$ satisfying $a \mathrel{R} m$                |
+| **Maximal** | $m$ with no $a \neq m$ satisfying $m \mathrel{R} a$                |
 
 In a total order, minimal = minimum and maximal = maximum. In a partial order they can differ: $(\mathcal{P}(\{1,2\}), \subsetneq)$ has two maximal elements ($\{1\}$ and $\{2\}$) but no maximum.
 
@@ -109,6 +109,10 @@ Given a relation $R$, its **transitive closure** $R^+$ is the smallest transitiv
 The **reflexive-transitive closure** $R^*$ additionally includes all pairs $(a, a)$.
 
 In CS, the transitive closure of a graph's edge relation gives reachability — the foundation of dependency analysis, type-checking, and compiler dataflow. See [[Graphs]].
+
+## Video references
+
+- ![Lecture 11: Relations, Partial Orders, and Scheduling](https://www.youtube.com/watch?v=1nScXLQAQ9A)
 
 ## See also
 

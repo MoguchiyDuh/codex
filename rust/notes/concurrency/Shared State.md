@@ -44,7 +44,7 @@ for h in handles { h.join().unwrap(); }
 println!("{}", *counter.lock().unwrap()); // 10
 ```
 
-`lock()` returns `Result<MutexGuard<T>, PoisonError>`. A mutex becomes *poisoned* if a thread panics while holding the lock. Most code just `unwrap()` — if a thread panicked in a critical section, the program state is likely corrupt anyway.
+`lock()` returns `Result<MutexGuard<T>, PoisonError>`. A mutex becomes _poisoned_ if a thread panics while holding the lock. Most code just `unwrap()` — if a thread panicked in a critical section, the program state is likely corrupt anyway.
 
 Lock scope matters. Drop the guard before any `.await` or long work:
 
@@ -99,12 +99,12 @@ let handles: Vec<_> = (0..10).map(|_| {
 
 ### Memory Ordering
 
-| Ordering | Meaning |
-|----------|---------|
-| `SeqCst` | Total sequential order across all threads — safest default |
-| `Acquire` | Loads: see all writes before the matching `Release` |
-| `Release` | Stores: publish all preceding writes |
-| `Relaxed` | No ordering guarantees — only atomicity |
+| Ordering  | Meaning                                                    |
+| --------- | ---------------------------------------------------------- |
+| `SeqCst`  | Total sequential order across all threads — safest default |
+| `Acquire` | Loads: see all writes before the matching `Release`        |
+| `Release` | Stores: publish all preceding writes                       |
+| `Relaxed` | No ordering guarantees — only atomicity                    |
 
 Use `SeqCst` unless you understand the memory model. `Relaxed` is for counters where you only care about the final value, not ordering relative to other operations.
 
@@ -143,13 +143,13 @@ Other strategies: use `try_lock` with backoff, or eliminate shared state via [[C
 
 ## Choosing the Right Primitive
 
-| Scenario | Tool |
-|----------|------|
-| Read-only data across threads | `Arc<T>` |
-| Single writer or infrequent writes | `Arc<Mutex<T>>` |
-| Many readers, few writers | `Arc<RwLock<T>>` |
-| Simple counters/flags | `Arc<AtomicI32>` / `Arc<AtomicBool>` |
-| Async context | `tokio::sync::Mutex` (see [[Tokio Runtime]]) |
+| Scenario                           | Tool                                         |
+| ---------------------------------- | -------------------------------------------- |
+| Read-only data across threads      | `Arc<T>`                                     |
+| Single writer or infrequent writes | `Arc<Mutex<T>>`                              |
+| Many readers, few writers          | `Arc<RwLock<T>>`                             |
+| Simple counters/flags              | `Arc<AtomicI32>` / `Arc<AtomicBool>`         |
+| Async context                      | `tokio::sync::Mutex` (see [[Tokio Runtime]]) |
 
 ## Related
 

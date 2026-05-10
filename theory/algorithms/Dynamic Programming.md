@@ -14,10 +14,10 @@ status: complete
 
 A problem admits a DP solution when it has both:
 
-| Property | Meaning |
-|---|---|
-| **Optimal substructure** | An optimal solution is built from optimal solutions to smaller subproblems |
-| **Overlapping subproblems** | The same subproblem recurs many times in a naive recursion |
+| Property                    | Meaning                                                                    |
+| --------------------------- | -------------------------------------------------------------------------- |
+| **Optimal substructure**    | An optimal solution is built from optimal solutions to smaller subproblems |
+| **Overlapping subproblems** | The same subproblem recurs many times in a naive recursion                 |
 
 Optimal substructure alone gives [[Divide and Conquer]]. Adding overlap is what creates the speedup: store each subproblem's answer, look it up instead of recomputing.
 
@@ -53,12 +53,12 @@ fib_tab(n):
 
 Same time complexity, no recursion stack, often better constants.
 
-| | Memoization | Tabulation |
-|---|---|---|
-| Style | recursive + cache | iterative table fill |
-| Stack | $\Theta(\text{recursion depth})$ | $\Theta(1)$ (apart from table) |
-| Subproblems computed | only those reachable | all of them |
-| Easier to write when | recursion is natural | dependency order is clear |
+|                      | Memoization                      | Tabulation                     |
+| -------------------- | -------------------------------- | ------------------------------ |
+| Style                | recursive + cache                | iterative table fill           |
+| Stack                | $\Theta(\text{recursion depth})$ | $\Theta(1)$ (apart from table) |
+| Subproblems computed | only those reachable             | all of them                    |
+| Easier to write when | recursion is natural             | dependency order is clear      |
 
 ## The Fibonacci illustration
 
@@ -130,7 +130,7 @@ $$
 \end{cases}
 $$
 
-$\Theta(nW)$. **Pseudo-polynomial** — polynomial in the *value* of $W$, not its bit length. NP-hard if encoded compactly.
+$\Theta(nW)$. **Pseudo-polynomial** — polynomial in the _value_ of $W$, not its bit length. NP-hard if encoded compactly.
 
 ### Coin change
 
@@ -152,16 +152,16 @@ $\Theta(n^3)$. The pattern — splitting at every possible point $k$ — recurs 
 
 ## Time–space tradeoffs
 
-The DP table can sometimes be reduced from 2D to 1D by observing that the recurrence touches only a fixed number of previous rows. LCS for example computes row $i$ from row $i-1$ — keep two rows and toggle. Drops space from $\Theta(mn)$ to $\Theta(\min(m, n))$ at no time cost. Useful when only the optimal *value* is needed, not the path.
+The DP table can sometimes be reduced from 2D to 1D by observing that the recurrence touches only a fixed number of previous rows. LCS for example computes row $i$ from row $i-1$ — keep two rows and toggle. Drops space from $\Theta(mn)$ to $\Theta(\min(m, n))$ at no time cost. Useful when only the optimal _value_ is needed, not the path.
 
 ## DP vs other paradigms
 
-| Paradigm | Subproblems | Choice |
-|---|---|---|
-| Divide and conquer | independent | one — combine all results |
-| Dynamic programming | overlapping | try all, take the best |
-| Greedy | none — committed | one locally-optimal choice |
-| Backtracking | combinatorial search tree | try all, prune impossible |
+| Paradigm            | Subproblems               | Choice                     |
+| ------------------- | ------------------------- | -------------------------- |
+| Divide and conquer  | independent               | one — combine all results  |
+| Dynamic programming | overlapping               | try all, take the best     |
+| Greedy              | none — committed          | one locally-optimal choice |
+| Backtracking        | combinatorial search tree | try all, prune impossible  |
 
 DP can be seen as memoised exhaustive search: enumerate all options at each step, but never re-explore the same subproblem.
 

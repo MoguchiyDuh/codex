@@ -44,16 +44,16 @@ Always $1 \leq \text{geometric} \leq \text{algebraic}$. When they match for ever
 
 ## Key properties
 
-| Property | Statement |
-|----------|-----------|
-| Trace | $\text{tr}(A) = \sum_i \lambda_i$ |
-| Determinant | $\det(A) = \prod_i \lambda_i$ |
-| Triangular matrix | Eigenvalues = diagonal entries |
-| $A$ and $A^T$ | Same eigenvalues |
-| $A^k$ | Eigenvalues $\lambda_i^k$ (same eigenvectors) |
-| $A^{-1}$ (if invertible) | Eigenvalues $1/\lambda_i$ |
-| $A + cI$ | Eigenvalues $\lambda_i + c$ |
-| Singular $A$ | Has eigenvalue $\lambda = 0$ |
+| Property                 | Statement                                     |
+| ------------------------ | --------------------------------------------- |
+| Trace                    | $\text{tr}(A) = \sum_i \lambda_i$             |
+| Determinant              | $\det(A) = \prod_i \lambda_i$                 |
+| Triangular matrix        | Eigenvalues = diagonal entries                |
+| $A$ and $A^T$            | Same eigenvalues                              |
+| $A^k$                    | Eigenvalues $\lambda_i^k$ (same eigenvectors) |
+| $A^{-1}$ (if invertible) | Eigenvalues $1/\lambda_i$                     |
+| $A + cI$                 | Eigenvalues $\lambda_i + c$                   |
+| Singular $A$             | Has eigenvalue $\lambda = 0$                  |
 
 Eigenvalues of $AB$ vs $A$ and $B$: **no simple relation** in general.
 
@@ -118,20 +118,30 @@ No real eigenvectors (nothing stays on its own line in 2D rotation), but complex
 
 ## Applications
 
-| Area | Role of eigenvalues |
-|------|--------------------|
-| **PCA** | Principal components = eigenvectors of covariance matrix; variance = eigenvalues |
-| **Google PageRank** | Stationary eigenvector of link matrix |
-| **Vibrations** | Eigenvalues = resonant frequencies; eigenvectors = mode shapes |
-| **Stability of ODEs** $\dot{\mathbf{x}} = A\mathbf{x}$ | Stable iff all $\text{Re}(\lambda_i) < 0$ |
-| **Markov chains** | Long-run behavior |
-| **Quantum mechanics** | Observables = Hermitian operators; measured values = eigenvalues |
-| **Image compression / SVD** | Singular values are eigenvalues of $A^T A$ |
+| Area                                                   | Role of eigenvalues                                                              |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| **PCA**                                                | Principal components = eigenvectors of covariance matrix; variance = eigenvalues |
+| **Google PageRank**                                    | Stationary eigenvector of link matrix                                            |
+| **Vibrations**                                         | Eigenvalues = resonant frequencies; eigenvectors = mode shapes                   |
+| **Stability of ODEs** $\dot{\mathbf{x}} = A\mathbf{x}$ | Stable iff all $\text{Re}(\lambda_i) < 0$                                        |
+| **Markov chains**                                      | Long-run behavior                                                                |
+| **Quantum mechanics**                                  | Observables = Hermitian operators; measured values = eigenvalues                 |
+| **Image compression / SVD**                            | Singular values are eigenvalues of $A^T A$                                       |
 
 ## Video references
 
 - ![3Blue1Brown - Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g)
 - ![3Blue1Brown - A quick trick for computing eigenvalues | Chapter 15, Essence of linear algebra](https://www.youtube.com/watch?v=e50Bj7jn9IQ)
+
+- ![21. Eigenvalues and Eigenvectors](https://www.youtube.com/watch?v=cdZnhQjJu4I)
+- ![22. Diagonalization and Powers of A](https://www.youtube.com/watch?v=13r9QY6cmjc)
+- ![23. Differential Equations and exp(At)](https://www.youtube.com/watch?v=IZqwi0wJovM)
+- ![24. Markov Matrices; Fourier Series](https://www.youtube.com/watch?v=lGGDIGizcQ0)
+- ![24b. Quiz 2 Review](https://www.youtube.com/watch?v=QuZL5IKpO_U)
+- ![25. Symmetric Matrices and Positive Definiteness](https://www.youtube.com/watch?v=UCc9q_cAhho)
+- ![26. Complex Matrices; Fast Fourier Transform](https://www.youtube.com/watch?v=M0Sa8fLOajA)
+- ![27. Positive Definite Matrices and Minima](https://www.youtube.com/watch?v=vF7eyJ2g3kU)
+- ![28. Similar Matrices and Jordan Form](https://www.youtube.com/watch?v=TSdXJw83kyA)
 
 ## See also
 

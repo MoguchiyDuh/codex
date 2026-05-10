@@ -23,7 +23,7 @@ A good hash function for table use:
 - **Fast** — typically O(1) in key size for fixed-size keys.
 - **Avalanche** — small change in input flips many output bits, preventing clustering.
 
-Cryptographic strength (preimage resistance) is *not* required for correctness, but is needed to defend against adversarial inputs (see DoS below).
+Cryptographic strength (preimage resistance) is _not_ required for correctness, but is needed to defend against adversarial inputs (see DoS below).
 
 Common non-cryptographic hashes: FNV-1a, MurmurHash, xxHash, SipHash (used by Rust and Python's default string hash for DoS resistance).
 
@@ -41,20 +41,20 @@ All entries live directly in the array. On collision, probe a deterministic sequ
 
 ![[hash_open_addressing.png]]
 
-| Probe sequence | Formula | Issue |
-|---|---|---|
-| Linear probing | `(h(k) + i) mod m` | Primary clustering: long runs degrade lookup |
-| Quadratic probing | `(h(k) + c₁i + c₂i²) mod m` | Reduces clustering; may not visit all slots |
-| Double hashing | `(h₁(k) + i · h₂(k)) mod m` | Best distribution; two hash computations |
+| Probe sequence    | Formula                     | Issue                                        |
+| ----------------- | --------------------------- | -------------------------------------------- |
+| Linear probing    | `(h(k) + i) mod m`          | Primary clustering: long runs degrade lookup |
+| Quadratic probing | `(h(k) + c₁i + c₂i²) mod m` | Reduces clustering; may not visit all slots  |
+| Double hashing    | `(h₁(k) + i · h₂(k)) mod m` | Best distribution; two hash computations     |
 
 Open addressing is more cache-friendly (no pointer chasing) but requires the load factor to stay well below 1 and complicates deletion (typically uses **tombstones**).
 
-| | Chaining | Open addressing |
-|---|---|---|
-| Max load factor | > 1 acceptable | < 1, usually ≤ 0.7 |
+|                 | Chaining         | Open addressing     |
+| --------------- | ---------------- | ------------------- |
+| Max load factor | > 1 acceptable   | < 1, usually ≤ 0.7  |
 | Cache behaviour | Worse (pointers) | Better (contiguous) |
-| Deletion | Easy | Requires tombstones |
-| Memory overhead | Per-entry node | Empty slots |
+| Deletion        | Easy             | Requires tombstones |
+| Memory overhead | Per-entry node   | Empty slots         |
 
 ## Load factor
 
@@ -64,11 +64,11 @@ A single rehash is O(n) but happens rarely enough to give O(1) amortized inserti
 
 ## Complexity
 
-| Op | Average | Worst |
-|---|---|---|
-| Lookup | O(1) | O(n) |
-| Insert | O(1) amortized | O(n) |
-| Delete | O(1) | O(n) |
+| Op     | Average        | Worst |
+| ------ | -------------- | ----- |
+| Lookup | O(1)           | O(n)  |
+| Insert | O(1) amortized | O(n)  |
+| Delete | O(1)           | O(n)  |
 
 Worst case occurs when many keys collide. With a good hash function and bounded load factor it is vanishingly unlikely on random input.
 

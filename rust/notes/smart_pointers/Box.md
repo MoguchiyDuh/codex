@@ -77,6 +77,7 @@ let leaked: &'static mut i32 = Box::leak(Box::new(100));
 ```
 
 Consumes the `Box` without running `Drop`, producing a `&'static` reference. The memory is never freed. Use sparingly — mainly for:
+
 - Initializing globals from runtime values
 - Passing heap data across an FFI (Foreign Function Interface) boundary where the C side manages lifetime
 
@@ -121,13 +122,13 @@ match maybe {
 
 ## When to reach for Box
 
-| Situation | Use |
-|---|---|
-| Large struct on heap | `Box<T>` |
-| Recursive / self-referential type | `Box<T>` |
-| `dyn Trait` heap allocation | `Box<dyn Trait>` |
-| Boxed closure | `Box<dyn Fn(…) -> …>` |
-| FFI ownership handoff | `Box::into_raw` / `Box::from_raw` |
+| Situation                         | Use                               |
+| --------------------------------- | --------------------------------- |
+| Large struct on heap              | `Box<T>`                          |
+| Recursive / self-referential type | `Box<T>`                          |
+| `dyn Trait` heap allocation       | `Box<dyn Trait>`                  |
+| Boxed closure                     | `Box<dyn Fn(…) -> …>`             |
+| FFI ownership handoff             | `Box::into_raw` / `Box::from_raw` |
 
 ## See also
 

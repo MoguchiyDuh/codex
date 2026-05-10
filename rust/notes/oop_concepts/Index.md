@@ -8,12 +8,12 @@ source: oop_concepts/src/
 
 # OOP Concepts — Index
 
-| Module | Source | Note |
-|---|---|---|
-| `structs` | `src/structs.rs` | [[Structs]] |
-| `enums` | `src/enums.rs` | [[Enums]] |
-| `traits` | `src/traits.rs` | [[Traits]] |
-| `generics` | `src/generics.rs` | [[Generics]] |
+| Module       | Source              | Note           |
+| ------------ | ------------------- | -------------- |
+| `structs`    | `src/structs.rs`    | [[Structs]]    |
+| `enums`      | `src/enums.rs`      | [[Enums]]      |
+| `traits`     | `src/traits.rs`     | [[Traits]]     |
+| `generics`   | `src/generics.rs`   | [[Generics]]   |
 | `std_traits` | `src/std_traits.rs` | [[Std Traits]] |
 
 ## Dependency map

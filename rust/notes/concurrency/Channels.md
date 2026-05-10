@@ -66,11 +66,11 @@ Use bounded channels when you need to slow down producers rather than accumulate
 
 ## Receiving Options
 
-| Method | Behavior |
-|--------|----------|
-| `rx.recv()` | Blocks until message or all senders dropped |
-| `rx.try_recv()` | Non-blocking; returns `TryRecvError::Empty` if no message |
-| `rx.recv_timeout(dur)` | Blocks up to `dur`; returns `RecvTimeoutError::Timeout` |
+| Method                 | Behavior                                                  |
+| ---------------------- | --------------------------------------------------------- |
+| `rx.recv()`            | Blocks until message or all senders dropped               |
+| `rx.try_recv()`        | Non-blocking; returns `TryRecvError::Empty` if no message |
+| `rx.recv_timeout(dur)` | Blocks up to `dur`; returns `RecvTimeoutError::Timeout`   |
 
 ```rust
 match rx.try_recv() {

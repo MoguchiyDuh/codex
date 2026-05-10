@@ -75,11 +75,11 @@ let bits: u32 = unsafe { std::mem::transmute::<f32, u32>(f) };
 
 Transmuting to an invalid bit pattern for the target type is immediate UB. Prefer type-safe alternatives:
 
-| Use case | Prefer instead |
-|---|---|
+| Use case           | Prefer instead                        |
+| ------------------ | ------------------------------------- |
 | `f32` ↔ `u32` bits | `f32::to_bits()` / `f32::from_bits()` |
-| `&[u8]` ↔ `&[u32]` | `bytemuck` crate |
-| Any reinterpret | document *why* transmute is required |
+| `&[u8]` ↔ `&[u32]` | `bytemuck` crate                      |
+| Any reinterpret    | document _why_ transmute is required  |
 
 ## std::mem::forget
 

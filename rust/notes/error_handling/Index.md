@@ -8,14 +8,14 @@ source: error_handling/src/
 
 # Error Handling — Index
 
-| Module | Source File | Note |
-|---|---|---|
-| Error Trait | `src/error_trait.rs` | [[Error Trait]] |
-| Custom Errors | `src/custom_errors.rs` | [[Custom Errors]] |
-| Error Conversion | `src/error_conversion.rs` | [[Error Conversion]] |
-| Propagation | `src/propagation.rs` | [[Propagation]] |
-| Anyhow | `src/anyhow_example.rs` | [[Anyhow]] |
-| Thiserror | `src/thiserror_example.rs` | [[Thiserror]] |
+| Module           | Source File                | Note                 |
+| ---------------- | -------------------------- | -------------------- |
+| Error Trait      | `src/error_trait.rs`       | [[Error Trait]]      |
+| Custom Errors    | `src/custom_errors.rs`     | [[Custom Errors]]    |
+| Error Conversion | `src/error_conversion.rs`  | [[Error Conversion]] |
+| Propagation      | `src/propagation.rs`       | [[Propagation]]      |
+| Anyhow           | `src/anyhow_example.rs`    | [[Anyhow]]           |
+| Thiserror        | `src/thiserror_example.rs` | [[Thiserror]]        |
 
 ## Concept Map
 

@@ -7,14 +7,14 @@ source: basics/src/data_types.rs
 
 ## Integers
 
-| Signed | Unsigned | Size |
-|--------|----------|------|
-| `i8` | `u8` | 8-bit |
-| `i16` | `u16` | 16-bit |
-| `i32` | `u32` | 32-bit (default) |
-| `i64` | `u64` | 64-bit |
-| `i128` | `u128` | 128-bit |
-| `isize` | `usize` | pointer-sized (platform-dependent) |
+| Signed  | Unsigned | Size                               |
+| ------- | -------- | ---------------------------------- |
+| `i8`    | `u8`     | 8-bit                              |
+| `i16`   | `u16`    | 16-bit                             |
+| `i32`   | `u32`    | 32-bit (default)                   |
+| `i64`   | `u64`    | 64-bit                             |
+| `i128`  | `u128`   | 128-bit                            |
+| `isize` | `usize`  | pointer-sized (platform-dependent) |
 
 `usize` is used for indexing and collection sizes. `isize`/`usize` are 64-bit on 64-bit platforms.
 

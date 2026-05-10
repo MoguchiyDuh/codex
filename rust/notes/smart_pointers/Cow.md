@@ -21,11 +21,11 @@ where B: ToOwned
 
 Common instantiations:
 
-| Type | Borrowed | Owned |
-|---|---|---|
-| `Cow<'_, str>` | `&str` | `String` |
-| `Cow<'_, [T]>` | `&[T]` | `Vec<T>` |
-| `Cow<'_, Path>` | `&Path` | `PathBuf` |
+| Type            | Borrowed | Owned     |
+| --------------- | -------- | --------- |
+| `Cow<'_, str>`  | `&str`   | `String`  |
+| `Cow<'_, [T]>`  | `&[T]`   | `Vec<T>`  |
+| `Cow<'_, Path>` | `&Path`  | `PathBuf` |
 
 ## Core use case — conditional allocation
 

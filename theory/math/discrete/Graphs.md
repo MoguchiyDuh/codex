@@ -18,11 +18,11 @@ A **graph** $G = (V, E)$ consists of a set of **vertices** $V$ and a set of **ed
 - **Multigraph**: parallel edges allowed.
 - **Weighted graph**: each edge carries a real-valued weight.
 
-| Parameter | Symbol | Meaning |
-|---|---|---|
-| Number of vertices | $n = \|V\|$ | order of the graph |
-| Number of edges | $m = \|E\|$ | size of the graph |
-| Degree of $v$ | $\deg(v)$ | number of edges incident to $v$ |
+| Parameter          | Symbol      | Meaning                         |
+| ------------------ | ----------- | ------------------------------- |
+| Number of vertices | $n = \|V\|$ | order of the graph              |
+| Number of edges    | $m = \|E\|$ | size of the graph               |
+| Degree of $v$      | $\deg(v)$   | number of edges incident to $v$ |
 
 For a directed graph, distinguish **in-degree** $\deg^-(v)$ and **out-degree** $\deg^+(v)$.
 
@@ -103,13 +103,13 @@ $K_5$ ($5$ vertices, $10$ edges): $3 \cdot 5 - 6 = 9 < 10$ — not planar. Simil
 
 A **proper $k$-colouring** assigns one of $k$ colours to each vertex so that no two adjacent vertices share a colour. The **chromatic number** $\chi(G)$ is the minimum $k$ for which a proper colouring exists.
 
-| Graph | $\chi$ |
-|---|---|
-| Empty graph ($m=0$) | $1$ |
-| Any bipartite graph | $\leq 2$ (and $= 2$ if any edge exists) |
-| Odd cycle $C_{2k+1}$ | $3$ |
-| Complete graph $K_n$ | $n$ |
-| Planar graph | $\leq 4$ (four colour theorem) |
+| Graph                | $\chi$                                  |
+| -------------------- | --------------------------------------- |
+| Empty graph ($m=0$)  | $1$                                     |
+| Any bipartite graph  | $\leq 2$ (and $= 2$ if any edge exists) |
+| Odd cycle $C_{2k+1}$ | $3$                                     |
+| Complete graph $K_n$ | $n$                                     |
+| Planar graph         | $\leq 4$ (four colour theorem)          |
 
 **Greedy colouring bound.** $\chi(G) \leq \Delta(G) + 1$, where $\Delta(G)$ is the maximum degree. Proof: colour vertices one by one; each vertex has at most $\Delta$ neighbours already coloured, so at least one of $\Delta + 1$ colours is always available.
 
@@ -124,6 +124,13 @@ A **matching** $M \subseteq E$ is a set of edges no two of which share a vertex.
 The condition "$|N(S)| \geq |S|$ for all $S$" is **Hall's condition**. Intuitively: no subset of $L$ is "too demanding" for $R$ to supply.
 
 Matchings formalise assignment problems: workers to jobs, medical students to hospitals (the stable matching problem in 6.042J), tasks to machines.
+
+## Video references
+
+- ![Lecture 6: Graph Theory and Coloring](https://www.youtube.com/watch?v=h9wxtqoa1jY)
+- ![Lecture 7: Matching Problems](https://www.youtube.com/watch?v=5RSMLgy06Ew)
+- ![Lecture 9: Communication Networks](https://www.youtube.com/watch?v=bTyxpoi2dmM)
+- ![Lecture 10: Graph Theory III](https://www.youtube.com/watch?v=DOIp5D7VMS4)
 
 ## See also
 

@@ -25,6 +25,8 @@ Compute the same `k` bits. If any is 0, `x` is **definitely not** in the set. If
 
 False positives are possible (different keys' bits coincidentally all set); false negatives are impossible.
 
+![[bloom_filter_bits.png]]
+
 ## False positive rate
 
 After inserting `n` items into a filter of `m` bits with `k` hashes:
@@ -37,7 +39,7 @@ Optimal `k = (m/n) · ln 2`. With this `k`, achieving a target false-positive ra
 
 ## What you give up
 
-- **No deletion.** Clearing bits would create false negatives because bits are shared across keys. Variants like *counting Bloom filters* allow deletion at the cost of more space (counters instead of bits).
+- **No deletion.** Clearing bits would create false negatives because bits are shared across keys. Variants like _counting Bloom filters_ allow deletion at the cost of more space (counters instead of bits).
 - **No iteration.** The filter stores no keys, only bits.
 - **No exact answer.** Only "definitely not" or "probably yes".
 
@@ -58,11 +60,11 @@ Examples:
 
 ## Variants
 
-| Variant | Property |
-|---|---|
-| Counting Bloom filter | Supports deletion via small per-cell counters |
-| Scalable Bloom filter | Grows by chaining filters as data arrives |
-| Cuckoo filter | Supports deletion, often better space efficiency |
+| Variant               | Property                                         |
+| --------------------- | ------------------------------------------------ |
+| Counting Bloom filter | Supports deletion via small per-cell counters    |
+| Scalable Bloom filter | Grows by chaining filters as data arrives        |
+| Cuckoo filter         | Supports deletion, often better space efficiency |
 
 ## See also
 

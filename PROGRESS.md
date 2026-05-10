@@ -5,68 +5,77 @@ Exam grades: **A** (90–100), **B** (75–89), **C** (60–74), **F** (<60 — 
 
 ---
 
+## Data Science
+
+| Course                                                     | Notes                            | Status |
+| ---------------------------------------------------------- | -------------------------------- | ------ |
+| [NumPy](python/numpy_pandas/notes/NumPy%20Cheatsheet.md)   | Cheatsheet complete, E1–E15 done | active |
+| [Pandas](python/numpy_pandas/notes/Pandas%20Cheatsheet.md) | Cheatsheet complete              | active |
+
+---
+
 ## Machine Learning
 
-| Course | Phases | Status | Last Exam | Grade |
-|--------|--------|--------|-----------|-------|
-| [ML Foundations](python/ml/ROADMAP.md) | 2 / 6 | in progress | — | — |
+| Course                                 | Phases | Status      | Last Exam | Grade |
+| -------------------------------------- | ------ | ----------- | --------- | ----- |
+| [ML Foundations](python/ml/ROADMAP.md) | 2 / 6  | in progress | —         | —     |
 
 ---
 
 ## Systems Programming
 
-| Course | Phases | Status | Last Exam | Grade |
-|--------|--------|--------|-----------|-------|
-| [C](c/ROADMAP.md) | 10 / 10 | complete | Phase 10 | A |
-| [Rust](rust/ROADMAP.md) | 0 / 10 | not started | — | — |
+| Course                  | Phases  | Status      | Last Exam | Grade |
+| ----------------------- | ------- | ----------- | --------- | ----- |
+| [C](c/ROADMAP.md)       | 10 / 10 | complete    | Phase 10  | A     |
+| [Rust](rust/ROADMAP.md) | 0 / 10  | not started | —         | —     |
 
 ## Computer Science Theory
 
-| Course | Phases | Status | Last Exam | Grade |
-|--------|--------|--------|-----------|-------|
-| [Discrete Math](theory/math/discrete/ROADMAP.md) | 10 / 10 | complete | 2026-04-29 | B |
-| [OOP](python/oop/ROADMAP.md) | 0 / 5 | not started | — | — |
-| [Computer Architecture](theory/architecture/ROADMAP.md) | 0 / 8 | not started | — | — |
-| [Operating Systems](theory/os/ROADMAP.md) | 0 / 7 | not started | — | — |
-| [Concurrency](theory/concurrency/ROADMAP.md) | 0 / 6 | not started | — | — |
-| [Computing Fundamentals](theory/computing/ROADMAP.md) | 0 / 6 | not started | — | — |
-| [Databases](theory/databases/ROADMAP.md) | 0 / 6 | not started | — | — |
-| [Networking](theory/networking/ROADMAP.md) | 0 / 6 | not started | — | — |
+| Course                                                  | Phases  | Status      | Last Exam  | Grade |
+| ------------------------------------------------------- | ------- | ----------- | ---------- | ----- |
+| [Discrete Math](theory/math/discrete/ROADMAP.md)        | 10 / 10 | complete    | 2026-04-29 | B     |
+| [OOP](python/oop/ROADMAP.md)                            | 0 / 5   | not started | —          | —     |
+| [Computer Architecture](theory/architecture/ROADMAP.md) | 0 / 8   | not started | —          | —     |
+| [Operating Systems](theory/os/ROADMAP.md)               | 0 / 7   | not started | —          | —     |
+| [Concurrency](theory/concurrency/ROADMAP.md)            | 0 / 6   | not started | —          | —     |
+| [Computing Fundamentals](theory/computing/ROADMAP.md)   | 0 / 6   | not started | —          | —     |
+| [Databases](theory/databases/ROADMAP.md)                | 0 / 6   | not started | —          | —     |
+| [Networking](theory/networking/ROADMAP.md)              | 0 / 6   | not started | —          | —     |
 
 Algorithms is tracked by implementation completeness rather than exams:
 
-| Course | Tiers | Status |
-|--------|-------|--------|
-| [Algorithms](theory/algorithms/ROADMAP.md) | 0 / 6 | active |
+| Course                                               | Tiers | Status      |
+| ---------------------------------------------------- | ----- | ----------- |
+| [Algorithms](theory/algorithms/ROADMAP.md)           | 0 / 6 | active      |
 | [Data Structures](theory/data_structures/ROADMAP.md) | 0 / 6 | not started |
 
 ## Mathematics
 
 Math is currently organized as theory note maps rather than phased course roadmaps.
 
-| Subject | Map | Status |
-|---------|-----|--------|
-| [Algebra](theory/math/algebra/ROADMAP.md) | `theory/math/algebra/` | phases 1–4 complete (B), phases 5–7 not started |
-| [Trigonometry](theory/math/trigonometry/Index.md) | `theory/math/trigonometry/` | active |
-| [Linear Algebra](theory/math/linear_algebra/ROADMAP.md) | `theory/math/linear_algebra/` | complete (B) |
-| [Discrete Math](theory/math/discrete/Index.md) | `theory/math/discrete/` | moved to CS Theory |
+| Subject                                                 | Map                           | Status                                          |
+| ------------------------------------------------------- | ----------------------------- | ----------------------------------------------- |
+| [Algebra](theory/math/algebra/ROADMAP.md)               | `theory/math/algebra/`        | phases 1–4 complete (B), phases 5–7 not started |
+| [Trigonometry](theory/math/trigonometry/Index.md)       | `theory/math/trigonometry/`   | active                                          |
+| [Linear Algebra](theory/math/linear_algebra/ROADMAP.md) | `theory/math/linear_algebra/` | complete (B)                                    |
+| [Discrete Math](theory/math/discrete/Index.md)          | `theory/math/discrete/`       | moved to CS Theory                              |
 
 ---
 
 ## Exam Log
 
-| Date | Course | Phase | Score | Grade | Notes |
-|------|--------|-------|-------|-------|-------|
-| 2026-02-27 | C | 1 — Types, Operators, Compilation Model | 4.5/5 | A | Missed sizeof-vs-strlen trap |
-| 2026-02-27 | C | 2 — Pointers & const Correctness | 4.5/5 | A | Missed memory leak in specific question |
-| 2026-02-28 | C | 3 — Strings, Arrays, size_t | 5/5 | A | Clean sweep |
-| 2026-02-28 | C | 4 — Structs, Unions, Padding, Alignment | 4/5 | B | Missed field-by-field offset calculation |
-| 2026-02-28 | C | 5 — Preprocessor, Headers, Multi-file | 4/5 | B | Missed static local persistent state |
-| 2026-03-05 | C | 6 — Standard I/O, File I/O, errno | 5.5/6 | A | Confused size_t sign semantics with %d/%zu |
-| 2026-03-06 | C | 7 — Integer Types, UB, Overflow | 4.5/5 | A | UBSan vs ASan domain split slightly off |
-| 2026-03-10 | C | 8 — Function Pointers & Callbacks | 5/5 | A | Clean sweep |
-| 2026-03-21 | C | 9 — Processes & Signals | 5/5 | A | Clean sweep |
-| 2026-03-26 | C | 10 — Advanced Qualifiers & Atomics | 4.5/5 | A | Missed two-issue breakdown on volatile/ordering Q3 |
-| 2026-04-29 | Discrete Math | all phases — university exam | — | B | — |
-| 2026-04-29 | Linear Algebra | all phases — university exam | — | B | — |
-| 2026-04-29 | Algebra | phases 1–4 — university school exam | — | B | Phases 5–7 (calculus) not covered |
+| Date       | Course         | Phase                                   | Score | Grade | Notes                                              |
+| ---------- | -------------- | --------------------------------------- | ----- | ----- | -------------------------------------------------- |
+| 2026-02-27 | C              | 1 — Types, Operators, Compilation Model | 4.5/5 | A     | Missed sizeof-vs-strlen trap                       |
+| 2026-02-27 | C              | 2 — Pointers & const Correctness        | 4.5/5 | A     | Missed memory leak in specific question            |
+| 2026-02-28 | C              | 3 — Strings, Arrays, size_t             | 5/5   | A     | Clean sweep                                        |
+| 2026-02-28 | C              | 4 — Structs, Unions, Padding, Alignment | 4/5   | B     | Missed field-by-field offset calculation           |
+| 2026-02-28 | C              | 5 — Preprocessor, Headers, Multi-file   | 4/5   | B     | Missed static local persistent state               |
+| 2026-03-05 | C              | 6 — Standard I/O, File I/O, errno       | 5.5/6 | A     | Confused size_t sign semantics with %d/%zu         |
+| 2026-03-06 | C              | 7 — Integer Types, UB, Overflow         | 4.5/5 | A     | UBSan vs ASan domain split slightly off            |
+| 2026-03-10 | C              | 8 — Function Pointers & Callbacks       | 5/5   | A     | Clean sweep                                        |
+| 2026-03-21 | C              | 9 — Processes & Signals                 | 5/5   | A     | Clean sweep                                        |
+| 2026-03-26 | C              | 10 — Advanced Qualifiers & Atomics      | 4.5/5 | A     | Missed two-issue breakdown on volatile/ordering Q3 |
+| 2026-04-29 | Discrete Math  | all phases — university exam            | —     | B     | —                                                  |
+| 2026-04-29 | Linear Algebra | all phases — university exam            | —     | B     | —                                                  |
+| 2026-04-29 | Algebra        | phases 1–4 — university school exam     | —     | B     | Phases 5–7 (calculus) not covered                  |

@@ -17,14 +17,14 @@ Examples: $\lim_{x\to 2}(3x+1)=7$, $\lim_{x\to 0}\frac{\sin x}{x}=1$, $\lim_{x\t
 
 ## Limit Laws
 
-| Law | Formula |
-|-----|---------|
-| Sum / difference | $\lim[f \pm g] = \lim f \pm \lim g$ |
-| Product | $\lim[f \cdot g] = \lim f \cdot \lim g$ |
-| Quotient | $\lim\frac{f}{g} = \frac{\lim f}{\lim g}$ (if $\lim g \neq 0$) |
-| Constant multiple | $\lim[c\cdot f] = c\cdot\lim f$ |
-| Power | $\lim[f]^n = [\lim f]^n$ |
-| Root | $\lim\sqrt[n]{f} = \sqrt[n]{\lim f}$ |
+| Law               | Formula                                                        |
+| ----------------- | -------------------------------------------------------------- |
+| Sum / difference  | $\lim[f \pm g] = \lim f \pm \lim g$                            |
+| Product           | $\lim[f \cdot g] = \lim f \cdot \lim g$                        |
+| Quotient          | $\lim\frac{f}{g} = \frac{\lim f}{\lim g}$ (if $\lim g \neq 0$) |
+| Constant multiple | $\lim[c\cdot f] = c\cdot\lim f$                                |
+| Power             | $\lim[f]^n = [\lim f]^n$                                       |
+| Root              | $\lim\sqrt[n]{f} = \sqrt[n]{\lim f}$                           |
 
 For any polynomial $p(x)$: $\lim_{x\to a} p(x) = p(a)$
 
@@ -37,17 +37,21 @@ $\frac{0}{0}$, $\frac{\infty}{\infty}$, $0\cdot\infty$, $\infty-\infty$, $0^0$, 
 ## Evaluation Techniques
 
 ### Direct substitution
+
 Plug in the value directly. Works whenever $f$ is continuous at $a$.
 
 ### Factoring
+
 Cancel common factors to resolve $\frac{0}{0}$:
 $$\lim_{x\to 3}\frac{x^2-9}{x-3} = \lim_{x\to 3}(x+3) = 6$$
 
 ### Rationalization
+
 Multiply by conjugate to eliminate radicals:
 $$\lim_{x\to 0}\frac{\sqrt{x+1}-1}{x} = \lim_{x\to 0}\frac{1}{\sqrt{x+1}+1} = \frac{1}{2}$$
 
 ### L'Hopital's Rule
+
 For $\frac{0}{0}$ or $\frac{\infty}{\infty}$:
 $$\boxed{\lim_{x\to a}\frac{f(x)}{g(x)} = \lim_{x\to a}\frac{f'(x)}{g'(x)}}$$
 
@@ -66,9 +70,9 @@ $$\lim_{x\to a}f(x) = L \iff \lim_{x\to a^-}f(x) = \lim_{x\to a^+}f(x) = L$$
 
 For rational functions $\frac{a_n x^n + \cdots}{b_m x^m + \cdots}$:
 
-| Degrees | Result |
-|---------|--------|
-| $n < m$ | $0$ |
+| Degrees | Result      |
+| ------- | ----------- |
+| $n < m$ | $0$         |
 | $n = m$ | $a_n / b_m$ |
 | $n > m$ | $\pm\infty$ |
 

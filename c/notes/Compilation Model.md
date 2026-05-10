@@ -72,10 +72,10 @@ When your `.c` file calls `malloc`, the compiler emits an unresolved reference t
 
 Two distinct errors — different stages:
 
-| Error | Stage | Cause |
-|-------|-------|-------|
-| `undeclared function 'foo'` | Compiler | Called with no declaration in scope |
-| `undefined reference to 'foo'` | Linker | Declared but never implemented or not linked |
+| Error                          | Stage    | Cause                                        |
+| ------------------------------ | -------- | -------------------------------------------- |
+| `undeclared function 'foo'`    | Compiler | Called with no declaration in scope          |
+| `undefined reference to 'foo'` | Linker   | Declared but never implemented or not linked |
 
 Inspect symbols in an object file with `nm`:
 
@@ -87,12 +87,12 @@ nm main.o
 
 ## Static vs Dynamic Linking
 
-| | Static (`.a`) | Dynamic (`.so` / `.dylib`) |
-|---|---|---|
-| Library code | copied into your binary | loaded at runtime |
-| Binary size | larger | smaller |
-| Deployment | self-contained | depends on system libraries |
-| Bug fixes | must recompile | library update affects all users |
+|              | Static (`.a`)           | Dynamic (`.so` / `.dylib`)       |
+| ------------ | ----------------------- | -------------------------------- |
+| Library code | copied into your binary | loaded at runtime                |
+| Binary size  | larger                  | smaller                          |
+| Deployment   | self-contained          | depends on system libraries      |
+| Bug fixes    | must recompile          | library update affects all users |
 
 ```bash
 gcc main.c -o program          # dynamic by default
@@ -116,25 +116,25 @@ gcc hashmap.c main.c -o program
 
 ## Compiler Flags
 
-| Flag | Effect |
-|------|--------|
-| `-Wall -Wextra` | Enable common warnings |
-| `-g` | Embed debug symbols |
-| `-O0` / `-O2` | Optimization level |
-| `-fsanitize=address,undefined` | Runtime error detection |
-| `-E` / `-S` / `-c` | Stop after preprocessing / compilation / assembly |
+| Flag                           | Effect                                            |
+| ------------------------------ | ------------------------------------------------- |
+| `-Wall -Wextra`                | Enable common warnings                            |
+| `-g`                           | Embed debug symbols                               |
+| `-O0` / `-O2`                  | Optimization level                                |
+| `-fsanitize=address,undefined` | Runtime error detection                           |
+| `-E` / `-S` / `-c`             | Stop after preprocessing / compilation / assembly |
 
 ## Source Files
 
-| File | Description |
-|------|-------------|
-| `src/compilation_model/main.c` | entry point, calls math_utils |
-| `src/compilation_model/math_utils.c` | function definitions |
-| `src/compilation_model/math_utils.h` | declarations — what a header looks like |
-| `src/compilation_model/build_stages.sh` | runs each stage explicitly, produces `.i` `.s` `.o` |
-| `src/compilation_model/main.i` | preprocessed output — inspect to see `#include` expansion |
-| `src/compilation_model/main.s` | assembly output |
-| `src/compilation_model/main.o` | object file — run `nm main.o` to inspect symbols |
+| File                                    | Description                                               |
+| --------------------------------------- | --------------------------------------------------------- |
+| `src/compilation_model/main.c`          | entry point, calls math_utils                             |
+| `src/compilation_model/math_utils.c`    | function definitions                                      |
+| `src/compilation_model/math_utils.h`    | declarations — what a header looks like                   |
+| `src/compilation_model/build_stages.sh` | runs each stage explicitly, produces `.i` `.s` `.o`       |
+| `src/compilation_model/main.i`          | preprocessed output — inspect to see `#include` expansion |
+| `src/compilation_model/main.s`          | assembly output                                           |
+| `src/compilation_model/main.o`          | object file — run `nm main.o` to inspect symbols          |
 
 ## See also
 

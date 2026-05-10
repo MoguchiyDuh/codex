@@ -40,6 +40,7 @@ let c2 = c1;  // bit-copy — c1 is still valid
 ```
 
 Constraints:
+
 - `Copy` requires `Clone` (it is a subtrait).
 - A type containing heap data (`String`, `Vec`) cannot implement `Copy` — heap ownership is not bitwise-copyable.
 - All primitive types (`i32`, `f64`, `bool`, `char`, `&T`) are `Copy`.
@@ -108,7 +109,7 @@ impl fmt::Binary for Flags {
 
 ## `PartialEq` and `Eq`
 
-`PartialEq` provides `==` and `!=`. `Eq` is a marker supertrait adding the guarantee of *reflexivity* (`a == a` is always true).
+`PartialEq` provides `==` and `!=`. `Eq` is a marker supertrait adding the guarantee of _reflexivity_ (`a == a` is always true).
 
 ```rust
 impl PartialEq for Version {
@@ -120,13 +121,13 @@ impl PartialEq for Version {
 impl Eq for Version {}  // marker trait — no methods
 ```
 
-`f64` implements `PartialEq` but *not* `Eq` because `NaN != NaN`. Types that require `Eq` (e.g. `HashMap` keys) will not accept `f64`.
+`f64` implements `PartialEq` but _not_ `Eq` because `NaN != NaN`. Types that require `Eq` (e.g. `HashMap` keys) will not accept `f64`.
 
 `#[derive(PartialEq, Eq)]` works when all fields implement both.
 
 ## `PartialOrd` and `Ord`
 
-`PartialOrd` provides `<`, `>`, `<=`, `>=` via `partial_cmp() -> Option<Ordering>`. `Ord` provides a *total* order via `cmp() -> Ordering` — no `Option`, always comparable.
+`PartialOrd` provides `<`, `>`, `<=`, `>=` via `partial_cmp() -> Option<Ordering>`. `Ord` provides a _total_ order via `cmp() -> Ordering` — no `Option`, always comparable.
 
 ```rust
 impl PartialOrd for SemVer {
@@ -172,7 +173,7 @@ Standard uses: lossless numeric widening (`i32 -> i64`), `&str -> String`, error
 
 ## `Deref` and `DerefMut`
 
-`Deref` makes `*value` follow a custom reference chain. Combined with *Deref coercion*, the compiler automatically inserts `deref()` calls to match expected types at function boundaries.
+`Deref` makes `*value` follow a custom reference chain. Combined with _Deref coercion_, the compiler automatically inserts `deref()` calls to match expected types at function boundaries.
 
 ```rust
 struct Newtype<T>(T);

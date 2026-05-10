@@ -15,11 +15,11 @@ A node holds a value plus one or two pointers. The list itself is identified by 
 
 ## Variants
 
-| Variant | Pointers per node | Notes |
-|---|---|---|
-| Singly linked | `next` | Forward traversal only |
-| Doubly linked | `next`, `prev` | Bidirectional, O(1) delete given a node |
-| Circular | tail's `next` points to head | No null terminator; useful for round-robin |
+| Variant       | Pointers per node            | Notes                                      |
+| ------------- | ---------------------------- | ------------------------------------------ |
+| Singly linked | `next`                       | Forward traversal only                     |
+| Doubly linked | `next`, `prev`               | Bidirectional, O(1) delete given a node    |
+| Circular      | tail's `next` points to head | No null terminator; useful for round-robin |
 
 A **sentinel** (dummy head/tail node) removes the need to special-case the empty list and the first/last position during insert and delete.
 
@@ -27,14 +27,14 @@ A **sentinel** (dummy head/tail node) removes the need to special-case the empty
 
 ## Operations
 
-| Operation | Singly | Doubly |
-|---|---|---|
-| `prepend` / `pop_front` | O(1) | O(1) |
-| `append` (with tail pointer) | O(1) | O(1) |
-| `pop_back` | O(n) | O(1) |
-| Insert/delete given node ref | O(n) (need prev) | O(1) |
-| Search by value | O(n) | O(n) |
-| Random access by index | O(n) | O(n) |
+| Operation                    | Singly           | Doubly |
+| ---------------------------- | ---------------- | ------ |
+| `prepend` / `pop_front`      | O(1)             | O(1)   |
+| `append` (with tail pointer) | O(1)             | O(1)   |
+| `pop_back`                   | O(n)             | O(1)   |
+| Insert/delete given node ref | O(n) (need prev) | O(1)   |
+| Search by value              | O(n)             | O(n)   |
+| Random access by index       | O(n)             | O(n)   |
 
 ## When to use
 

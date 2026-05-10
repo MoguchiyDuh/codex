@@ -105,10 +105,10 @@ unsafe {
 
 Not all raw pointers are the same size.
 
-| Pointer type | Size | Metadata |
-|---|---|---|
-| `*const i32` | 8 bytes | none (thin) |
-| `*const str` | 16 bytes | + length |
+| Pointer type       | Size     | Metadata         |
+| ------------------ | -------- | ---------------- |
+| `*const i32`       | 8 bytes  | none (thin)      |
+| `*const str`       | 16 bytes | + length         |
 | `*const dyn Debug` | 16 bytes | + vtable pointer |
 
 Fat pointers carry metadata alongside the address. This matters when casting between pointer types across an [[FFI]] boundary — always use thin pointers there.

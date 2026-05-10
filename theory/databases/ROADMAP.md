@@ -7,6 +7,7 @@ Relational model first, then internals. SQL as a tool, not the point.
 ## Phases
 
 ### Phase 1 — Relational Model
+
 Topics: relations, tuples, attributes, domains, keys (primary, foreign, candidate),
 referential integrity, relational algebra (select, project, join, union, difference).
 
@@ -16,6 +17,7 @@ referential integrity, relational algebra (select, project, join, union, differe
 ---
 
 ### Phase 2 — SQL
+
 Topics: DDL (`CREATE`, `ALTER`, `DROP`), DML (`SELECT`, `INSERT`, `UPDATE`, `DELETE`),
 joins (inner, left, right, full, cross), aggregation, subqueries, window functions.
 
@@ -25,6 +27,7 @@ joins (inner, left, right, full, cross), aggregation, subqueries, window functio
 ---
 
 ### Phase 3 — Normalization
+
 Topics: functional dependencies, 1NF, 2NF, 3NF, BCNF,
 decomposition, lossless joins, dependency preservation, when to denormalize.
 
@@ -34,6 +37,7 @@ decomposition, lossless joins, dependency preservation, when to denormalize.
 ---
 
 ### Phase 4 — Transactions & ACID
+
 Topics: atomicity, consistency, isolation, durability, transaction lifecycle,
 isolation levels (read uncommitted → serializable), phantom reads, dirty reads,
 write skew, 2PL, MVCC.
@@ -44,6 +48,7 @@ write skew, 2PL, MVCC.
 ---
 
 ### Phase 5 — Indexes & Query Execution
+
 Topics: B-tree indexes, hash indexes, clustered vs non-clustered,
 query planning, EXPLAIN, index selection, covering indexes.
 
@@ -53,6 +58,7 @@ query planning, EXPLAIN, index selection, covering indexes.
 ---
 
 ### Phase 6 — NoSQL & Distributed Concepts
+
 Topics: document, key-value, columnar, graph stores — what problem each solves,
 CAP theorem, eventual consistency, sharding, replication.
 

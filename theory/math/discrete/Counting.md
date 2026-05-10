@@ -81,12 +81,12 @@ $$\binom{n}{k} = \frac{P(n,k)}{k!} = \frac{n!}{k!\,(n-k)!}.$$
 
 ### Key identities
 
-| Identity | Formula | Proof idea |
-|---|---|---|
-| Symmetry | $\binom{n}{k} = \binom{n}{n-k}$ | choosing $k$ to include = choosing $n-k$ to exclude |
-| Pascal's identity | $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$ | fix element $x$: either include it ($\binom{n-1}{k-1}$) or not ($\binom{n-1}{k}$) |
-| Row sum | $\sum_{k=0}^{n} \binom{n}{k} = 2^n$ | each subset of $\{1,\ldots,n\}$ is counted once |
-| Vandermonde | $\sum_{k=0}^{r} \binom{m}{k}\binom{n}{r-k} = \binom{m+n}{r}$ | count $r$-subsets of an $(m+n)$-set by split |
+| Identity          | Formula                                                      | Proof idea                                                                        |
+| ----------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| Symmetry          | $\binom{n}{k} = \binom{n}{n-k}$                              | choosing $k$ to include = choosing $n-k$ to exclude                               |
+| Pascal's identity | $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$           | fix element $x$: either include it ($\binom{n-1}{k-1}$) or not ($\binom{n-1}{k}$) |
+| Row sum           | $\sum_{k=0}^{n} \binom{n}{k} = 2^n$                          | each subset of $\{1,\ldots,n\}$ is counted once                                   |
+| Vandermonde       | $\sum_{k=0}^{r} \binom{m}{k}\binom{n}{r-k} = \binom{m+n}{r}$ | count $r$-subsets of an $(m+n)$-set by split                                      |
 
 Pascal's identity gives Pascal's triangle row by row: each interior entry is the sum of the two above it.
 
@@ -100,11 +100,11 @@ $$(a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k.$$
 
 **Special cases:**
 
-| Substitution | Result |
-|---|---|
-| $a = b = 1$ | $\sum_{k=0}^{n} \binom{n}{k} = 2^n$ |
-| $a = 1,\, b = -1$ | $\sum_{k=0}^{n} (-1)^k \binom{n}{k} = 0$ |
-| $a = 1,\, b = x$ | $(1+x)^n = \sum_{k=0}^{n} \binom{n}{k} x^k$ |
+| Substitution      | Result                                      |
+| ----------------- | ------------------------------------------- |
+| $a = b = 1$       | $\sum_{k=0}^{n} \binom{n}{k} = 2^n$         |
+| $a = 1,\, b = -1$ | $\sum_{k=0}^{n} (-1)^k \binom{n}{k} = 0$    |
+| $a = 1,\, b = x$  | $(1+x)^n = \sum_{k=0}^{n} \binom{n}{k} x^k$ |
 
 **Example.** Coefficient of $x^3$ in $(2x + 3)^7$: term with $k=3$ is $\binom{7}{3}(2x)^4 \cdot 3^3 = 35 \cdot 16x^4 \cdot 27$. Wait — we want $x^3$, so $k=3$ gives $(2x)^3 \cdot 3^4 \cdot \binom{7}{3}$... restructure: $(a+b)^7$ with $a = 3$, $b = 2x$. Term $k=3$: $\binom{7}{3} \cdot 3^4 \cdot (2x)^3 = 35 \cdot 81 \cdot 8x^3 = 22{,}680\, x^3$.
 
@@ -146,11 +146,11 @@ If $n$ objects are placed into $k$ bins and $n > k$, then at least one bin conta
 
 **Examples:**
 
-| Claim | Argument |
-|---|---|
-| Among any 13 people, two share a birth month | 13 people, 12 months — one month has $\geq 2$ |
+| Claim                                                                               | Argument                                                                     |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Among any 13 people, two share a birth month                                        | 13 people, 12 months — one month has $\geq 2$                                |
 | Any sequence of $n^2+1$ distinct numbers has a monotone subsequence of length $n+1$ | Erdős–Szekeres; bin by longest increasing subsequence ending at each element |
-| In any set of $n+1$ integers from $\{1,\ldots,2n\}$, two are consecutive | $n$ consecutive pairs; $n+1$ numbers must share a pair |
+| In any set of $n+1$ integers from $\{1,\ldots,2n\}$, two are consecutive            | $n$ consecutive pairs; $n+1$ numbers must share a pair                       |
 
 **CS application.** The pigeonhole principle proves that no lossless compression algorithm can compress every possible input — there are $2^n$ strings of length $n$ but only $\sum_{k=0}^{n-1} 2^k = 2^n - 1$ shorter strings to map them to.
 
@@ -178,15 +178,24 @@ $$|A \cup B| = 50 + 33 - 16 = 67.$$
 
 ## Counting summary
 
-| Scenario | Formula |
-|---|---|
-| Ordered sequences of $k$ from $n$ (no repeat) | $P(n,k) = \dfrac{n!}{(n-k)!}$ |
-| Ordered sequences of $k$ from $n$ (with repeat) | $n^k$ |
-| Unordered selections of $k$ from $n$ (no repeat) | $\dbinom{n}{k}$ |
-| Unordered selections of $k$ from $n$ (with repeat) | $\dbinom{n+k-1}{k}$ |
-| Arrangements of $n$ with repeats $n_1,\ldots,n_r$ | $\dfrac{n!}{n_1!\cdots n_r!}$ |
-| Circular arrangements of $n$ | $(n-1)!$ |
-| $n$ balls into $k$ bins (any empty) | $\dbinom{n+k-1}{k-1}$ |
+| Scenario                                           | Formula                       |
+| -------------------------------------------------- | ----------------------------- |
+| Ordered sequences of $k$ from $n$ (no repeat)      | $P(n,k) = \dfrac{n!}{(n-k)!}$ |
+| Ordered sequences of $k$ from $n$ (with repeat)    | $n^k$                         |
+| Unordered selections of $k$ from $n$ (no repeat)   | $\dbinom{n}{k}$               |
+| Unordered selections of $k$ from $n$ (with repeat) | $\dbinom{n+k-1}{k}$           |
+| Arrangements of $n$ with repeats $n_1,\ldots,n_r$  | $\dfrac{n!}{n_1!\cdots n_r!}$ |
+| Circular arrangements of $n$                       | $(n-1)!$                      |
+| $n$ balls into $k$ bins (any empty)                | $\dbinom{n+k-1}{k-1}$         |
+
+## Video references
+
+- ![Lecture 12: Sums](https://www.youtube.com/watch?v=fAeShezAGLE)
+- ![Lecture 13: Sums and Asymptotics](https://www.youtube.com/watch?v=X9eErxRjQEI)
+- ![Lecture 14: Divide and Conquer Recurrences](https://www.youtube.com/watch?v=Kqf0uO0oV6s)
+- ![Lecture 15: Linear Recurrences](https://www.youtube.com/watch?v=TWBB-JlmYUc)
+- ![Lecture 16: Counting Rules I](https://www.youtube.com/watch?v=pNt5Ll6hGqo)
+- ![Lecture 17: Counting Rules II](https://www.youtube.com/watch?v=09yIb3VHhMI)
 
 ## See also
 

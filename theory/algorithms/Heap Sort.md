@@ -38,14 +38,14 @@ After the main loop, the array is sorted ascending. The heap progressively shrin
 
 ## Complexity
 
-| Property | Value |
-|---|---|
-| Worst | $\Theta(n \log n)$ |
-| Average | $\Theta(n \log n)$ |
-| Best | $\Theta(n \log n)$ |
-| Space | $\Theta(1)$ |
-| Stable | no |
-| In-place | yes |
+| Property | Value              |
+| -------- | ------------------ |
+| Worst    | $\Theta(n \log n)$ |
+| Average  | $\Theta(n \log n)$ |
+| Best     | $\Theta(n \log n)$ |
+| Space    | $\Theta(1)$        |
+| Stable   | no                 |
+| In-place | yes                |
 
 The bound is tight in all cases — no input speeds it up. Build-heap is $\Theta(n)$ (not $\Theta(n \log n)$ — see [[../data_structures/Heap|Heap]]); the dominant cost is the $n - 1$ sift-downs in phase 2.
 
@@ -63,23 +63,23 @@ The bound is tight in all cases — no input speeds it up. Build-heap is $\Theta
 
 ## When to choose heap sort
 
-| Situation | Reason |
-|---|---|
-| Need worst-case $\Theta(n \log n)$ guaranteed | Quicksort's $\Theta(n^2)$ worst case is unacceptable |
-| Memory is tight | $\Theta(1)$ extra space, no recursion |
-| Embedded / kernel context | Predictable behaviour, no allocation |
-| Top-$k$ instead of full sort | Use the heap directly — see [[../data_structures/Heap\|Heap]] |
+| Situation                                     | Reason                                                        |
+| --------------------------------------------- | ------------------------------------------------------------- |
+| Need worst-case $\Theta(n \log n)$ guaranteed | Quicksort's $\Theta(n^2)$ worst case is unacceptable          |
+| Memory is tight                               | $\Theta(1)$ extra space, no recursion                         |
+| Embedded / kernel context                     | Predictable behaviour, no allocation                          |
+| Top-$k$ instead of full sort                  | Use the heap directly — see [[../data_structures/Heap\|Heap]] |
 
 ## Heap sort vs the alternatives
 
-| | Heap sort | Quick sort | Merge sort |
-|---|---|---|---|
-| Worst | $\Theta(n \log n)$ | $\Theta(n^2)$ | $\Theta(n \log n)$ |
-| Space | $\Theta(1)$ | $\Theta(\log n)$ | $\Theta(n)$ |
-| Stable | no | no | yes |
-| In-place | yes | yes | no |
-| Cache | poor | excellent | moderate |
-| Practical speed | slowest of the three | fastest | middle |
+|                 | Heap sort            | Quick sort       | Merge sort         |
+| --------------- | -------------------- | ---------------- | ------------------ |
+| Worst           | $\Theta(n \log n)$   | $\Theta(n^2)$    | $\Theta(n \log n)$ |
+| Space           | $\Theta(1)$          | $\Theta(\log n)$ | $\Theta(n)$        |
+| Stable          | no                   | no               | yes                |
+| In-place        | yes                  | yes              | no                 |
+| Cache           | poor                 | excellent        | moderate           |
+| Practical speed | slowest of the three | fastest          | middle             |
 
 ## Video references
 

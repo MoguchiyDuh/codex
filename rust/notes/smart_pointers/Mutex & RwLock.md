@@ -87,6 +87,7 @@ do_slow_work(value); // outside the lock
 ## RwLock\<T\>
 
 `RwLock<T>` (read-write lock) distinguishes between readers and writers:
+
 - Multiple readers simultaneously — `read()` returns `RwLockReadGuard<T>`
 - Single writer, no concurrent readers — `write()` returns `RwLockWriteGuard<T>`
 
@@ -137,13 +138,13 @@ let _b = mutex_b.lock().unwrap();
 
 ## Mutex vs RwLock
 
-| | `Mutex<T>` | `RwLock<T>` |
-|---|---|---|
-| Concurrent reads | No | Yes |
-| Write access | Exclusive | Exclusive |
-| Overhead | Lower | Higher |
-| Risk of writer starvation | No | Possible (platform-dependent) |
-| Best for | Balanced read/write or write-heavy | Read-heavy workloads |
+|                           | `Mutex<T>`                         | `RwLock<T>`                   |
+| ------------------------- | ---------------------------------- | ----------------------------- |
+| Concurrent reads          | No                                 | Yes                           |
+| Write access              | Exclusive                          | Exclusive                     |
+| Overhead                  | Lower                              | Higher                        |
+| Risk of writer starvation | No                                 | Possible (platform-dependent) |
+| Best for                  | Balanced read/write or write-heavy | Read-heavy workloads          |
 
 In practice, use `Mutex` unless profiling shows lock contention on reads, then consider `RwLock`.
 

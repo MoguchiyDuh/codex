@@ -13,11 +13,11 @@ A **set** is an unordered collection of distinct objects called **elements** or 
 
 Sets are specified three ways:
 
-| Style | Example | Use |
-|---|---|---|
-| Roster | $\{1, 2, 3\}$ | small finite sets |
-| Set-builder | $\{x \in \mathbb{Z} \mid x > 0\}$ | infinite or rule-defined sets |
-| Named | $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$ | standard number sets |
+| Style       | Example                                          | Use                           |
+| ----------- | ------------------------------------------------ | ----------------------------- |
+| Roster      | $\{1, 2, 3\}$                                    | small finite sets             |
+| Set-builder | $\{x \in \mathbb{Z} \mid x > 0\}$                | infinite or rule-defined sets |
+| Named       | $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$ | standard number sets          |
 
 By convention $\mathbb{N} = \{0, 1, 2, \ldots\}$ in 6.042J (0 is included). The **empty set** $\emptyset = \{\}$ has no elements.
 
@@ -35,27 +35,27 @@ Both directions: every integer with $x^2 \leq 4$ is in $\{-2,-1,0,1,2\}$ (check:
 
 ## Set operations
 
-| Operation | Symbol | Definition |
-|---|---|---|
-| Union | $A \cup B$ | $\{x \mid x \in A \text{ or } x \in B\}$ |
-| Intersection | $A \cap B$ | $\{x \mid x \in A \text{ and } x \in B\}$ |
-| Difference | $A \setminus B$ | $\{x \mid x \in A \text{ and } x \notin B\}$ |
-| Complement | $\overline{A}$ or $A^c$ | $\{x \in U \mid x \notin A\}$ (relative to universe $U$) |
-| Symmetric diff. | $A \triangle B$ | $(A \setminus B) \cup (B \setminus A)$ |
-| Cartesian product | $A \times B$ | $\{(a, b) \mid a \in A,\; b \in B\}$ |
+| Operation         | Symbol                  | Definition                                               |
+| ----------------- | ----------------------- | -------------------------------------------------------- |
+| Union             | $A \cup B$              | $\{x \mid x \in A \text{ or } x \in B\}$                 |
+| Intersection      | $A \cap B$              | $\{x \mid x \in A \text{ and } x \in B\}$                |
+| Difference        | $A \setminus B$         | $\{x \mid x \in A \text{ and } x \notin B\}$             |
+| Complement        | $\overline{A}$ or $A^c$ | $\{x \in U \mid x \notin A\}$ (relative to universe $U$) |
+| Symmetric diff.   | $A \triangle B$         | $(A \setminus B) \cup (B \setminus A)$                   |
+| Cartesian product | $A \times B$            | $\{(a, b) \mid a \in A,\; b \in B\}$                     |
 
 ![[set_venn_operations.png]]
 
 ### Algebraic laws
 
-| Law | Expression |
-|---|---|
-| Commutative | $A \cup B = B \cup A$, $\quad A \cap B = B \cap A$ |
-| Associative | $(A \cup B) \cup C = A \cup (B \cup C)$ |
-| Distributive | $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$ |
-| De Morgan | $\overline{A \cup B} = \overline{A} \cap \overline{B}$, $\quad \overline{A \cap B} = \overline{A} \cup \overline{B}$ |
-| Identity | $A \cup \emptyset = A$, $\quad A \cap U = A$ |
-| Complement | $A \cup \overline{A} = U$, $\quad A \cap \overline{A} = \emptyset$ |
+| Law          | Expression                                                                                                           |
+| ------------ | -------------------------------------------------------------------------------------------------------------------- |
+| Commutative  | $A \cup B = B \cup A$, $\quad A \cap B = B \cap A$                                                                   |
+| Associative  | $(A \cup B) \cup C = A \cup (B \cup C)$                                                                              |
+| Distributive | $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$                                                                     |
+| De Morgan    | $\overline{A \cup B} = \overline{A} \cap \overline{B}$, $\quad \overline{A \cap B} = \overline{A} \cup \overline{B}$ |
+| Identity     | $A \cup \emptyset = A$, $\quad A \cap U = A$                                                                         |
+| Complement   | $A \cup \overline{A} = U$, $\quad A \cap \overline{A} = \emptyset$                                                   |
 
 These mirror the logical equivalences in [[Logic & Proofs]] — union corresponds to $\vee$, intersection to $\wedge$, complement to $\neg$.
 
@@ -84,12 +84,12 @@ Two sets have the same cardinality if there exists a **bijection** between them 
 
 **Countably infinite.** A set is countably infinite if it has the same cardinality as $\mathbb{N}$, i.e. its elements can be listed $a_0, a_1, a_2, \ldots$
 
-| Set | Countable? | Why |
-|---|---|---|
-| $\mathbb{Z}$ | Yes | List: $0, 1, -1, 2, -2, \ldots$ |
-| $\mathbb{Q}$ | Yes | Diagonal enumeration of fractions |
-| $\mathbb{N} \times \mathbb{N}$ | Yes | Diagonal enumeration |
-| $\mathbb{R}$ | No | Cantor's diagonal argument |
+| Set                            | Countable? | Why                               |
+| ------------------------------ | ---------- | --------------------------------- |
+| $\mathbb{Z}$                   | Yes        | List: $0, 1, -1, 2, -2, \ldots$   |
+| $\mathbb{Q}$                   | Yes        | Diagonal enumeration of fractions |
+| $\mathbb{N} \times \mathbb{N}$ | Yes        | Diagonal enumeration              |
+| $\mathbb{R}$                   | No         | Cantor's diagonal argument        |
 
 **Cantor's theorem.** For any set $A$, $|\mathcal{P}(A)| > |A|$. In particular $|\mathcal{P}(\mathbb{N})| > |\mathbb{N}|$, and $|\mathbb{R}| = |\mathcal{P}(\mathbb{N})|$.
 

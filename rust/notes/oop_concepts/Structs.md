@@ -49,12 +49,12 @@ impl Person {
 
 ## Receiver types
 
-| Signature | Meaning |
-|---|---|
-| `fn foo(&self)` | shared borrow — read-only |
-| `fn foo(&mut self)` | exclusive borrow — can mutate |
-| `fn foo(self)` | takes ownership — consumes the value |
-| `fn foo() -> Self` | associated function (no receiver) — like a static method |
+| Signature           | Meaning                                                  |
+| ------------------- | -------------------------------------------------------- |
+| `fn foo(&self)`     | shared borrow — read-only                                |
+| `fn foo(&mut self)` | exclusive borrow — can mutate                            |
+| `fn foo(self)`      | takes ownership — consumes the value                     |
+| `fn foo() -> Self`  | associated function (no receiver) — like a static method |
 
 ```rust
 impl Counter {

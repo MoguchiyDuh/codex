@@ -26,22 +26,22 @@ For **uniform** sample spaces every outcome has equal weight $\Pr[\omega] = 1/|\
 
 The Kolmogorov axioms characterise any valid probability function:
 
-| Axiom | Statement |
-|---|---|
-| Non-negativity | $\Pr[E] \geq 0$ for all events $E$ |
-| Normalisation | $\Pr[\Omega] = 1$ |
+| Axiom                | Statement                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------ |
+| Non-negativity       | $\Pr[E] \geq 0$ for all events $E$                                                               |
+| Normalisation        | $\Pr[\Omega] = 1$                                                                                |
 | Countable additivity | If $E_1, E_2, \ldots$ are pairwise disjoint, $\Pr\!\left[\bigcup_i E_i\right] = \sum_i \Pr[E_i]$ |
 
 Everything else — complement rule, inclusion-exclusion for events, union bound — follows from these three.
 
 ### Derived rules
 
-| Rule | Formula | Proof |
-|---|---|---|
-| Complement | $\Pr[\overline{E}] = 1 - \Pr[E]$ | $\Pr[E] + \Pr[\overline{E}] = \Pr[\Omega] = 1$ |
-| Monotonicity | $A \subseteq B \implies \Pr[A] \leq \Pr[B]$ | $B = A \cup (B \setminus A)$, disjoint, so $\Pr[B] = \Pr[A] + \Pr[B \setminus A] \geq \Pr[A]$ |
-| Union bound | $\Pr[A \cup B] \leq \Pr[A] + \Pr[B]$ | inclusion-exclusion minus a non-negative term |
-| Inclusion-exclusion | $\Pr[A \cup B] = \Pr[A] + \Pr[B] - \Pr[A \cap B]$ | from countable additivity + split of $A \cup B$ |
+| Rule                | Formula                                           | Proof                                                                                         |
+| ------------------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Complement          | $\Pr[\overline{E}] = 1 - \Pr[E]$                  | $\Pr[E] + \Pr[\overline{E}] = \Pr[\Omega] = 1$                                                |
+| Monotonicity        | $A \subseteq B \implies \Pr[A] \leq \Pr[B]$       | $B = A \cup (B \setminus A)$, disjoint, so $\Pr[B] = \Pr[A] + \Pr[B \setminus A] \geq \Pr[A]$ |
+| Union bound         | $\Pr[A \cup B] \leq \Pr[A] + \Pr[B]$              | inclusion-exclusion minus a non-negative term                                                 |
+| Inclusion-exclusion | $\Pr[A \cup B] = \Pr[A] + \Pr[B] - \Pr[A \cap B]$ | from countable additivity + split of $A \cup B$                                               |
 
 The **union bound** is especially useful in CS: when you have many bad events and want to show their union is unlikely, bound the probability of each and sum. This technique appears in randomised algorithm analysis and cryptographic security proofs.
 
@@ -151,6 +151,12 @@ Four-step:
 Switching wins with probability $2/3$; staying wins with probability $1/3$.
 
 The intuition: switching loses only if your initial pick was correct (probability $1/3$), so switching wins with probability $2/3$.
+
+## Video references
+
+- ![Lecture 18: Probability Introduction](https://www.youtube.com/watch?v=SmFwFdESMHI)
+- ![Lecture 19: Conditional Probability](https://www.youtube.com/watch?v=E6FbvM-FGZ8)
+- ![Lecture 20: Independence](https://www.youtube.com/watch?v=l1BCv3qqW4A)
 
 ## See also
 

@@ -148,20 +148,20 @@ enum Command {
 
 ### Other tagging styles (not in examples but worth knowing)
 
-| Attribute | Format |
-|-----------|--------|
-| `#[serde(tag="t", content="c")]` | `{"t":"Move","c":{"x":1,"y":2}}` — adjacently tagged |
-| `#[serde(untagged)]` | `{"x":1,"y":2}` — no discriminant; variants tried in order |
+| Attribute                        | Format                                                     |
+| -------------------------------- | ---------------------------------------------------------- |
+| `#[serde(tag="t", content="c")]` | `{"t":"Move","c":{"x":1,"y":2}}` — adjacently tagged       |
+| `#[serde(untagged)]`             | `{"x":1,"y":2}` — no discriminant; variants tried in order |
 
 ---
 
 ## Summary of common attributes
 
-| Attribute | Effect |
-|-----------|--------|
-| `rename = "key"` | Different key name in output |
-| `skip_serializing_if = "fn"` | Conditionally omit field |
-| `default` | Use `Default::default()` for missing keys |
-| `default = "fn"` | Use named function for missing keys |
-| `skip` | Exclude from ser and de entirely |
-| `tag = "field"` | Internally tag enum variants |
+| Attribute                    | Effect                                    |
+| ---------------------------- | ----------------------------------------- |
+| `rename = "key"`             | Different key name in output              |
+| `skip_serializing_if = "fn"` | Conditionally omit field                  |
+| `default`                    | Use `Default::default()` for missing keys |
+| `default = "fn"`             | Use named function for missing keys       |
+| `skip`                       | Exclude from ser and de entirely          |
+| `tag = "field"`              | Internally tag enum variants              |

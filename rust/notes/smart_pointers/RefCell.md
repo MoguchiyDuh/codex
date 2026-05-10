@@ -26,6 +26,7 @@ println!("{}", r);
 ```
 
 Rules (same as compile-time, enforced at runtime):
+
 - Any number of `borrow()` at once, OR
 - Exactly one `borrow_mut()` — no other borrows while it lives
 
@@ -58,11 +59,11 @@ println!("{:?}", shared.borrow()); // [1, 2, 3, 4, 5]
 
 ### Other useful methods
 
-| Method | Effect |
-|---|---|
+| Method         | Effect                                  |
+| -------------- | --------------------------------------- |
 | `into_inner()` | Consumes `RefCell`, returns inner value |
-| `replace(new)` | Swaps in a new value, returns old one |
-| `swap(&other)` | Swaps values between two `RefCell`s |
+| `replace(new)` | Swaps in a new value, returns old one   |
+| `swap(&other)` | Swaps values between two `RefCell`s     |
 
 ### Graph / back-reference example
 
@@ -92,6 +93,7 @@ println!("{}", c.get()); // 10
 ```
 
 Mutation through a shared reference:
+
 ```rust
 fn increment(c: &Cell<i32>) {
     c.set(c.get() + 1);
@@ -112,12 +114,12 @@ let old = cell.replace(200);  // swap, returns old
 
 ## Cell vs RefCell — quick comparison
 
-| | `Cell<T>` | `RefCell<T>` |
-|---|---|---|
-| Works with | `Copy` types | Any `T` |
-| Access model | `get()` copies, `set()` copies | `borrow()` / `borrow_mut()` |
-| Overhead | Zero | Small integer flag |
-| Panics possible | No | Yes (on borrow violation) |
+|                 | `Cell<T>`                      | `RefCell<T>`                |
+| --------------- | ------------------------------ | --------------------------- |
+| Works with      | `Copy` types                   | Any `T`                     |
+| Access model    | `get()` copies, `set()` copies | `borrow()` / `borrow_mut()` |
+| Overhead        | Zero                           | Small integer flag          |
+| Panics possible | No                             | Yes (on borrow violation)   |
 
 ## When to use RefCell
 

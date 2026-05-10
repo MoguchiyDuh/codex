@@ -158,9 +158,9 @@ Write `expecting` strings as noun phrases: "a duration in fractional seconds", "
 
 ## Decision guide
 
-| Situation | Approach |
-|-----------|----------|
-| Standard struct/enum, default format | `#[derive(Serialize, Deserialize)]` |
-| One field needs custom logic | `serialize_with` / `deserialize_with` |
-| Whole type needs different wire format | Implement `Serialize` + `Deserialize` manually |
-| Accept multiple JSON types for one Rust type | Implement multiple `visit_*` in the `Visitor` |
+| Situation                                    | Approach                                       |
+| -------------------------------------------- | ---------------------------------------------- |
+| Standard struct/enum, default format         | `#[derive(Serialize, Deserialize)]`            |
+| One field needs custom logic                 | `serialize_with` / `deserialize_with`          |
+| Whole type needs different wire format       | Implement `Serialize` + `Deserialize` manually |
+| Accept multiple JSON types for one Rust type | Implement multiple `visit_*` in the `Visitor`  |

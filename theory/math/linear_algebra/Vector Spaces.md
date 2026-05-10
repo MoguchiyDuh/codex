@@ -11,25 +11,25 @@ status: complete
 
 A **vector space** $V$ over $\mathbb{R}$ is a set with two operations (addition, scalar multiplication) satisfying, for all $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$ and $\alpha, \beta \in \mathbb{R}$:
 
-| # | Axiom | Statement |
-|---|-------|-----------|
-| 1 | Closure (add) | $\mathbf{u} + \mathbf{v} \in V$ |
-| 2 | Commutative | $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$ |
-| 3 | Associative (add) | $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$ |
-| 4 | Zero | $\exists \mathbf{0} \in V$ with $\mathbf{v} + \mathbf{0} = \mathbf{v}$ |
-| 5 | Inverse | $\forall \mathbf{v}, \exists -\mathbf{v}$ with $\mathbf{v} + (-\mathbf{v}) = \mathbf{0}$ |
-| 6 | Closure (scale) | $\alpha \mathbf{v} \in V$ |
-| 7 | Distributive | $\alpha(\mathbf{u} + \mathbf{v}) = \alpha \mathbf{u} + \alpha \mathbf{v}$, $(\alpha + \beta)\mathbf{v} = \alpha\mathbf{v} + \beta\mathbf{v}$ |
-| 8 | Scalar identity | $1 \cdot \mathbf{v} = \mathbf{v}$, $\alpha(\beta \mathbf{v}) = (\alpha\beta)\mathbf{v}$ |
+| #   | Axiom             | Statement                                                                                                                                    |
+| --- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Closure (add)     | $\mathbf{u} + \mathbf{v} \in V$                                                                                                              |
+| 2   | Commutative       | $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$                                                                                          |
+| 3   | Associative (add) | $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$                                                            |
+| 4   | Zero              | $\exists \mathbf{0} \in V$ with $\mathbf{v} + \mathbf{0} = \mathbf{v}$                                                                       |
+| 5   | Inverse           | $\forall \mathbf{v}, \exists -\mathbf{v}$ with $\mathbf{v} + (-\mathbf{v}) = \mathbf{0}$                                                     |
+| 6   | Closure (scale)   | $\alpha \mathbf{v} \in V$                                                                                                                    |
+| 7   | Distributive      | $\alpha(\mathbf{u} + \mathbf{v}) = \alpha \mathbf{u} + \alpha \mathbf{v}$, $(\alpha + \beta)\mathbf{v} = \alpha\mathbf{v} + \beta\mathbf{v}$ |
+| 8   | Scalar identity   | $1 \cdot \mathbf{v} = \mathbf{v}$, $\alpha(\beta \mathbf{v}) = (\alpha\beta)\mathbf{v}$                                                      |
 
 ### Examples beyond $\mathbb{R}^n$
 
-| Space | Elements |
-|-------|----------|
-| $\mathbb{R}^{m \times n}$ | All $m \times n$ real matrices |
-| $P_n$ | Polynomials of degree $\leq n$ |
-| $C[a, b]$ | Continuous functions on $[a, b]$ |
-| Solutions of a homogeneous linear ODE | Functions |
+| Space                                 | Elements                         |
+| ------------------------------------- | -------------------------------- |
+| $\mathbb{R}^{m \times n}$             | All $m \times n$ real matrices   |
+| $P_n$                                 | Polynomials of degree $\leq n$   |
+| $C[a, b]$                             | Continuous functions on $[a, b]$ |
+| Solutions of a homogeneous linear ODE | Functions                        |
 
 The abstraction pays off: results proven for "vector spaces" apply to all of these.
 
@@ -102,12 +102,12 @@ Every basis of $V$ has the same size. That number is the **dimension**:
 
 $$\dim(V) = |\mathcal{B}|$$
 
-| Space | Dimension |
-|-------|-----------|
-| $\mathbb{R}^n$ | $n$ |
-| $\mathbb{R}^{m \times n}$ | $mn$ |
-| $P_n$ (polynomials of deg $\leq n$) | $n + 1$ |
-| $\{\mathbf{0}\}$ | $0$ |
+| Space                               | Dimension |
+| ----------------------------------- | --------- |
+| $\mathbb{R}^n$                      | $n$       |
+| $\mathbb{R}^{m \times n}$           | $mn$      |
+| $P_n$ (polynomials of deg $\leq n$) | $n + 1$   |
+| $\{\mathbf{0}\}$                    | $0$       |
 
 Infinite-dimensional spaces exist (e.g. $C[a,b]$) but are outside this course's scope.
 
@@ -115,12 +115,12 @@ Infinite-dimensional spaces exist (e.g. $C[a,b]$) but are outside this course's 
 
 For $A \in \mathbb{R}^{m \times n}$ with rank $r$:
 
-| Subspace | Symbol | Lives in | Dimension | Built from |
-|----------|--------|----------|-----------|------------|
-| **Column space** | $C(A)$ | $\mathbb{R}^m$ | $r$ | Pivot columns of $A$ |
-| **Null space** | $N(A)$ | $\mathbb{R}^n$ | $n - r$ | Special solutions to $A\mathbf{x} = \mathbf{0}$ |
-| **Row space** | $C(A^T)$ | $\mathbb{R}^n$ | $r$ | Non-zero rows of RREF |
-| **Left null space** | $N(A^T)$ | $\mathbb{R}^m$ | $m - r$ | Solutions to $A^T \mathbf{y} = \mathbf{0}$ |
+| Subspace            | Symbol   | Lives in       | Dimension | Built from                                      |
+| ------------------- | -------- | -------------- | --------- | ----------------------------------------------- |
+| **Column space**    | $C(A)$   | $\mathbb{R}^m$ | $r$       | Pivot columns of $A$                            |
+| **Null space**      | $N(A)$   | $\mathbb{R}^n$ | $n - r$   | Special solutions to $A\mathbf{x} = \mathbf{0}$ |
+| **Row space**       | $C(A^T)$ | $\mathbb{R}^n$ | $r$       | Non-zero rows of RREF                           |
+| **Left null space** | $N(A^T)$ | $\mathbb{R}^m$ | $m - r$   | Solutions to $A^T \mathbf{y} = \mathbf{0}$      |
 
 ![[four_fundamental_subspaces.png]]
 
@@ -147,6 +147,11 @@ For $A \in \mathbb{R}^{m \times n}$. Pivot columns count toward rank, free colum
 - ![3Blue1Brown - Linear combinations, span, and basis vectors | Chapter 2, Essence of linear algebra](https://www.youtube.com/watch?v=k7RM-ot2NWY)
 - ![3Blue1Brown - Inverse matrices, column space and null space | Chapter 7, Essence of linear algebra](https://www.youtube.com/watch?v=uQhTuRlWMxw)
 - ![3Blue1Brown - Abstract vector spaces | Chapter 16, Essence of linear algebra](https://www.youtube.com/watch?v=TgKwz5Ikpc8)
+
+- ![6. Column Space and Nullspace](https://www.youtube.com/watch?v=8o5Cmfpeo6g)
+- ![9. Independence, Basis, and Dimension](https://www.youtube.com/watch?v=yjBerM5jWsc)
+- ![10. The Four Fundamental Subspaces](https://www.youtube.com/watch?v=nHlE7EgJFds)
+- ![11. Matrix Spaces; Rank 1; Small World Graphs](https://www.youtube.com/watch?v=2IdtqGM6KWU)
 
 ## See also
 

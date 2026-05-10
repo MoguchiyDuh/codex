@@ -4,10 +4,10 @@
 
 Two kinds of notes, different rules:
 
-| Type | Location | Frontmatter | Section dividers |
-|---|---|---|---|
-| **Theory / lang** | `theory/`, `c/notes/`, `rust/notes/`, `python/notes/` | Required | None |
-| **Guide** | `guides/` | None | `---` between sections |
+| Type              | Location                                              | Frontmatter | Section dividers       |
+| ----------------- | ----------------------------------------------------- | ----------- | ---------------------- |
+| **Theory / lang** | `theory/`, `c/notes/`, `rust/notes/`, `python/notes/` | Required    | None                   |
+| **Guide**         | `guides/`                                             | None        | `---` between sections |
 
 ## Frontmatter (theory / lang notes)
 
@@ -15,7 +15,7 @@ Two kinds of notes, different rules:
 ---
 tags: [algorithms, sorting]
 status: stub | complete
-source: c/hashmap.c          # lang notes only — optional
+source: c/hashmap.c # lang notes only — optional
 ---
 ```
 
@@ -45,9 +45,9 @@ A theory note must teach the topic, not just outline it. Baseline references: `t
 - **Prose, not bullet stubs.** Every `##` and `###` has explanatory text.
 - **Worked examples** alongside formulas wherever a beginner would otherwise stall.
 - **Tables for comparisons, properties, classifications, complexity.** Prefer a table over a bullet list whenever a structural comparison is being made.
-- **Images at conceptually heavy spots** — see *Images* below.
-- **Cross-references inline** in prose where another note develops the idea further (e.g. *"developed in [[Vector Spaces]]"*).
-- **Course-grounded scope.** Folder `Index.md` names the academic course the material is structured after (e.g. *"Structured after MIT 18.06 (Strang)"*, *"Structured after CLRS 4e and MIT 6.046"*).
+- **Images at conceptually heavy spots** — see _Images_ below.
+- **Cross-references inline** in prose where another note develops the idea further (e.g. _"developed in [[Vector Spaces]]"_).
+- **Course-grounded scope.** Folder `Index.md` names the academic course the material is structured after (e.g. _"Structured after MIT 18.06 (Strang)"_, _"Structured after CLRS 4e and MIT 6.046"_).
 
 ## Math (LaTeX)
 
@@ -92,7 +92,7 @@ Theory notes embed images at points where a diagram materially aids understandin
 - To illustrate a transformation, traversal, rotation, or process.
 - Side-by-side comparisons (e.g. adjacency list vs matrix, before/after rotation).
 
-### Where *not* to place
+### Where _not_ to place
 
 - Restating a table.
 - Decorating a section header.
@@ -136,15 +136,15 @@ All style values (DPI, font sizes, colors, linewidth, font family) are defined i
 
 Use config colors with consistent meaning across all scripts:
 
-| Color | Role |
-|---|---|
-| `black` | curves, axes, structural lines, default labels |
-| `gray` | reference grid, guide lines, auxiliary projections, captions |
-| `red` | primary highlight — the object being studied, errors, key element |
-| `blue` | secondary object — complement, second vector, second curve |
-| `purple` | result or combination — e.g. sum vector, invariant line |
-| `green` | transformed space grid, third distinct object |
-| `orange` | fourth distinct object in graph/diagram contexts |
+| Color    | Role                                                              |
+| -------- | ----------------------------------------------------------------- |
+| `black`  | curves, axes, structural lines, default labels                    |
+| `gray`   | reference grid, guide lines, auxiliary projections, captions      |
+| `red`    | primary highlight — the object being studied, errors, key element |
+| `blue`   | secondary object — complement, second vector, second curve        |
+| `purple` | result or combination — e.g. sum vector, invariant line           |
+| `green`  | transformed space grid, third distinct object                     |
+| `orange` | fourth distinct object in graph/diagram contexts                  |
 
 Never use raw color strings (`"red"`, `"black"`) — always alias from `_COL`.
 
@@ -161,12 +161,12 @@ Never use alpha just to make a color lighter or less visually dominant — use `
 
 **Line styles**
 
-| Style | Use |
-|---|---|
-| `solid` | main curves, vectors, axes, primary objects |
-| `--` dashed | reference lines with a fixed value: asymptotes, interval boundaries, directrix, secant lines |
-| `:` dotted | auxiliary projections and drop-lines (showing where a point lands on an axis); background grid |
-| `-.` dashdot | axis of symmetry, invariant lines that are neither the main curve nor a reference value |
+| Style        | Use                                                                                            |
+| ------------ | ---------------------------------------------------------------------------------------------- |
+| `solid`      | main curves, vectors, axes, primary objects                                                    |
+| `--` dashed  | reference lines with a fixed value: asymptotes, interval boundaries, directrix, secant lines   |
+| `:` dotted   | auxiliary projections and drop-lines (showing where a point lands on an axis); background grid |
+| `-.` dashdot | axis of symmetry, invariant lines that are neither the main curve nor a reference value        |
 
 **Grid drawing**
 
@@ -183,6 +183,7 @@ Matplotlib scripts use built-in mathtext (`$...$`) as the standard path. Do not 
 - `rcParams` should keep using the config-driven font settings from `resources/mpl/config.json`.
 
 Unsupported or fragile LaTeX-only constructs should be rewritten into mathtext-safe forms:
+
 - `\begin{bmatrix} ... \end{bmatrix}` → use plain-text fallback labels such as `[[a, b], [c, d]]` when needed.
 - `\pmod{n}` → use `(\mathrm{mod}\ n)` instead.
 - Package-dependent symbols/macros (for example `\bigstar` from `amssymb`) should be avoided in labels.

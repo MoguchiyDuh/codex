@@ -12,11 +12,11 @@ status: complete
 
 ## Operations
 
-| Op | Meaning |
-|---|---|
-| `make_set(x)` | Create a singleton set containing `x` |
-| `find(x)` | Return a canonical representative of `x`'s set |
-| `union(x, y)` | Merge the sets containing `x` and `y` |
+| Op            | Meaning                                        |
+| ------------- | ---------------------------------------------- |
+| `make_set(x)` | Create a singleton set containing `x`          |
+| `find(x)`     | Return a canonical representative of `x`'s set |
+| `union(x, y)` | Merge the sets containing `x` and `y`          |
 
 Two elements are in the same set iff `find(x) == find(y)`.
 

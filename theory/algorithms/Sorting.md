@@ -17,13 +17,13 @@ For a sequence $A[1..n]$ and a total order $\leq$, a sort produces a permutation
 
 Sorts vary along several axes; understanding them is more important than memorising any specific algorithm.
 
-| Axis | Variants |
-|---|---|
+| Axis                    | Variants                                                           |
+| ----------------------- | ------------------------------------------------------------------ |
 | Comparison-based vs not | reads keys via $\leq$ only / exploits key structure (digits, bits) |
-| Stability | preserves order of equal keys / does not |
-| In-place | uses $O(1)$ or $O(\log n)$ extra space / uses $\Theta(n)$ |
-| Adaptive | runs faster on already-sorted or nearly-sorted input / does not |
-| Online | processes one element at a time / needs the full input upfront |
+| Stability               | preserves order of equal keys / does not                           |
+| In-place                | uses $O(1)$ or $O(\log n)$ extra space / uses $\Theta(n)$          |
+| Adaptive                | runs faster on already-sorted or nearly-sorted input / does not    |
+| Online                  | processes one element at a time / needs the full input upfront     |
 
 A **stable** sort matters when sorting by a secondary key: sort by name, then by department — a stable sort by department preserves the name order within each department. An unstable sort would not.
 
@@ -48,14 +48,14 @@ insertion_sort(A):
 
 **Code:** `theory/algorithms/showcase/sorting/insertion_sort.py`
 
-| Property | Value |
-|---|---|
-| Worst | $\Theta(n^2)$ |
-| Average | $\Theta(n^2)$ |
-| Best (sorted input) | $\Theta(n)$ |
-| Space | $\Theta(1)$ in-place |
-| Stable | yes |
-| Adaptive | yes |
+| Property            | Value                |
+| ------------------- | -------------------- |
+| Worst               | $\Theta(n^2)$        |
+| Average             | $\Theta(n^2)$        |
+| Best (sorted input) | $\Theta(n)$          |
+| Space               | $\Theta(1)$ in-place |
+| Stable              | yes                  |
+| Adaptive            | yes                  |
 
 The best practical $n^2$ sort. Used inside hybrid sorts (Timsort, introsort) for small subarrays where its low constant beats $n \log n$ algorithms.
 
@@ -63,11 +63,11 @@ The best practical $n^2$ sort. Used inside hybrid sorts (Timsort, introsort) for
 
 Repeatedly find the minimum of the unsorted suffix and swap it to the front.
 
-| Property | Value |
-|---|---|
-| All cases | $\Theta(n^2)$ |
-| Space | $\Theta(1)$ in-place |
-| Stable | no (swap can leapfrog equal keys) |
+| Property  | Value                             |
+| --------- | --------------------------------- |
+| All cases | $\Theta(n^2)$                     |
+| Space     | $\Theta(1)$ in-place              |
+| Stable    | no (swap can leapfrog equal keys) |
 
 Worst inversions count, fewest swaps ($\Theta(n)$). Useful when writes are expensive (flash memory).
 
@@ -87,12 +87,12 @@ Consequence: merge sort, heap sort, and average-case quicksort are asymptoticall
 
 ## The main comparison sorts
 
-| Sort | Worst | Average | Space | Stable | In-place | Notes |
-|---|---|---|---|---|---|---|
-| [[Merge Sort]] | $\Theta(n \log n)$ | $\Theta(n \log n)$ | $\Theta(n)$ | yes | no | predictable, good for linked lists / external |
-| [[Quick Sort]] | $\Theta(n^2)$ | $\Theta(n \log n)$ | $\Theta(\log n)$ | no | yes | fastest in practice with randomised pivots |
-| [[Heap Sort]] | $\Theta(n \log n)$ | $\Theta(n \log n)$ | $\Theta(1)$ | no | yes | only $n \log n$ in-place sort with no recursion stack |
-| Insertion sort | $\Theta(n^2)$ | $\Theta(n^2)$ | $\Theta(1)$ | yes | yes | best on tiny / nearly-sorted input |
+| Sort           | Worst              | Average            | Space            | Stable | In-place | Notes                                                 |
+| -------------- | ------------------ | ------------------ | ---------------- | ------ | -------- | ----------------------------------------------------- |
+| [[Merge Sort]] | $\Theta(n \log n)$ | $\Theta(n \log n)$ | $\Theta(n)$      | yes    | no       | predictable, good for linked lists / external         |
+| [[Quick Sort]] | $\Theta(n^2)$      | $\Theta(n \log n)$ | $\Theta(\log n)$ | no     | yes      | fastest in practice with randomised pivots            |
+| [[Heap Sort]]  | $\Theta(n \log n)$ | $\Theta(n \log n)$ | $\Theta(1)$      | no     | yes      | only $n \log n$ in-place sort with no recursion stack |
+| Insertion sort | $\Theta(n^2)$      | $\Theta(n^2)$      | $\Theta(1)$      | yes    | yes      | best on tiny / nearly-sorted input                    |
 
 ## Linear-time sorts
 
@@ -102,26 +102,26 @@ When keys come from a bounded range or have a small digit-structure, the compari
 
 Real-world standard libraries use hybrid algorithms that switch strategy based on input:
 
-| Implementation | Strategy |
-|---|---|
-| **Timsort** (Python `list.sort`, Java `Arrays.sort` for objects) | merge sort with run detection + insertion sort on short runs |
-| **Introsort** (C++ `std::sort`) | quicksort, switches to heap sort if recursion depth exceeds $2 \log n$ |
-| **Pdqsort** (Rust `slice::sort_unstable`) | introsort variant with pattern detection and branchless partitioning |
-| **Dual-pivot quicksort** (Java `Arrays.sort` for primitives) | quicksort with two pivots, fewer swaps |
+| Implementation                                                   | Strategy                                                               |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **Timsort** (Python `list.sort`, Java `Arrays.sort` for objects) | merge sort with run detection + insertion sort on short runs           |
+| **Introsort** (C++ `std::sort`)                                  | quicksort, switches to heap sort if recursion depth exceeds $2 \log n$ |
+| **Pdqsort** (Rust `slice::sort_unstable`)                        | introsort variant with pattern detection and branchless partitioning   |
+| **Dual-pivot quicksort** (Java `Arrays.sort` for primitives)     | quicksort with two pivots, fewer swaps                                 |
 
 The takeaway: no single sort is best. Production sorts pick the right tool per input region.
 
 ## Choosing a sort
 
-| Situation | Choice |
-|---|---|
-| General in-memory | introsort / pdqsort (the language default) |
-| Need stability (e.g. multi-key sort) | merge sort / Timsort |
-| Memory-constrained, no recursion stack | heap sort |
-| Nearly-sorted input | insertion sort or Timsort |
-| Tiny input ($n < 16$ or so) | insertion sort |
-| Keys are small integers in $[0, k]$, $k = O(n)$ | counting sort |
-| External sort (data > RAM) | merge sort with $k$-way merge |
+| Situation                                       | Choice                                     |
+| ----------------------------------------------- | ------------------------------------------ |
+| General in-memory                               | introsort / pdqsort (the language default) |
+| Need stability (e.g. multi-key sort)            | merge sort / Timsort                       |
+| Memory-constrained, no recursion stack          | heap sort                                  |
+| Nearly-sorted input                             | insertion sort or Timsort                  |
+| Tiny input ($n < 16$ or so)                     | insertion sort                             |
+| Keys are small integers in $[0, k]$, $k = O(n)$ | counting sort                              |
+| External sort (data > RAM)                      | merge sort with $k$-way merge              |
 
 ## Video references
 

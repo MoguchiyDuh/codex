@@ -21,13 +21,13 @@ let v = vec![0; 5];                     // [0, 0, 0, 0, 0] — repeat a value
 
 ## Adding and Removing
 
-| Operation | Cost | Notes |
-|-----------|------|-------|
-| `push(x)` | O(1) amortized | appends to end |
-| `insert(i, x)` | O(n) | shifts elements right |
-| `pop()` | O(1) | returns `Option<T>` |
-| `remove(i)` | O(n) | shifts elements left |
-| `swap_remove(i)` | O(1) | swaps target with last, breaks order |
+| Operation        | Cost           | Notes                                |
+| ---------------- | -------------- | ------------------------------------ |
+| `push(x)`        | O(1) amortized | appends to end                       |
+| `insert(i, x)`   | O(n)           | shifts elements right                |
+| `pop()`          | O(1)           | returns `Option<T>`                  |
+| `remove(i)`      | O(n)           | shifts elements left                 |
+| `swap_remove(i)` | O(1)           | swaps target with last, breaks order |
 
 ```rust
 let mut v = vec![1, 2, 3, 4, 5];

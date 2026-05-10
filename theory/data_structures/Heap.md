@@ -12,22 +12,22 @@ status: complete
 
 ## Heap-order property
 
-| Variant | Invariant |
-|---|---|
+| Variant  | Invariant                |
+| -------- | ------------------------ |
 | Min-heap | `parent.key ≤ child.key` |
 | Max-heap | `parent.key ≥ child.key` |
 
-The root therefore holds the minimum (or maximum). The order is *partial* — siblings have no defined relationship — which is what makes the structure cheaper than a sorted tree.
+The root therefore holds the minimum (or maximum). The order is _partial_ — siblings have no defined relationship — which is what makes the structure cheaper than a sorted tree.
 
 ## Array layout
 
 A complete binary tree maps onto a flat array with no pointers. For 0-based indexing:
 
-| Relation | Index |
-|---|---|
-| Parent of `i` | `(i − 1) / 2` |
-| Left child of `i` | `2i + 1` |
-| Right child of `i` | `2i + 2` |
+| Relation           | Index         |
+| ------------------ | ------------- |
+| Parent of `i`      | `(i − 1) / 2` |
+| Left child of `i`  | `2i + 1`      |
+| Right child of `i` | `2i + 2`      |
 
 This packing gives excellent cache behaviour and zero per-node memory overhead.
 
@@ -35,13 +35,13 @@ This packing gives excellent cache behaviour and zero per-node memory overhead.
 
 ## Operations
 
-| Op | Cost |
-|---|---|
-| `peek` (top) | O(1) |
-| `push` | O(log n) |
-| `pop` | O(log n) |
-| `heapify` (build from array) | O(n) |
-| `heap_sort` (sort in place) | O(n log n) |
+| Op                           | Cost       |
+| ---------------------------- | ---------- |
+| `peek` (top)                 | O(1)       |
+| `push`                       | O(log n)   |
+| `pop`                        | O(log n)   |
+| `heapify` (build from array) | O(n)       |
+| `heap_sort` (sort in place)  | O(n log n) |
 
 ### Sift up (used by `push`)
 
@@ -61,7 +61,7 @@ Calling sift-down on every node from the last internal node down to the root cos
 
 The heap is the standard implementation of the [[Abstract Data Types|priority queue]] ADT. Used for:
 
-- Dijkstra's algorithm and A* (extract-min frontier)
+- Dijkstra's algorithm and A\* (extract-min frontier)
 - Event-driven simulation (next event by timestamp)
 - Job schedulers
 - Top-k queries (bounded-size heap)

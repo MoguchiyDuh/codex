@@ -32,19 +32,19 @@ say_hello! {};
 
 Each arm is `(pattern) => { expansion };`. The pattern uses **designators** to capture parts of the input:
 
-| Designator | Matches |
-|---|---|
-| `expr` | Any expression |
-| `ident` | Identifier (variable or function name) |
-| `ty` | Type |
-| `stmt` | Statement |
-| `pat` | Pattern |
-| `path` | Module path (e.g. `std::collections::HashMap`) |
-| `block` | A `{ ... }` block |
-| `item` | Item: `fn`, `struct`, `enum`, etc. |
-| `tt` | Token Tree (TT) — catch-all for any single token or grouped tokens |
-| `literal` | A literal value |
-| `vis` | Visibility qualifier (`pub`, etc.) |
+| Designator | Matches                                                            |
+| ---------- | ------------------------------------------------------------------ |
+| `expr`     | Any expression                                                     |
+| `ident`    | Identifier (variable or function name)                             |
+| `ty`       | Type                                                               |
+| `stmt`     | Statement                                                          |
+| `pat`      | Pattern                                                            |
+| `path`     | Module path (e.g. `std::collections::HashMap`)                     |
+| `block`    | A `{ ... }` block                                                  |
+| `item`     | Item: `fn`, `struct`, `enum`, etc.                                 |
+| `tt`       | Token Tree (TT) — catch-all for any single token or grouped tokens |
+| `literal`  | A literal value                                                    |
+| `vis`      | Visibility qualifier (`pub`, etc.)                                 |
 
 ### Multiple patterns
 
@@ -76,11 +76,11 @@ create_fn!(generated_function); // defines fn generated_function() { ... }
 
 Repetition syntax mirrors regex quantifiers, applied to `$(...)`:
 
-| Syntax | Meaning |
-|---|---|
+| Syntax    | Meaning      |
+| --------- | ------------ |
 | `$(...)*` | Zero or more |
-| `$(...)+` | One or more |
-| `$(...)?` | Zero or one |
+| `$(...)+` | One or more  |
+| `$(...)?` | Zero or one  |
 
 A separator token placed between `$(...)` and the quantifier is inserted between expansions: `$($x:expr),*` separates by commas.
 

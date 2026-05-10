@@ -2,6 +2,7 @@
 tags: [math, algebra, complex-numbers]
 status: complete
 ---
+
 # Complex Numbers
 
 > Extension of the reals by the imaginary unit $i = \sqrt{-1}$, enabling solutions to equations like $x^2 + 1 = 0$.
@@ -14,6 +15,7 @@ $$\boxed{z = a + bi}$$
 where $a = \text{Re}(z)$ is the real part, $b = \text{Im}(z)$ is the imaginary part, and $i^2 = -1$.
 
 **Special cases:**
+
 - $b = 0$: real number
 - $a = 0$: purely imaginary
 - $a = b = 0$: zero
@@ -23,22 +25,25 @@ where $a = \text{Re}(z)$ is the real part, $b = \text{Im}(z)$ is the imaginary p
 Cycle repeats with period 4:
 
 | $i^0$ | $i^1$ | $i^2$ | $i^3$ | $i^4$ |
-|-------|-------|-------|-------|-------|
-| $1$ | $i$ | $-1$ | $-i$ | $1$ |
+| ----- | ----- | ----- | ----- | ----- |
+| $1$   | $i$   | $-1$  | $-i$  | $1$   |
 
 General formula: $i^n = i^{n \bmod 4}$
 
 ## Arithmetic Operations
 
 ### Addition and Subtraction
+
 $$\boxed{(a + bi) \pm (c + di) = (a \pm c) + (b \pm d)i}$$
 
 ### Multiplication
+
 $$\boxed{(a + bi)(c + di) = (ac - bd) + (ad + bc)i}$$
 
 Uses $i^2 = -1$ to collapse the $bd$ term.
 
 ### Division
+
 Multiply numerator and denominator by the conjugate of the denominator:
 $$\boxed{\frac{a + bi}{c + di} = \frac{(a + bi)(c - di)}{c^2 + d^2}}$$
 
@@ -53,12 +58,12 @@ Geometric interpretation: reflection across the real axis.
 
 **Key properties:**
 
-| Property | Formula |
-|----------|---------|
-| Product with conjugate | $z \cdot \bar{z} = a^2 + b^2$ |
-| Sum | $z + \bar{z} = 2\,\text{Re}(z)$ |
-| Difference | $z - \bar{z} = 2i\,\text{Im}(z)$ |
-| Distributivity | $\overline{z_1 z_2} = \bar{z_1}\bar{z_2}$ |
+| Property               | Formula                                   |
+| ---------------------- | ----------------------------------------- |
+| Product with conjugate | $z \cdot \bar{z} = a^2 + b^2$             |
+| Sum                    | $z + \bar{z} = 2\,\text{Re}(z)$           |
+| Difference             | $z - \bar{z} = 2i\,\text{Im}(z)$          |
+| Distributivity         | $\overline{z_1 z_2} = \bar{z_1}\bar{z_2}$ |
 
 ## Modulus
 
@@ -85,11 +90,11 @@ $$\boxed{e^{i\theta} = \cos\theta + i\sin\theta}$$
 
 **Special values:**
 
-| Expression | Value |
-|------------|-------|
-| $e^{i\pi}$ | $-1$ (Euler's identity: $e^{i\pi} + 1 = 0$) |
-| $e^{i\pi/2}$ | $i$ |
-| $e^{-i\pi/2}$ | $-i$ |
+| Expression    | Value                                       |
+| ------------- | ------------------------------------------- |
+| $e^{i\pi}$    | $-1$ (Euler's identity: $e^{i\pi} + 1 = 0$) |
+| $e^{i\pi/2}$  | $i$                                         |
+| $e^{-i\pi/2}$ | $-i$                                        |
 
 ## De Moivre's Theorem
 

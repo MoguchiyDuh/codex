@@ -12,23 +12,23 @@ source: types.c
 
 ### Integer types
 
-| Type | Guaranteed minimum size | Typical on 64-bit |
-|---|---|---|
-| `char` | 1 byte | 1 byte |
-| `short` | 2 bytes | 2 bytes |
-| `int` | 2 bytes | 4 bytes |
-| `long` | 4 bytes | 8 bytes (Linux/macOS), 4 bytes (Windows) |
-| `long long` | 8 bytes | 8 bytes |
+| Type        | Guaranteed minimum size | Typical on 64-bit                        |
+| ----------- | ----------------------- | ---------------------------------------- |
+| `char`      | 1 byte                  | 1 byte                                   |
+| `short`     | 2 bytes                 | 2 bytes                                  |
+| `int`       | 2 bytes                 | 4 bytes                                  |
+| `long`      | 4 bytes                 | 8 bytes (Linux/macOS), 4 bytes (Windows) |
+| `long long` | 8 bytes                 | 8 bytes                                  |
 
 All integer types have a `signed` and `unsigned` variant. `char` signedness is implementation-defined — use `signed char` or `unsigned char` explicitly when it matters.
 
 ### Floating-point types
 
-| Type | Size | Precision |
-|---|---|---|
-| `float` | 4 bytes | ~7 significant decimal digits |
-| `double` | 8 bytes | ~15–16 significant decimal digits |
-| `long double` | 10–16 bytes | platform-dependent |
+| Type          | Size        | Precision                         |
+| ------------- | ----------- | --------------------------------- |
+| `float`       | 4 bytes     | ~7 significant decimal digits     |
+| `double`      | 8 bytes     | ~15–16 significant decimal digits |
+| `long double` | 10–16 bytes | platform-dependent                |
 
 `double` is the default floating-point type in C — undecorated literals like `3.14` are `double`. Use `3.14f` for `float`.
 
@@ -182,23 +182,23 @@ Equivalent to an `if-else` that produces a value. Both branches must be the same
 
 Higher rows bind tighter. When in doubt, use parentheses.
 
-| Precedence | Operators | Associativity |
-|---|---|---|
-| 15 | `()` `[]` `->` `.` | left |
-| 14 | `!` `~` `++` `--` `+` `-` `*` `&` `sizeof` (unary) | right |
-| 13 | `*` `/` `%` | left |
-| 12 | `+` `-` | left |
-| 11 | `<<` `>>` | left |
-| 10 | `<` `<=` `>` `>=` | left |
-| 9 | `==` `!=` | left |
-| 8 | `&` | left |
-| 7 | `^` | left |
-| 6 | `\|` | left |
-| 5 | `&&` | left |
-| 4 | `\|\|` | left |
-| 3 | `?:` | right |
-| 2 | `=` `+=` `-=` etc. | right |
-| 1 | `,` | left |
+| Precedence | Operators                                          | Associativity |
+| ---------- | -------------------------------------------------- | ------------- |
+| 15         | `()` `[]` `->` `.`                                 | left          |
+| 14         | `!` `~` `++` `--` `+` `-` `*` `&` `sizeof` (unary) | right         |
+| 13         | `*` `/` `%`                                        | left          |
+| 12         | `+` `-`                                            | left          |
+| 11         | `<<` `>>`                                          | left          |
+| 10         | `<` `<=` `>` `>=`                                  | left          |
+| 9          | `==` `!=`                                          | left          |
+| 8          | `&`                                                | left          |
+| 7          | `^`                                                | left          |
+| 6          | `\|`                                               | left          |
+| 5          | `&&`                                               | left          |
+| 4          | `\|\|`                                             | left          |
+| 3          | `?:`                                               | right         |
+| 2          | `=` `+=` `-=` etc.                                 | right         |
+| 1          | `,`                                                | left          |
 
 Common trap: `&` and `|` bind looser than `==`, so `x & 0xFF == 0` parses as `x & (0xFF == 0)` — always `0`. Write `(x & 0xFF) == 0`.
 
@@ -232,6 +232,7 @@ size_t strlen(const char *s);   // s won't be modified
 ### `volatile`
 
 Tells the compiler the value may change outside its control — do not cache it in a register, re-read from memory on every access. Used for:
+
 - Hardware-mapped registers
 - Variables modified by a signal handler
 - Variables shared between threads (though `volatile` alone is not sufficient for threading — use atomics)

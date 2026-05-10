@@ -2,6 +2,7 @@
 tags: [math, trigonometry, moc]
 status: complete
 ---
+
 # Trigonometry
 
 > Map of content for trigonometry — functions, identities, and triangle solving.

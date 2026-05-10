@@ -7,11 +7,11 @@ source: basics/src/string_example.rs
 
 ## `String` vs `&str`
 
-| | `String` | `&str` |
-|---|---|---|
-| Ownership | owned, heap-allocated | borrowed slice |
-| Mutability | mutable | immutable |
-| Size | dynamic | fixed (known at borrow time) |
+|               | `String`                      | `&str`                              |
+| ------------- | ----------------------------- | ----------------------------------- |
+| Ownership     | owned, heap-allocated         | borrowed slice                      |
+| Mutability    | mutable                       | immutable                           |
+| Size          | dynamic                       | fixed (known at borrow time)        |
 | Common source | `String::from()`, `format!()` | string literals, slices of `String` |
 
 ```rust

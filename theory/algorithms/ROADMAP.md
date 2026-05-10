@@ -90,7 +90,7 @@ A tier is **complete** when:
 
 - [MIT OCW 6.006 Introduction to Algorithms, Fall 2011](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/) — Tiers 1–3
 - [MIT OCW 6.046J Design and Analysis of Algorithms, Spring 2015](https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/) — Tiers 4–6
-- Textbook: CLRS — *Introduction to Algorithms*, 4e — commercial, widely available
+- Textbook: CLRS — _Introduction to Algorithms_, 4e — commercial, widely available
 
 ## See also
 

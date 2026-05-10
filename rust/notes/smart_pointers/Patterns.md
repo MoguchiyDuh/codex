@@ -12,16 +12,16 @@ Practical combinations and when to reach for each.
 
 ## Quick selection guide
 
-| Need | Use |
-|---|---|
-| Heap allocation, single owner | `Box<T>` |
-| Dynamic dispatch | `Box<dyn Trait>` |
-| Multiple owners, single thread | `Rc<T>` |
-| Multiple owners, multiple threads | `Arc<T>` |
-| Shared mutation, single thread | `Rc<RefCell<T>>` |
-| Shared mutation, multiple threads | `Arc<Mutex<T>>` |
-| Read-heavy shared state, threads | `Arc<RwLock<T>>` |
-| Non-owning reference, cycle breaking | `Weak<T>` |
+| Need                                 | Use              |
+| ------------------------------------ | ---------------- |
+| Heap allocation, single owner        | `Box<T>`         |
+| Dynamic dispatch                     | `Box<dyn Trait>` |
+| Multiple owners, single thread       | `Rc<T>`          |
+| Multiple owners, multiple threads    | `Arc<T>`         |
+| Shared mutation, single thread       | `Rc<RefCell<T>>` |
+| Shared mutation, multiple threads    | `Arc<Mutex<T>>`  |
+| Read-heavy shared state, threads     | `Arc<RwLock<T>>` |
+| Non-owning reference, cycle breaking | `Weak<T>`        |
 
 ---
 
@@ -197,14 +197,14 @@ node_b.prev = Some(Rc::downgrade(&node_a));
 
 ## Common combinations at a glance
 
-| Combination | Use case |
-|---|---|
-| `Rc<RefCell<T>>` | Shared mutable, single thread |
-| `Arc<Mutex<T>>` | Shared mutable, multi thread |
-| `Arc<RwLock<T>>` | Shared, read-heavy, multi thread |
-| `Box<dyn Trait>` | Dynamic dispatch, heap |
-| `Rc<RefCell<Vec<Rc<Node>>>>` | Graph / tree, single thread |
-| `Arc<Mutex<HashMap<K,V>>>` | Thread-safe cache |
+| Combination                  | Use case                         |
+| ---------------------------- | -------------------------------- |
+| `Rc<RefCell<T>>`             | Shared mutable, single thread    |
+| `Arc<Mutex<T>>`              | Shared mutable, multi thread     |
+| `Arc<RwLock<T>>`             | Shared, read-heavy, multi thread |
+| `Box<dyn Trait>`             | Dynamic dispatch, heap           |
+| `Rc<RefCell<Vec<Rc<Node>>>>` | Graph / tree, single thread      |
+| `Arc<Mutex<HashMap<K,V>>>`   | Thread-safe cache                |
 
 ## See also
 

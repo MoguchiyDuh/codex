@@ -85,12 +85,12 @@ Arc::ptr_eq(&a1, &a3); // false
 
 ## Arc vs Rc — when to pick which
 
-| | `Rc<T>` | `Arc<T>` |
-|---|---|---|
-| Thread-safe | No | Yes |
-| Counter operations | Plain integer | Atomic |
-| Relative cost | Faster | ~10–50 ns overhead per clone/drop |
-| `Send` + `Sync` | No | Yes (when `T: Send + Sync`) |
+|                    | `Rc<T>`       | `Arc<T>`                          |
+| ------------------ | ------------- | --------------------------------- |
+| Thread-safe        | No            | Yes                               |
+| Counter operations | Plain integer | Atomic                            |
+| Relative cost      | Faster        | ~10–50 ns overhead per clone/drop |
+| `Send` + `Sync`    | No            | Yes (when `T: Send + Sync`)       |
 
 Prefer `Rc` within a single thread; reach for `Arc` only when you need to share across threads. Both have the same pointer size (8 bytes on 64-bit).
 

@@ -95,12 +95,12 @@ Rc::ptr_eq(&rc1, &rc3); // false — different allocations, same value
 
 ## Performance
 
-| Operation | Cost |
-|---|---|
-| `Rc::clone` | One integer increment |
-| `Drop` | One integer decrement (+ free if 0) |
-| Memory per `Rc<T>` | One pointer (8 bytes on 64-bit) |
-| Extra heap overhead | Two counters (strong + weak) |
+| Operation           | Cost                                |
+| ------------------- | ----------------------------------- |
+| `Rc::clone`         | One integer increment               |
+| `Drop`              | One integer decrement (+ free if 0) |
+| Memory per `Rc<T>`  | One pointer (8 bytes on 64-bit)     |
+| Extra heap overhead | Two counters (strong + weak)        |
 
 `Rc<i32>` is the same size as `&i32` (one pointer), but the pointed-to allocation also carries the two reference counts.
 

@@ -15,7 +15,7 @@ status: complete
 
 Disk and SSD reads happen in blocks (typically 4 KiB or larger). A binary tree of `n` keys does `log₂ n` random reads; a B-tree of order `t` does `log_t n`. With `t` in the hundreds, even a billion-key index has tree height around 4 — meaning four block reads per query.
 
-## Definition (order *t*)
+## Definition (order _t_)
 
 A B-tree of minimum degree `t ≥ 2`:
 
@@ -28,19 +28,21 @@ A node maps cleanly to one disk block; `t` is chosen so the node fills the block
 
 ## Operations
 
-| Op | Cost |
-|---|---|
+| Op     | Cost                                         |
+| ------ | -------------------------------------------- |
 | Search | O(log_t n) block reads, O(log n) comparisons |
-| Insert | O(log_t n) |
-| Delete | O(log_t n) |
+| Insert | O(log_t n)                                   |
+| Delete | O(log_t n)                                   |
 
 ### Search
 
-Linear or binary scan within a node to find the right child, then descend. Total comparisons stay O(log n); total *block reads* are O(log_t n) — the metric that matters on disk.
+Linear or binary scan within a node to find the right child, then descend. Total comparisons stay O(log n); total _block reads_ are O(log_t n) — the metric that matters on disk.
 
 ### Insert
 
 Descend to the target leaf. If the leaf has `2t − 1` keys it is **split** at the median: median key moves up to the parent, the two halves become two nodes. Splits propagate up; if the root splits, the tree grows by one level. Splits are pre-emptive in the standard formulation: split a full node on the way down.
+
+![[b_tree_node_split.png]]
 
 ### Delete
 
@@ -49,7 +51,7 @@ Descend to the key. To remove from a non-leaf, replace with in-order predecessor
 ## Variants
 
 - **B+ tree** — all data lives in leaves; internal nodes hold only routing keys. Leaves are linked in a list for fast range scans. This is the form used in nearly all relational databases (PostgreSQL, MySQL InnoDB, SQLite) and many filesystems (ext4 htree, NTFS, HFS+).
-- **B* tree** — keeps nodes 2/3 full instead of 1/2, reducing splits.
+- **B\* tree** — keeps nodes 2/3 full instead of 1/2, reducing splits.
 
 ## Where you'll see it
 

@@ -136,13 +136,13 @@ if let Some(custom) = e.downcast_ref::<CustomError>() {
 
 ## anyhow vs thiserror
 
-| | anyhow | thiserror |
-|---|---|---|
-| Target | Applications | Libraries |
-| Error type | Erased (`anyhow::Error`) | Concrete typed enum/struct |
-| Caller matching | No exhaustive match | Full pattern matching |
-| Context | `.context()` built-in | Manual or none |
-| From impls | Not needed | Required (or `#[from]`) |
+|                 | anyhow                   | thiserror                  |
+| --------------- | ------------------------ | -------------------------- |
+| Target          | Applications             | Libraries                  |
+| Error type      | Erased (`anyhow::Error`) | Concrete typed enum/struct |
+| Caller matching | No exhaustive match      | Full pattern matching      |
+| Context         | `.context()` built-in    | Manual or none             |
+| From impls      | Not needed               | Required (or `#[from]`)    |
 
 Use `anyhow` when you're writing `main`, a binary, or CLI logic. Use `thiserror` when you're writing a library whose callers need to handle specific error variants.
 

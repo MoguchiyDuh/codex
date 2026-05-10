@@ -15,11 +15,11 @@ $$A = U \Sigma V^T$$
 
 Where:
 
-| Factor | Shape | Role |
-|--------|-------|------|
-| $U$ | $m \times m$ orthogonal | Left singular vectors as columns |
-| $\Sigma$ | $m \times n$ diagonal | **Singular values** $\sigma_1 \geq \sigma_2 \geq \cdots \geq 0$ |
-| $V$ | $n \times n$ orthogonal | Right singular vectors as columns |
+| Factor   | Shape                   | Role                                                            |
+| -------- | ----------------------- | --------------------------------------------------------------- |
+| $U$      | $m \times m$ orthogonal | Left singular vectors as columns                                |
+| $\Sigma$ | $m \times n$ diagonal   | **Singular values** $\sigma_1 \geq \sigma_2 \geq \cdots \geq 0$ |
+| $V$      | $n \times n$ orthogonal | Right singular vectors as columns                               |
 
 Singular values are always real and non-negative, ordered largest to smallest.
 
@@ -53,12 +53,12 @@ Unlike eigendecomposition, SVD exists for every matrix — no squareness or diag
 
 Let $r$ be the number of non-zero singular values. Then $\text{rank}(A) = r$ and:
 
-| Subspace | Basis from SVD |
-|----------|----------------|
-| Column space $C(A)$ | First $r$ columns of $U$ |
+| Subspace                 | Basis from SVD              |
+| ------------------------ | --------------------------- |
+| Column space $C(A)$      | First $r$ columns of $U$    |
 | Left null space $N(A^T)$ | Last $m - r$ columns of $U$ |
-| Row space $C(A^T)$ | First $r$ columns of $V$ |
-| Null space $N(A)$ | Last $n - r$ columns of $V$ |
+| Row space $C(A^T)$       | First $r$ columns of $V$    |
+| Null space $N(A)$        | Last $n - r$ columns of $V$ |
 
 SVD produces orthonormal bases for all four fundamental subspaces simultaneously. See [[Vector Spaces]].
 
@@ -76,15 +76,15 @@ This is why SVD is the engine of dimensionality reduction: keep the top few $\si
 
 ## Applications
 
-| Area | Role of SVD |
-|------|-------------|
-| **PCA** | Principal components = right singular vectors of centered data; variance = $\sigma_i^2 / (n-1)$ |
-| **Image compression** | Store only top-$k$ singular triplets |
-| **Latent semantic analysis** | SVD of term-document matrix |
-| **Recommender systems** | Low-rank factorization of user-item matrix |
-| **Pseudoinverse** | $A^+ = V \Sigma^+ U^T$ — solves least squares for any shape $A$ |
-| **Condition number** | $\kappa(A) = \sigma_1 / \sigma_r$ — measures numerical sensitivity |
-| **Noise reduction** | Small $\sigma_i$ often correspond to noise; zero them out |
+| Area                         | Role of SVD                                                                                     |
+| ---------------------------- | ----------------------------------------------------------------------------------------------- |
+| **PCA**                      | Principal components = right singular vectors of centered data; variance = $\sigma_i^2 / (n-1)$ |
+| **Image compression**        | Store only top-$k$ singular triplets                                                            |
+| **Latent semantic analysis** | SVD of term-document matrix                                                                     |
+| **Recommender systems**      | Low-rank factorization of user-item matrix                                                      |
+| **Pseudoinverse**            | $A^+ = V \Sigma^+ U^T$ — solves least squares for any shape $A$                                 |
+| **Condition number**         | $\kappa(A) = \sigma_1 / \sigma_r$ — measures numerical sensitivity                              |
+| **Noise reduction**          | Small $\sigma_i$ often correspond to noise; zero them out                                       |
 
 ## Pseudoinverse (Moore-Penrose)
 
@@ -97,6 +97,10 @@ Where $\Sigma^+$ inverts the non-zero singular values and transposes. Properties
 - For underdetermined systems, $A^+ \mathbf{b}$ is the minimum-norm solution.
 
 One formula handles every shape and rank — it's why SVD is the solver of last resort.
+
+## Video references
+
+- ![29. Singular Value Decomposition](https://www.youtube.com/watch?v=TX_vooSnhm8)
 
 ## See also
 

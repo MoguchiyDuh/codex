@@ -75,11 +75,11 @@ Where $\theta$ is the angle between the two vectors.
 
 $$\cos \theta = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|\,\|\mathbf{v}\|}$$
 
-| Dot product | Geometric meaning |
-|-------------|-------------------|
-| $> 0$ | Acute angle (pointing similar direction) |
-| $= 0$ | **Orthogonal** (perpendicular) |
-| $< 0$ | Obtuse angle (pointing opposite) |
+| Dot product | Geometric meaning                        |
+| ----------- | ---------------------------------------- |
+| $> 0$       | Acute angle (pointing similar direction) |
+| $= 0$       | **Orthogonal** (perpendicular)           |
+| $< 0$       | Obtuse angle (pointing opposite)         |
 
 ### Projection
 
@@ -93,13 +93,13 @@ The **scalar projection** (signed length of the shadow) is $\dfrac{\mathbf{u} \c
 
 ### Properties
 
-| Property | Expression |
-|----------|------------|
-| Commutative | $\mathbf{u} \cdot \mathbf{v} = \mathbf{v} \cdot \mathbf{u}$ |
-| Distributive | $\mathbf{u} \cdot (\mathbf{v} + \mathbf{w}) = \mathbf{u} \cdot \mathbf{v} + \mathbf{u} \cdot \mathbf{w}$ |
-| Scalar | $(\alpha \mathbf{u}) \cdot \mathbf{v} = \alpha (\mathbf{u} \cdot \mathbf{v})$ |
-| Self | $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2$ |
-| Cauchy-Schwarz | $|\mathbf{u} \cdot \mathbf{v}| \leq \|\mathbf{u}\|\,\|\mathbf{v}\|$ |
+| Property       | Expression                                                                                               |
+| -------------- | -------------------------------------------------------------------------------------------------------- | --------------------------- | ------------------------------------ |
+| Commutative    | $\mathbf{u} \cdot \mathbf{v} = \mathbf{v} \cdot \mathbf{u}$                                              |
+| Distributive   | $\mathbf{u} \cdot (\mathbf{v} + \mathbf{w}) = \mathbf{u} \cdot \mathbf{v} + \mathbf{u} \cdot \mathbf{w}$ |
+| Scalar         | $(\alpha \mathbf{u}) \cdot \mathbf{v} = \alpha (\mathbf{u} \cdot \mathbf{v})$                            |
+| Self           | $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2$                                                         |
+| Cauchy-Schwarz | $                                                                                                        | \mathbf{u} \cdot \mathbf{v} | \leq \|\mathbf{u}\|\,\|\mathbf{v}\|$ |
 
 ## Cross product (3D only)
 
@@ -125,12 +125,12 @@ Direction follows the right hand: fingers curl from $\mathbf{u}$ to $\mathbf{v}$
 
 ### Properties
 
-| Property | Expression |
-|----------|------------|
-| Anti-commutative | $\mathbf{u} \times \mathbf{v} = -(\mathbf{v} \times \mathbf{u})$ |
-| Distributive | $\mathbf{u} \times (\mathbf{v} + \mathbf{w}) = \mathbf{u} \times \mathbf{v} + \mathbf{u} \times \mathbf{w}$ |
-| Zero on parallel | $\mathbf{u} \times \mathbf{u} = \mathbf{0}$ |
-| Non-associative | $(\mathbf{u} \times \mathbf{v}) \times \mathbf{w} \neq \mathbf{u} \times (\mathbf{v} \times \mathbf{w})$ |
+| Property         | Expression                                                                                                  |
+| ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| Anti-commutative | $\mathbf{u} \times \mathbf{v} = -(\mathbf{v} \times \mathbf{u})$                                            |
+| Distributive     | $\mathbf{u} \times (\mathbf{v} + \mathbf{w}) = \mathbf{u} \times \mathbf{v} + \mathbf{u} \times \mathbf{w}$ |
+| Zero on parallel | $\mathbf{u} \times \mathbf{u} = \mathbf{0}$                                                                 |
+| Non-associative  | $(\mathbf{u} \times \mathbf{v}) \times \mathbf{w} \neq \mathbf{u} \times (\mathbf{v} \times \mathbf{w})$    |
 
 ## Linear combination and span
 
@@ -147,6 +147,8 @@ The **span** is the set of all such combinations — geometrically, the smallest
 - ![3Blue1Brown - Dot products and duality | Chapter 9, Essence of linear algebra](https://www.youtube.com/watch?v=LyGKycYT2v0)
 - ![3Blue1Brown - Cross products | Chapter 10, Essence of linear algebra](https://www.youtube.com/watch?v=eu6i7WJeinw)
 - ![3Blue1Brown - Cross products in the light of linear transformations | Chapter 11, Essence of linear algebra](https://www.youtube.com/watch?v=BaM7OCEm3G0)
+
+- ![1. The Geometry of Linear Equations](https://www.youtube.com/watch?v=J7DzL2_Na80)
 
 ## See also
 

@@ -38,7 +38,6 @@ merge(A, p, q, r):
 
 The `merge` step assumes both halves are already sorted. It walks them with two pointers, always taking the smaller front element. The `≤` (not `<`) is what makes the sort **stable** — when equal, the left half's element wins, preserving original order.
 
-
 ## Complexity
 
 Recurrence: $T(n) = 2T(n/2) + \Theta(n)$ — two subproblems of half size plus a linear merge.
@@ -49,14 +48,14 @@ $$T(n) \in \Theta(n \log n)$$
 
 Same bound on every input — there is no best/worst-case asymmetry. Detailed in [[Recurrence Relations]].
 
-| Property | Value |
-|---|---|
-| Worst | $\Theta(n \log n)$ |
-| Average | $\Theta(n \log n)$ |
-| Best | $\Theta(n \log n)$ |
-| Space | $\Theta(n)$ auxiliary |
-| Stable | yes |
-| In-place | no |
+| Property | Value                 |
+| -------- | --------------------- |
+| Worst    | $\Theta(n \log n)$    |
+| Average  | $\Theta(n \log n)$    |
+| Best     | $\Theta(n \log n)$    |
+| Space    | $\Theta(n)$ auxiliary |
+| Stable   | yes                   |
+| In-place | no                    |
 
 ## Correctness
 
@@ -83,12 +82,12 @@ In-place merge in $\Theta(n)$ extra time and $\Theta(1)$ extra space exists (Kro
 
 ## Variants
 
-| Variant | Idea |
-|---|---|
-| Bottom-up merge sort | iterative; merge runs of length $1, 2, 4, \dots$. No recursion stack |
-| Natural merge sort | detects already-sorted "runs" in the input, merges those |
-| Timsort | natural merge sort + galloping merge + insertion sort for short runs; Python and Java standard |
-| $k$-way merge sort | external; merge $k$ sorted runs at once using a min-heap |
+| Variant              | Idea                                                                                           |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| Bottom-up merge sort | iterative; merge runs of length $1, 2, 4, \dots$. No recursion stack                           |
+| Natural merge sort   | detects already-sorted "runs" in the input, merges those                                       |
+| Timsort              | natural merge sort + galloping merge + insertion sort for short runs; Python and Java standard |
+| $k$-way merge sort   | external; merge $k$ sorted runs at once using a min-heap                                       |
 
 ## Video references
 

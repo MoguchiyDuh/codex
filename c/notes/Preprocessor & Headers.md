@@ -85,13 +85,13 @@ A declaration can appear many times. A definition must appear **exactly once** (
 
 **Rule: headers contain declarations only. Definitions go in `.c` files.**
 
-| Belongs in header | Does not belong |
-|-------------------|-----------------|
-| Function declarations | Function definitions |
-| `extern` variable declarations | Variable definitions (`int x = 0;`) |
-| `typedef`, `struct`, `enum` definitions | — |
-| `#define` macros | — |
-| `static inline` functions | Regular `static` functions |
+| Belongs in header                       | Does not belong                     |
+| --------------------------------------- | ----------------------------------- |
+| Function declarations                   | Function definitions                |
+| `extern` variable declarations          | Variable definitions (`int x = 0;`) |
+| `typedef`, `struct`, `enum` definitions | —                                   |
+| `#define` macros                        | —                                   |
+| `static inline` functions               | Regular `static` functions          |
 
 ## Header Guards
 

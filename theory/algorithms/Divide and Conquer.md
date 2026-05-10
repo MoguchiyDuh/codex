@@ -20,18 +20,18 @@ The recurrence on running time is $T(n) = a T(n/b) + f(n)$ — $a$ subproblems e
 
 ## Canonical examples
 
-| Algorithm | Divide | Conquer | Combine | Time |
-|---|---|---|---|---|
-| [[Merge Sort]] | split array in half | sort each half | merge | $\Theta(n \log n)$ |
-| [[Quick Sort]] | partition around pivot | sort each side | nothing | $\Theta(n \log n)$ avg |
-| [[Searching\|Binary search]] | split sorted array in half | search one side | nothing | $\Theta(\log n)$ |
-| [[Selection\|Quickselect]] | partition | recurse one side | nothing | $\Theta(n)$ avg |
-| Karatsuba multiplication | split numbers into halves | three half-size multiplications | shift-and-add | $\Theta(n^{\log_2 3})$ |
-| Strassen matrix multiply | split into $2 \times 2$ blocks | seven block multiplications | block additions | $\Theta(n^{\log_2 7})$ |
-| Closest pair of points | split by $x$-median | recurse each side | merge across the split strip | $\Theta(n \log n)$ |
-| FFT | split by even/odd indices | recurse | butterfly combine | $\Theta(n \log n)$ |
+| Algorithm                    | Divide                         | Conquer                         | Combine                      | Time                   |
+| ---------------------------- | ------------------------------ | ------------------------------- | ---------------------------- | ---------------------- |
+| [[Merge Sort]]               | split array in half            | sort each half                  | merge                        | $\Theta(n \log n)$     |
+| [[Quick Sort]]               | partition around pivot         | sort each side                  | nothing                      | $\Theta(n \log n)$ avg |
+| [[Searching\|Binary search]] | split sorted array in half     | search one side                 | nothing                      | $\Theta(\log n)$       |
+| [[Selection\|Quickselect]]   | partition                      | recurse one side                | nothing                      | $\Theta(n)$ avg        |
+| Karatsuba multiplication     | split numbers into halves      | three half-size multiplications | shift-and-add                | $\Theta(n^{\log_2 3})$ |
+| Strassen matrix multiply     | split into $2 \times 2$ blocks | seven block multiplications     | block additions              | $\Theta(n^{\log_2 7})$ |
+| Closest pair of points       | split by $x$-median            | recurse each side               | merge across the split strip | $\Theta(n \log n)$     |
+| FFT                          | split by even/odd indices      | recurse                         | butterfly combine            | $\Theta(n \log n)$     |
 
-A common pattern: the *combine* step is the algorithmic insight. Merge sort's merge is linear; that's why splitting wins. Strassen's seven multiplications instead of eight is the reason it beats $\Theta(n^3)$.
+A common pattern: the _combine_ step is the algorithmic insight. Merge sort's merge is linear; that's why splitting wins. Strassen's seven multiplications instead of eight is the reason it beats $\Theta(n^3)$.
 
 ## When divide and conquer pays off
 
@@ -47,11 +47,11 @@ When subproblems overlap, divide and conquer recomputes them. The cure is memois
 
 For $T(n) = a T(n/b) + f(n)$:
 
-| Compare $f(n)$ to $n^{\log_b a}$ | Solution |
-|---|---|
-| $f$ is polynomially smaller | $\Theta(n^{\log_b a})$ — leaves dominate |
-| $f$ matches up to log factors | $\Theta(n^{\log_b a} \log^{k+1} n)$ — every level equally |
-| $f$ is polynomially larger (and regular) | $\Theta(f(n))$ — root dominates |
+| Compare $f(n)$ to $n^{\log_b a}$         | Solution                                                  |
+| ---------------------------------------- | --------------------------------------------------------- |
+| $f$ is polynomially smaller              | $\Theta(n^{\log_b a})$ — leaves dominate                  |
+| $f$ matches up to log factors            | $\Theta(n^{\log_b a} \log^{k+1} n)$ — every level equally |
+| $f$ is polynomially larger (and regular) | $\Theta(f(n))$ — root dominates                           |
 
 Worked applications and the precise statement are in [[Recurrence Relations]].
 
@@ -89,12 +89,12 @@ Combine step is $\Theta(n)$, recurrence $T(n) = 2 T(n/2) + \Theta(n) = \Theta(n 
 
 ## Limits of divide and conquer
 
-| Problem type | Better paradigm |
-|---|---|
-| Overlapping subproblems | [[Dynamic Programming]] |
-| Local greedy choice suffices | [[Greedy Algorithms]] |
-| Search with constraints / pruning | [[Backtracking]] |
-| Subproblems with mutable shared state | iterative / amortized |
+| Problem type                          | Better paradigm         |
+| ------------------------------------- | ----------------------- |
+| Overlapping subproblems               | [[Dynamic Programming]] |
+| Local greedy choice suffices          | [[Greedy Algorithms]]   |
+| Search with constraints / pruning     | [[Backtracking]]        |
+| Subproblems with mutable shared state | iterative / amortized   |
 
 ## See also
 

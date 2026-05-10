@@ -117,12 +117,12 @@ if io::stdout().is_terminal() {
 
 ## File Descriptors and Redirection
 
-| Shell syntax | Effect |
-|---|---|
-| `prog > out.txt` | stdout (fd 1) to file |
-| `prog 2> err.txt` | stderr (fd 2) to file |
-| `prog < in.txt` | stdin (fd 0) from file |
-| `prog \| other` | stdout piped to next program's stdin |
+| Shell syntax      | Effect                               |
+| ----------------- | ------------------------------------ |
+| `prog > out.txt`  | stdout (fd 1) to file                |
+| `prog 2> err.txt` | stderr (fd 2) to file                |
+| `prog < in.txt`   | stdin (fd 0) from file               |
+| `prog \| other`   | stdout piped to next program's stdin |
 
 Rust code does not need to do anything special for these to work — the OS handles fd redirection before the process starts.
 

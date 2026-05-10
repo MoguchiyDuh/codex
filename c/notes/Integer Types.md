@@ -12,13 +12,13 @@ source: src/integers.c, src/main.c
 
 Plain C types have guaranteed minimums, not fixed sizes:
 
-| Type | Minimum | Typical (64-bit) |
-|------|---------|-----------------|
-| `char` | 8-bit | 8-bit |
-| `short` | 16-bit | 16-bit |
-| `int` | 16-bit | 32-bit |
-| `long` | 32-bit | 64-bit (Linux/macOS), 32-bit (Windows) |
-| `long long` | 64-bit | 64-bit |
+| Type        | Minimum | Typical (64-bit)                       |
+| ----------- | ------- | -------------------------------------- |
+| `char`      | 8-bit   | 8-bit                                  |
+| `short`     | 16-bit  | 16-bit                                 |
+| `int`       | 16-bit  | 32-bit                                 |
+| `long`      | 32-bit  | 64-bit (Linux/macOS), 32-bit (Windows) |
+| `long long` | 64-bit  | 64-bit                                 |
 
 `char` signedness is implementation-defined — never assume it's signed or unsigned.
 
@@ -116,6 +116,7 @@ uint8_t c = a + b;  // a, b promoted to int → result 300 → truncated to 44
 ```
 
 **Usual arithmetic conversions** — when two different integer types meet:
+
 1. Both get promoted to at least `int`
 2. If same type → done
 3. If same signedness → smaller converts to larger
@@ -123,7 +124,7 @@ uint8_t c = a + b;  // a, b promoted to int → result 300 → truncated to 44
 
 ## Safe overflow checks
 
-Must check *before* the operation — checking after triggers the UB you're trying to detect:
+Must check _before_ the operation — checking after triggers the UB you're trying to detect:
 
 ```c
 // signed addition — check before
@@ -146,6 +147,7 @@ x >> n   // divide by 2^n — logical (zero-fill) for unsigned, arithmetic (sign
 ```
 
 Shifting by ≥ width is UB:
+
 ```c
 uint32_t x = 1;
 x << 32;   // UB — shift amount equals type width
@@ -173,10 +175,10 @@ Catches UB at runtime during development:
 gcc -fsanitize=undefined,address -g -O1 file.c
 ```
 
-| Sanitizer | Catches |
-|-----------|---------|
-| UBSan | signed overflow, shift past width, misaligned access, divide by zero |
-| ASan | buffer overflow, use-after-free, heap leaks |
+| Sanitizer | Catches                                                              |
+| --------- | -------------------------------------------------------------------- |
+| UBSan     | signed overflow, shift past width, misaligned access, divide by zero |
+| ASan      | buffer overflow, use-after-free, heap leaks                          |
 
 Use both during development. Strip for release builds.
 

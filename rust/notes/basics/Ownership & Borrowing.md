@@ -55,9 +55,9 @@ println!("{} is {} bytes", s, len);  // s still usable
 
 ### Borrow rules (enforced at compile time)
 
-| Allowed | Count |
-|---------|-------|
-| Immutable `&T` refs | any number simultaneously |
+| Allowed               | Count                                 |
+| --------------------- | ------------------------------------- |
+| Immutable `&T` refs   | any number simultaneously             |
 | Mutable `&mut T` refs | exactly **one**, no other refs active |
 
 ```rust

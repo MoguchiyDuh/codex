@@ -17,11 +17,11 @@ NP-hard optimisation problems (TSP, vertex cover, set cover, knapsack, ...) admi
 
 When exact answers are too expensive, three responses are possible:
 
-| Response | Guarantee | Tradeoff |
-|---|---|---|
-| Exact (exponential) | optimal | exponential time |
+| Response                    | Guarantee                         | Tradeoff                                   |
+| --------------------------- | --------------------------------- | ------------------------------------------ |
+| Exact (exponential)         | optimal                           | exponential time                           |
 | **Approximation algorithm** | within a factor $\rho$ of optimal | polynomial time, mathematically guaranteed |
-| Heuristic | none | polynomial time, no proof of quality |
+| Heuristic                   | none                              | polynomial time, no proof of quality       |
 
 Approximation algorithms occupy the middle: provably close, fast, but not optimal.
 
@@ -37,12 +37,12 @@ A **$\rho$-approximation algorithm** is one with proven ratio $\rho$, where $\rh
 
 ## Approximation schemes
 
-| Scheme | Guarantee |
-|---|---|
-| **Constant-factor** | $\rho$ is a fixed constant |
-| **PTAS** (polynomial-time approximation scheme) | for any $\varepsilon > 0$, returns a $(1 + \varepsilon)$-approximation in polynomial time in $n$ (with arbitrary dependence on $\varepsilon$) |
-| **FPTAS** (fully polynomial-time approximation scheme) | PTAS with running time polynomial in both $n$ and $1/\varepsilon$ |
-| **APX** | the class of problems with constant-factor approximation |
+| Scheme                                                 | Guarantee                                                                                                                                     |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Constant-factor**                                    | $\rho$ is a fixed constant                                                                                                                    |
+| **PTAS** (polynomial-time approximation scheme)        | for any $\varepsilon > 0$, returns a $(1 + \varepsilon)$-approximation in polynomial time in $n$ (with arbitrary dependence on $\varepsilon$) |
+| **FPTAS** (fully polynomial-time approximation scheme) | PTAS with running time polynomial in both $n$ and $1/\varepsilon$                                                                             |
+| **APX**                                                | the class of problems with constant-factor approximation                                                                                      |
 
 The hierarchy: FPTAS $\subseteq$ PTAS $\subseteq$ APX. Some problems admit FPTAS (knapsack); others have PTAS but no FPTAS (Euclidean TSP); some admit constant-factor approximation but no PTAS (vertex cover, unless $\text{P} = \text{NP}$).
 
@@ -50,7 +50,7 @@ The hierarchy: FPTAS $\subseteq$ PTAS $\subseteq$ APX. Some problems admit FPTAS
 
 **Problem.** Find the smallest set of vertices covering every edge.
 
-**Algorithm.** Repeatedly pick any uncovered edge and add *both* its endpoints to the cover.
+**Algorithm.** Repeatedly pick any uncovered edge and add _both_ its endpoints to the cover.
 
 ```pseudo
 vertex_cover_2approx(G):
@@ -67,7 +67,7 @@ vertex_cover_2approx(G):
 
 $$|C| = 2|M| \leq 2 \cdot \text{OPT}$$
 
-A 2-approximation. Despite decades of effort, no $(2 - \varepsilon)$-approximation is known for general vertex cover, and assuming the *Unique Games Conjecture* none exists.
+A 2-approximation. Despite decades of effort, no $(2 - \varepsilon)$-approximation is known for general vertex cover, and assuming the _Unique Games Conjecture_ none exists.
 
 ## TSP: metric 2-approximation
 
@@ -127,12 +127,12 @@ The scaling loses at most $\varepsilon \cdot \text{OPT}$ value. Running time dep
 
 **Problem.** Pack items of sizes $\in (0, 1]$ into the fewest unit-capacity bins.
 
-| Algorithm | Guarantee |
-|---|---|
-| **First-Fit** | $\leq 1.7 \cdot \text{OPT}$ |
-| **First-Fit Decreasing** | $\leq 11/9 \cdot \text{OPT} + 6/9$ |
-| **Asymptotic PTAS** | $\leq (1 + \varepsilon) \cdot \text{OPT} + O(1)$ |
-| **No FPTAS** | unless $\text{P} = \text{NP}$ |
+| Algorithm                | Guarantee                                        |
+| ------------------------ | ------------------------------------------------ |
+| **First-Fit**            | $\leq 1.7 \cdot \text{OPT}$                      |
+| **First-Fit Decreasing** | $\leq 11/9 \cdot \text{OPT} + 6/9$               |
+| **Asymptotic PTAS**      | $\leq (1 + \varepsilon) \cdot \text{OPT} + O(1)$ |
+| **No FPTAS**             | unless $\text{P} = \text{NP}$                    |
 
 A standard demonstration that simple online heuristics (First-Fit) already give constant-factor guarantees.
 
@@ -140,29 +140,29 @@ A standard demonstration that simple online heuristics (First-Fit) already give 
 
 For some problems, achieving a better ratio is provably as hard as solving NP-complete problems.
 
-| Problem | Best known | Lower bound |
-|---|---|---|
-| Vertex cover | $2$ | $1.36$ (under UGC: $2$) |
-| TSP (general) | $\infty$ — no constant ratio | unbounded |
-| TSP (metric) | $\approx 1.5 - 10^{-36}$ | $123/122$ |
-| Set cover | $\ln n$ | $(1 - o(1)) \ln n$ |
-| MAX-3SAT | $7/8$ | $7/8 + \varepsilon$ (Håstad) |
-| Maximum clique | $n^{1 - \varepsilon}$ | hard to approximate within $n^{1 - \varepsilon}$ |
-| Independent set | $n / \log^2 n$ | hard within $n^{1 - \varepsilon}$ |
+| Problem         | Best known                   | Lower bound                                      |
+| --------------- | ---------------------------- | ------------------------------------------------ |
+| Vertex cover    | $2$                          | $1.36$ (under UGC: $2$)                          |
+| TSP (general)   | $\infty$ — no constant ratio | unbounded                                        |
+| TSP (metric)    | $\approx 1.5 - 10^{-36}$     | $123/122$                                        |
+| Set cover       | $\ln n$                      | $(1 - o(1)) \ln n$                               |
+| MAX-3SAT        | $7/8$                        | $7/8 + \varepsilon$ (Håstad)                     |
+| Maximum clique  | $n^{1 - \varepsilon}$        | hard to approximate within $n^{1 - \varepsilon}$ |
+| Independent set | $n / \log^2 n$               | hard within $n^{1 - \varepsilon}$                |
 
 Inapproximability proofs use the **PCP theorem** — characterising NP via probabilistically checkable proofs — to show that distinguishing exact from approximate solutions is itself NP-hard.
 
 ## Design techniques
 
-| Technique | Idea |
-|---|---|
-| **Greedy** | local choice with a charging argument | set cover, scheduling |
-| **LP relaxation + rounding** | solve linear-programming relaxation, round to integers | vertex cover, set cover |
-| **Primal-dual** | construct primal and dual feasible solutions in tandem | facility location |
-| **Local search** | start with a feasible solution, swap to improve, prove a bound on stopping point | $k$-median |
-| **Combinatorial structure** | exploit MST, matching, or shortest paths | TSP, Steiner tree |
-| **Randomisation** | random rounding of LP, random ordering | MAX-CUT, MAX-SAT |
-| **Pseudo-polynomial DP scaling** | scale and round inputs to make DP cheap | knapsack FPTAS |
+| Technique                        | Idea                                                                             |
+| -------------------------------- | -------------------------------------------------------------------------------- | ----------------------- |
+| **Greedy**                       | local choice with a charging argument                                            | set cover, scheduling   |
+| **LP relaxation + rounding**     | solve linear-programming relaxation, round to integers                           | vertex cover, set cover |
+| **Primal-dual**                  | construct primal and dual feasible solutions in tandem                           | facility location       |
+| **Local search**                 | start with a feasible solution, swap to improve, prove a bound on stopping point | $k$-median              |
+| **Combinatorial structure**      | exploit MST, matching, or shortest paths                                         | TSP, Steiner tree       |
+| **Randomisation**                | random rounding of LP, random ordering                                           | MAX-CUT, MAX-SAT        |
+| **Pseudo-polynomial DP scaling** | scale and round inputs to make DP cheap                                          | knapsack FPTAS          |
 
 ## Online algorithms
 
@@ -170,15 +170,15 @@ A relative: **online algorithms** make decisions without knowing future input, a
 
 ## When to use approximation algorithms
 
-| Situation | Use |
-|---|---|
-| NP-hard optimisation, large $n$, need provable quality | yes |
-| NP-hard, small $n$ (say $n < 50$) | branch-and-bound exact |
-| Polynomial problem | approximation is wasted; solve exactly |
-| Near-exact answers needed, instance structure unknown | mathematical programming (ILP, SAT, LP) |
-| Real-time / streaming | heuristics with empirical testing; approximation guarantees often impractical |
+| Situation                                              | Use                                                                           |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| NP-hard optimisation, large $n$, need provable quality | yes                                                                           |
+| NP-hard, small $n$ (say $n < 50$)                      | branch-and-bound exact                                                        |
+| Polynomial problem                                     | approximation is wasted; solve exactly                                        |
+| Near-exact answers needed, instance structure unknown  | mathematical programming (ILP, SAT, LP)                                       |
+| Real-time / streaming                                  | heuristics with empirical testing; approximation guarantees often impractical |
 
-The main reason to learn approximation theory: it tells you what is *fundamentally* possible. If a problem has no constant-factor approximation, no clever heuristic will produce reliably-good answers — that's a structural fact about the problem, not a limitation of your engineering.
+The main reason to learn approximation theory: it tells you what is _fundamentally_ possible. If a problem has no constant-factor approximation, no clever heuristic will produce reliably-good answers — that's a structural fact about the problem, not a limitation of your engineering.
 
 ## See also
 

@@ -11,11 +11,11 @@ source: iterators/src/basics.rs
 
 Every collection in Rust exposes three flavors of iteration, each with different ownership semantics:
 
-| Method | Yields | Ownership |
-|---|---|---|
-| `iter()` | `&T` | Borrows — original still usable |
-| `iter_mut()` | `&mut T` | Mutably borrows — can modify in place |
-| `into_iter()` | `T` | Moves — original is consumed |
+| Method        | Yields   | Ownership                             |
+| ------------- | -------- | ------------------------------------- |
+| `iter()`      | `&T`     | Borrows — original still usable       |
+| `iter_mut()`  | `&mut T` | Mutably borrows — can modify in place |
+| `into_iter()` | `T`      | Moves — original is consumed          |
 
 ```rust
 let v = vec![1, 2, 3];

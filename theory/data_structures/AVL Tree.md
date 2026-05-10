@@ -21,10 +21,10 @@ This invariant bounds the height at `≈ 1.44 · log₂(n)`, so all BST operatio
 
 Rebalancing uses tree rotations — local pointer reorderings that preserve the BST invariant.
 
-| Imbalance case | Fix |
-|---|---|
-| Left-Left (bf = +2, child bf ≥ 0) | Right rotation on root |
-| Right-Right (bf = −2, child bf ≤ 0) | Left rotation on root |
+| Imbalance case                      | Fix                                        |
+| ----------------------------------- | ------------------------------------------ |
+| Left-Left (bf = +2, child bf ≥ 0)   | Right rotation on root                     |
+| Right-Right (bf = −2, child bf ≤ 0) | Left rotation on root                      |
 | Left-Right (bf = +2, child bf = −1) | Left rotation on child, then right on root |
 | Right-Left (bf = −2, child bf = +1) | Right rotation on child, then left on root |
 
@@ -46,10 +46,10 @@ A single rotation moves one node up and another down; it changes the height of t
 
 ## Performance
 
-| Op | Cost |
-|---|---|
-| Search / Insert / Delete | O(log n) worst case |
-| Space | O(n) plus 1 height/balance field per node |
+| Op                       | Cost                                      |
+| ------------------------ | ----------------------------------------- |
+| Search / Insert / Delete | O(log n) worst case                       |
+| Space                    | O(n) plus 1 height/balance field per node |
 
 AVL trees are more strictly balanced than red-black trees, giving slightly faster lookups but slightly slower mutations due to more rotations on average.
 

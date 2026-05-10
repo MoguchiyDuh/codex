@@ -64,6 +64,7 @@ debug_assert_ne!(a, b);
 - **abort mode**: immediate process abort, no cleanup, smaller binary
 
 Configured in `Cargo.toml`:
+
 ```toml
 [profile.release]
 panic = "abort"

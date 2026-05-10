@@ -15,9 +15,9 @@ Where $R$ is the circumradius (radius of the circumscribed circle).
 
 ## When to use
 
-| Known | Find |
-|---|---|
-| Two angles + any side (AAS or ASA) | Remaining sides |
+| Known                                | Find                                       |
+| ------------------------------------ | ------------------------------------------ |
+| Two angles + any side (AAS or ASA)   | Remaining sides                            |
 | Two sides + non-included angle (SSA) | Remaining angle — **check ambiguous case** |
 
 ## Ambiguous case (SSA)
@@ -26,12 +26,12 @@ When given two sides and a non-included angle, there may be **0, 1, or 2 valid t
 
 Given sides $a$, $b$ and angle $A$ (opposite to $a$):
 
-| Condition | Triangles |
-|---|---|
-| $a < b \sin(A)$ | 0 — no triangle exists |
-| $a = b \sin(A)$ | 1 — right triangle |
+| Condition           | Triangles               |
+| ------------------- | ----------------------- |
+| $a < b \sin(A)$     | 0 — no triangle exists  |
+| $a = b \sin(A)$     | 1 — right triangle      |
 | $b \sin(A) < a < b$ | 2 — two valid triangles |
-| $a \geq b$ | 1 — unique triangle |
+| $a \geq b$          | 1 — unique triangle     |
 
 ## Area using sine rule
 

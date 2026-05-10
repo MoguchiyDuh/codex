@@ -124,11 +124,11 @@ let canonical: PathBuf = Path::new(".").canonicalize()?;
 
 Paths are not guaranteed to be valid UTF-8 on Linux — filenames are arbitrary byte sequences.
 
-| Method | Returns | Behaviour on non-UTF-8 |
-|---|---|---|
-| `.to_str()` | `Option<&str>` | `None` if not valid UTF-8 |
-| `.to_string_lossy()` | `Cow<str>` | Borrows if valid UTF-8; allocates with U+FFFD replacements otherwise |
-| `.display()` | `Display` impl | Use only for human output, not round-tripping |
+| Method               | Returns        | Behaviour on non-UTF-8                                               |
+| -------------------- | -------------- | -------------------------------------------------------------------- |
+| `.to_str()`          | `Option<&str>` | `None` if not valid UTF-8                                            |
+| `.to_string_lossy()` | `Cow<str>`     | Borrows if valid UTF-8; allocates with U+FFFD replacements otherwise |
+| `.display()`         | `Display` impl | Use only for human output, not round-tripping                        |
 
 ```rust
 let s: Cow<str> = path.to_string_lossy();  // always succeeds

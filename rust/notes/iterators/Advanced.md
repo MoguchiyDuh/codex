@@ -29,19 +29,25 @@ See [[Patterns#Running State with scan]] for a practical use case.
 These operate on slices (`&[T]`), not on general `Iterator`. They yield sub-slices, not owned values.
 
 ### `windows(n)`
+
 Overlapping windows of exactly `n` elements. Each step advances by one:
+
 ```
 [1,2,3,4,5].windows(3) → [1,2,3], [2,3,4], [3,4,5]
 ```
 
 ### `chunks(n)`
+
 Non-overlapping. The last chunk may be shorter than `n`:
+
 ```
 [1,2,3,4,5,6,7].chunks(3) → [1,2,3], [4,5,6], [7]
 ```
 
 ### `chunks_exact(n)`
+
 Like `chunks` but only yields complete chunks. The leftover elements are accessible via `.remainder()`:
+
 ```rust
 let mut iter = data.chunks_exact(3);
 for chunk in iter.by_ref() { /* only full chunks */ }
@@ -49,10 +55,13 @@ let rem = iter.remainder(); // [7] in the example above
 ```
 
 ### `rchunks(n)` / `rchunks_exact(n)`
+
 Same as `chunks` / `chunks_exact` but starts chunking from the **end** of the slice.
 
 ### `split(predicate)`
+
 Splits on elements matching the predicate. Yields zero-length slices for consecutive matches:
+
 ```rust
 for part in text.split(|&x| x == 0) { /* ... */ }
 ```
@@ -62,7 +71,9 @@ for part in text.split(|&x| x == 0) { /* ... */ }
 These create iterators from scratch without a source collection.
 
 ### `once(value)`
+
 Single-element iterator. Useful for prepending/appending to a chain:
+
 ```rust
 let combined: Vec<i32> = std::iter::once(0)
     .chain(numbers.iter().copied())
@@ -71,13 +82,17 @@ let combined: Vec<i32> = std::iter::once(0)
 ```
 
 ### `repeat(value)`
+
 Infinite iterator cloning the value on each step. Always pair with `take()`:
+
 ```rust
 let repeated: Vec<i32> = std::iter::repeat(7).take(5).collect();
 ```
 
 ### `repeat_with(closure)`
+
 Like `repeat` but evaluates the closure each time — needed when the value isn't `Clone` or when you need side effects:
+
 ```rust
 let mut n = 0;
 let inc: Vec<i32> = std::iter::repeat_with(|| { n += 1; n }).take(5).collect();
@@ -85,12 +100,15 @@ let inc: Vec<i32> = std::iter::repeat_with(|| { n += 1; n }).take(5).collect();
 ```
 
 ### `empty()`
+
 An iterator that immediately returns `None`. Useful as a neutral element for `chain` or as a default:
+
 ```rust
 let e: Vec<i32> = std::iter::empty().collect(); // []
 ```
 
 ### `successors(initial, f)`
+
 Generates a sequence where each element is derived from the previous one. `f` returns `Option` — `None` terminates the sequence. More composable than writing a custom iterator struct for simple recurrences:
 
 ```rust
@@ -107,6 +125,7 @@ let powers: Vec<i32> = std::iter::successors(Some(1), |&n| Some(n * 2))
 ```
 
 ### `from_fn(closure)`
+
 Creates an iterator from a stateful closure. Returns `None` to end iteration. Lightweight alternative to a custom struct when the state can be captured:
 
 ```rust

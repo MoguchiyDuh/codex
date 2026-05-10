@@ -17,12 +17,12 @@ Graph algorithms usually assume an adjacency-list representation, because neighb
 
 A graph $G = (V, E)$ with $|V| = n$ and $|E| = m$ admits multiple storage layouts. The traversals below are analysed for adjacency lists; on an adjacency matrix, neighbour scans cost $\Theta(n)$ per vertex instead of $\Theta(\deg(u))$.
 
-| | Adjacency list | Adjacency matrix |
-|---|---|---|
-| Space | $\Theta(n + m)$ | $\Theta(n^2)$ |
-| `hasEdge(u, v)` | $\Theta(\deg(u))$ | $\Theta(1)$ |
-| Iterate neighbours of $u$ | $\Theta(\deg(u))$ | $\Theta(n)$ |
-| Best for | sparse graphs (the usual case) | dense graphs / Floyd-Warshall |
+|                           | Adjacency list                 | Adjacency matrix              |
+| ------------------------- | ------------------------------ | ----------------------------- |
+| Space                     | $\Theta(n + m)$                | $\Theta(n^2)$                 |
+| `hasEdge(u, v)`           | $\Theta(\deg(u))$              | $\Theta(1)$                   |
+| Iterate neighbours of $u$ | $\Theta(\deg(u))$              | $\Theta(n)$                   |
+| Best for                  | sparse graphs (the usual case) | dense graphs / Floyd-Warshall |
 
 The traversal algorithms below assume an adjacency-list representation; their costs change to $\Theta(n^2)$ on a matrix.
 
@@ -49,20 +49,20 @@ BFS(G, s):
 
 **Code:** `theory/algorithms/showcase/path_finding/bfs.py`
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(n + m)$ |
-| Space | $\Theta(n)$ for queue + bookkeeping |
-| Output | distance and parent for every reachable vertex |
+| Property | Value                                          |
+| -------- | ---------------------------------------------- |
+| Time     | $\Theta(n + m)$                                |
+| Space    | $\Theta(n)$ for queue + bookkeeping            |
+| Output   | distance and parent for every reachable vertex |
 
 ### What BFS computes
 
-| Task | Why BFS works |
-|---|---|
-| Reachability from $s$ | discovers exactly the vertices in $s$'s component |
-| Shortest path in unweighted graphs | first discovery happens at minimum hop-count |
-| Bipartiteness check | alternating layers define a 2-colouring iff no same-layer conflict appears |
-| Connected components | rerun from each unvisited vertex |
+| Task                               | Why BFS works                                                              |
+| ---------------------------------- | -------------------------------------------------------------------------- |
+| Reachability from $s$              | discovers exactly the vertices in $s$'s component                          |
+| Shortest path in unweighted graphs | first discovery happens at minimum hop-count                               |
+| Bipartiteness check                | alternating layers define a 2-colouring iff no same-layer conflict appears |
+| Connected components               | rerun from each unvisited vertex                                           |
 
 ### Why BFS solves shortest path on unweighted graphs
 
@@ -99,11 +99,11 @@ DFS_visit(u):
 
 **Code:** `theory/algorithms/showcase/path_finding/dfs.py`
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(n + m)$ |
-| Space | $\Theta(n)$ stack depth (in worst case = depth of DFS tree) |
-| Output | discover/finish times, DFS forest (parent edges) |
+| Property | Value                                                       |
+| -------- | ----------------------------------------------------------- |
+| Time     | $\Theta(n + m)$                                             |
+| Space    | $\Theta(n)$ stack depth (in worst case = depth of DFS tree) |
+| Output   | discover/finish times, DFS forest (parent edges)            |
 
 The discover and finish times bracket each subtree: $u$ is an ancestor of $v$ in the DFS forest iff $[\text{discover}_u, \text{finish}_u]$ contains $[\text{discover}_v, \text{finish}_v]$. This **parenthesisation theorem** underpins many DFS-based algorithms.
 
@@ -111,22 +111,22 @@ The discover and finish times bracket each subtree: $u$ is an ancestor of $v$ in
 
 Each edge $(u, v)$ falls into one of four classes based on the colour of $v$ when the edge is examined.
 
-| Class | Condition | Meaning |
-|---|---|---|
-| **Tree edge** | $v$ is WHITE | $v$ first discovered via this edge |
-| **Back edge** | $v$ is GRAY | $v$ is an ancestor — indicates a cycle |
+| Class            | Condition                                                  | Meaning                                   |
+| ---------------- | ---------------------------------------------------------- | ----------------------------------------- |
+| **Tree edge**    | $v$ is WHITE                                               | $v$ first discovered via this edge        |
+| **Back edge**    | $v$ is GRAY                                                | $v$ is an ancestor — indicates a cycle    |
 | **Forward edge** | $v$ is BLACK and $\text{discover}[u] < \text{discover}[v]$ | descendant in DFS tree, not via tree edge |
-| **Cross edge** | $v$ is BLACK and $\text{discover}[u] > \text{discover}[v]$ | between distinct subtrees |
+| **Cross edge**   | $v$ is BLACK and $\text{discover}[u] > \text{discover}[v]$ | between distinct subtrees                 |
 
 Undirected DFS produces only tree and back edges.
 
 ### What edge classification gives you
 
-| Consequence | Reason |
-|---|---|
-| Cycle detection | a back edge points to an ancestor |
-| Topological sort | DAGs are exactly digraphs with no DFS back edge |
-| Strongly connected components | DFS finishing order exposes SCC structure |
+| Consequence                   | Reason                                          |
+| ----------------------------- | ----------------------------------------------- |
+| Cycle detection               | a back edge points to an ancestor               |
+| Topological sort              | DAGs are exactly digraphs with no DFS back edge |
+| Strongly connected components | DFS finishing order exposes SCC structure       |
 
 ## Topological sort
 
@@ -160,10 +160,10 @@ kahn(G):
 
 **Code:** `theory/algorithms/showcase/path_finding/topological_sort.py`
 
-| Method | Time | Detects cycle |
-|---|---|---|
-| DFS-based | $\Theta(n + m)$ | yes (back edge) |
-| Kahn's | $\Theta(n + m)$ | yes (output length $< n$) |
+| Method    | Time            | Detects cycle             |
+| --------- | --------------- | ------------------------- |
+| DFS-based | $\Theta(n + m)$ | yes (back edge)           |
+| Kahn's    | $\Theta(n + m)$ | yes (output length $< n$) |
 
 Both run in linear time. DFS-based gives a single deterministic order; Kahn's can yield any valid topological order depending on tie-breaking — useful for parallel scheduling (vertices with in-degree $0$ can run concurrently).
 
@@ -183,10 +183,10 @@ A subset $C \subseteq V$ is strongly connected if every pair $u, v \in C$ has pa
 
 Two algorithms in $\Theta(n + m)$:
 
-| Algorithm | Idea |
-|---|---|
+| Algorithm    | Idea                                                                                             |
+| ------------ | ------------------------------------------------------------------------------------------------ |
 | **Kosaraju** | DFS on $G$ recording finish times → DFS on $G^T$ in decreasing-finish order, each tree is an SCC |
-| **Tarjan** | single DFS using a stack and lowlink values; SCC pops when a root is finished |
+| **Tarjan**   | single DFS using a stack and lowlink values; SCC pops when a root is finished                    |
 
 Kosaraju is conceptually simpler; Tarjan does the same work in one pass and is usually faster in practice.
 
@@ -196,11 +196,11 @@ The SCC condensation graph is always a DAG. This lets you collapse cyclic subsys
 
 ## Cycle detection
 
-| Graph | Algorithm |
-|---|---|
-| Directed | DFS — cycle iff back edge found |
+| Graph      | Algorithm                                                                                |
+| ---------- | ---------------------------------------------------------------------------------------- |
+| Directed   | DFS — cycle iff back edge found                                                          |
 | Undirected | DFS — cycle iff back edge to non-parent (track parent to ignore the edge you came in on) |
-| Either | union-find — for each edge $(u, v)$, cycle iff `find(u) == find(v)` |
+| Either     | union-find — for each edge $(u, v)$, cycle iff `find(u) == find(v)`                      |
 
 For undirected graphs union-find is the standard approach inside MST algorithms (see [[Minimum Spanning Tree]]).
 
@@ -208,23 +208,23 @@ For undirected graphs union-find is the standard approach inside MST algorithms 
 
 Most graph algorithms are not built from scratch. They are refinements of a traversal pattern:
 
-| Pattern | Replace queue/stack with | Example |
-|---|---|---|
-| Layered exploration | queue | BFS |
-| Depth exploration | stack / recursion | DFS |
-| Best frontier first | priority queue | Dijkstra, A* |
-| Repeated edge relaxation | full edge scans | Bellman-Ford |
+| Pattern                  | Replace queue/stack with | Example       |
+| ------------------------ | ------------------------ | ------------- |
+| Layered exploration      | queue                    | BFS           |
+| Depth exploration        | stack / recursion        | DFS           |
+| Best frontier first      | priority queue           | Dijkstra, A\* |
+| Repeated edge relaxation | full edge scans          | Bellman-Ford  |
 
 That is why traversal belongs before weighted shortest paths, MST, and flow. It provides the control structure those later algorithms modify.
 
 ## Summary
 
-| Algorithm | Time | Use |
-|---|---|---|
-| BFS | $\Theta(n + m)$ | unweighted shortest path, layers, bipartite, components |
-| DFS | $\Theta(n + m)$ | structure (tree, edges), cycles, topological, SCC |
-| Kahn's topological sort | $\Theta(n + m)$ | scheduling, dependency resolution |
-| Kosaraju / Tarjan SCC | $\Theta(n + m)$ | condensation graph, web crawling, dataflow |
+| Algorithm               | Time            | Use                                                     |
+| ----------------------- | --------------- | ------------------------------------------------------- |
+| BFS                     | $\Theta(n + m)$ | unweighted shortest path, layers, bipartite, components |
+| DFS                     | $\Theta(n + m)$ | structure (tree, edges), cycles, topological, SCC       |
+| Kahn's topological sort | $\Theta(n + m)$ | scheduling, dependency resolution                       |
+| Kosaraju / Tarjan SCC   | $\Theta(n + m)$ | condensation graph, web crawling, dataflow              |
 
 These four are the foundation. Every weighted-graph algorithm — shortest path, MST, flow — modifies BFS or DFS with priority orderings or auxiliary data structures.
 

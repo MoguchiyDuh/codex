@@ -98,13 +98,13 @@ set.iter().collect::<Vec<_>>()
 
 ## HashSet vs BTreeSet
 
-| | [[HashSet]] | BTreeSet |
-|---|---|---|
-| Operations | O(1) avg | O(log n) |
-| Iteration order | arbitrary | ascending |
-| Range queries | no | yes |
-| Min / max | no | yes |
-| Key bound | `Eq + Hash` | `Ord` |
+|                 | [[HashSet]] | BTreeSet  |
+| --------------- | ----------- | --------- |
+| Operations      | O(1) avg    | O(log n)  |
+| Iteration order | arbitrary   | ascending |
+| Range queries   | no          | yes       |
+| Min / max       | no          | yes       |
+| Key bound       | `Eq + Hash` | `Ord`     |
 
 Choose `BTreeSet` when sorted iteration, range queries, or min/max access are needed.
 

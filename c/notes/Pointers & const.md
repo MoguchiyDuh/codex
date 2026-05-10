@@ -96,7 +96,7 @@ char *names[] = {"alice", "bob"};
 // decays to char** when passed to a function
 ```
 
-## void *
+## void \*
 
 Generic pointer — points to memory of unknown type. No arithmetic, no dereferencing without a cast.
 

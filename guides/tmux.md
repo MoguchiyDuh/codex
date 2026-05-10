@@ -62,7 +62,6 @@ Prefix + v # Vertical Split (current path)
 Prefix + x # Kill Current Pane
 ```
 
-
 # Navigation (Vim Keys)
 
 ```text
@@ -127,6 +126,7 @@ tmux info # Show server/terminal information
 ```
 
 **Your Reload Shortcut**:
+
 ```text
 Prefix + r # Reload ~/.config/tmux/tmux.conf
 ```
@@ -135,11 +135,11 @@ Prefix + r # Reload ~/.config/tmux/tmux.conf
 
 ### Plugins
 
-| Plugin               | Feature                                                   |
-| :------------------- | :-------------------------------------------------------- |
-| **Resurrect**        | Save/Restore sessions manually.                           |
-| **Continuum**        | Auto-saves sessions every 15 minutes.                     |
+| Plugin               | Feature                                                 |
+| :------------------- | :------------------------------------------------------ |
+| **Resurrect**        | Save/Restore sessions manually.                         |
+| **Continuum**        | Auto-saves sessions every 15 minutes.                   |
 | **Prefix-Highlight** | Visual indicator on status bar when `Prefix` is active. |
-| **gitmux**           | Dynamic Git status in your status bar.                    |
+| **gitmux**           | Dynamic Git status in your status bar.                  |
 
 ---

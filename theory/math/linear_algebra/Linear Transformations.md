@@ -19,13 +19,13 @@ Equivalently: $T(\alpha \mathbf{u} + \beta \mathbf{v}) = \alpha T(\mathbf{u}) + 
 
 ### Examples and non-examples
 
-| $T: \mathbb{R}^2 \to \mathbb{R}^2$ | Linear? |
-|------------------------------------|---------|
-| $T(\mathbf{x}) = A\mathbf{x}$ for any $A$ | Yes |
-| Rotation by fixed angle | Yes |
-| Projection onto a line through origin | Yes |
+| $T: \mathbb{R}^2 \to \mathbb{R}^2$                                                     | Linear?                                        |
+| -------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| $T(\mathbf{x}) = A\mathbf{x}$ for any $A$                                              | Yes                                            |
+| Rotation by fixed angle                                                                | Yes                                            |
+| Projection onto a line through origin                                                  | Yes                                            |
 | Translation $\mathbf{x} \mapsto \mathbf{x} + \mathbf{c}$, $\mathbf{c} \neq \mathbf{0}$ | **No** (violates $T(\mathbf{0}) = \mathbf{0}$) |
-| $T(\mathbf{x}) = \|\mathbf{x}\| \mathbf{x}$ | No (not additive) |
+| $T(\mathbf{x}) = \|\mathbf{x}\| \mathbf{x}$                                            | No (not additive)                              |
 
 ## Matrix representation
 
@@ -81,15 +81,15 @@ When invertible, $T^{-1}$ has matrix $A^{-1}$.
 
 ## Geometric catalogue in 2D
 
-| Transformation | Matrix |
-|----------------|--------|
-| **Identity** | $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ |
-| **Scaling** by $(s_x, s_y)$ | $\begin{bmatrix} s_x & 0 \\ 0 & s_y \end{bmatrix}$ |
-| **Rotation** by $\theta$ CCW | $\begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix}$ |
-| **Reflection** across $x$-axis | $\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$ |
-| **Reflection** across $y = x$ | $\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$ |
-| **Shear** along $x$ by factor $k$ | $\begin{bmatrix} 1 & k \\ 0 & 1 \end{bmatrix}$ |
-| **Projection** onto $x$-axis | $\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}$ |
+| Transformation                    | Matrix                                                                              |
+| --------------------------------- | ----------------------------------------------------------------------------------- |
+| **Identity**                      | $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$                                      |
+| **Scaling** by $(s_x, s_y)$       | $\begin{bmatrix} s_x & 0 \\ 0 & s_y \end{bmatrix}$                                  |
+| **Rotation** by $\theta$ CCW      | $\begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix}$ |
+| **Reflection** across $x$-axis    | $\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$                                     |
+| **Reflection** across $y = x$     | $\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$                                      |
+| **Shear** along $x$ by factor $k$ | $\begin{bmatrix} 1 & k \\ 0 & 1 \end{bmatrix}$                                      |
+| **Projection** onto $x$-axis      | $\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}$                                      |
 
 Determinants encode the effect on area: rotations and reflections have $|\det| = 1$, scaling by $(s_x, s_y)$ has $\det = s_x s_y$, projection has $\det = 0$.
 
@@ -129,6 +129,9 @@ Diagonalization is the search for a basis in which $T$'s matrix is diagonal — 
 - ![3Blue1Brown - Matrix multiplication as composition | Chapter 4, Essence of linear algebra](https://www.youtube.com/watch?v=XkY2DOUCWMU)
 - ![3Blue1Brown - Three-dimensional linear transformations | Chapter 5, Essence of linear algebra](https://www.youtube.com/watch?v=rHLEWRxRGiM)
 - ![3Blue1Brown - Change of basis | Chapter 13, Essence of linear algebra](https://www.youtube.com/watch?v=P2LTAUO1TdA)
+
+- ![30. Linear Transformations and Their Matrices](https://www.youtube.com/watch?v=Ts3o2I8_Mxc)
+- ![31. Change of Basis; Image Compression](https://www.youtube.com/watch?v=0h43aV4aH7I)
 
 ## See also
 

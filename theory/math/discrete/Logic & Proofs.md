@@ -11,12 +11,12 @@ status: complete
 
 A **proposition** is a declarative sentence with a definite truth value. Not a question, not a command, not a formula with free variables.
 
-| Proposition? | Example | Why |
-|---|---|---|
-| Yes | "17 is prime" | determinate truth value |
-| Yes | "There are infinitely many primes" | determinate (true) |
-| No | "What time is it?" | question |
-| No | "$x + 1 = 2$" | depends on $x$ — not a proposition until $x$ is fixed |
+| Proposition? | Example                            | Why                                                   |
+| ------------ | ---------------------------------- | ----------------------------------------------------- |
+| Yes          | "17 is prime"                      | determinate truth value                               |
+| Yes          | "There are infinitely many primes" | determinate (true)                                    |
+| No           | "What time is it?"                 | question                                              |
+| No           | "$x + 1 = 2$"                      | depends on $x$ — not a proposition until $x$ is fixed |
 
 Propositions are the atoms from which all mathematical arguments are built.
 
@@ -24,48 +24,48 @@ Propositions are the atoms from which all mathematical arguments are built.
 
 New propositions are formed by combining simpler ones with connectives.
 
-| Symbol | Name | Read as | False when |
-|---|---|---|---|
-| $\neg p$ | negation | "not $p$" | $p$ is true |
-| $p \wedge q$ | conjunction | "$p$ and $q$" | either is false |
-| $p \vee q$ | disjunction | "$p$ or $q$" | both are false |
-| $p \implies q$ | implication | "if $p$ then $q$" | $p$ true and $q$ false |
-| $p \iff q$ | biconditional | "$p$ if and only if $q$" | they differ |
+| Symbol         | Name          | Read as                  | False when             |
+| -------------- | ------------- | ------------------------ | ---------------------- |
+| $\neg p$       | negation      | "not $p$"                | $p$ is true            |
+| $p \wedge q$   | conjunction   | "$p$ and $q$"            | either is false        |
+| $p \vee q$     | disjunction   | "$p$ or $q$"             | both are false         |
+| $p \implies q$ | implication   | "if $p$ then $q$"        | $p$ true and $q$ false |
+| $p \iff q$     | biconditional | "$p$ if and only if $q$" | they differ            |
 
 The implication $p \implies q$ is the most important and most misread. It is **false only when the hypothesis $p$ is true and the conclusion $q$ is false.** A false hypothesis makes the implication vacuously true — "if $0 = 1$ then pigs fly" is a true statement.
 
 ### Truth table
 
 | $p$ | $q$ | $\neg p$ | $p \wedge q$ | $p \vee q$ | $p \implies q$ | $p \iff q$ |
-|---|---|---|---|---|---|---|
-| T | T | F | T | T | T | T |
-| T | F | F | F | T | **F** | F |
-| F | T | T | F | T | T | F |
-| F | F | T | F | F | T | T |
+| --- | --- | -------- | ------------ | ---------- | -------------- | ---------- |
+| T   | T   | F        | T            | T          | T              | T          |
+| T   | F   | F        | F            | T          | **F**          | F          |
+| F   | T   | T        | F            | T          | T              | F          |
+| F   | F   | T        | F            | F          | T              | T          |
 
 ### Tautologies and contradictions
 
 A **tautology** is true for every assignment of truth values. A **contradiction** is false for every assignment.
 
-| Example | Type |
-|---|---|
-| $p \vee \neg p$ | tautology (law of excluded middle) |
-| $p \wedge \neg p$ | contradiction |
-| $p \implies p$ | tautology |
-| $(p \implies q) \iff (\neg q \implies \neg p)$ | tautology |
+| Example                                        | Type                               |
+| ---------------------------------------------- | ---------------------------------- |
+| $p \vee \neg p$                                | tautology (law of excluded middle) |
+| $p \wedge \neg p$                              | contradiction                      |
+| $p \implies p$                                 | tautology                          |
+| $(p \implies q) \iff (\neg q \implies \neg p)$ | tautology                          |
 
 Two propositions are **logically equivalent** ($\equiv$) when their biconditional is a tautology — they have identical truth tables.
 
 ### Key equivalences
 
-| Name | Equivalence |
-|---|---|
-| De Morgan | $\neg(p \wedge q) \equiv \neg p \vee \neg q$ |
-| De Morgan | $\neg(p \vee q) \equiv \neg p \wedge \neg q$ |
-| Implication rewrite | $p \implies q \equiv \neg p \vee q$ |
-| Contrapositive | $p \implies q \equiv \neg q \implies \neg p$ |
-| Double negation | $\neg\neg p \equiv p$ |
-| Distributive | $p \wedge (q \vee r) \equiv (p \wedge q) \vee (p \wedge r)$ |
+| Name                | Equivalence                                                 |
+| ------------------- | ----------------------------------------------------------- |
+| De Morgan           | $\neg(p \wedge q) \equiv \neg p \vee \neg q$                |
+| De Morgan           | $\neg(p \vee q) \equiv \neg p \wedge \neg q$                |
+| Implication rewrite | $p \implies q \equiv \neg p \vee q$                         |
+| Contrapositive      | $p \implies q \equiv \neg q \implies \neg p$                |
+| Double negation     | $\neg\neg p \equiv p$                                       |
+| Distributive        | $p \wedge (q \vee r) \equiv (p \wedge q) \vee (p \wedge r)$ |
 
 The contrapositive equivalence is not just notation — it is a proof technique: proving $\neg q \implies \neg p$ is logically identical to proving $p \implies q$.
 
@@ -162,13 +162,17 @@ The well-ordering principle is the starting assumption that grounds all of discr
 
 ## Common proof mistakes
 
-| Mistake | Example |
-|---|---|
-| Assuming what you want to prove | "Suppose $\sqrt{2} = p/q$... therefore $\sqrt{2}$ is rational" |
-| Arguing from examples | "I checked $n = 1, 2, 3$, so it holds for all $n$" |
-| Invalid quantifier swap | Treating $\exists x\, \forall y$ as $\forall y\, \exists x$ |
-| Vacuous truth ignored | Concluding a universal is false because a case has a false hypothesis |
-| Incomplete cases | Splitting into cases that do not cover all possibilities |
+| Mistake                         | Example                                                               |
+| ------------------------------- | --------------------------------------------------------------------- |
+| Assuming what you want to prove | "Suppose $\sqrt{2} = p/q$... therefore $\sqrt{2}$ is rational"        |
+| Arguing from examples           | "I checked $n = 1, 2, 3$, so it holds for all $n$"                    |
+| Invalid quantifier swap         | Treating $\exists x\, \forall y$ as $\forall y\, \exists x$           |
+| Vacuous truth ignored           | Concluding a universal is false because a case has a false hypothesis |
+| Incomplete cases                | Splitting into cases that do not cover all possibilities              |
+
+## Video references
+
+- ![Lecture 1: Introduction and Proofs](https://www.youtube.com/watch?v=L3LMbpZIKhQ)
 
 ## See also
 

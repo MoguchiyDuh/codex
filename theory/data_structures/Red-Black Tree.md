@@ -17,7 +17,7 @@ status: complete
 2. The root is black.
 3. Every leaf (a `NIL` sentinel) is black.
 4. A red node's children are both black (no two reds in a row).
-5. Every path from a node to its descendant leaves contains the same number of black nodes (the *black-height*).
+5. Every path from a node to its descendant leaves contains the same number of black nodes (the _black-height_).
 
 These rules together guarantee `height ≤ 2 · log₂(n + 1)`.
 
@@ -29,20 +29,20 @@ Insert and delete proceed as in a plain BST, then a fix-up phase restores the in
 
 ## Performance
 
-| Op | Cost |
-|---|---|
-| Search / Insert / Delete | O(log n) worst case |
-| Rotations per mutation | O(1) amortized |
-| Space | O(n) plus 1 colour bit per node |
+| Op                       | Cost                            |
+| ------------------------ | ------------------------------- |
+| Search / Insert / Delete | O(log n) worst case             |
+| Rotations per mutation   | O(1) amortized                  |
+| Space                    | O(n) plus 1 colour bit per node |
 
 ## AVL vs red-black
 
-| | AVL | Red-Black |
-|---|---|---|
-| Height bound | ≈ 1.44 log n | ≤ 2 log n |
-| Lookup speed | Faster (tighter) | Slightly slower |
-| Insert/delete | More rotations | Fewer rotations |
-| Typical use | Read-heavy workloads | General-purpose libraries |
+|               | AVL                  | Red-Black                 |
+| ------------- | -------------------- | ------------------------- |
+| Height bound  | ≈ 1.44 log n         | ≤ 2 log n                 |
+| Lookup speed  | Faster (tighter)     | Slightly slower           |
+| Insert/delete | More rotations       | Fewer rotations           |
+| Typical use   | Read-heavy workloads | General-purpose libraries |
 
 ## Where you'll see it
 

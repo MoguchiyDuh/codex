@@ -11,10 +11,10 @@ status: complete
 
 For integers $a$ and $b$ with $b \neq 0$, we say $b$ **divides** $a$ (written $b \mid a$) if there exists an integer $k$ such that $a = kb$. Otherwise $b \nmid a$.
 
-| Property | Statement |
-|---|---|
-| Reflexive | $a \mid a$ |
-| Transitive | $a \mid b$ and $b \mid c$ implies $a \mid c$ |
+| Property           | Statement                                                                          |
+| ------------------ | ---------------------------------------------------------------------------------- |
+| Reflexive          | $a \mid a$                                                                         |
+| Transitive         | $a \mid b$ and $b \mid c$ implies $a \mid c$                                       |
 | Linear combination | $a \mid b$ and $a \mid c$ implies $a \mid (sb + tc)$ for any $s, t \in \mathbb{Z}$ |
 
 The linear combination property is the workhorse — most divisibility proofs reduce to it.
@@ -82,8 +82,6 @@ An integer $p \geq 2$ is **prime** if its only positive divisors are $1$ and $p$
 **Fundamental theorem of arithmetic.** Every integer $n \geq 2$ has a unique factorisation into primes (up to order). Existence was proved by strong induction in [[Induction]]; uniqueness follows from the lemma that if $p \mid ab$ and $p$ is prime then $p \mid a$ or $p \mid b$.
 
 **Infinitude of primes.** Suppose there are finitely many primes $p_1, \ldots, p_k$. Let $N = p_1 p_2 \cdots p_k + 1$. Then $N$ is not divisible by any $p_i$ (remainder $1$ in each case), so $N$ has a prime factor not in the list — contradiction.
-
-![[prime_sieve.png]]
 
 ## Modular arithmetic
 
@@ -162,6 +160,11 @@ $$x \equiv a_1 \pmod{m_1},\quad x \equiv a_2 \pmod{m_2},\quad \ldots,\quad x \eq
 has a unique solution modulo $M = m_1 m_2 \cdots m_k$.
 
 The CRT lets you split computation mod $M$ into smaller independent computations mod each $m_i$ — useful in efficient arithmetic and in some distributed computing schemes.
+
+## Video references
+
+- ![Lecture 4: Number Theory I](https://www.youtube.com/watch?v=NuY7szYSXSw)
+- ![Lecture 5: Number Theory II](https://www.youtube.com/watch?v=XX7ePR21Ook)
 
 ## See also
 

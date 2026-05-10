@@ -35,19 +35,19 @@ Sarrus works **only for 3×3**. For larger matrices use cofactor expansion or el
 
 ## Properties
 
-| Property | Statement |
-|----------|-----------|
-| $\det(I) = 1$ | Identity |
-| $\det(A^T) = \det(A)$ | Transpose invariant |
-| $\det(AB) = \det(A)\det(B)$ | Product rule |
-| $\det(A^{-1}) = 1/\det(A)$ | Inverse |
-| $\det(\alpha A) = \alpha^n \det(A)$ | Scalar (for $n \times n$) |
-| Row swap | Flips sign |
-| Row scale by $\alpha$ | Multiplies $\det$ by $\alpha$ |
-| Add multiple of row to another | Unchanged |
-| Row/column of zeros | $\det = 0$ |
-| Two equal rows | $\det = 0$ |
-| Triangular matrix | Product of diagonal entries |
+| Property                            | Statement                     |
+| ----------------------------------- | ----------------------------- |
+| $\det(I) = 1$                       | Identity                      |
+| $\det(A^T) = \det(A)$               | Transpose invariant           |
+| $\det(AB) = \det(A)\det(B)$         | Product rule                  |
+| $\det(A^{-1}) = 1/\det(A)$          | Inverse                       |
+| $\det(\alpha A) = \alpha^n \det(A)$ | Scalar (for $n \times n$)     |
+| Row swap                            | Flips sign                    |
+| Row scale by $\alpha$               | Multiplies $\det$ by $\alpha$ |
+| Add multiple of row to another      | Unchanged                     |
+| Row/column of zeros                 | $\det = 0$                    |
+| Two equal rows                      | $\det = 0$                    |
+| Triangular matrix                   | Product of diagonal entries   |
 
 The product rule $\det(AB) = \det(A)\det(B)$ is not obvious but is the most-used identity.
 
@@ -123,6 +123,10 @@ The determinant equals the product of eigenvalues (counted with multiplicity). M
 
 - ![3Blue1Brown - The determinant | Chapter 6, Essence of linear algebra](https://www.youtube.com/watch?v=Ip3X9LOh2dk)
 - ![3Blue1Brown - Cramer's rule, explained geometrically | Chapter 12, Essence of linear algebra](https://www.youtube.com/watch?v=jBsC34PxzoM)
+
+- ![18. Properties of Determinants](https://www.youtube.com/watch?v=srxexLishgY)
+- ![19. Determinant Formulas and Cofactors](https://www.youtube.com/watch?v=23LLB9mNJvc)
+- ![20. Cramer's Rule, Inverse Matrix, and Volume](https://www.youtube.com/watch?v=QNpj-gOXW9M)
 
 ## See also
 

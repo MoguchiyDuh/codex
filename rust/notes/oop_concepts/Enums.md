@@ -8,7 +8,7 @@ source: oop_concepts/src/enums.rs
 
 # Enums
 
-Rust enums are Algebraic Data Types (ADTs) — specifically *sum types*. Each variant is one of a fixed set of possibilities, and variants can carry different data. They are exhaustively matched by the compiler.
+Rust enums are Algebraic Data Types (ADTs) — specifically _sum types_. Each variant is one of a fixed set of possibilities, and variants can carry different data. They are exhaustively matched by the compiler.
 
 ## Variants with data
 

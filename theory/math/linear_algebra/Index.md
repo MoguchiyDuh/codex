@@ -25,13 +25,9 @@ Vectors, matrices, and transformations — essential for graphics, ML, and syste
 - [[Eigenvalues & Eigenvectors]] — characteristic polynomial, diagonalization, symmetric matrices, Markov chains
 - [[SVD]] — singular value decomposition, low-rank approximation, pseudoinverse
 
-## See also (course)
+## Course roadmap
 
 - [[ROADMAP]] — phased course plan (MIT 18.06)
-
-## Video references
-
-- [3Blue1Brown - Essence of linear algebra (playlist)](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
 
 ## See also
 

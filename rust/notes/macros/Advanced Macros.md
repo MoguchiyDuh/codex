@@ -170,11 +170,11 @@ Procedural macros (proc macros) operate on the token stream directly, parsing an
 
 Three kinds:
 
-| Kind | Syntax | Use case |
-|---|---|---|
-| Derive | `#[derive(Trait)]` | Code generation for structs/enums |
-| Attribute | `#[my_attribute]` | Transforms the annotated item |
-| Function-like | `my_macro!(...)` | Full token control, arbitrary DSL |
+| Kind          | Syntax             | Use case                          |
+| ------------- | ------------------ | --------------------------------- |
+| Derive        | `#[derive(Trait)]` | Code generation for structs/enums |
+| Attribute     | `#[my_attribute]`  | Transforms the annotated item     |
+| Function-like | `my_macro!(...)`   | Full token control, arbitrary DSL |
 
 Typical dependencies:
 

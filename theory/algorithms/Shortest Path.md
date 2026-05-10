@@ -14,24 +14,24 @@ status: complete
 
 ## Problem variants
 
-| Variant | Goal |
-|---|---|
-| Single-source shortest path | shortest paths from one source $s$ to all vertices |
-| Single-pair | shortest path between two specific vertices |
-| Single-destination | shortest paths from all vertices to one destination |
-| All-pairs | shortest paths between every pair (see [[All-Pairs Shortest Path]]) |
+| Variant                     | Goal                                                                |
+| --------------------------- | ------------------------------------------------------------------- |
+| Single-source shortest path | shortest paths from one source $s$ to all vertices                  |
+| Single-pair                 | shortest path between two specific vertices                         |
+| Single-destination          | shortest paths from all vertices to one destination                 |
+| All-pairs                   | shortest paths between every pair (see [[All-Pairs Shortest Path]]) |
 
 In practice nobody solves "single-pair" specially — early-terminating an SSSP algorithm at the destination is asymptotically the same.
 
 ## Edge weights
 
-| Weight type | Algorithm | Time |
-|---|---|---|
-| Unweighted (or all equal) | BFS | $\Theta(n + m)$ |
-| Non-negative | Dijkstra | $\Theta((n + m) \log n)$ with binary heap |
-| Arbitrary (negative allowed, no negative cycles) | Bellman-Ford | $\Theta(nm)$ |
-| DAG, any weights | DAG-shortest-path (topological + relaxation) | $\Theta(n + m)$ |
-| Goal-directed with admissible heuristic | A* | depends on heuristic; never worse than Dijkstra |
+| Weight type                                      | Algorithm                                    | Time                                            |
+| ------------------------------------------------ | -------------------------------------------- | ----------------------------------------------- |
+| Unweighted (or all equal)                        | BFS                                          | $\Theta(n + m)$                                 |
+| Non-negative                                     | Dijkstra                                     | $\Theta((n + m) \log n)$ with binary heap       |
+| Arbitrary (negative allowed, no negative cycles) | Bellman-Ford                                 | $\Theta(nm)$                                    |
+| DAG, any weights                                 | DAG-shortest-path (topological + relaxation) | $\Theta(n + m)$                                 |
+| Goal-directed with admissible heuristic          | A\*                                          | depends on heuristic; never worse than Dijkstra |
 
 A negative cycle reachable from $s$ makes shortest paths undefined — you can drive the cost arbitrarily low by looping. Bellman-Ford detects this.
 
@@ -46,7 +46,7 @@ relax(u, v, w):
         parent[v] = u
 ```
 
-The current best-known distance to $v$ is improved if going through $u$ is shorter. After enough relaxations, `dist[v]` equals the true shortest-path cost. Algorithms differ in *which order* they relax edges and *when they stop*.
+The current best-known distance to $v$ is improved if going through $u$ is shorter. After enough relaxations, `dist[v]` equals the true shortest-path cost. Algorithms differ in _which order_ they relax edges and _when they stop_.
 
 The triangle inequality $\delta(s, v) \leq \delta(s, u) + w(u, v)$ guarantees relaxation never overshoots — `dist[v]` is always an upper bound on the true distance.
 
@@ -74,11 +74,11 @@ dijkstra(G, s):
 
 ### Complexity
 
-| Priority queue | Total time |
-|---|---|
-| Array (linear scan for min) | $\Theta(n^2)$ — best for dense graphs |
-| Binary heap | $\Theta((n + m) \log n)$ |
-| Fibonacci heap | $\Theta(m + n \log n)$ — theoretical, rarely faster in practice |
+| Priority queue              | Total time                                                      |
+| --------------------------- | --------------------------------------------------------------- |
+| Array (linear scan for min) | $\Theta(n^2)$ — best for dense graphs                           |
+| Binary heap                 | $\Theta((n + m) \log n)$                                        |
+| Fibonacci heap              | $\Theta(m + n \log n)$ — theoretical, rarely faster in practice |
 
 For sparse graphs ($m = O(n)$), the binary heap version dominates.
 
@@ -109,14 +109,13 @@ bellman_ford(G, s):
 
 **Code:** `theory/algorithms/showcase/path_finding/bellman_ford.py`
 
-
 ### Complexity
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(nm)$ |
-| Space | $\Theta(n)$ |
-| Detects negative cycle | yes |
+| Property               | Value        |
+| ---------------------- | ------------ |
+| Time                   | $\Theta(nm)$ |
+| Space                  | $\Theta(n)$  |
+| Detects negative cycle | yes          |
 
 ### Why $n - 1$ passes suffice
 
@@ -141,24 +140,24 @@ dag_shortest_path(G, s):
             relax(u, v, w(u, v))
 ```
 
-| Property | Value |
-|---|---|
-| Time | $\Theta(n + m)$ |
-| Weights | any (negative allowed, no cycles to worry about) |
+| Property | Value                                            |
+| -------- | ------------------------------------------------ |
+| Time     | $\Theta(n + m)$                                  |
+| Weights  | any (negative allowed, no cycles to worry about) |
 
 Faster than Dijkstra and Bellman-Ford because the topological order eliminates the priority queue and the multi-pass relaxation. Used in PERT charts, longest path in DAG (negate weights), and DAG-shaped DP problems.
 
 ## Algorithm selection
 
-| Situation | Algorithm | Reason |
-|---|---|---|
-| Unweighted graph | BFS | $\Theta(n + m)$, no heap needed |
-| Weighted, non-negative | Dijkstra | optimal greedy, $\Theta((n+m)\log n)$ |
-| Weighted, possibly negative, no negative cycles | Bellman-Ford | only correct option |
-| DAG, any weights | DAG-shortest-path | linear time |
-| Single-pair with heuristic | A* | best when domain knowledge available |
-| All pairs, dense, small $n$ | Floyd-Warshall | $\Theta(n^3)$ — see [[All-Pairs Shortest Path]] |
-| All pairs, sparse | Johnson's | $\Theta(n m \log n)$ — see [[All-Pairs Shortest Path]] |
+| Situation                                       | Algorithm         | Reason                                                 |
+| ----------------------------------------------- | ----------------- | ------------------------------------------------------ |
+| Unweighted graph                                | BFS               | $\Theta(n + m)$, no heap needed                        |
+| Weighted, non-negative                          | Dijkstra          | optimal greedy, $\Theta((n+m)\log n)$                  |
+| Weighted, possibly negative, no negative cycles | Bellman-Ford      | only correct option                                    |
+| DAG, any weights                                | DAG-shortest-path | linear time                                            |
+| Single-pair with heuristic                      | A\*               | best when domain knowledge available                   |
+| All pairs, dense, small $n$                     | Floyd-Warshall    | $\Theta(n^3)$ — see [[All-Pairs Shortest Path]]        |
+| All pairs, sparse                               | Johnson's         | $\Theta(n m \log n)$ — see [[All-Pairs Shortest Path]] |
 
 ## Path reconstruction
 

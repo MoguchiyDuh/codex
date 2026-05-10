@@ -1,6 +1,6 @@
 # Discrete Math — Course Roadmap
 
-Structured after **MIT 6.042J — Mathematics for Computer Science** (Spring 2015, Lehman / Leighton / Meyer). Free textbook and lecture videos on MIT OCW. Four units split into ten phases; each phase is one or two notes.
+Structured after **MIT 6.042J — Mathematics for Computer Science** (Fall 2010, Leighton / van Dijk). Free textbook and lecture videos on MIT OCW. Four units split into ten phases; each phase is one or two notes.
 
 The course teaches the mathematical maturity that every later CS course assumes — proofs, induction, number theory, sets and relations, graphs, counting, and discrete probability. Notes flag CS applications inline where 6.042J does (RSA from modular arithmetic, hashing from probability, invariants from state machines, coloring from register allocation).
 
@@ -8,7 +8,7 @@ The course teaches the mathematical maturity that every later CS course assumes 
 
 ### Phase 1 — Proofs and propositional logic
 
-*6.042J Unit 1, Ch. 1–3.5*
+_6.042J Unit 1, Ch. 1–3.5_
 
 Propositions, truth tables, equivalences, predicates, quantifiers. Direct proof, contrapositive, contradiction, cases, well-ordering principle.
 
@@ -16,7 +16,7 @@ Propositions, truth tables, equivalences, predicates, quantifiers. Direct proof,
 
 ### Phase 2 — Induction
 
-*6.042J Unit 1, Ch. 5*
+_6.042J Unit 1, Ch. 5_
 
 Ordinary induction, strong induction, structural induction. Invariants and termination as proof tools. Connection to recursion and recurrences.
 
@@ -24,7 +24,7 @@ Ordinary induction, strong induction, structural induction. Invariants and termi
 
 ### Phase 3 — Number theory
 
-*6.042J Unit 2, Ch. 8*
+_6.042J Unit 2, Ch. 8_
 
 Divisibility, gcd and Euclid's algorithm, Bezout's identity, modular arithmetic, Fermat's little theorem, Euler's theorem, Chinese remainder, RSA. The CS payoff: cryptography, hashing, error-detecting codes.
 
@@ -32,7 +32,7 @@ Divisibility, gcd and Euclid's algorithm, Bezout's identity, modular arithmetic,
 
 ### Phase 4 — Sets, relations, functions
 
-*6.042J Unit 2, Ch. 4 + 9*
+_6.042J Unit 2, Ch. 4 + 9_
 
 Set algebra, Russell's paradox, relations and equivalence classes, partial vs total orders, function injectivity / surjectivity / bijection, cardinality, Cantor's theorem.
 
@@ -42,7 +42,7 @@ Set algebra, Russell's paradox, relations and equivalence classes, partial vs to
 
 ### Phase 5 — State machines and invariants
 
-*6.042J Unit 2, Ch. 6–7*
+_6.042J Unit 2, Ch. 6–7_
 
 State machines as proof tool, preserved invariants, derived variables, partial correctness, termination. Foundation for later concurrency and OS reasoning.
 
@@ -50,7 +50,7 @@ State machines as proof tool, preserved invariants, derived variables, partial c
 
 ### Phase 6 — Graphs and trees
 
-*6.042J Unit 2, Ch. 11–12*
+_6.042J Unit 2, Ch. 11–12_
 
 Math view only — definitions, theorems, proofs. Walks, paths, cycles, connectivity, handshake lemma, Euler tours, Hamiltonian sketch, bipartite matching, planarity, coloring, chromatic number. Free trees, spanning trees, characterizations, Cayley's formula.
 
@@ -61,7 +61,7 @@ Storage and traversal algorithms are owned by [[../../data_structures/Graphs|Gra
 
 ### Phase 7 — Counting
 
-*6.042J Unit 3, Ch. 13–14*
+_6.042J Unit 3, Ch. 13–14_
 
 Sum, product, bijection, and division rules. Permutations, combinations, binomial theorem, multinomial coefficients, stars and bars, inclusion-exclusion, pigeonhole. Counting as proof technique.
 
@@ -69,7 +69,7 @@ Sum, product, bijection, and division rules. Permutations, combinations, binomia
 
 ### Phase 8 — Discrete probability foundations
 
-*6.042J Unit 4, Ch. 17*
+_6.042J Unit 4, Ch. 17_
 
 Sample spaces, events, axioms, conditional probability, independence, Bayes' rule, the four-step method. Birthday paradox, Monty Hall.
 
@@ -77,7 +77,7 @@ Sample spaces, events, axioms, conditional probability, independence, Bayes' rul
 
 ### Phase 9 — Random variables and expectation
 
-*6.042J Unit 4, Ch. 18–19*
+_6.042J Unit 4, Ch. 18–19_
 
 Discrete random variables, PMF, CDF, expectation, linearity of expectation, indicator variables, variance, common distributions (Bernoulli, binomial, geometric).
 
@@ -85,7 +85,7 @@ Discrete random variables, PMF, CDF, expectation, linearity of expectation, indi
 
 ### Phase 10 — Concentration and random walks
 
-*6.042J Unit 4, Ch. 19–20*
+_6.042J Unit 4, Ch. 19–20_
 
 Markov's inequality, Chebyshev's inequality, Chernoff bound sketch, weak law of large numbers. Random walks on graphs, gambler's ruin. Connection to randomized algorithms and Markov chains.
 
@@ -97,9 +97,10 @@ Markov's inequality, Chebyshev's inequality, Chernoff bound sketch, weak law of 
 
 ## Reference materials
 
-- Textbook (free PDF): [Mathematics for Computer Science](https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/resources/mit6_042js15_textbook/) — Lehman, Leighton, Meyer
-- Lecture videos: [MIT OCW 6.042J Spring 2015](https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/)
-- Lookup textbook (broader, encyclopedic): Rosen, *Discrete Mathematics and Its Applications*, 8e
+- Textbook (free PDF): [Mathematics for Computer Science](https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/resources/mit6_042jf10_notes/) — Lehman, Leighton, Meyer
+- Lecture videos: [MIT 6.042J Mathematics for Computer Science, Fall 2010 - Playlist](https://www.youtube.com/playlist?list=PLB7540DEDD482705B)
+
+- Lookup textbook (broader, encyclopedic): Rosen, _Discrete Mathematics and Its Applications_, 8e
 
 ## See also
 

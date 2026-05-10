@@ -104,21 +104,21 @@ $$
 
 Three equivalent interpretations:
 
-| View | Meaning |
-|------|---------|
-| Row × column | $(AB)_{ij}$ = dot product of row $i$ of $A$ with column $j$ of $B$ |
-| Column combinations | Column $j$ of $AB$ = $A$ applied to column $j$ of $B$ |
-| Composition | $AB$ represents applying $B$ then $A$ to any input vector |
+| View                | Meaning                                                            |
+| ------------------- | ------------------------------------------------------------------ |
+| Row × column        | $(AB)_{ij}$ = dot product of row $i$ of $A$ with column $j$ of $B$ |
+| Column combinations | Column $j$ of $AB$ = $A$ applied to column $j$ of $B$              |
+| Composition         | $AB$ represents applying $B$ then $A$ to any input vector          |
 
 ### Properties
 
-| Property | Expression |
-|----------|------------|
-| Non-commutative | $AB \neq BA$ in general |
-| Associative | $(AB)C = A(BC)$ |
-| Distributive | $A(B + C) = AB + AC$ |
-| Scalar | $\alpha(AB) = (\alpha A)B = A(\alpha B)$ |
-| Identity | $AI = IA = A$ |
+| Property        | Expression                               |
+| --------------- | ---------------------------------------- |
+| Non-commutative | $AB \neq BA$ in general                  |
+| Associative     | $(AB)C = A(BC)$                          |
+| Distributive    | $A(B + C) = AB + AC$                     |
+| Scalar          | $\alpha(AB) = (\alpha A)B = A(\alpha B)$ |
+| Identity        | $AI = IA = A$                            |
 
 **Non-commutativity** is fundamental — rotating then scaling differs from scaling then rotating. Matrix multiplication encodes function composition, and composition of transformations is order-dependent.
 
@@ -128,27 +128,27 @@ Three equivalent interpretations:
 
 $A^T$ swaps rows and columns: $(A^T)_{ij} = a_{ji}$. If $A \in \mathbb{R}^{m \times n}$ then $A^T \in \mathbb{R}^{n \times m}$.
 
-| Property | Expression |
-|----------|------------|
-| Involution | $(A^T)^T = A$ |
-| Sum | $(A + B)^T = A^T + B^T$ |
-| Scalar | $(\alpha A)^T = \alpha A^T$ |
-| Product (reversed) | $(AB)^T = B^T A^T$ |
+| Property           | Expression                  |
+| ------------------ | --------------------------- |
+| Involution         | $(A^T)^T = A$               |
+| Sum                | $(A + B)^T = A^T + B^T$     |
+| Scalar             | $(\alpha A)^T = \alpha A^T$ |
+| Product (reversed) | $(AB)^T = B^T A^T$          |
 
 The reversed product rule is the one people forget — it falls out of the index definition.
 
 ## Special matrices
 
-| Type | Definition | Example |
-|------|------------|---------|
-| **Identity** $I_n$ | $1$ on diagonal, $0$ elsewhere | $I_2 = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ |
-| **Zero** $O$ | All entries $0$ | $\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$ |
-| **Diagonal** | $a_{ij} = 0$ for $i \neq j$ | $\begin{bmatrix} 2 & 0 \\ 0 & 5 \end{bmatrix}$ |
-| **Upper triangular** | $a_{ij} = 0$ for $i > j$ | $\begin{bmatrix} 1 & 2 \\ 0 & 3 \end{bmatrix}$ |
-| **Lower triangular** | $a_{ij} = 0$ for $i < j$ | $\begin{bmatrix} 1 & 0 \\ 2 & 3 \end{bmatrix}$ |
-| **Symmetric** | $A^T = A$ | $\begin{bmatrix} 1 & 2 \\ 2 & 3 \end{bmatrix}$ |
-| **Skew-symmetric** | $A^T = -A$ (diagonal is $0$) | $\begin{bmatrix} 0 & 2 \\ -2 & 0 \end{bmatrix}$ |
-| **Orthogonal** | $A^T A = I$ (columns orthonormal) | Rotation matrices |
+| Type                 | Definition                        | Example                                              |
+| -------------------- | --------------------------------- | ---------------------------------------------------- |
+| **Identity** $I_n$   | $1$ on diagonal, $0$ elsewhere    | $I_2 = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ |
+| **Zero** $O$         | All entries $0$                   | $\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$       |
+| **Diagonal**         | $a_{ij} = 0$ for $i \neq j$       | $\begin{bmatrix} 2 & 0 \\ 0 & 5 \end{bmatrix}$       |
+| **Upper triangular** | $a_{ij} = 0$ for $i > j$          | $\begin{bmatrix} 1 & 2 \\ 0 & 3 \end{bmatrix}$       |
+| **Lower triangular** | $a_{ij} = 0$ for $i < j$          | $\begin{bmatrix} 1 & 0 \\ 2 & 3 \end{bmatrix}$       |
+| **Symmetric**        | $A^T = A$                         | $\begin{bmatrix} 1 & 2 \\ 2 & 3 \end{bmatrix}$       |
+| **Skew-symmetric**   | $A^T = -A$ (diagonal is $0$)      | $\begin{bmatrix} 0 & 2 \\ -2 & 0 \end{bmatrix}$      |
+| **Orthogonal**       | $A^T A = I$ (columns orthonormal) | Rotation matrices                                    |
 
 Identity acts as "do nothing"; zero collapses everything to the origin; diagonal scales each axis independently.
 
@@ -173,6 +173,9 @@ A matrix is fully determined by where it sends the basis — geometry lives in [
 - ![3Blue1Brown - Matrix multiplication as composition | Chapter 4, Essence of linear algebra](https://www.youtube.com/watch?v=XkY2DOUCWMU)
 - ![3Blue1Brown - Three-dimensional linear transformations | Chapter 5, Essence of linear algebra](https://www.youtube.com/watch?v=rHLEWRxRGiM)
 - ![3Blue1Brown - Nonsquare matrices as transformations between dimensions | Chapter 8, Essence of linear algebra](https://www.youtube.com/watch?v=v8VSDg_WQlA)
+
+- ![2. Elimination with Matrices.](https://www.youtube.com/watch?v=QVKj3LADCnA)
+- ![3. Multiplication and Inverse Matrices](https://www.youtube.com/watch?v=FX4C-JpTFgY)
 
 ## See also
 

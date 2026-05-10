@@ -7,7 +7,7 @@ status: complete
 
 # Abstract Data Types
 
-> An ADT defines *what* operations a container supports; a data structure defines *how* they are implemented.
+> An ADT defines _what_ operations a container supports; a data structure defines _how_ they are implemented.
 
 ## ADT vs data structure
 
@@ -19,10 +19,10 @@ The same ADT admits many implementations. A `Stack` ADT can be backed by a dynam
 
 Most introductory data structures fit one of two interfaces.
 
-| Interface | Purpose | Key operations |
-|---|---|---|
-| Sequence | Maintain items in an extrinsic order (position) | `get(i)`, `set(i,x)`, `insert(i,x)`, `delete(i)` |
-| Set / Dictionary | Maintain items keyed by intrinsic value | `find(k)`, `insert(k,v)`, `delete(k)` |
+| Interface        | Purpose                                         | Key operations                                   |
+| ---------------- | ----------------------------------------------- | ------------------------------------------------ |
+| Sequence         | Maintain items in an extrinsic order (position) | `get(i)`, `set(i,x)`, `insert(i,x)`, `delete(i)` |
+| Set / Dictionary | Maintain items keyed by intrinsic value         | `find(k)`, `insert(k,v)`, `delete(k)`            |
 
 A priority queue is a variant of the set interface where extraction is always of the min/max key.
 

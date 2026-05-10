@@ -7,15 +7,15 @@ source: collections/src/
 
 All notes in this section correspond to modules in the `collections` crate.
 
-| Module | Source file | Note |
-|--------|-------------|------|
-| `Vec<T>` | `vectors.rs` | [[Vec]] |
-| `HashMap<K, V>` | `hashmaps.rs` | [[HashMap]] |
-| `HashSet<T>` | `hashsets.rs` | [[HashSet]] |
-| `BTreeMap<K, V>` | `btreemap.rs` | [[BTreeMap]] |
-| `BTreeSet<T>` | `btreeset.rs` | [[BTreeSet]] |
-| `VecDeque<T>` | `deques.rs` | [[VecDeque]] |
-| `BinaryHeap<T>` | `binary_heap.rs` | [[BinaryHeap]] |
+| Module           | Source file      | Note           |
+| ---------------- | ---------------- | -------------- |
+| `Vec<T>`         | `vectors.rs`     | [[Vec]]        |
+| `HashMap<K, V>`  | `hashmaps.rs`    | [[HashMap]]    |
+| `HashSet<T>`     | `hashsets.rs`    | [[HashSet]]    |
+| `BTreeMap<K, V>` | `btreemap.rs`    | [[BTreeMap]]   |
+| `BTreeSet<T>`    | `btreeset.rs`    | [[BTreeSet]]   |
+| `VecDeque<T>`    | `deques.rs`      | [[VecDeque]]   |
+| `BinaryHeap<T>`  | `binary_heap.rs` | [[BinaryHeap]] |
 
 ## Quick Decision Guide
 

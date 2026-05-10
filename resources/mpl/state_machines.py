@@ -28,13 +28,16 @@ LW = _CFG["lines"]["linewidth"]
 CIRCLE_R = 0.38
 BLACK = _COL["black"]
 GRAY = _COL["gray"]
+RED = _COL["red"]
+BLUE = _COL["blue"]
 WHITE = _COL["white"]
 FILL_EVEN = _COL["white"]
 FILL_ODD = _COL["gray"]
 
-ANNOTATION_FS = _FS["small"]
+ANNOTATION_FS = _FS["body"]
 STATE_FS = _FS["label"]
 TITLE_FS = _FS["title"]
+GRID_TEXT_FS = _FS["label"]
 
 
 # ── helpers ───────────────────────────────────────────────────────────────────
@@ -294,9 +297,9 @@ def draw_robot_grid(ax: plt.Axes) -> None:
     )
 
     GRID_N = 5
-    CELL = 0.82
-    ORIG_X = 0.55
-    ORIG_Y = 0.78
+    CELL = 0.80
+    ORIG_X = 0.62
+    ORIG_Y = 0.92
 
     def cell_center(col: int, row: int) -> tuple[float, float]:
         return ORIG_X + col * CELL + CELL / 2, ORIG_Y + row * CELL + CELL / 2
@@ -337,7 +340,7 @@ def draw_robot_grid(ax: plt.Axes) -> None:
             str(i),
             ha="center",
             va="center",
-            fontsize=ANNOTATION_FS,
+            fontsize=GRID_TEXT_FS,
             color=BLACK,
         )
         cx2, cy2 = cell_center(0, i)
@@ -347,51 +350,59 @@ def draw_robot_grid(ax: plt.Axes) -> None:
             str(i),
             ha="center",
             va="center",
-            fontsize=ANNOTATION_FS,
+            fontsize=GRID_TEXT_FS,
             color=BLACK,
         )
 
     LABEL_00_DY = -0.17
-    LABEL_10_DY = +0.19
+    LABEL_10_DY = +0.22
 
     sx, sy = cell_center(0, 0)
-    ax.plot(sx, sy, "o", color=BLACK, markersize=9, zorder=5)
+    ax.plot(sx, sy, "o", color=BLUE, markersize=10, zorder=5)
     ax.text(
         sx,
         sy + LABEL_00_DY,
         "$(0,0)$",
         ha="center",
         va="top",
-        fontsize=ANNOTATION_FS,
+        fontsize=GRID_TEXT_FS,
         color=BLACK,
     )
 
     tx, ty = cell_center(1, 0)
-    ax.plot(
-        tx, ty, "x", color=_COL["red"], markersize=11, markeredgewidth=2.2, zorder=5
-    )
+    ax.plot(tx, ty, "x", color=RED, markersize=13, markeredgewidth=2.6, zorder=5)
     ax.text(
         tx,
         ty + LABEL_10_DY,
         "$(1,0)$",
         ha="center",
         va="bottom",
-        fontsize=ANNOTATION_FS,
-        color=_COL["red"],
+        fontsize=GRID_TEXT_FS,
+        color=RED,
     )
 
-    for dcol, drow in [(1, 0), (0, 1)]:
+    # Legal moves in this example are diagonal, so x+y changes by 0 or +/-2.
+    for dcol, drow in [(1, 1)]:
         ex, ey = cell_center(dcol, drow)
         ax.annotate(
             "",
             xy=(ex, ey),
             xytext=(sx, sy),
-            arrowprops=dict(arrowstyle="-|>", color=BLACK, lw=1.4, mutation_scale=11),
+            arrowprops=dict(arrowstyle="-|>", color=BLUE, lw=LW, mutation_scale=13),
             zorder=4,
         )
+    ax.text(
+        cell_center(1, 1)[0] + 0.10,
+        cell_center(1, 1)[1] + 0.10,
+        "legal diagonal move",
+        ha="left",
+        va="bottom",
+        fontsize=ANNOTATION_FS,
+        color=BLUE,
+    )
 
-    LX = ORIG_X + total + 0.38
-    LY_TOP = ORIG_Y + total - 0.25
+    LX = ORIG_X + total + 0.42
+    LY_TOP = ORIG_Y + total - 0.35
 
     def _legend_swatch(y: float, fc: str, label: str) -> None:
         swatch = mpatches.FancyBboxPatch(
@@ -411,22 +422,22 @@ def draw_robot_grid(ax: plt.Axes) -> None:
             label,
             ha="left",
             va="center",
-            fontsize=ANNOTATION_FS,
+            fontsize=GRID_TEXT_FS,
             color=BLACK,
         )
 
-    _legend_swatch(LY_TOP, FILL_EVEN, "even parity\n$(x{+}y$ even$)$")
-    _legend_swatch(LY_TOP - 0.60, FILL_ODD, "odd parity\n$(x{+}y$ odd$)$")
+    _legend_swatch(LY_TOP, FILL_EVEN, "even parity\n$x+y$ even")
+    _legend_swatch(LY_TOP - 0.72, FILL_ODD, "odd parity\n$x+y$ odd")
 
     INV_X = LX
-    INV_Y = ORIG_Y + 1.35
+    INV_Y = ORIG_Y + 1.15
     ax.text(
         INV_X,
         INV_Y + 0.62,
         "Invariant $P$:",
         ha="left",
         va="center",
-        fontsize=ANNOTATION_FS,
+        fontsize=GRID_TEXT_FS,
         fontweight="bold",
         color=BLACK,
     )
@@ -436,26 +447,26 @@ def draw_robot_grid(ax: plt.Axes) -> None:
         r"$x + y \equiv 0\ (\mathrm{mod}\ 2)$",
         ha="left",
         va="center",
-        fontsize=ANNOTATION_FS,
+        fontsize=GRID_TEXT_FS,
         color=BLACK,
     )
     ax.text(
         INV_X,
         INV_Y - 0.28,
-        "$(1,0)$ unreachable\n" r"$(1{+}0{=}1$, odd$)$",
+        "$(1,0)$ is unreachable\n" r"$1+0=1$ is odd",
         ha="left",
         va="center",
-        fontsize=ANNOTATION_FS,
-        color=_COL["red"],
+        fontsize=GRID_TEXT_FS,
+        color=RED,
     )
 
     ax.text(
         ORIG_X + total / 2,
-        ORIG_Y - 0.43,
-        r"Moves: $(\pm 1,\, 0)$ or $(0,\, \pm 1)$ — each flips parity",
+        ORIG_Y - 0.48,
+        r"Moves: $(\pm1,\pm1)$ — parity is preserved",
         ha="center",
         va="center",
-        fontsize=ANNOTATION_FS,
+        fontsize=GRID_TEXT_FS,
         color=GRAY,
         style="italic",
     )

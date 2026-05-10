@@ -13,10 +13,10 @@ status: complete
 
 Every recursive function has two parts:
 
-| Part | Purpose |
-|---|---|
-| Base case | A non-recursive answer for the smallest input — terminates the recursion |
-| Recursive case | Reduces the problem to a smaller instance and combines the result |
+| Part           | Purpose                                                                  |
+| -------------- | ------------------------------------------------------------------------ |
+| Base case      | A non-recursive answer for the smallest input — terminates the recursion |
+| Recursive case | Reduces the problem to a smaller instance and combines the result        |
 
 A function missing the base case (or one whose recursive calls never approach it) does not terminate — it overflows the call stack.
 
@@ -48,7 +48,7 @@ factorial_tail(n, acc):
 
 A compiler that performs **tail-call optimisation (TCO)** rewrites the call as a jump, reusing the current frame. Stack usage drops to $\Theta(1)$. Languages with guaranteed TCO: Scheme, Standard ML, OCaml. Languages without it (Python, Java) treat tail calls like any other call — TCO is an optimisation, not a semantic guarantee.
 
-The non-tail `factorial` above multiplies *after* the recursive call returns, so it is not tail-recursive. The tail form accumulates the running product as a parameter.
+The non-tail `factorial` above multiplies _after_ the recursive call returns, so it is not tail-recursive. The tail form accumulates the running product as a parameter.
 
 ## Recursive thinking
 
@@ -74,9 +74,9 @@ The recurrence is $T(n) = T(n-1) + T(n-2) + \Theta(1)$, with $T(n) = \Theta(\var
 
 ## Direct vs indirect recursion
 
-| Form | Pattern |
-|---|---|
-| Direct | $f$ calls $f$ |
+| Form              | Pattern                         |
+| ----------------- | ------------------------------- |
+| Direct            | $f$ calls $f$                   |
 | Indirect (mutual) | $f$ calls $g$ and $g$ calls $f$ |
 
 Mutual recursion appears in parsers (expression / term / factor) and tree traversals over alternating node types.

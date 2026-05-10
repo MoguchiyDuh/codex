@@ -13,14 +13,14 @@ This note covers the mathematical theory of trees. The data-structure view (BST,
 
 A **tree** is a connected acyclic undirected graph. For a graph $T$ on $n$ vertices, the following are all equivalent:
 
-| Characterisation | Statement |
-|---|---|
-| (a) | $T$ is connected and acyclic |
-| (b) | $T$ is connected and has $n - 1$ edges |
-| (c) | $T$ is acyclic and has $n - 1$ edges |
-| (d) | There is a unique path between every pair of vertices |
-| (e) | $T$ is connected, but removing any single edge disconnects it |
-| (f) | $T$ is acyclic, but adding any edge between non-adjacent vertices creates exactly one cycle |
+| Characterisation | Statement                                                                                   |
+| ---------------- | ------------------------------------------------------------------------------------------- |
+| (a)              | $T$ is connected and acyclic                                                                |
+| (b)              | $T$ is connected and has $n - 1$ edges                                                      |
+| (c)              | $T$ is acyclic and has $n - 1$ edges                                                        |
+| (d)              | There is a unique path between every pair of vertices                                       |
+| (e)              | $T$ is connected, but removing any single edge disconnects it                               |
+| (f)              | $T$ is acyclic, but adding any edge between non-adjacent vertices creates exactly one cycle |
 
 Any one of these can be taken as the definition; the others follow as theorems.
 
@@ -59,18 +59,18 @@ The number of spanning trees of $K_n$ (the complete graph on $n$ vertices) is gi
 
 The number of labelled spanning trees of $K_n$ is $n^{n-2}$.
 
-| $n$ | $n^{n-2}$ | Trees |
-|---|---|---|
-| 1 | 1 | just the single vertex |
-| 2 | 1 | the single edge |
-| 3 | 3 | three distinct trees (one for each "centre") |
-| 4 | 16 | 16 labelled trees |
+| $n$ | $n^{n-2}$ | Trees                                        |
+| --- | --------- | -------------------------------------------- |
+| 1   | 1         | just the single vertex                       |
+| 2   | 1         | the single edge                              |
+| 3   | 3         | three distinct trees (one for each "centre") |
+| 4   | 16        | 16 labelled trees                            |
 
 **Proof via Prüfer sequences.** There is a bijection between labelled trees on $n$ vertices and sequences of length $n - 2$ from $\{1, \ldots, n\}$ (Prüfer sequences). Since there are $n^{n-2}$ such sequences, there are $n^{n-2}$ labelled trees.
 
-*Encoding:* Repeat $n - 2$ times: find the leaf with the smallest label, record its neighbour's label, remove the leaf. The recorded sequence is the Prüfer sequence.
+_Encoding:_ Repeat $n - 2$ times: find the leaf with the smallest label, record its neighbour's label, remove the leaf. The recorded sequence is the Prüfer sequence.
 
-*Decoding:* Reconstruct the tree from the sequence by the reverse: at each step, connect the sequence's current element to the smallest label not yet seen in the remaining sequence or already removed.
+_Decoding:_ Reconstruct the tree from the sequence by the reverse: at each step, connect the sequence's current element to the smallest label not yet seen in the remaining sequence or already removed.
 
 The bijection proves the count without explicitly enumerating the trees.
 
@@ -88,16 +88,20 @@ These two properties underpin Kruskal's and Prim's algorithms, developed in [[..
 
 ## Trees in CS
 
-| Use | Tree type | Why |
-|---|---|---|
-| Sorted lookup | BST, AVL, red-black | search in $O(\log n)$ via tree structure |
-| Priority queues | binary heap | parent ≤ children invariant |
-| Compiler parse trees | parse / AST | hierarchical grammar derivation |
-| File systems | directory tree | one parent per node, rooted |
-| Decision procedures | decision tree | branching on conditions |
-| Huffman coding | binary tree | optimal prefix-free code |
+| Use                  | Tree type           | Why                                      |
+| -------------------- | ------------------- | ---------------------------------------- |
+| Sorted lookup        | BST, AVL, red-black | search in $O(\log n)$ via tree structure |
+| Priority queues      | binary heap         | parent ≤ children invariant              |
+| Compiler parse trees | parse / AST         | hierarchical grammar derivation          |
+| File systems         | directory tree      | one parent per node, rooted              |
+| Decision procedures  | decision tree       | branching on conditions                  |
+| Huffman coding       | binary tree         | optimal prefix-free code                 |
 
 In all these cases the mathematical properties above — unique paths, $n-1$ edges, leaf existence — are what make the data structures work correctly.
+
+## Video references
+
+- ![Lecture 8: Graph Theory II: Minimum Spanning Trees](https://www.youtube.com/watch?v=GJpt_3ie4WU)
 
 ## See also
 

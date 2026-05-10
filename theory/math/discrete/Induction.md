@@ -24,9 +24,9 @@ $$\sum_{i=0}^{n} i = \frac{n(n+1)}{2}.$$
 
 **Proof.**
 
-*Base case ($n = 0$).* $\sum_{i=0}^{0} i = 0 = \frac{0 \cdot 1}{2}$. ✓
+_Base case ($n = 0$)._ $\sum_{i=0}^{0} i = 0 = \frac{0 \cdot 1}{2}$. ✓
 
-*Inductive step.* Assume $\sum_{i=0}^{n} i = \frac{n(n+1)}{2}$. Then
+_Inductive step._ Assume $\sum_{i=0}^{n} i = \frac{n(n+1)}{2}$. Then
 
 $$\sum_{i=0}^{n+1} i = \left(\sum_{i=0}^{n} i\right) + (n+1) = \frac{n(n+1)}{2} + (n+1) = (n+1)\!\left(\frac{n}{2} + 1\right) = \frac{(n+1)(n+2)}{2}.$$
 
@@ -44,9 +44,9 @@ Ordinary induction is the special case where only $P(n)$ is needed. Use strong i
 
 **Proof.**
 
-*Base case ($n = 2$).* $2$ is prime, hence trivially a product of one prime. ✓
+_Base case ($n = 2$)._ $2$ is prime, hence trivially a product of one prime. ✓
 
-*Inductive step.* Assume every integer $2 \leq k \leq n$ is a product of primes. Consider $n+1$.
+_Inductive step._ Assume every integer $2 \leq k \leq n$ is a product of primes. Consider $n+1$.
 
 - If $n+1$ is prime: done.
 - If $n+1$ is composite: $n+1 = ab$ with $2 \leq a, b \leq n$. By the strong inductive hypothesis both $a$ and $b$ are products of primes, so $n+1$ is too.
@@ -58,6 +58,7 @@ This proof uses both branches of the strong hypothesis — it could not be done 
 Induction over a **recursively defined structure** (list, tree, expression, string) rather than over $\mathbb{N}$ directly.
 
 Schema:
+
 1. **Base case.** Prove $P$ holds for every base-case structure.
 2. **Inductive step.** Assume $P$ holds for all sub-structures (the **structural inductive hypothesis**); prove $P$ holds for any structure built from them.
 
@@ -67,9 +68,9 @@ Schema:
 
 **Proof.**
 
-*Base case.* A leaf has $0$ internal nodes and $1$ leaf. $0 + 1 = 1$. ✓
+_Base case._ A leaf has $0$ internal nodes and $1$ leaf. $0 + 1 = 1$. ✓
 
-*Inductive step.* Let $T = \text{Node}(L, R)$. By the structural hypothesis, $L$ has $\ell_1$ internal nodes and $\ell_1 + 1$ leaves; $R$ has $\ell_2$ internal nodes and $\ell_2 + 1$ leaves. Then $T$ has $\ell_1 + \ell_2 + 1$ internal nodes (the two subtrees' internal nodes plus the root) and $(\ell_1 + 1) + (\ell_2 + 1) = \ell_1 + \ell_2 + 2 = (\ell_1 + \ell_2 + 1) + 1$ leaves.
+_Inductive step._ Let $T = \text{Node}(L, R)$. By the structural hypothesis, $L$ has $\ell_1$ internal nodes and $\ell_1 + 1$ leaves; $R$ has $\ell_2$ internal nodes and $\ell_2 + 1$ leaves. Then $T$ has $\ell_1 + \ell_2 + 1$ internal nodes (the two subtrees' internal nodes plus the root) and $(\ell_1 + 1) + (\ell_2 + 1) = \ell_1 + \ell_2 + 2 = (\ell_1 + \ell_2 + 1) + 1$ leaves.
 
 ![[binary_tree_induction.png]]
 
@@ -80,6 +81,7 @@ Structural induction is the mathematical backbone of every recursive program's c
 An **invariant** is a predicate that is true before and after every step of a process. Proving an invariant holds is exactly an induction on the number of steps.
 
 The pattern:
+
 1. **Establish.** Prove the invariant holds at the start (base case).
 2. **Maintain.** Prove that if the invariant holds before a step it holds after (inductive step).
 3. **Exploit.** Draw a conclusion from the invariant holding at the end.
@@ -88,11 +90,11 @@ The pattern:
 
 **Proof by invariant.** Let the invariant be: if the piles currently have sizes $x_1, x_2, \ldots, x_k$, the score so far plus $\sum_i \binom{x_i}{2}$ always equals $\binom{n}{2}$.
 
-*Establish.* Initially one pile of size $n$: score $= 0$, $\binom{n}{2}$ added. Sum $= \binom{n}{2}$. ✓
+_Establish._ Initially one pile of size $n$: score $= 0$, $\binom{n}{2}$ added. Sum $= \binom{n}{2}$. ✓
 
-*Maintain.* Splitting a pile of size $x$ into $a$ and $b$ adds $ab$ to the score and replaces $\binom{x}{2}$ with $\binom{a}{2} + \binom{b}{2}$. Since $ab = \binom{x}{2} - \binom{a}{2} - \binom{b}{2}$ (verify algebraically: $\frac{x(x-1)}{2} - \frac{a(a-1)}{2} - \frac{b(b-1)}{2} = ab$ when $x = a + b$), the invariant sum is unchanged. ✓
+_Maintain._ Splitting a pile of size $x$ into $a$ and $b$ adds $ab$ to the score and replaces $\binom{x}{2}$ with $\binom{a}{2} + \binom{b}{2}$. Since $ab = \binom{x}{2} - \binom{a}{2} - \binom{b}{2}$ (verify algebraically: $\frac{x(x-1)}{2} - \frac{a(a-1)}{2} - \frac{b(b-1)}{2} = ab$ when $x = a + b$), the invariant sum is unchanged. ✓
 
-*Exploit.* At the end every pile has size $1$ and $\binom{1}{2} = 0$, so the score equals $\binom{n}{2}$.
+_Exploit._ At the end every pile has size $1$ and $\binom{1}{2} = 0$, so the score equals $\binom{n}{2}$.
 
 This is the CS payoff of invariants: the same technique proves loop correctness, protocol safety, and compiler transformation soundness.
 
@@ -102,20 +104,25 @@ Every recursive program has a corresponding induction structure. If `f(n)` calls
 
 **Example.** Prove `sum(n) = n*(n+1)//2` correct for the recursive definition `sum(0) = 0`, `sum(n) = n + sum(n-1)`.
 
-*Base case.* `sum(0) = 0 = 0*1//2`. ✓
+_Base case._ `sum(0) = 0 = 0*1//2`. ✓
 
-*Inductive step.* Assume `sum(n-1) = (n-1)*n//2`. Then `sum(n) = n + sum(n-1) = n + (n-1)*n//2 = n*(n+1)//2`.
+_Inductive step._ Assume `sum(n-1) = (n-1)*n//2`. Then `sum(n) = n + sum(n-1) = n + (n-1)*n//2 = n*(n+1)//2`.
 
 ## Well-ordering and induction equivalence
 
 Ordinary induction, strong induction, and the well-ordering principle are all equivalent — each implies the others. The choice between them is one of proof convenience:
 
-| Technique | Best when |
-|---|---|
-| Ordinary induction | $P(n+1)$ follows cleanly from $P(n)$ alone |
-| Strong induction | $P(n+1)$ depends on several or all earlier values |
-| Well-ordering | Easiest to set up a proof by contradiction via a minimal counterexample |
-| Structural induction | The domain is a recursively defined structure |
+| Technique            | Best when                                                               |
+| -------------------- | ----------------------------------------------------------------------- |
+| Ordinary induction   | $P(n+1)$ follows cleanly from $P(n)$ alone                              |
+| Strong induction     | $P(n+1)$ depends on several or all earlier values                       |
+| Well-ordering        | Easiest to set up a proof by contradiction via a minimal counterexample |
+| Structural induction | The domain is a recursively defined structure                           |
+
+## Video references
+
+- ![Lecture 2: Induction](https://www.youtube.com/watch?v=z8HKWUWS-lA)
+- ![Lecture 3: Strong Induction](https://www.youtube.com/watch?v=NuGDkmwEObM)
 
 ## See also
 

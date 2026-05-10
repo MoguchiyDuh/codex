@@ -59,10 +59,10 @@ place(col, queens, n):
 
 **Code:** `theory/algorithms/showcase/n_queens.py`
 
-| Property | Value |
-|---|---|
-| Worst case | $\Theta(n!)$ — but pruning collapses much of the tree |
-| Practical $n$ | up to ~30 with bitmask-based pruning |
+| Property      | Value                                                 |
+| ------------- | ----------------------------------------------------- |
+| Worst case    | $\Theta(n!)$ — but pruning collapses much of the tree |
+| Practical $n$ | up to ~30 with bitmask-based pruning                  |
 
 ![[n_queens_tree.png]]
 
@@ -124,43 +124,43 @@ Most $9 \times 9$ puzzles solve in milliseconds with this heuristic; without it,
 
 ## Pruning techniques
 
-| Technique | Idea |
-|---|---|
-| **Constraint propagation** | apply the choice's consequences (e.g. eliminate impossible candidates) before recursing |
-| **Bounding** | track the best solution found so far; cut branches whose best-case completion can't beat it (branch and bound) |
-| **Symmetry breaking** | if two branches differ only by a symmetry, explore one |
-| **Variable ordering** | choose the next decision wisely — most-constrained-variable, most-promising, etc. |
-| **Value ordering** | within a chosen variable, try the most-promising value first |
+| Technique                  | Idea                                                                                                           |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **Constraint propagation** | apply the choice's consequences (e.g. eliminate impossible candidates) before recursing                        |
+| **Bounding**               | track the best solution found so far; cut branches whose best-case completion can't beat it (branch and bound) |
+| **Symmetry breaking**      | if two branches differ only by a symmetry, explore one                                                         |
+| **Variable ordering**      | choose the next decision wisely — most-constrained-variable, most-promising, etc.                              |
+| **Value ordering**         | within a chosen variable, try the most-promising value first                                                   |
 
 These are not optional polish — they often turn an intractable search into a fast one.
 
 ## Backtracking vs DP
 
-| | Backtracking | DP |
-|---|---|---|
-| Subproblems | distinct paths through the search tree | reused across many parents |
-| Caching | no — state is unique per path | yes — table or memo |
-| Goal | find a solution / all solutions / best solution | optimise an objective |
+|             | Backtracking                                       | DP                                        |
+| ----------- | -------------------------------------------------- | ----------------------------------------- |
+| Subproblems | distinct paths through the search tree             | reused across many parents                |
+| Caching     | no — state is unique per path                      | yes — table or memo                       |
+| Goal        | find a solution / all solutions / best solution    | optimise an objective                     |
 | Typical use | constraint satisfaction, combinatorial enumeration | optimisation with overlapping subproblems |
 
 When the same subproblem appears on many paths — knapsack, LCS, edit distance — use DP. When each path through the tree carries unique state — N-queens, Sudoku — backtracking is correct.
 
 ## Branch and bound
 
-Backtracking applied to optimisation. Maintain the best solution found so far as a *bound*; prune any partial solution whose best-case extension cannot beat the bound.
+Backtracking applied to optimisation. Maintain the best solution found so far as a _bound_; prune any partial solution whose best-case extension cannot beat the bound.
 
 Used for hard optimisation problems (TSP, integer programming, knapsack with tight constants). Combines well with linear-programming relaxations to compute strong bounds at each node.
 
 ## When to reach for backtracking
 
-| Situation | Yes / no |
-|---|---|
-| Constraint satisfaction (SAT-like) | yes |
-| Exhaustive enumeration with structure | yes |
-| Game-tree search (chess, Go) | yes — usually with alpha-beta pruning |
-| NP-hard combinatorial problems with small $n$ | yes |
-| Subproblems repeat substantially | no — use DP |
-| Greedy is provably correct | no — use greedy |
+| Situation                                     | Yes / no                              |
+| --------------------------------------------- | ------------------------------------- |
+| Constraint satisfaction (SAT-like)            | yes                                   |
+| Exhaustive enumeration with structure         | yes                                   |
+| Game-tree search (chess, Go)                  | yes — usually with alpha-beta pruning |
+| NP-hard combinatorial problems with small $n$ | yes                                   |
+| Subproblems repeat substantially              | no — use DP                           |
+| Greedy is provably correct                    | no — use greedy                       |
 
 ## See also
 
